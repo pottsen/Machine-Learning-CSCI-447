@@ -1,1 +1,1 @@
-# Machine-Learning-CICI-447-
+# Machine-Learning-CSCI-447
