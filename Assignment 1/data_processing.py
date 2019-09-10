@@ -4,7 +4,10 @@ import random
 def scramble_data(filename):
     percent_scrambled = 10
 
-    file = open('./data/'+filename+'.data','r')
+    try:
+        file = open('./data/'+filename+'.data','r')
+    except:
+        file = open('./processed_data/'+filename+'.data','r')
     processed_file = open('./processed_data/'+filename+'-scrambled.data','w+')
     lines = file.readlines()
     file.close()
@@ -18,7 +21,7 @@ def scramble_data(filename):
         except ValueError:
             scrambled_records.append(rand)
             i+=1
-    value_dict = find_value_span('breast-cancer-wisconsin')
+    value_dict = find_value_span(filename)
 
     i = 0
     for j in lines:
@@ -34,16 +37,20 @@ def scramble_data(filename):
         i+=1
     processed_file.close()
 
-def find_value_span(filename):
-    file = open('./data/'+filename+'.data','r')
+def find_value_span(filename): #looks through data and finds options for data and puts options in values
+    try:
+        file = open('./data/'+filename+'.data','r')
+    except:
+        file = open('./processed_data/'+filename+'.data','r')
+
     lines = file.readlines()
 
     values = {}
     line = lines[0].split(",")
     i = 0
-    for j in line:
+    for j in line:  #for every comma seperated value, add a key for that column (col#)
         j=j.replace('\n','')
-        values['col'+str(i)] = [j]
+        values['col'+str(i)] = []
         i+=1
     for j in lines:
         #processed_file.write(j)
@@ -54,10 +61,42 @@ def find_value_span(filename):
             try:
                 values['col'+str(i)].index(k)
             except ValueError:
-                values['col'+str(i)].append(k)
+                if k !='?':
+                    values['col'+str(i)].append(k)
             i+=1
     file.close()
-    return occurances
+    return values
 
-scramble_data('breast-cancer-wisconsin')
-#print( find_value_span('breast-cancer-wisconsin'))
+def clean_data(filename):
+    file = open('./data/'+filename+'.data','r')
+    lines = file.readlines()
+    file.close()
+
+    value_dict = find_value_span(filename)
+
+    clean = open('./processed_data/'+filename+'-cleaned.data', 'w+')
+    for i in lines:
+        line = i.split(",")
+        for j in range(len(line)):
+            if line[j] == "?":
+                line[j] = random.choice(value_dict['col'+str(j)])
+            elif(line[j] == "?\n"):
+                line[j] = random.choice(value_dict['col'+str(j)]) +'\n'
+        lines=""
+        for j in line:
+            lines+=j+","
+        clean.write(lines[:-1])
+    clean.close()
+
+
+    
+clean_data('breast-cancer-wisconsin')
+scramble_data('breast-cancer-wisconsin-cleaned')
+clean_data('glass')
+scramble_data('glass-cleaned')
+clean_data('house-votes-84')
+scramble_data('house-votes-84-cleaned')
+clean_data('iris')
+scramble_data('iris-cleaned')
+clean_data('soybean-small')
+scramble_data('soybean-small-cleaned')
