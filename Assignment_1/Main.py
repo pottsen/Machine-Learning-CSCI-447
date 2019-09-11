@@ -1,3 +1,5 @@
+import numpy as np
+
 #Machine Learning: Naive Bayes on 5 data sets
 #Peter Ottsen, Bruce Clark, Forest Edwards, Justin McGowen
 
@@ -74,6 +76,7 @@ def main():
     file.close()
     classAttributeFrequencies = classAttributeFrequency(ten_strata[0], class_column, class_counts)
     print(classAttributeFrequencies)
+    classify(['1047630,7,4,6,4,6,1,4,3,1,4'], classAttributeFrequencies)
 
 
 '''def uniftyData(ten_strata):
@@ -145,7 +148,9 @@ def classAttributeFrequency(data_set, class_col, class_counts):
     for key_class in attribute_probability:
         for key_attribute in attribute_probability[key_class]:
             for key_value in attribute_probability[key_class][key_attribute]:
+                #attribute_count = str(attribute_probability[key_class][key_attribute][key_value])
                 attribute_count = str(attribute_probability[key_class][key_attribute][key_value])
+
                 conditional_probability = attribute_count +'/'+ str(class_counts[key_class]) #prints string of probability in fraction form
                 #attribute_count = attribute_probability[key_class][key_attribute][key_value]
                 #conditional_probability = attribute_count / class_counts[key_class] #prob = occurances of attribute given a class / total occurences of given class
@@ -154,19 +159,27 @@ def classAttributeFrequency(data_set, class_col, class_counts):
     return attribute_probability
 
 def classify(example, attribute_probability): 
-    float prob_calc[attribute_probability.len]  # Stores the probability of the example appearing in the dataset
+    prob_calc = [] # Stores the probability of the example appearing in the dataset
     for i in example:
+        #print("i =", i)
         columns = i.split(",") # Turns the string into a list, separated by commas
-        class_name = columns[class_col]
-        for j in columns:
+        class_name = columns[10]
+        #print("class name ", class_name)
+        #print("length columns ", range(len(columns)))
+        for j in range(len(columns)):
             for key_class in attribute_probability:
-                prob_calc
+                print("key class", key_class)
+                #prob_calc[key_class] = class_frequency
+                prob_calc = 0.5
                 for key_attribute in attribute_probability[key_class]:
+                    print("Key attribute: ", key_attribute)
                     for key_value in attribute_probability[key_class][key_attribute]:
-                        if column[j] == key_value:
-                            prob_calc[key_class] = 
-    for key in attribute_probability: 
-        
+                        if columns[j] == str(key_value):
+                            print("key value")
+                            print(key_value)
+                            prob_calc *= float(attribute_probability[key_class][key_attribute][key_value])
+    print(prob_calc)
+    return prob_calc
 
 
 
