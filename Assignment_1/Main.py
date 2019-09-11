@@ -72,8 +72,8 @@ def main():
     ten_strata, class_counts = stratify(file,class_column)
 
     file.close()
-
-    print(classAttributeFrequency(ten_strata[0], class_column, class_counts))
+    classAttributeFrequencies = classAttributeFrequency(ten_strata[0], class_column, class_counts)
+    print(classAttributeFrequencies)
 
 
 '''def uniftyData(ten_strata):
@@ -119,6 +119,12 @@ def classAttributeFrequency(data_set, class_col, class_counts):
     for i in data_set: # i will represent each record of our data_set
         columns = i.split(",")
         class_name = columns[class_col]
+        # classes = []
+        # if classes = []:
+        #     classes = class_name
+        # for i in classes:
+
+
         for j in range(len(columns)): #j will represent the index of each attribute
             if(j!=class_col): # should not count class occurances given class (==1)
                 attribute_col = j
@@ -134,19 +140,34 @@ def classAttributeFrequency(data_set, class_col, class_counts):
                         try:#if we have not seen this attribute column (ie attribute) before initialize the attirbute
                             attribute_counts[class_name].update({attribute_col:{attribute_value:1}})
                         except KeyError: #if we have not seen this class before initialize the class
-                            attribute_counts.update({class_name:{attribute_col:{attribute_value:1}}})
-    #print(attribute_counts)
+                            attribute_counts.update({class_name:{attribute_col:{attribute_value:1}}})                            
     attribute_probability = attribute_counts #initialize probability as counts because we will overwrite count with probability
     for key_class in attribute_probability:
         for key_attribute in attribute_probability[key_class]:
             for key_value in attribute_probability[key_class][key_attribute]:
                 attribute_count = str(attribute_probability[key_class][key_attribute][key_value])
-                contidional_probability = attribute_count +'/'+ str(class_counts[key_class]) #prints string of probability in fraction form
+                conditional_probability = attribute_count +'/'+ str(class_counts[key_class]) #prints string of probability in fraction form
                 #attribute_count = attribute_probability[key_class][key_attribute][key_value]
-                #contidional_probability = attribute_count / class_counts[key_class] #prob = occurances of attribute given a class / total occurences of given class
-                attribute_probability[key_class][key_attribute][key_value] = contidional_probability
+                #conditional_probability = attribute_count / class_counts[key_class] #prob = occurances of attribute given a class / total occurences of given class
+                attribute_probability[key_class][key_attribute][key_value] = conditional_probability
 
     return attribute_probability
+
+def classify(example, attribute_probability): 
+    float prob_calc[attribute_probability.len]  # Stores the probability of the example appearing in the dataset
+    for i in example:
+        columns = i.split(",") # Turns the string into a list, separated by commas
+        class_name = columns[class_col]
+        for j in columns:
+            for key_class in attribute_probability:
+                prob_calc
+                for key_attribute in attribute_probability[key_class]:
+                    for key_value in attribute_probability[key_class][key_attribute]:
+                        if column[j] == key_value:
+                            prob_calc[key_class] = 
+    for key in attribute_probability: 
+        
+
 
 
 
