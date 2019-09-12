@@ -1,6 +1,3 @@
-
-
-
 def catData(fileName):
     try:
         file = open('./processed_data/'+fileName+'.data','r')

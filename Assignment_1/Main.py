@@ -59,6 +59,7 @@ def stratify(data,class_col): # file data, # of class column in data
 
     ['1147044,3,1,1,1,2,2,7,1,1,2', '1152331,4,1,1,1,2,1,3,1,1,2', '1155546,2,1,1,2,3,1,2,1,1,2', '1156272,1,1,1,1,2,1,3,1,1,2', '1156948,3,1,1,2,2,1,1,1,1,2', '1157734,4,1,1,1,2,1,3,1,1,2', '1158247,1,1,1,1,2,1,2,1,1,2', '1160476,2,1,1,1,2,1,3,1,1,2', '1164066,1,1,1,1,2,1,3,1,1,2', '1165297,2,1,1,2,2,1,1,1,1,2', '1165790,5,1,1,1,2,1,3,1,1,2', '1167471,4,1,2,1,2,1,3,1,1,2', '1171710,1,1,1,1,2,1,2,3,1,2', '1171795,1,3,1,2,2,2,5,3,2,2', '1173235,3,3,2,1,2,3,3,1,1,2', '1173347,1,1,1,1,2,5,1,1,1,2', '1173347,8,3,3,1,2,2,3,2,1,2', '1173514,1,1,1,1,4,3,1,1,1,2', '1173681,3,2,1,1,2,2,3,1,1,2', '1174057,1,1,2,2,2,1,3,1,1,2', '1174057,4,2,1,1,2,2,3,1,1,2', '1176406,1,1,1,1,2,1,2,1,1,2', '1177027,3,1,1,1,2,1,3,1,1,2', '1177512,1,1,1,1,10,1,1,1,1,2', '1178580,5,1,3,1,2,1,2,1,1,2', '1179818,2,1,1,1,2,1,3,1,1,2', '1180523,3,1,1,1,2,1,2,2,1,2', '1180831,3,1,1,1,3,1,2,1,1,2', '1181356,5,1,1,1,2,2,3,3,1,2', '1182404,4,1,1,1,2,1,2,1,1,2', '1182410,3,1,1,1,2,1,1,1,1,2', '1183240,4,1,2,1,2,1,2,1,1,2', '1183246,1,1,1,1,1,1,2,1,1,2', '1183516,3,1,1,1,2,1,1,1,1,2', '1183911,2,1,1,1,2,1,1,1,1,2', '1184184,1,1,1,1,2,5,1,1,1,2', '1184241,2,1,1,1,2,1,2,1,1,2', '1184840,1,1,3,1,2,1,2,1,1,2', '1185610,1,1,1,1,3,2,2,1,1,2', '1187457,3,1,1,3,8,1,5,8,1,2', '1188472,1,1,1,1,1,1,3,1,1,2', '1190394,4,1,1,1,2,3,1,1,1,2', '1190485,1,1,1,1,2,1,1,1,1,2', '1193091,1,2,2,1,2,1,2,1,1,2', '1193210,2,1,1,1,2,1,3,1,1,2', '1111249,10,6,6,3,4,5,3,6,1,4', '1112209,8,10,10,1,3,6,3,9,1,4', '1113038,8,2,4,1,5,1,5,4,4,4', '1113483,5,2,3,1,6,10,5,1,1,4', '1113906,9,5,5,2,2,2,5,1,1,4', '1115282,5,3,5,5,3,3,4,10,1,4', '1116116,9,10,10,1,10,8,3,3,1,4', '1116132,6,3,4,1,5,2,3,9,1,4', '1116998,10,4,2,1,3,2,4,3,10,4', '1118039,5,3,4,1,8,10,4,9,1,4', '1120559,8,3,8,3,4,9,8,9,8,4', '1123061,6,10,2,8,10,2,7,8,10,4', '1125035,9,4,5,10,6,10,4,8,1,4', '1126417,10,6,4,1,3,4,3,2,3,4', '1147699,3,5,7,8,8,9,7,10,7,4', '1147748,5,10,6,1,10,4,4,10,10,4', '1148278,3,3,6,4,5,8,4,4,1,4', '1148873,3,6,6,6,5,10,6,8,3,4', '1165926,9,6,9,2,10,6,2,9,10,4', '1166630,7,5,6,10,5,10,7,9,4,4', '1166654,10,3,5,1,10,5,3,10,2,4', '1167439,2,3,4,4,2,5,2,5,1,4', '1168359,8,2,3,1,6,3,7,1,1,4', '1168736,10,10,10,10,10,1,8,8,8,4'], ...
     '''
+    
     #print(class_frequency)
     #print (ten_strata)
 
@@ -74,12 +75,22 @@ def main():
     ten_strata, class_counts = stratify(file,class_column)
 
     file.close()
-    classAttributeFrequencies = classAttributeFrequency(ten_strata[0], class_column, class_counts)
-    print(classAttributeFrequencies)
-    classify(['1047630,7,4,6,4,6,1,4,3,1,4'], classAttributeFrequencies)
+    #print(ten_strata)
+    training = []
+    for i in range(len(ten_strata)-1):
+        training+=(ten_strata[i])
+    #print(training)
+    global entry_num 
+    entry_num = len(training)
+    classAttributeFrequencies = classAttributeFrequency(training, class_column, class_counts)
+    #print(classAttributeFrequencies)
+    for i in ten_strata[9]:
+        print(i)
+        guess = classify(i, classAttributeFrequencies, class_column)
+        print(guess)
 
 
-'''def uniftyData(ten_strata):
+def uniftyData(ten_strata):
     nine_strata = ["","","","","","","","",""]
     test_strata = ["","","","","","","","",""]
     for i in nine_strata:
@@ -89,6 +100,7 @@ def main():
             elif j == i:
                 test_strata[i] = ten_strata[i]
 
+'''
 def classFrequency(class_dict, classColumnLocation, classes):
     #calculate class frequency
     #calculates Q(C=c_i) = #(x is an element of c_i)/Total # of examples
@@ -149,40 +161,38 @@ def classAttributeFrequency(data_set, class_col, class_counts):
         for key_attribute in attribute_probability[key_class]:
             for key_value in attribute_probability[key_class][key_attribute]:
                 #attribute_count = str(attribute_probability[key_class][key_attribute][key_value])
-                attribute_count = attribute_probability[key_class][key_attribute][key_value]
-                conditional_probability = attribute_count/class_counts[key_class]
                 #conditional_probability = attribute_count +'/'+ str(class_counts[key_class]) #prints string of probability in fraction form
-                #attribute_count = attribute_probability[key_class][key_attribute][key_value]
-                #conditional_probability = attribute_count / class_counts[key_class] #prob = occurances of attribute given a class / total occurences of given class
+                attribute_count = attribute_probability[key_class][key_attribute][key_value]
+                conditional_probability = attribute_count / class_counts[key_class] #prob = occurances of attribute given a class / total occurences of given class
                 attribute_probability[key_class][key_attribute][key_value] = conditional_probability
 
     return attribute_probability
 
-def classify(example, attribute_probability): 
-    prob_calc = [] # Stores the probability of the example appearing in the dataset
-    for i in example:
-        #print("i =", i)
-        columns = i.split(",") # Turns the string into a list, separated by commas
-        class_name = columns[10]
-        #print("class name ", class_name)
-        #print("length columns ", range(len(columns)))
-        for key_class in attribute_probability:
-            for j in range(len(columns)):
-                #print("key class", key_class)
-                #prob_calc[key_class] = class_frequency
-                prob_calc = 0.5
-                for key_attribute in attribute_probability[key_class]:
-                    if j == key_attribute:
-                        print("Key attribute: ", key_attribute)
-                        for key_value in attribute_probability[key_class][key_attribute]:
-                            if columns[j] == str(key_value):
-                                print("key value")
-                                print(key_value)
-                                prob_calc *= float(attribute_probability[key_class][key_attribute][key_value])
-                                print("prob calc ", prob_calc)
-    print("prob calc 2 ", prob_calc)
-    return prob_calc
-
+#returns the probability that an example is of a class...
+def classify(example, attribute_probability, class_col): 
+    prob_calc = {} # Stores the probability of the example appearing in the dataset - probability:class
+    columns = example.split(",") # Turns the string into a list, separated by commas
+    #class_name = columns[class_col]
+    for key_class in attribute_probability:
+        #for j in range(len(columns)):
+            #print("key class", key_class)
+            #prob_calc[key_class] = class_frequency
+        class_prob = 1 #class frequency
+        for example_col in range(len(columns)):
+            if(example_col!=class_col):
+                attr_value = columns[example_col]
+                try:
+                    conditional_prob = attribute_probability[key_class][example_col][attr_value]
+                except KeyError: #do not want our probability to be zero if there was not instance of an attribute in our training set
+                    conditional_prob = 1/(entry_num+len(columns)-1) #additive smoother
+                class_prob = class_prob * conditional_prob
+        prob_calc.update({class_prob:key_class})
+    highest_prob = 0
+    for key in prob_calc:
+        if key>=highest_prob:
+            highest_prob=key
+    print(prob_calc)
+    return prob_calc[highest_prob]
 
 
 
