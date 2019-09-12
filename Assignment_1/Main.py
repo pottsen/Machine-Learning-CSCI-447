@@ -61,8 +61,11 @@ def stratify(data,class_col): # file data, # of class column in data
 
 def main():
 
-    class_column = 4 #which column the class is in
-    file = open('./processed_data/iris-cleaned-discrete-scrambled.data','r')
+    class_column = 10 #which column the class is in
+    
+    file = open('./processed_data/glass-cleaned-scrambled.data','r')
+    #file = open('./data/house-votes-84.data','r')
+
 
     ten_strata, class_counts = stratify(file,class_column)
 
@@ -81,6 +84,9 @@ def main():
 
         classAttributeFrequencies = classAttributeFrequency(training, class_column, test_class_counts)
         #print(classAttributeFrequencies)
+
+        resultsFile = open('Results.txt','a')
+
         confusion = {}
         for class_name in classAttributeFrequencies:
             confusion.update({class_name:{'TP':0,'FP':0,'TN':0,'FN':0}})
@@ -99,17 +105,31 @@ def main():
                 if class_name != guess and class_name != actual_class:
                     value = 'TN'
                 confusion[class_name][value] += 1
+        
         print(confusion)
+        
+
+        for key,val in confusion.items():
+            output = str(((key, " = ", val)))
+            resultsFile.write(output)
+            resultsFile.write("\n")
+
+
+        
         for class_name in classAttributeFrequencies:
             total = confusion[class_name]['TP'] + confusion[class_name]['FP'] + confusion[class_name]['TN'] + confusion[class_name]['FN']
             accuracy = (confusion[class_name]['TP'] + confusion[class_name]['TN'])/ total
-            print('Accuracy-'+class_name+": "+str(accuracy))
+            #print('Accuracy-'+class_name+": "+str(accuracy))
+            resultsFile.write('Accuracy-'+class_name+": "+str(accuracy))
             positives = confusion[class_name]['TP'] + confusion[class_name]['FP']
             try:
                 precision = confusion[class_name]['TP'] / positives
             except:
                 precision = 'INF'
-            print('Precision-'+class_name+": "+str(precision))
+            #print('Precision-'+class_name+": "+str(precision))
+            resultsFile.write('Precision-'+class_name+": "+str(precision))
+
+        
 
 #Justin: I think I have a pretty good idea of what attribute probabilities will look like
 #3D dictionary
