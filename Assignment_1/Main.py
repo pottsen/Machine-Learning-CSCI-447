@@ -149,9 +149,9 @@ def classAttributeFrequency(data_set, class_col, class_counts):
         for key_attribute in attribute_probability[key_class]:
             for key_value in attribute_probability[key_class][key_attribute]:
                 #attribute_count = str(attribute_probability[key_class][key_attribute][key_value])
-                attribute_count = str(attribute_probability[key_class][key_attribute][key_value])
-
-                conditional_probability = attribute_count +'/'+ str(class_counts[key_class]) #prints string of probability in fraction form
+                attribute_count = attribute_probability[key_class][key_attribute][key_value]
+                conditional_probability = attribute_count/class_counts[key_class]
+                #conditional_probability = attribute_count +'/'+ str(class_counts[key_class]) #prints string of probability in fraction form
                 #attribute_count = attribute_probability[key_class][key_attribute][key_value]
                 #conditional_probability = attribute_count / class_counts[key_class] #prob = occurances of attribute given a class / total occurences of given class
                 attribute_probability[key_class][key_attribute][key_value] = conditional_probability
@@ -166,19 +166,21 @@ def classify(example, attribute_probability):
         class_name = columns[10]
         #print("class name ", class_name)
         #print("length columns ", range(len(columns)))
-        for j in range(len(columns)):
-            for key_class in attribute_probability:
-                print("key class", key_class)
+        for key_class in attribute_probability:
+            for j in range(len(columns)):
+                #print("key class", key_class)
                 #prob_calc[key_class] = class_frequency
                 prob_calc = 0.5
                 for key_attribute in attribute_probability[key_class]:
-                    print("Key attribute: ", key_attribute)
-                    for key_value in attribute_probability[key_class][key_attribute]:
-                        if columns[j] == str(key_value):
-                            print("key value")
-                            print(key_value)
-                            prob_calc *= float(attribute_probability[key_class][key_attribute][key_value])
-    print(prob_calc)
+                    if j == key_attribute:
+                        print("Key attribute: ", key_attribute)
+                        for key_value in attribute_probability[key_class][key_attribute]:
+                            if columns[j] == str(key_value):
+                                print("key value")
+                                print(key_value)
+                                prob_calc *= float(attribute_probability[key_class][key_attribute][key_value])
+                                print("prob calc ", prob_calc)
+    print("prob calc 2 ", prob_calc)
     return prob_calc
 
 
