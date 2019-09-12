@@ -5,17 +5,17 @@ import numpy as np
 
 # TODO:
 # Clean data using purely random values - done
-# Clean real valued data using data ranges - incomplete
+# Clean real valued data using data ranges - done
 # Seperate data into 10 strata - done
 #------10 fold validation-------
-# Calculate class probabilities (proportion of one class over the total)- 75% - have counts probabilities are easy from here
-# Calculate conditional probabilities of each attribute value - incomplete
-# Calculate conditional probabilities of real valued data(data ranges) - incomplete
-# Run test data and predict classes
+# Calculate class probabilities (proportion of one class over the total)- done
+# Calculate conditional probabilities of each attribute value - done
+# Calculate conditional probabilities of real valued data(data ranges) - done
+# Run test data and predict classes - in progress
 # Find output of two different loss functions based on prediction
 #-------------------------------
 # randomize data - complete
-# repeat 10 fold validation for randomized data
+# repeat 10 fold validation for randomized data - in progress
 # ----------Paper----------
 # 'Develop hypothesis' for each data-set
 # do paper!
@@ -69,25 +69,47 @@ def stratify(data,class_col): # file data, # of class column in data
 
 def main():
 
-    class_column = 10 #which column the class is in
-    file = open('./processed_data/breast-cancer-wisconsin-cleaned.data','r')
+    class_column = 0 #which column the class is in
+    file = open('./data/house-votes-84.data','r')
 
     ten_strata, class_counts = stratify(file,class_column)
 
     file.close()
     #print(ten_strata)
     training = []
-    for i in range(len(ten_strata)-1):
-        training+=(ten_strata[i])
-    #print(training)
-    global entry_num 
-    entry_num = len(training)
-    classAttributeFrequencies = classAttributeFrequency(training, class_column, class_counts)
-    #print(classAttributeFrequencies)
-    for i in ten_strata[9]:
-        print(i)
-        guess = classify(i, classAttributeFrequencies, class_column)
-        print(guess)
+    #ten fold validation
+    for j in range(10):# j is the index of the test data set in each round
+        for i in range(len(ten_strata)):
+            if(i!=j):
+                training+=(ten_strata[i])
+        #print(training)
+        global entry_num 
+        entry_num = len(training)
+        classAttributeFrequencies = classAttributeFrequency(training, class_column, class_counts)
+        #print(classAttributeFrequencies)
+        confusion = {}
+        for class_name in classAttributeFrequencies:
+            confusion.update({class_name:{'TP':0,'FP':0,'TN':0,'FN':0}})
+        #confusion{class:{TP:0,FP:0,TN:0,FN:0}}
+        for i in ten_strata[j]:
+            actual_class = i.split(',')[class_column]
+            guess = classify(i, classAttributeFrequencies, class_column)
+            #print(guess)            
+            for class_name in classAttributeFrequencies:
+                if class_name == guess and class_name == actual_class:
+                    value = 'TP'
+                if class_name == guess and class_name != actual_class:
+                    value = 'FP'
+                if class_name != guess and class_name == actual_class:
+                    value = 'FN'
+                if class_name != guess and class_name != actual_class:
+                    value = 'TN'
+                confusion[class_name][value] += 1
+        print(confusion)
+        for class_name in classAttributeFrequencies:
+            total = confusion[class_name]['TP'] + confusion[class_name]['FP'] + confusion[class_name]['TN'] + confusion[class_name]['FN']
+            accuracy = (confusion[class_name]['TP'] + confusion[class_name]['TN'])/ total
+            print('Accuracy-'+class_name+": "+str(accuracy))
 
 
 def uniftyData(ten_strata):
@@ -191,9 +213,32 @@ def classify(example, attribute_probability, class_col):
     for key in prob_calc:
         if key>=highest_prob:
             highest_prob=key
-    print(prob_calc)
+    #print(prob_calc)
     return prob_calc[highest_prob]
 
 
+def classFrequency(data,class_col):
+    class_freq = {}
+    total = 0
+
+    for i in data:
+        columns = i.replace('\n','').split(",")
+        class_name = columns[class_col]
+        try:
+            count = class_freq[class_name]
+        except:
+            count = 0
+        class_freq.update([(class_name,count+1)]) #add the data in i to our class (class is represented by the key)
+        total += 1
+    class_freq.update([('total',total)])
+    return class_freq
+
+def lossFuntion():
+    pass
+
+def precisionLoss():
+    #TP/(TP+FP)
+    
+    pass
 
 main()
