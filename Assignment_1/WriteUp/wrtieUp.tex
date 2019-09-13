@@ -58,17 +58,49 @@ This class, $class(x)$, is then the predicted class for the test data.
 
 The first thing we did when approaching this project was to examine the data and determined pre-processing was needed. The breast cancer data set was missing values so we randomly generated attribute values to fill them. The iris and glass data sets needed to be transformed into discrete values. We used the Gaussian distribution to split the attributes into four equally populated categories for these data sets.
 
-Ten-fold validation was used to test accuracy of the algorithm.  Each data set was split into ten sub-sets, where nine of the ten were used to train the algorithm and the tenth was used to test the algorithm. This was done ten times over so that each sub-set served as the test data once. 
+Ten-fold cross-validation was used to test accuracy of the algorithm.  Each data set was split into ten sub-sets with equal proportions of each class. By splitting into equal portions, we are minimizing the potential for a class to be unrepresented in the training or test data. Nine of the ten sets were used to train the algorithm and the tenth was used to test the algorithm. This was done ten times over so that each sub-set served as the test data once. 
 
-Data scrambling was used to test the resiliency of the algorithm. Once we tested the algorithm with ten-fold validation for each data set, ten percent of the data set was scrambled to have random values. These scrambled data sets were then tested on the algorithm using the same ten-fold validation method described above.  
+Data scrambling was used to test the resiliency of the algorithm. Once we tested the algorithm with ten-fold validation for each data set, ten percent of the data set was scrambled to have random values. These scrambled data sets were then tested on the algorithm using the same ten-fold validation method described above.   
+
+The evaluation methods or loss function used were accuracy and precision. These were calculated creating a confusion matrix for each class and using the equations below:
+\begin{center}
+    $Accuracy = \frac{\#TruePositive + \#TrueNegative}{\# Of TestData}$\\
+\end{center}
+
+\begin{center}
+    $Precision = \frac{\#TruePositive}{\#TruePositive + \#FalsePositive}$\\
+\end{center}
 
 \section{Results}
 
 Presentation of the results of your experiments (in words, tables, and graphs)
+We set out to try to figure out if introducing noise into a data set would improve the ability of our naive bayes algorithm. We tested our data sets with and without noise with ten fold validation and with with a confusion matrix.\\
+
+
+
+
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=10cm]{table1Accuracy.png}
+\end{figure}
+
+
+th
+
+
 
 \section{Discussion}
 
 A discussion of the behavior of your algorithms, combined with any conclusions you can draw
+
+Our algorithm usually had a slight decrease in effectively predicting the correct class when we introduced randomized data to our data set. When we introduced scrambled data, our data set would containg 10\% randomized data. What is interesting is that most of the time, the accuracy of predicting the classes of data sets with random data was not 10\% less than the accuracy of data that was not randomized.
+
+Naive Bayes assumes classes and attributes are independent. We know that two of the three classes in Iris are not independent of each other. When predicting these classes, the class that is independent of the other two was predicted with over 90\% accuracy. What is suprizing is that the two classes that are not linearly independent of eachother were still able to be predicted with over 70\% accuracy.
+
+In the soybeans data set, we noticed that some of the classes are strictly dependent on certain attributes. An example of this would be that attribute #26 is only value 2 when the class is D2. This was the set where our model was able to predict the class 100\% accurately. This leads us to draw the conclusion that this type of classification is more accurate when attributes have a stronger force on determining the class. 
+
+This is also the data set where noise affected our data the most. We noticed up to a 10\% accuracy difference between our clean data and our data that introduced noise. This may lead to the conclusion that noise in attribute collection where these attributes strongly affect the class of this data is more crucial than when the attributes don't have a strong affect on the class. This could also lead to the conclusion that because multiple 
 
 \section{Summary}
 
