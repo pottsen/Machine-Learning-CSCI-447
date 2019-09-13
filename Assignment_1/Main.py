@@ -1,26 +1,6 @@
 #Machine Learning: Naive Bayes on 5 data sets
 #Peter Ottsen, Bruce Clark, Forest Edwards, Justin McGowen
 
-# TODO:
-# Clean data using purely random values - done
-# Clean real valued data using data ranges - done
-# Seperate data into 10 strata - done
-#------10 fold validation-------
-# Calculate class probabilities (proportion of one class over the total)- done
-# Calculate conditional probabilities of each attribute value - done
-# Calculate conditional probabilities of real valued data(data ranges) - done
-# Run test data and predict classes - in progress
-# Find output of two different loss functions based on prediction
-#-------------------------------
-# randomize data - complete
-# repeat 10 fold validation for randomized data - in progress
-# ----------Paper----------
-# 'Develop hypothesis' for each data-set
-# do paper!
-# create video of code functionality
-
-#optional:
-#add attribute header names to dataset
 
 import os
 
@@ -58,16 +38,7 @@ def stratify(data,class_col): # file data, # of class column in data
 
     return ten_strata, class_frequency
 
-# need table of frequency of attribute value, given class -> F(Aj|Ci)
 
-
-
-
-
-
-        
-
-#Justin: I think I have a pretty good idea of what attribute probabilities will look like
 #3D dictionary
 #attribute_prob = {key1:{key1':{key1":probability}},key2:{key2':{key2":probability}},...}
 #where keyX = the class
@@ -80,10 +51,6 @@ def classAttributeFrequency(data_set, class_col, class_counts):
     for i in data_set: # i will represent each record of our data_set
         columns = i.split(",")
         class_name = columns[class_col]
-        # classes = []
-        # if classes = []:
-        #     classes = class_name
-        # for i in classes:
 
 
         for j in range(len(columns)): #j will represent the index of each attribute
@@ -114,7 +81,7 @@ def classAttributeFrequency(data_set, class_col, class_counts):
 
     return attribute_probability
 
-#returns the probability that an example is of a class...
+#returns the probability that an example is of a class based on our conditional probabilities 'attribute_probability'
 def classify(example, attribute_probability, class_col, class_counts): 
     prob_calc = {} # Stores the probability of the example appearing in the dataset - probability:class
     columns = example.split(",") # Turns the string into a list, separated by commas
@@ -141,6 +108,7 @@ def classify(example, attribute_probability, class_col, class_counts):
     return prob_calc[highest_prob]
 
 
+#this will take a data set and return the number of occurances of each class in that data set as well as total number of entries in a dictionary
 def classFrequency(data,class_col):
     class_freq = {}
     total = 0
@@ -157,6 +125,7 @@ def classFrequency(data,class_col):
     class_freq.update([('total',total)])
     return class_freq
 
+#training takes an array of 10 subdivided portions of our data set and tests on that set using 10-fold validation
 def training(ten_strata, class_column):
     #print(ten_strata)
     training = []
@@ -176,29 +145,29 @@ def training(ten_strata, class_column):
 
         resultsFile = open('Results.txt','a+')
 
-        confusion = {}
+        confusion = {}#confusion matrix
         for class_name in classAttributeFrequencies:
-            confusion.update({class_name:{'TP':0,'FP':0,'TN':0,'FN':0}})
+            confusion.update({class_name:{'TP':0,'FP':0,'TN':0,'FN':0}})#class_name is the key for each classes confusion matrix
         #confusion{class:{TP:0,FP:0,TN:0,FN:0}}
         for i in ten_strata[j]:
             actual_class = i.split(',')[class_column]
             guess = classify(i, classAttributeFrequencies, class_column, test_class_counts)
             #print(guess)            
             for class_name in classAttributeFrequencies:
-                if class_name == guess and class_name == actual_class:
+                if class_name == guess and class_name == actual_class: #guess is accurate with what the class actually was
                     value = 'TP'
-                if class_name == guess and class_name != actual_class:
+                if class_name == guess and class_name != actual_class: #guessed that a record was part of a class and it wasn't
                     value = 'FP'
-                if class_name != guess and class_name == actual_class:
+                if class_name != guess and class_name == actual_class: #guessed that a record was not part of a class and it was
                     value = 'FN'
-                if class_name != guess and class_name != actual_class:
+                if class_name != guess and class_name != actual_class: #guess is accurate that the record did not belong to a class
                     value = 'TN'
-                confusion[class_name][value] += 1
+                confusion[class_name][value] += 1 #increment that classes TP/FP/TN/FN count accordingly
         
-        print(confusion)
+        #print(confusion)
         
 
-        for key in confusion:
+        for key in confusion:#writes each confusion matrix to file
             output = str(key)+" = "+str(confusion[key])
             resultsFile.write(output)
             resultsFile.write("\n")
@@ -207,16 +176,22 @@ def training(ten_strata, class_column):
         
         for class_name in classAttributeFrequencies:
             total = confusion[class_name]['TP'] + confusion[class_name]['FP'] + confusion[class_name]['TN'] + confusion[class_name]['FN']
+            
+            #calculates accuracy for given fold and class
             accuracy = (confusion[class_name]['TP'] + confusion[class_name]['TN'])/ total
             #print('Accuracy-'+class_name+": "+str(accuracy))
             resultsFile.write(' Accuracy-'+class_name+": "+str(accuracy))
             positives = confusion[class_name]['TP'] + confusion[class_name]['FP']
+            
+            #calculates precision for given fold and given class
             try:
                 precision = confusion[class_name]['TP'] / positives
             except:
                 precision = 'INF'
             #print('Precision-'+class_name+": "+str(precision))
             resultsFile.write(' Precision-'+class_name+": "+str(precision)+"\n")
+            
+            #adds all of our accuracies and precisions for eachfold together
             try:                
                 loss[class_name]['Accuracy'] += accuracy
                 loss[class_name]['Precision'] += precision
@@ -227,7 +202,7 @@ def training(ten_strata, class_column):
     
     resultsFile = open('Results.txt','a+')
     resultsFile.write('\n************************\n')
-    for class_name in loss:
+    for class_name in loss: #averages all of our class averages
         loss[class_name]['Accuracy'] /= 10
         loss[class_name]['Precision'] /= 10
         resultsFile.write('Accuracy-'+class_name+": "+str(loss[class_name]['Accuracy'])+"\n")
@@ -245,7 +220,7 @@ def main():
 
     cleanDiscreteData = ["breast-cancer-wisconsin-cleaned", "glass-cleaned-discrete", "house-votes-84", "iris-cleaned-discrete", "soybean-small-cleaned"]
     scrambledData = ["breast-cancer-wisconsin-cleaned-scrambled", "glass-cleaned-discrete-scrambled", "house-votes-84-scrambled", "iris-cleaned-discrete-scrambled", "soybean-small-cleaned-scrambled"]
-    classCol = [10, 10, 0, 4, 35]
+    classCol = [10, 10, 0, 4, 35] # the column number of the class - use this to tell our algorithm which column to try to guess
 
     try:
         os.remove("Results.txt")
@@ -254,8 +229,9 @@ def main():
 
     
      
-
+    #for every data set and its according randomly shuffled data set
     for i in range(len(classCol)):
+        #writes header
         resultsFile = open('Results.txt','a+') 
         resultsFile.write("***************************\n")
         resultsFile.write(cleanDiscreteData[i])
@@ -263,10 +239,11 @@ def main():
         resultsFile.close()
         file = open('./processed_data/'+ cleanDiscreteData[i] +'.data','r')
         class_column = classCol[i]
-        ten_strata, class_counts = stratify(file,class_column)
+        ten_strata, class_counts = stratify(file,class_column)#divide each data pull into ten equally proportioned sections 'ten_strata'
         file.close()
-        training(ten_strata, class_column)
+        training(ten_strata, class_column)#preform 10 fold validation for our data
 
+        #repeat for randomized data
         resultsFile = open('Results.txt','a+') 
         resultsFile.write("***************************\n")
         resultsFile.write(scrambledData[i])
