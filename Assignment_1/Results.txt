@@ -1,641 +1,848 @@
-('2', ' = ', {'TP': 42, 'FP': 1, 'TN': 23, 'FN': 3})
-('4', ' = ', {'TP': 23, 'FP': 3, 'TN': 42, 'FN': 1})
- Accuracy-2: 0.9420289855072463 Precision-2: 0.9767441860465116 Accuracy-4: 0.9420289855072463 Precision-4: 0.8846153846153846('2', ' = ', {'TP': 45, 'FP': 0, 'TN': 24, 'FN': 0})
-('4', ' = ', {'TP': 24, 'FP': 0, 'TN': 45, 'FN': 0})
- Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-4: 1.0 Precision-4: 1.0('2', ' = ', {'TP': 43, 'FP': 0, 'TN': 24, 'FN': 2})
-('4', ' = ', {'TP': 24, 'FP': 2, 'TN': 43, 'FN': 0})
- Accuracy-2: 0.9710144927536232 Precision-2: 1.0 Accuracy-4: 0.9710144927536232 Precision-4: 0.9230769230769231('2', ' = ', {'TP': 40, 'FP': 1, 'TN': 23, 'FN': 5})
-('4', ' = ', {'TP': 23, 'FP': 5, 'TN': 40, 'FN': 1})
- Accuracy-2: 0.9130434782608695 Precision-2: 0.975609756097561 Accuracy-4: 0.9130434782608695 Precision-4: 0.8214285714285714('2', ' = ', {'TP': 44, 'FP': 0, 'TN': 24, 'FN': 1})
-('4', ' = ', {'TP': 24, 'FP': 1, 'TN': 44, 'FN': 0})
- Accuracy-2: 0.9855072463768116 Precision-2: 1.0 Accuracy-4: 0.9855072463768116 Precision-4: 0.96('2', ' = ', {'TP': 43, 'FP': 0, 'TN': 24, 'FN': 2})
-('4', ' = ', {'TP': 24, 'FP': 2, 'TN': 43, 'FN': 0})
- Accuracy-2: 0.9710144927536232 Precision-2: 1.0 Accuracy-4: 0.9710144927536232 Precision-4: 0.9230769230769231('2', ' = ', {'TP': 45, 'FP': 0, 'TN': 24, 'FN': 0})
-('4', ' = ', {'TP': 24, 'FP': 0, 'TN': 45, 'FN': 0})
- Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-4: 1.0 Precision-4: 1.0('2', ' = ', {'TP': 45, 'FP': 0, 'TN': 24, 'FN': 0})
-('4', ' = ', {'TP': 24, 'FP': 0, 'TN': 45, 'FN': 0})
- Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-4: 1.0 Precision-4: 1.0('2', ' = ', {'TP': 44, 'FP': 0, 'TN': 24, 'FN': 1})
-('4', ' = ', {'TP': 24, 'FP': 1, 'TN': 44, 'FN': 0})
- Accuracy-2: 0.9855072463768116 Precision-2: 1.0 Accuracy-4: 0.9855072463768116 Precision-4: 0.96('2', ' = ', {'TP': 44, 'FP': 0, 'TN': 24, 'FN': 1})
-('4', ' = ', {'TP': 24, 'FP': 1, 'TN': 44, 'FN': 0})
- Accuracy-2: 0.9855072463768116 Precision-2: 1.0 Accuracy-4: 0.9855072463768116 Precision-4: 0.96('2', ' = ', {'TP': 37, 'FP': 0, 'TN': 23, 'FN': 9})
-('4', ' = ', {'TP': 23, 'FP': 9, 'TN': 37, 'FN': 0})
- Accuracy-2: 0.8695652173913043 Precision-2: 1.0 Accuracy-4: 0.8695652173913043 Precision-4: 0.71875('2', ' = ', {'TP': 44, 'FP': 0, 'TN': 23, 'FN': 2})
-('4', ' = ', {'TP': 23, 'FP': 2, 'TN': 44, 'FN': 0})
- Accuracy-2: 0.9710144927536232 Precision-2: 1.0 Accuracy-4: 0.9710144927536232 Precision-4: 0.92('2', ' = ', {'TP': 42, 'FP': 0, 'TN': 23, 'FN': 4})
-('4', ' = ', {'TP': 23, 'FP': 4, 'TN': 42, 'FN': 0})
- Accuracy-2: 0.9420289855072463 Precision-2: 1.0 Accuracy-4: 0.9420289855072463 Precision-4: 0.8518518518518519('2', ' = ', {'TP': 38, 'FP': 0, 'TN': 23, 'FN': 8})
-('4', ' = ', {'TP': 23, 'FP': 8, 'TN': 38, 'FN': 0})
- Accuracy-2: 0.8840579710144928 Precision-2: 1.0 Accuracy-4: 0.8840579710144928 Precision-4: 0.7419354838709677('2', ' = ', {'TP': 43, 'FP': 1, 'TN': 22, 'FN': 3})
-('4', ' = ', {'TP': 22, 'FP': 3, 'TN': 43, 'FN': 1})
- Accuracy-2: 0.9420289855072463 Precision-2: 0.9772727272727273 Accuracy-4: 0.9420289855072463 Precision-4: 0.88('2', ' = ', {'TP': 42, 'FP': 0, 'TN': 23, 'FN': 4})
-('4', ' = ', {'TP': 23, 'FP': 4, 'TN': 42, 'FN': 0})
- Accuracy-2: 0.9420289855072463 Precision-2: 1.0 Accuracy-4: 0.9420289855072463 Precision-4: 0.8518518518518519('2', ' = ', {'TP': 42, 'FP': 0, 'TN': 23, 'FN': 4})
-('4', ' = ', {'TP': 23, 'FP': 4, 'TN': 42, 'FN': 0})
- Accuracy-2: 0.9420289855072463 Precision-2: 1.0 Accuracy-4: 0.9420289855072463 Precision-4: 0.8518518518518519('2', ' = ', {'TP': 40, 'FP': 1, 'TN': 22, 'FN': 6})
-('4', ' = ', {'TP': 22, 'FP': 6, 'TN': 40, 'FN': 1})
- Accuracy-2: 0.8985507246376812 Precision-2: 0.975609756097561 Accuracy-4: 0.8985507246376812 Precision-4: 0.7857142857142857('2', ' = ', {'TP': 42, 'FP': 0, 'TN': 23, 'FN': 4})
-('4', ' = ', {'TP': 23, 'FP': 4, 'TN': 42, 'FN': 0})
- Accuracy-2: 0.9420289855072463 Precision-2: 1.0 Accuracy-4: 0.9420289855072463 Precision-4: 0.8518518518518519('2', ' = ', {'TP': 43, 'FP': 0, 'TN': 23, 'FN': 3})
-('4', ' = ', {'TP': 23, 'FP': 3, 'TN': 43, 'FN': 0})
- Accuracy-2: 0.9565217391304348 Precision-2: 1.0 Accuracy-4: 0.9565217391304348 Precision-4: 0.8846153846153846('1', ' = ', {'TP': 3, 'FP': 2, 'TN': 9, 'FN': 4})
-('2', ' = ', {'TP': 6, 'FP': 4, 'TN': 7, 'FN': 1})
-('3', ' = ', {'TP': 0, 'FP': 2, 'TN': 15, 'FN': 1})
-('5', ' = ', {'TP': 0, 'FP': 0, 'TN': 17, 'FN': 1})
-('7', ' = ', {'TP': 0, 'FP': 1, 'TN': 15, 'FN': 2})
- Accuracy-1: 0.6666666666666666 Precision-1: 0.6 Accuracy-2: 0.7222222222222222 Precision-2: 0.6 Accuracy-3: 0.8333333333333334 Precision-3: 0.0 Accuracy-5: 0.9444444444444444 Precision-5: INF Accuracy-7: 0.8333333333333334 Precision-7: 0.0('1', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('2', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('3', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('5', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('7', ' = ', {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0})
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-7: 1.0 Precision-7: 1.0('1', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('2', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('3', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('5', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('7', ' = ', {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0})
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-7: 1.0 Precision-7: 1.0('1', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('2', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('3', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('5', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('7', ' = ', {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0})
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-7: 1.0 Precision-7: 1.0('1', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('2', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('3', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('5', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('7', ' = ', {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0})
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-7: 1.0 Precision-7: 1.0('1', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('2', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('3', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('5', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('7', ' = ', {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0})
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-7: 1.0 Precision-7: 1.0('1', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('2', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('3', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('5', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('7', ' = ', {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0})
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-7: 1.0 Precision-7: 1.0('1', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('2', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('3', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('5', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('7', ' = ', {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0})
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-7: 1.0 Precision-7: 1.0('1', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('2', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('3', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('5', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('7', ' = ', {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0})
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-7: 1.0 Precision-7: 1.0('1', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('2', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('3', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('5', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('7', ' = ', {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0})
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-7: 1.0 Precision-7: 1.0('1', ' = ', {'TP': 4, 'FP': 4, 'TN': 8, 'FN': 2})
-('3', ' = ', {'TP': 0, 'FP': 1, 'TN': 16, 'FN': 1})
-('2', ' = ', {'TP': 4, 'FP': 3, 'TN': 8, 'FN': 3})
-('5', ' = ', {'TP': 0, 'FP': 0, 'TN': 17, 'FN': 1})
-('6', ' = ', {'TP': 0, 'FP': 0, 'TN': 17, 'FN': 1})
-('7', ' = ', {'TP': 1, 'FP': 1, 'TN': 15, 'FN': 1})
- Accuracy-1: 0.6666666666666666 Precision-1: 0.5 Accuracy-3: 0.8888888888888888 Precision-3: 0.0 Accuracy-2: 0.6666666666666666 Precision-2: 0.5714285714285714 Accuracy-5: 0.9444444444444444 Precision-5: INF Accuracy-6: 0.9444444444444444 Precision-6: INF Accuracy-7: 0.8888888888888888 Precision-7: 0.5('1', ' = ', {'TP': 6, 'FP': 0, 'TN': 12, 'FN': 0})
-('3', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('2', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('5', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('6', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('7', ' = ', {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0})
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-6: 1.0 Precision-6: 1.0 Accuracy-7: 1.0 Precision-7: 1.0('1', ' = ', {'TP': 6, 'FP': 0, 'TN': 12, 'FN': 0})
-('3', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('2', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('5', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('6', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('7', ' = ', {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0})
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-6: 1.0 Precision-6: 1.0 Accuracy-7: 1.0 Precision-7: 1.0('1', ' = ', {'TP': 6, 'FP': 0, 'TN': 12, 'FN': 0})
-('3', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('2', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('5', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('6', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('7', ' = ', {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0})
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-6: 1.0 Precision-6: 1.0 Accuracy-7: 1.0 Precision-7: 1.0('1', ' = ', {'TP': 6, 'FP': 0, 'TN': 12, 'FN': 0})
-('3', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('2', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('5', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('6', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('7', ' = ', {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0})
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-6: 1.0 Precision-6: 1.0 Accuracy-7: 1.0 Precision-7: 1.0('1', ' = ', {'TP': 6, 'FP': 0, 'TN': 12, 'FN': 0})
-('3', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('2', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('5', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('6', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('7', ' = ', {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0})
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-6: 1.0 Precision-6: 1.0 Accuracy-7: 1.0 Precision-7: 1.0('1', ' = ', {'TP': 6, 'FP': 0, 'TN': 12, 'FN': 0})
-('3', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('2', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('5', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('6', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('7', ' = ', {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0})
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-6: 1.0 Precision-6: 1.0 Accuracy-7: 1.0 Precision-7: 1.0('1', ' = ', {'TP': 6, 'FP': 0, 'TN': 12, 'FN': 0})
-('3', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('2', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('5', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('6', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('7', ' = ', {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0})
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-6: 1.0 Precision-6: 1.0 Accuracy-7: 1.0 Precision-7: 1.0('1', ' = ', {'TP': 6, 'FP': 0, 'TN': 12, 'FN': 0})
-('3', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('2', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('5', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('6', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('7', ' = ', {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0})
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-6: 1.0 Precision-6: 1.0 Accuracy-7: 1.0 Precision-7: 1.0('1', ' = ', {'TP': 6, 'FP': 0, 'TN': 12, 'FN': 0})
-('3', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('2', ' = ', {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0})
-('5', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('6', ' = ', {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0})
-('7', ' = ', {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0})
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-6: 1.0 Precision-6: 1.0 Accuracy-7: 1.0 Precision-7: 1.0('republican', ' = ', {'TP': 16, 'FP': 2, 'TN': 24, 'FN': 0})
-('democrat', ' = ', {'TP': 24, 'FP': 0, 'TN': 16, 'FN': 2})
- Accuracy-republican: 0.9523809523809523 Precision-republican: 0.8888888888888888 Accuracy-democrat: 0.9523809523809523 Precision-democrat: 1.0('republican', ' = ', {'TP': 14, 'FP': 4, 'TN': 22, 'FN': 2})
-('democrat', ' = ', {'TP': 22, 'FP': 2, 'TN': 14, 'FN': 4})
- Accuracy-republican: 0.8571428571428571 Precision-republican: 0.7777777777777778 Accuracy-democrat: 0.8571428571428571 Precision-democrat: 0.9166666666666666('republican', ' = ', {'TP': 15, 'FP': 2, 'TN': 24, 'FN': 1})
-('democrat', ' = ', {'TP': 24, 'FP': 1, 'TN': 15, 'FN': 2})
- Accuracy-republican: 0.9285714285714286 Precision-republican: 0.8823529411764706 Accuracy-democrat: 0.9285714285714286 Precision-democrat: 0.96('republican', ' = ', {'TP': 15, 'FP': 6, 'TN': 20, 'FN': 1})
-('democrat', ' = ', {'TP': 20, 'FP': 1, 'TN': 15, 'FN': 6})
- Accuracy-republican: 0.8333333333333334 Precision-republican: 0.7142857142857143 Accuracy-democrat: 0.8333333333333334 Precision-democrat: 0.9523809523809523('republican', ' = ', {'TP': 13, 'FP': 1, 'TN': 25, 'FN': 3})
-('democrat', ' = ', {'TP': 25, 'FP': 3, 'TN': 13, 'FN': 1})
- Accuracy-republican: 0.9047619047619048 Precision-republican: 0.9285714285714286 Accuracy-democrat: 0.9047619047619048 Precision-democrat: 0.8928571428571429('republican', ' = ', {'TP': 14, 'FP': 1, 'TN': 25, 'FN': 2})
-('democrat', ' = ', {'TP': 25, 'FP': 2, 'TN': 14, 'FN': 1})
- Accuracy-republican: 0.9285714285714286 Precision-republican: 0.9333333333333333 Accuracy-democrat: 0.9285714285714286 Precision-democrat: 0.9259259259259259('republican', ' = ', {'TP': 14, 'FP': 1, 'TN': 25, 'FN': 2})
-('democrat', ' = ', {'TP': 25, 'FP': 2, 'TN': 14, 'FN': 1})
- Accuracy-republican: 0.9285714285714286 Precision-republican: 0.9333333333333333 Accuracy-democrat: 0.9285714285714286 Precision-democrat: 0.9259259259259259('republican', ' = ', {'TP': 16, 'FP': 1, 'TN': 25, 'FN': 0})
-('democrat', ' = ', {'TP': 25, 'FP': 0, 'TN': 16, 'FN': 1})
- Accuracy-republican: 0.9761904761904762 Precision-republican: 0.9411764705882353 Accuracy-democrat: 0.9761904761904762 Precision-democrat: 1.0('republican', ' = ', {'TP': 15, 'FP': 4, 'TN': 22, 'FN': 1})
-('democrat', ' = ', {'TP': 22, 'FP': 1, 'TN': 15, 'FN': 4})
- Accuracy-republican: 0.8809523809523809 Precision-republican: 0.7894736842105263 Accuracy-democrat: 0.8809523809523809 Precision-democrat: 0.9565217391304348('republican', ' = ', {'TP': 14, 'FP': 6, 'TN': 20, 'FN': 2})
-('democrat', ' = ', {'TP': 20, 'FP': 2, 'TN': 14, 'FN': 6})
- Accuracy-republican: 0.8095238095238095 Precision-republican: 0.7 Accuracy-democrat: 0.8095238095238095 Precision-democrat: 0.9090909090909091('republican', ' = ', {'TP': 16, 'FP': 3, 'TN': 23, 'FN': 1})
-('democrat', ' = ', {'TP': 23, 'FP': 1, 'TN': 16, 'FN': 3})
- Accuracy-republican: 0.9069767441860465 Precision-republican: 0.8421052631578947 Accuracy-democrat: 0.9069767441860465 Precision-democrat: 0.9583333333333334('republican', ' = ', {'TP': 16, 'FP': 3, 'TN': 23, 'FN': 1})
-('democrat', ' = ', {'TP': 23, 'FP': 1, 'TN': 16, 'FN': 3})
- Accuracy-republican: 0.9069767441860465 Precision-republican: 0.8421052631578947 Accuracy-democrat: 0.9069767441860465 Precision-democrat: 0.9583333333333334('republican', ' = ', {'TP': 16, 'FP': 2, 'TN': 24, 'FN': 1})
-('democrat', ' = ', {'TP': 24, 'FP': 1, 'TN': 16, 'FN': 2})
- Accuracy-republican: 0.9302325581395349 Precision-republican: 0.8888888888888888 Accuracy-democrat: 0.9302325581395349 Precision-democrat: 0.96('republican', ' = ', {'TP': 16, 'FP': 6, 'TN': 20, 'FN': 1})
-('democrat', ' = ', {'TP': 20, 'FP': 1, 'TN': 16, 'FN': 6})
- Accuracy-republican: 0.8372093023255814 Precision-republican: 0.7272727272727273 Accuracy-democrat: 0.8372093023255814 Precision-democrat: 0.9523809523809523('republican', ' = ', {'TP': 13, 'FP': 1, 'TN': 25, 'FN': 4})
-('democrat', ' = ', {'TP': 25, 'FP': 4, 'TN': 13, 'FN': 1})
- Accuracy-republican: 0.8837209302325582 Precision-republican: 0.9285714285714286 Accuracy-democrat: 0.8837209302325582 Precision-democrat: 0.8620689655172413('republican', ' = ', {'TP': 14, 'FP': 1, 'TN': 25, 'FN': 3})
-('democrat', ' = ', {'TP': 25, 'FP': 3, 'TN': 14, 'FN': 1})
- Accuracy-republican: 0.9069767441860465 Precision-republican: 0.9333333333333333 Accuracy-democrat: 0.9069767441860465 Precision-democrat: 0.8928571428571429('republican', ' = ', {'TP': 15, 'FP': 1, 'TN': 25, 'FN': 2})
-('democrat', ' = ', {'TP': 25, 'FP': 2, 'TN': 15, 'FN': 1})
- Accuracy-republican: 0.9302325581395349 Precision-republican: 0.9375 Accuracy-democrat: 0.9302325581395349 Precision-democrat: 0.9259259259259259('republican', ' = ', {'TP': 17, 'FP': 3, 'TN': 23, 'FN': 0})
-('democrat', ' = ', {'TP': 23, 'FP': 0, 'TN': 17, 'FN': 3})
- Accuracy-republican: 0.9302325581395349 Precision-republican: 0.85 Accuracy-democrat: 0.9302325581395349 Precision-democrat: 1.0('republican', ' = ', {'TP': 14, 'FP': 7, 'TN': 19, 'FN': 3})
-('democrat', ' = ', {'TP': 19, 'FP': 3, 'TN': 14, 'FN': 7})
- Accuracy-republican: 0.7674418604651163 Precision-republican: 0.6666666666666666 Accuracy-democrat: 0.7674418604651163 Precision-democrat: 0.8636363636363636('republican', ' = ', {'TP': 13, 'FP': 4, 'TN': 22, 'FN': 4})
-('democrat', ' = ', {'TP': 22, 'FP': 4, 'TN': 13, 'FN': 4})
- Accuracy-republican: 0.813953488372093 Precision-republican: 0.7647058823529411 Accuracy-democrat: 0.813953488372093 Precision-democrat: 0.8461538461538461('Iris-setos', ' = ', {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0})
-('Iris-versicolo', ' = ', {'TP': 2, 'FP': 3, 'TN': 7, 'FN': 3})
-('Iris-virginic', ' = ', {'TP': 2, 'FP': 3, 'TN': 7, 'FN': 3})
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-versicolo: 0.6 Precision-Iris-versicolo: 0.4 Accuracy-Iris-virginic: 0.6 Precision-Iris-virginic: 0.4('Iris-setos', ' = ', {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0})
-('Iris-versicolo', ' = ', {'TP': 3, 'FP': 1, 'TN': 9, 'FN': 2})
-('Iris-virginic', ' = ', {'TP': 4, 'FP': 2, 'TN': 8, 'FN': 1})
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-versicolo: 0.8 Precision-Iris-versicolo: 0.75 Accuracy-Iris-virginic: 0.8 Precision-Iris-virginic: 0.6666666666666666('Iris-setos', ' = ', {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0})
-('Iris-versicolo', ' = ', {'TP': 3, 'FP': 2, 'TN': 8, 'FN': 2})
-('Iris-virginic', ' = ', {'TP': 3, 'FP': 2, 'TN': 8, 'FN': 2})
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-versicolo: 0.7333333333333333 Precision-Iris-versicolo: 0.6 Accuracy-Iris-virginic: 0.7333333333333333 Precision-Iris-virginic: 0.6('Iris-setos', ' = ', {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0})
-('Iris-versicolo', ' = ', {'TP': 4, 'FP': 1, 'TN': 9, 'FN': 1})
-('Iris-virginic', ' = ', {'TP': 4, 'FP': 1, 'TN': 9, 'FN': 1})
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-versicolo: 0.8666666666666667 Precision-Iris-versicolo: 0.8 Accuracy-Iris-virginic: 0.8666666666666667 Precision-Iris-virginic: 0.8('Iris-setos', ' = ', {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0})
-('Iris-versicolo', ' = ', {'TP': 1, 'FP': 1, 'TN': 9, 'FN': 4})
-('Iris-virginic', ' = ', {'TP': 4, 'FP': 4, 'TN': 6, 'FN': 1})
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-versicolo: 0.6666666666666666 Precision-Iris-versicolo: 0.5 Accuracy-Iris-virginic: 0.6666666666666666 Precision-Iris-virginic: 0.5('Iris-setos', ' = ', {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0})
-('Iris-versicolo', ' = ', {'TP': 1, 'FP': 0, 'TN': 10, 'FN': 4})
-('Iris-virginic', ' = ', {'TP': 5, 'FP': 4, 'TN': 6, 'FN': 0})
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-versicolo: 0.7333333333333333 Precision-Iris-versicolo: 1.0 Accuracy-Iris-virginic: 0.7333333333333333 Precision-Iris-virginic: 0.5555555555555556('Iris-setos', ' = ', {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0})
-('Iris-versicolo', ' = ', {'TP': 4, 'FP': 1, 'TN': 9, 'FN': 1})
-('Iris-virginic', ' = ', {'TP': 4, 'FP': 1, 'TN': 9, 'FN': 1})
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-versicolo: 0.8666666666666667 Precision-Iris-versicolo: 0.8 Accuracy-Iris-virginic: 0.8666666666666667 Precision-Iris-virginic: 0.8('Iris-setos', ' = ', {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0})
-('Iris-versicolo', ' = ', {'TP': 3, 'FP': 0, 'TN': 10, 'FN': 2})
-('Iris-virginic', ' = ', {'TP': 5, 'FP': 2, 'TN': 8, 'FN': 0})
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-versicolo: 0.8666666666666667 Precision-Iris-versicolo: 1.0 Accuracy-Iris-virginic: 0.8666666666666667 Precision-Iris-virginic: 0.7142857142857143('Iris-setos', ' = ', {'TP': 4, 'FP': 0, 'TN': 10, 'FN': 1})
-('Iris-versicolo', ' = ', {'TP': 4, 'FP': 2, 'TN': 8, 'FN': 1})
-('Iris-virginic', ' = ', {'TP': 4, 'FP': 1, 'TN': 9, 'FN': 1})
- Accuracy-Iris-setos: 0.9333333333333333 Precision-Iris-setos: 1.0 Accuracy-Iris-versicolo: 0.8 Precision-Iris-versicolo: 0.6666666666666666 Accuracy-Iris-virginic: 0.8666666666666667 Precision-Iris-virginic: 0.8('Iris-setos', ' = ', {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0})
-('Iris-versicolo', ' = ', {'TP': 4, 'FP': 1, 'TN': 9, 'FN': 1})
-('Iris-virginic', ' = ', {'TP': 4, 'FP': 1, 'TN': 9, 'FN': 1})
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-versicolo: 0.8666666666666667 Precision-Iris-versicolo: 0.8 Accuracy-Iris-virginic: 0.8666666666666667 Precision-Iris-virginic: 0.8('Iris-setos', ' = ', {'TP': 3, 'FP': 2, 'TN': 8, 'FN': 1})
-('Iris-virginic', ' = ', {'TP': 3, 'FP': 4, 'TN': 5, 'FN': 2})
-('Iris-versicolo', ' = ', {'TP': 0, 'FP': 2, 'TN': 7, 'FN': 5})
- Accuracy-Iris-setos: 0.7857142857142857 Precision-Iris-setos: 0.6 Accuracy-Iris-virginic: 0.5714285714285714 Precision-Iris-virginic: 0.42857142857142855 Accuracy-Iris-versicolo: 0.5 Precision-Iris-versicolo: 0.0('Iris-setos', ' = ', {'TP': 4, 'FP': 0, 'TN': 10, 'FN': 0})
-('Iris-virginic', ' = ', {'TP': 2, 'FP': 1, 'TN': 8, 'FN': 3})
-('Iris-versicolo', ' = ', {'TP': 4, 'FP': 3, 'TN': 6, 'FN': 1})
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-virginic: 0.7142857142857143 Precision-Iris-virginic: 0.6666666666666666 Accuracy-Iris-versicolo: 0.7142857142857143 Precision-Iris-versicolo: 0.5714285714285714('Iris-setos', ' = ', {'TP': 4, 'FP': 0, 'TN': 10, 'FN': 0})
-('Iris-virginic', ' = ', {'TP': 4, 'FP': 0, 'TN': 9, 'FN': 1})
-('Iris-versicolo', ' = ', {'TP': 5, 'FP': 1, 'TN': 8, 'FN': 0})
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-virginic: 0.9285714285714286 Precision-Iris-virginic: 1.0 Accuracy-Iris-versicolo: 0.9285714285714286 Precision-Iris-versicolo: 0.8333333333333334('Iris-setos', ' = ', {'TP': 4, 'FP': 0, 'TN': 10, 'FN': 0})
-('Iris-virginic', ' = ', {'TP': 2, 'FP': 1, 'TN': 8, 'FN': 3})
-('Iris-versicolo', ' = ', {'TP': 4, 'FP': 3, 'TN': 6, 'FN': 1})
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-virginic: 0.7142857142857143 Precision-Iris-virginic: 0.6666666666666666 Accuracy-Iris-versicolo: 0.7142857142857143 Precision-Iris-versicolo: 0.5714285714285714('Iris-setos', ' = ', {'TP': 4, 'FP': 0, 'TN': 10, 'FN': 0})
-('Iris-virginic', ' = ', {'TP': 3, 'FP': 2, 'TN': 7, 'FN': 2})
-('Iris-versicolo', ' = ', {'TP': 3, 'FP': 2, 'TN': 7, 'FN': 2})
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-virginic: 0.7142857142857143 Precision-Iris-virginic: 0.6 Accuracy-Iris-versicolo: 0.7142857142857143 Precision-Iris-versicolo: 0.6('Iris-setos', ' = ', {'TP': 4, 'FP': 0, 'TN': 10, 'FN': 0})
-('Iris-virginic', ' = ', {'TP': 5, 'FP': 5, 'TN': 4, 'FN': 0})
-('Iris-versicolo', ' = ', {'TP': 0, 'FP': 0, 'TN': 9, 'FN': 5})
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-virginic: 0.6428571428571429 Precision-Iris-virginic: 0.5 Accuracy-Iris-versicolo: 0.6428571428571429 Precision-Iris-versicolo: INF('Iris-setos', ' = ', {'TP': 4, 'FP': 0, 'TN': 10, 'FN': 0})
-('Iris-virginic', ' = ', {'TP': 4, 'FP': 1, 'TN': 8, 'FN': 1})
-('Iris-versicolo', ' = ', {'TP': 4, 'FP': 1, 'TN': 8, 'FN': 1})
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-virginic: 0.8571428571428571 Precision-Iris-virginic: 0.8 Accuracy-Iris-versicolo: 0.8571428571428571 Precision-Iris-versicolo: 0.8('Iris-setos', ' = ', {'TP': 4, 'FP': 0, 'TN': 10, 'FN': 0})
-('Iris-virginic', ' = ', {'TP': 5, 'FP': 3, 'TN': 6, 'FN': 0})
-('Iris-versicolo', ' = ', {'TP': 2, 'FP': 0, 'TN': 9, 'FN': 3})
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-virginic: 0.7857142857142857 Precision-Iris-virginic: 0.625 Accuracy-Iris-versicolo: 0.7857142857142857 Precision-Iris-versicolo: 1.0('Iris-setos', ' = ', {'TP': 4, 'FP': 0, 'TN': 10, 'FN': 0})
-('Iris-virginic', ' = ', {'TP': 3, 'FP': 1, 'TN': 8, 'FN': 2})
-('Iris-versicolo', ' = ', {'TP': 4, 'FP': 2, 'TN': 7, 'FN': 1})
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-virginic: 0.7857142857142857 Precision-Iris-virginic: 0.75 Accuracy-Iris-versicolo: 0.7857142857142857 Precision-Iris-versicolo: 0.6666666666666666('Iris-setos', ' = ', {'TP': 3, 'FP': 0, 'TN': 10, 'FN': 1})
-('Iris-virginic', ' = ', {'TP': 3, 'FP': 2, 'TN': 7, 'FN': 2})
-('Iris-versicolo', ' = ', {'TP': 3, 'FP': 3, 'TN': 6, 'FN': 2})
- Accuracy-Iris-setos: 0.9285714285714286 Precision-Iris-setos: 1.0 Accuracy-Iris-virginic: 0.7142857142857143 Precision-Iris-virginic: 0.6 Accuracy-Iris-versicolo: 0.6428571428571429 Precision-Iris-versicolo: 0.5('D1', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D2', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D3', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D4', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D2: 1.0 Precision-D2: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0('D1', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D2', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D3', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D4', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D2: 1.0 Precision-D2: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0('D1', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D2', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D3', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D4', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D2: 1.0 Precision-D2: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0('D1', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D2', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D3', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D4', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D2: 1.0 Precision-D2: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0('D1', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D2', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D3', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D4', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D2: 1.0 Precision-D2: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0('D1', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D2', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D3', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D4', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D2: 1.0 Precision-D2: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0('D1', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D2', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D3', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D4', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D2: 1.0 Precision-D2: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0('D1', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D2', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D3', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D4', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D2: 1.0 Precision-D2: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0('D1', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D2', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D3', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D4', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D2: 1.0 Precision-D2: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0('D1', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D2', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D3', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
-('D4', ' = ', {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0})
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D2: 1.0 Precision-D2: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0('D1', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
-('D4', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
-('D3', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0('D1', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
-('D4', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
-('D3', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0('D1', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
-('D4', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
-('D3', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0('D1', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
-('D4', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
-('D3', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0('D1', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
-('D4', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
-('D3', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0('D1', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
-('D4', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
-('D3', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0('D1', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
-('D4', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
-('D3', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0('D1', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
-('D4', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
-('D3', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0('D1', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
-('D4', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
-('D3', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0('D1', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
-('D4', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
-('D3', ' = ', {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0})
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.02 = {'TP': 42, 'FP': 1, 'TN': 23, 'FN': 3}
-4 = {'TP': 23, 'FP': 3, 'TN': 42, 'FN': 1}
- Accuracy-2: 0.9420289855072463 Precision-2: 0.9767441860465116 Accuracy-4: 0.9420289855072463 Precision-4: 0.88461538461538462 = {'TP': 45, 'FP': 0, 'TN': 24, 'FN': 0}
-4 = {'TP': 24, 'FP': 0, 'TN': 45, 'FN': 0}
- Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-4: 1.0 Precision-4: 1.02 = {'TP': 43, 'FP': 0, 'TN': 24, 'FN': 2}
+***************************
+breast-cancer-wisconsin-cleaned
+***************************
+2 = {'TP': 42, 'FP': 0, 'TN': 24, 'FN': 3}
+4 = {'TP': 24, 'FP': 3, 'TN': 42, 'FN': 0}
+ Accuracy-2: 0.9565217391304348 Precision-2: 1.0
+ Accuracy-4: 0.9565217391304348 Precision-4: 0.8888888888888888
+2 = {'TP': 46, 'FP': 0, 'TN': 24, 'FN': 0}
+4 = {'TP': 24, 'FP': 0, 'TN': 46, 'FN': 0}
+ Accuracy-2: 1.0 Precision-2: 1.0
+ Accuracy-4: 1.0 Precision-4: 1.0
+2 = {'TP': 44, 'FP': 0, 'TN': 24, 'FN': 2}
+4 = {'TP': 24, 'FP': 2, 'TN': 44, 'FN': 0}
+ Accuracy-2: 0.9714285714285714 Precision-2: 1.0
+ Accuracy-4: 0.9714285714285714 Precision-4: 0.9230769230769231
+2 = {'TP': 41, 'FP': 1, 'TN': 23, 'FN': 5}
+4 = {'TP': 23, 'FP': 5, 'TN': 41, 'FN': 1}
+ Accuracy-2: 0.9142857142857143 Precision-2: 0.9761904761904762
+ Accuracy-4: 0.9142857142857143 Precision-4: 0.8214285714285714
+2 = {'TP': 45, 'FP': 0, 'TN': 24, 'FN': 1}
+4 = {'TP': 24, 'FP': 1, 'TN': 45, 'FN': 0}
+ Accuracy-2: 0.9857142857142858 Precision-2: 1.0
+ Accuracy-4: 0.9857142857142858 Precision-4: 0.96
+2 = {'TP': 43, 'FP': 0, 'TN': 24, 'FN': 2}
 4 = {'TP': 24, 'FP': 2, 'TN': 43, 'FN': 0}
- Accuracy-2: 0.9710144927536232 Precision-2: 1.0 Accuracy-4: 0.9710144927536232 Precision-4: 0.92307692307692312 = {'TP': 40, 'FP': 1, 'TN': 23, 'FN': 5}
-4 = {'TP': 23, 'FP': 5, 'TN': 40, 'FN': 1}
- Accuracy-2: 0.9130434782608695 Precision-2: 0.975609756097561 Accuracy-4: 0.9130434782608695 Precision-4: 0.82142857142857142 = {'TP': 44, 'FP': 0, 'TN': 24, 'FN': 1}
-4 = {'TP': 24, 'FP': 1, 'TN': 44, 'FN': 0}
- Accuracy-2: 0.9855072463768116 Precision-2: 1.0 Accuracy-4: 0.9855072463768116 Precision-4: 0.962 = {'TP': 43, 'FP': 0, 'TN': 24, 'FN': 2}
-4 = {'TP': 24, 'FP': 2, 'TN': 43, 'FN': 0}
- Accuracy-2: 0.9710144927536232 Precision-2: 1.0 Accuracy-4: 0.9710144927536232 Precision-4: 0.92307692307692312 = {'TP': 45, 'FP': 0, 'TN': 24, 'FN': 0}
-4 = {'TP': 24, 'FP': 0, 'TN': 45, 'FN': 0}
- Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-4: 1.0 Precision-4: 1.02 = {'TP': 45, 'FP': 0, 'TN': 24, 'FN': 0}
-4 = {'TP': 24, 'FP': 0, 'TN': 45, 'FN': 0}
- Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-4: 1.0 Precision-4: 1.02 = {'TP': 44, 'FP': 0, 'TN': 24, 'FN': 1}
-4 = {'TP': 24, 'FP': 1, 'TN': 44, 'FN': 0}
- Accuracy-2: 0.9855072463768116 Precision-2: 1.0 Accuracy-4: 0.9855072463768116 Precision-4: 0.962 = {'TP': 44, 'FP': 0, 'TN': 24, 'FN': 1}
-4 = {'TP': 24, 'FP': 1, 'TN': 44, 'FN': 0}
- Accuracy-2: 0.9855072463768116 Precision-2: 1.0 Accuracy-4: 0.9855072463768116 Precision-4: 0.962 = {'TP': 37, 'FP': 0, 'TN': 23, 'FN': 9}
-4 = {'TP': 23, 'FP': 9, 'TN': 37, 'FN': 0}
- Accuracy-2: 0.8695652173913043 Precision-2: 1.0 Accuracy-4: 0.8695652173913043 Precision-4: 0.718752 = {'TP': 44, 'FP': 0, 'TN': 23, 'FN': 2}
-4 = {'TP': 23, 'FP': 2, 'TN': 44, 'FN': 0}
- Accuracy-2: 0.9710144927536232 Precision-2: 1.0 Accuracy-4: 0.9710144927536232 Precision-4: 0.922 = {'TP': 42, 'FP': 0, 'TN': 23, 'FN': 4}
-4 = {'TP': 23, 'FP': 4, 'TN': 42, 'FN': 0}
- Accuracy-2: 0.9420289855072463 Precision-2: 1.0 Accuracy-4: 0.9420289855072463 Precision-4: 0.85185185185185192 = {'TP': 38, 'FP': 0, 'TN': 23, 'FN': 8}
-4 = {'TP': 23, 'FP': 8, 'TN': 38, 'FN': 0}
- Accuracy-2: 0.8840579710144928 Precision-2: 1.0 Accuracy-4: 0.8840579710144928 Precision-4: 0.74193548387096772 = {'TP': 43, 'FP': 1, 'TN': 22, 'FN': 3}
-4 = {'TP': 22, 'FP': 3, 'TN': 43, 'FN': 1}
- Accuracy-2: 0.9420289855072463 Precision-2: 0.9772727272727273 Accuracy-4: 0.9420289855072463 Precision-4: 0.882 = {'TP': 42, 'FP': 0, 'TN': 23, 'FN': 4}
-4 = {'TP': 23, 'FP': 4, 'TN': 42, 'FN': 0}
- Accuracy-2: 0.9420289855072463 Precision-2: 1.0 Accuracy-4: 0.9420289855072463 Precision-4: 0.85185185185185192 = {'TP': 42, 'FP': 0, 'TN': 23, 'FN': 4}
-4 = {'TP': 23, 'FP': 4, 'TN': 42, 'FN': 0}
- Accuracy-2: 0.9420289855072463 Precision-2: 1.0 Accuracy-4: 0.9420289855072463 Precision-4: 0.85185185185185192 = {'TP': 40, 'FP': 1, 'TN': 22, 'FN': 6}
-4 = {'TP': 22, 'FP': 6, 'TN': 40, 'FN': 1}
- Accuracy-2: 0.8985507246376812 Precision-2: 0.975609756097561 Accuracy-4: 0.8985507246376812 Precision-4: 0.78571428571428572 = {'TP': 42, 'FP': 0, 'TN': 23, 'FN': 4}
-4 = {'TP': 23, 'FP': 4, 'TN': 42, 'FN': 0}
- Accuracy-2: 0.9420289855072463 Precision-2: 1.0 Accuracy-4: 0.9420289855072463 Precision-4: 0.85185185185185192 = {'TP': 43, 'FP': 0, 'TN': 23, 'FN': 3}
-4 = {'TP': 23, 'FP': 3, 'TN': 43, 'FN': 0}
- Accuracy-2: 0.9565217391304348 Precision-2: 1.0 Accuracy-4: 0.9565217391304348 Precision-4: 0.88461538461538461 = {'TP': 3, 'FP': 2, 'TN': 9, 'FN': 4}
-2 = {'TP': 6, 'FP': 4, 'TN': 7, 'FN': 1}
-3 = {'TP': 0, 'FP': 2, 'TN': 15, 'FN': 1}
-5 = {'TP': 0, 'FP': 0, 'TN': 17, 'FN': 1}
-7 = {'TP': 0, 'FP': 1, 'TN': 15, 'FN': 2}
- Accuracy-1: 0.6666666666666666 Precision-1: 0.6 Accuracy-2: 0.7222222222222222 Precision-2: 0.6 Accuracy-3: 0.8333333333333334 Precision-3: 0.0 Accuracy-5: 0.9444444444444444 Precision-5: INF Accuracy-7: 0.8333333333333334 Precision-7: 0.01 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-2 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-3 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-5 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-7 = {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0}
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-7: 1.0 Precision-7: 1.01 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-2 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-3 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-5 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-7 = {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0}
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-7: 1.0 Precision-7: 1.01 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-2 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-3 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-5 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-7 = {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0}
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-7: 1.0 Precision-7: 1.01 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-2 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-3 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-5 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-7 = {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0}
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-7: 1.0 Precision-7: 1.01 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-2 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-3 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-5 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-7 = {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0}
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-7: 1.0 Precision-7: 1.01 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-2 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-3 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-5 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-7 = {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0}
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-7: 1.0 Precision-7: 1.01 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-2 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-3 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-5 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-7 = {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0}
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-7: 1.0 Precision-7: 1.01 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-2 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-3 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-5 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-7 = {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0}
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-7: 1.0 Precision-7: 1.01 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-2 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-3 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-5 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-7 = {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0}
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-7: 1.0 Precision-7: 1.01 = {'TP': 4, 'FP': 4, 'TN': 8, 'FN': 2}
-3 = {'TP': 0, 'FP': 1, 'TN': 16, 'FN': 1}
-2 = {'TP': 4, 'FP': 3, 'TN': 8, 'FN': 3}
-5 = {'TP': 0, 'FP': 0, 'TN': 17, 'FN': 1}
-6 = {'TP': 0, 'FP': 0, 'TN': 17, 'FN': 1}
-7 = {'TP': 1, 'FP': 1, 'TN': 15, 'FN': 1}
- Accuracy-1: 0.6666666666666666 Precision-1: 0.5 Accuracy-3: 0.8888888888888888 Precision-3: 0.0 Accuracy-2: 0.6666666666666666 Precision-2: 0.5714285714285714 Accuracy-5: 0.9444444444444444 Precision-5: INF Accuracy-6: 0.9444444444444444 Precision-6: INF Accuracy-7: 0.8888888888888888 Precision-7: 0.51 = {'TP': 6, 'FP': 0, 'TN': 12, 'FN': 0}
-3 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-2 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-5 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-6 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-7 = {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0}
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-6: 1.0 Precision-6: 1.0 Accuracy-7: 1.0 Precision-7: 1.01 = {'TP': 6, 'FP': 0, 'TN': 12, 'FN': 0}
-3 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-2 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-5 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-6 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-7 = {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0}
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-6: 1.0 Precision-6: 1.0 Accuracy-7: 1.0 Precision-7: 1.01 = {'TP': 6, 'FP': 0, 'TN': 12, 'FN': 0}
-3 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-2 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-5 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-6 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-7 = {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0}
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-6: 1.0 Precision-6: 1.0 Accuracy-7: 1.0 Precision-7: 1.01 = {'TP': 6, 'FP': 0, 'TN': 12, 'FN': 0}
-3 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-2 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-5 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-6 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-7 = {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0}
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-6: 1.0 Precision-6: 1.0 Accuracy-7: 1.0 Precision-7: 1.01 = {'TP': 6, 'FP': 0, 'TN': 12, 'FN': 0}
-3 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-2 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-5 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-6 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-7 = {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0}
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-6: 1.0 Precision-6: 1.0 Accuracy-7: 1.0 Precision-7: 1.01 = {'TP': 6, 'FP': 0, 'TN': 12, 'FN': 0}
-3 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-2 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-5 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-6 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-7 = {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0}
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-6: 1.0 Precision-6: 1.0 Accuracy-7: 1.0 Precision-7: 1.01 = {'TP': 6, 'FP': 0, 'TN': 12, 'FN': 0}
-3 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-2 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-5 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-6 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-7 = {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0}
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-6: 1.0 Precision-6: 1.0 Accuracy-7: 1.0 Precision-7: 1.01 = {'TP': 6, 'FP': 0, 'TN': 12, 'FN': 0}
-3 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-2 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-5 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-6 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-7 = {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0}
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-6: 1.0 Precision-6: 1.0 Accuracy-7: 1.0 Precision-7: 1.01 = {'TP': 6, 'FP': 0, 'TN': 12, 'FN': 0}
-3 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-2 = {'TP': 7, 'FP': 0, 'TN': 11, 'FN': 0}
-5 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-6 = {'TP': 1, 'FP': 0, 'TN': 17, 'FN': 0}
-7 = {'TP': 2, 'FP': 0, 'TN': 16, 'FN': 0}
- Accuracy-1: 1.0 Precision-1: 1.0 Accuracy-3: 1.0 Precision-3: 1.0 Accuracy-2: 1.0 Precision-2: 1.0 Accuracy-5: 1.0 Precision-5: 1.0 Accuracy-6: 1.0 Precision-6: 1.0 Accuracy-7: 1.0 Precision-7: 1.0republican = {'TP': 16, 'FP': 2, 'TN': 24, 'FN': 0}
+ Accuracy-2: 0.9710144927536232 Precision-2: 1.0
+ Accuracy-4: 0.9710144927536232 Precision-4: 0.9230769230769231
+2 = {'TP': 46, 'FP': 0, 'TN': 24, 'FN': 0}
+4 = {'TP': 24, 'FP': 0, 'TN': 46, 'FN': 0}
+ Accuracy-2: 1.0 Precision-2: 1.0
+ Accuracy-4: 1.0 Precision-4: 1.0
+2 = {'TP': 46, 'FP': 0, 'TN': 24, 'FN': 0}
+4 = {'TP': 24, 'FP': 0, 'TN': 46, 'FN': 0}
+ Accuracy-2: 1.0 Precision-2: 1.0
+ Accuracy-4: 1.0 Precision-4: 1.0
+2 = {'TP': 45, 'FP': 0, 'TN': 24, 'FN': 1}
+4 = {'TP': 24, 'FP': 1, 'TN': 45, 'FN': 0}
+ Accuracy-2: 0.9857142857142858 Precision-2: 1.0
+ Accuracy-4: 0.9857142857142858 Precision-4: 0.96
+2 = {'TP': 45, 'FP': 0, 'TN': 25, 'FN': 1}
+4 = {'TP': 25, 'FP': 1, 'TN': 45, 'FN': 0}
+ Accuracy-2: 0.9859154929577465 Precision-2: 1.0
+ Accuracy-4: 0.9859154929577465 Precision-4: 0.9615384615384616
+
+************************
+Accuracy-2: 0.9770594581984661
+Precision-2: 0.9976190476190476
+Accuracy-4: 0.9770594581984661
+Precision-4: 0.9438009768009769
+************************
+***************************
+breast-cancer-wisconsin-cleaned-scrambled
+***************************
+2 = {'TP': 37, 'FP': 0, 'TN': 25, 'FN': 7}
+4 = {'TP': 25, 'FP': 7, 'TN': 37, 'FN': 0}
+ Accuracy-2: 0.8985507246376812 Precision-2: 1.0
+ Accuracy-4: 0.8985507246376812 Precision-4: 0.78125
+2 = {'TP': 41, 'FP': 0, 'TN': 25, 'FN': 4}
+4 = {'TP': 25, 'FP': 4, 'TN': 41, 'FN': 0}
+ Accuracy-2: 0.9428571428571428 Precision-2: 1.0
+ Accuracy-4: 0.9428571428571428 Precision-4: 0.8620689655172413
+2 = {'TP': 40, 'FP': 0, 'TN': 25, 'FN': 5}
+4 = {'TP': 25, 'FP': 5, 'TN': 40, 'FN': 0}
+ Accuracy-2: 0.9285714285714286 Precision-2: 1.0
+ Accuracy-4: 0.9285714285714286 Precision-4: 0.8333333333333334
+2 = {'TP': 38, 'FP': 1, 'TN': 24, 'FN': 6}
+4 = {'TP': 24, 'FP': 6, 'TN': 38, 'FN': 1}
+ Accuracy-2: 0.8985507246376812 Precision-2: 0.9743589743589743
+ Accuracy-4: 0.8985507246376812 Precision-4: 0.8
+2 = {'TP': 40, 'FP': 0, 'TN': 26, 'FN': 5}
+4 = {'TP': 26, 'FP': 5, 'TN': 40, 'FN': 0}
+ Accuracy-2: 0.9295774647887324 Precision-2: 1.0
+ Accuracy-4: 0.9295774647887324 Precision-4: 0.8387096774193549
+2 = {'TP': 40, 'FP': 0, 'TN': 25, 'FN': 5}
+4 = {'TP': 25, 'FP': 5, 'TN': 40, 'FN': 0}
+ Accuracy-2: 0.9285714285714286 Precision-2: 1.0
+ Accuracy-4: 0.9285714285714286 Precision-4: 0.8333333333333334
+2 = {'TP': 43, 'FP': 2, 'TN': 23, 'FN': 1}
+4 = {'TP': 23, 'FP': 1, 'TN': 43, 'FN': 2}
+ Accuracy-2: 0.9565217391304348 Precision-2: 0.9555555555555556
+ Accuracy-4: 0.9565217391304348 Precision-4: 0.9583333333333334
+2 = {'TP': 43, 'FP': 1, 'TN': 24, 'FN': 2}
+4 = {'TP': 24, 'FP': 2, 'TN': 43, 'FN': 1}
+ Accuracy-2: 0.9571428571428572 Precision-2: 0.9772727272727273
+ Accuracy-4: 0.9571428571428572 Precision-4: 0.9230769230769231
+2 = {'TP': 42, 'FP': 0, 'TN': 25, 'FN': 3}
+4 = {'TP': 25, 'FP': 3, 'TN': 42, 'FN': 0}
+ Accuracy-2: 0.9571428571428572 Precision-2: 1.0
+ Accuracy-4: 0.9571428571428572 Precision-4: 0.8928571428571429
+2 = {'TP': 44, 'FP': 0, 'TN': 25, 'FN': 1}
+4 = {'TP': 25, 'FP': 1, 'TN': 44, 'FN': 0}
+ Accuracy-2: 0.9857142857142858 Precision-2: 1.0
+ Accuracy-4: 0.9857142857142858 Precision-4: 0.9615384615384616
+
+************************
+Accuracy-2: 0.938320065319453
+Precision-2: 0.9907187257187257
+Accuracy-4: 0.938320065319453
+Precision-4: 0.8684501170409125
+************************
+***************************
+glass-cleaned-discrete
+***************************
+ 1.0 = {'TP': 5, 'FP': 2, 'TN': 9, 'FN': 2}
+ 2.0 = {'TP': 6, 'FP': 2, 'TN': 9, 'FN': 1}
+ 3.0 = {'TP': 0, 'FP': 0, 'TN': 17, 'FN': 1}
+ 5.0 = {'TP': 0, 'FP': 0, 'TN': 17, 'FN': 1}
+ 6.0 = {'TP': 0, 'FP': 0, 'TN': 18, 'FN': 0}
+ 7.0 = {'TP': 2, 'FP': 1, 'TN': 15, 'FN': 0}
+ Accuracy- 1.0: 0.7777777777777778 Precision- 1.0: 0.7142857142857143
+ Accuracy- 2.0: 0.8333333333333334 Precision- 2.0: 0.75
+ Accuracy- 3.0: 0.9444444444444444 Precision- 3.0: INF
+ Accuracy- 5.0: 0.9444444444444444 Precision- 5.0: INF
+ Accuracy- 6.0: 1.0 Precision- 6.0: INF
+ Accuracy- 7.0: 0.9444444444444444 Precision- 7.0: 0.6666666666666666
+ 1.0 = {'TP': 6, 'FP': 3, 'TN': 12, 'FN': 1}
+ 2.0 = {'TP': 8, 'FP': 1, 'TN': 13, 'FN': 0}
+ 3.0 = {'TP': 0, 'FP': 0, 'TN': 20, 'FN': 2}
+ 5.0 = {'TP': 1, 'FP': 0, 'TN': 21, 'FN': 0}
+ 6.0 = {'TP': 1, 'FP': 0, 'TN': 21, 'FN': 0}
+ 7.0 = {'TP': 2, 'FP': 0, 'TN': 19, 'FN': 1}
+ Accuracy- 1.0: 0.8181818181818182 Precision- 1.0: 0.6666666666666666
+ Accuracy- 2.0: 0.9545454545454546 Precision- 2.0: 0.8888888888888888
+ Accuracy- 3.0: 0.9090909090909091 Precision- 3.0: INF
+ Accuracy- 5.0: 1.0 Precision- 5.0: 1.0
+ Accuracy- 6.0: 1.0 Precision- 6.0: 1.0
+ Accuracy- 7.0: 0.9545454545454546 Precision- 7.0: 1.0
+ 1.0 = {'TP': 5, 'FP': 0, 'TN': 14, 'FN': 2}
+ 2.0 = {'TP': 7, 'FP': 3, 'TN': 11, 'FN': 0}
+ 3.0 = {'TP': 1, 'FP': 0, 'TN': 19, 'FN': 1}
+ 5.0 = {'TP': 1, 'FP': 0, 'TN': 20, 'FN': 0}
+ 6.0 = {'TP': 1, 'FP': 0, 'TN': 20, 'FN': 0}
+ 7.0 = {'TP': 3, 'FP': 0, 'TN': 18, 'FN': 0}
+ Accuracy- 1.0: 0.9047619047619048 Precision- 1.0: 1.0
+ Accuracy- 2.0: 0.8571428571428571 Precision- 2.0: 0.7
+ Accuracy- 3.0: 0.9523809523809523 Precision- 3.0: 1.0
+ Accuracy- 5.0: 1.0 Precision- 5.0: 1.0
+ Accuracy- 6.0: 1.0 Precision- 6.0: 1.0
+ Accuracy- 7.0: 1.0 Precision- 7.0: 1.0
+ 1.0 = {'TP': 7, 'FP': 0, 'TN': 15, 'FN': 0}
+ 2.0 = {'TP': 8, 'FP': 0, 'TN': 14, 'FN': 0}
+ 3.0 = {'TP': 1, 'FP': 0, 'TN': 21, 'FN': 0}
+ 5.0 = {'TP': 2, 'FP': 0, 'TN': 20, 'FN': 0}
+ 6.0 = {'TP': 1, 'FP': 0, 'TN': 21, 'FN': 0}
+ 7.0 = {'TP': 3, 'FP': 0, 'TN': 19, 'FN': 0}
+ Accuracy- 1.0: 1.0 Precision- 1.0: 1.0
+ Accuracy- 2.0: 1.0 Precision- 2.0: 1.0
+ Accuracy- 3.0: 1.0 Precision- 3.0: 1.0
+ Accuracy- 5.0: 1.0 Precision- 5.0: 1.0
+ Accuracy- 6.0: 1.0 Precision- 6.0: 1.0
+ Accuracy- 7.0: 1.0 Precision- 7.0: 1.0
+ 1.0 = {'TP': 7, 'FP': 0, 'TN': 15, 'FN': 0}
+ 2.0 = {'TP': 7, 'FP': 0, 'TN': 14, 'FN': 1}
+ 3.0 = {'TP': 2, 'FP': 0, 'TN': 20, 'FN': 0}
+ 5.0 = {'TP': 1, 'FP': 1, 'TN': 20, 'FN': 0}
+ 6.0 = {'TP': 1, 'FP': 0, 'TN': 21, 'FN': 0}
+ 7.0 = {'TP': 3, 'FP': 0, 'TN': 19, 'FN': 0}
+ Accuracy- 1.0: 1.0 Precision- 1.0: 1.0
+ Accuracy- 2.0: 0.9545454545454546 Precision- 2.0: 1.0
+ Accuracy- 3.0: 1.0 Precision- 3.0: 1.0
+ Accuracy- 5.0: 0.9545454545454546 Precision- 5.0: 0.5
+ Accuracy- 6.0: 1.0 Precision- 6.0: 1.0
+ Accuracy- 7.0: 1.0 Precision- 7.0: 1.0
+ 1.0 = {'TP': 7, 'FP': 0, 'TN': 14, 'FN': 0}
+ 2.0 = {'TP': 7, 'FP': 0, 'TN': 14, 'FN': 0}
+ 3.0 = {'TP': 2, 'FP': 0, 'TN': 19, 'FN': 0}
+ 5.0 = {'TP': 1, 'FP': 0, 'TN': 20, 'FN': 0}
+ 6.0 = {'TP': 1, 'FP': 0, 'TN': 20, 'FN': 0}
+ 7.0 = {'TP': 3, 'FP': 0, 'TN': 18, 'FN': 0}
+ Accuracy- 1.0: 1.0 Precision- 1.0: 1.0
+ Accuracy- 2.0: 1.0 Precision- 2.0: 1.0
+ Accuracy- 3.0: 1.0 Precision- 3.0: 1.0
+ Accuracy- 5.0: 1.0 Precision- 5.0: 1.0
+ Accuracy- 6.0: 1.0 Precision- 6.0: 1.0
+ Accuracy- 7.0: 1.0 Precision- 7.0: 1.0
+ 1.0 = {'TP': 7, 'FP': 0, 'TN': 15, 'FN': 0}
+ 2.0 = {'TP': 8, 'FP': 0, 'TN': 14, 'FN': 0}
+ 3.0 = {'TP': 1, 'FP': 0, 'TN': 21, 'FN': 0}
+ 5.0 = {'TP': 2, 'FP': 0, 'TN': 20, 'FN': 0}
+ 6.0 = {'TP': 1, 'FP': 0, 'TN': 21, 'FN': 0}
+ 7.0 = {'TP': 3, 'FP': 0, 'TN': 19, 'FN': 0}
+ Accuracy- 1.0: 1.0 Precision- 1.0: 1.0
+ Accuracy- 2.0: 1.0 Precision- 2.0: 1.0
+ Accuracy- 3.0: 1.0 Precision- 3.0: 1.0
+ Accuracy- 5.0: 1.0 Precision- 5.0: 1.0
+ Accuracy- 6.0: 1.0 Precision- 6.0: 1.0
+ Accuracy- 7.0: 1.0 Precision- 7.0: 1.0
+ 1.0 = {'TP': 7, 'FP': 0, 'TN': 14, 'FN': 0}
+ 2.0 = {'TP': 7, 'FP': 0, 'TN': 14, 'FN': 0}
+ 3.0 = {'TP': 2, 'FP': 0, 'TN': 19, 'FN': 0}
+ 5.0 = {'TP': 1, 'FP': 0, 'TN': 20, 'FN': 0}
+ 6.0 = {'TP': 1, 'FP': 0, 'TN': 20, 'FN': 0}
+ 7.0 = {'TP': 3, 'FP': 0, 'TN': 18, 'FN': 0}
+ Accuracy- 1.0: 1.0 Precision- 1.0: 1.0
+ Accuracy- 2.0: 1.0 Precision- 2.0: 1.0
+ Accuracy- 3.0: 1.0 Precision- 3.0: 1.0
+ Accuracy- 5.0: 1.0 Precision- 5.0: 1.0
+ Accuracy- 6.0: 1.0 Precision- 6.0: 1.0
+ Accuracy- 7.0: 1.0 Precision- 7.0: 1.0
+ 1.0 = {'TP': 7, 'FP': 0, 'TN': 15, 'FN': 0}
+ 2.0 = {'TP': 8, 'FP': 0, 'TN': 14, 'FN': 0}
+ 3.0 = {'TP': 2, 'FP': 0, 'TN': 20, 'FN': 0}
+ 5.0 = {'TP': 1, 'FP': 0, 'TN': 21, 'FN': 0}
+ 6.0 = {'TP': 1, 'FP': 0, 'TN': 21, 'FN': 0}
+ 7.0 = {'TP': 3, 'FP': 0, 'TN': 19, 'FN': 0}
+ Accuracy- 1.0: 1.0 Precision- 1.0: 1.0
+ Accuracy- 2.0: 1.0 Precision- 2.0: 1.0
+ Accuracy- 3.0: 1.0 Precision- 3.0: 1.0
+ Accuracy- 5.0: 1.0 Precision- 5.0: 1.0
+ Accuracy- 6.0: 1.0 Precision- 6.0: 1.0
+ Accuracy- 7.0: 1.0 Precision- 7.0: 1.0
+ 1.0 = {'TP': 7, 'FP': 0, 'TN': 14, 'FN': 0}
+ 2.0 = {'TP': 7, 'FP': 0, 'TN': 14, 'FN': 0}
+ 3.0 = {'TP': 2, 'FP': 0, 'TN': 19, 'FN': 0}
+ 5.0 = {'TP': 2, 'FP': 0, 'TN': 19, 'FN': 0}
+ 6.0 = {'TP': 1, 'FP': 0, 'TN': 20, 'FN': 0}
+ 7.0 = {'TP': 2, 'FP': 0, 'TN': 19, 'FN': 0}
+ Accuracy- 1.0: 1.0 Precision- 1.0: 1.0
+ Accuracy- 2.0: 1.0 Precision- 2.0: 1.0
+ Accuracy- 3.0: 1.0 Precision- 3.0: 1.0
+ Accuracy- 5.0: 1.0 Precision- 5.0: 1.0
+ Accuracy- 6.0: 1.0 Precision- 6.0: 1.0
+ Accuracy- 7.0: 1.0 Precision- 7.0: 1.0
+
+************************
+Accuracy- 1.0: 0.9500721500721501
+Precision- 1.0: 0.9380952380952381
+Accuracy- 2.0: 0.95995670995671
+Precision- 2.0: 0.9338888888888889
+Accuracy- 3.0: 0.7952380952380953
+Precision- 3.0: 0.8
+Accuracy- 5.0: 0.8954545454545455
+Precision- 5.0: 0.85
+Accuracy- 6.0: 0.9
+Precision- 6.0: 0.9
+Accuracy- 7.0: 0.98989898989899
+Precision- 7.0: 0.9666666666666666
+************************
+***************************
+glass-cleaned-discrete-scrambled
+***************************
+ 1.0 = {'TP': 4, 'FP': 1, 'TN': 12, 'FN': 2}
+ 3.0 = {'TP': 0, 'FP': 0, 'TN': 18, 'FN': 1}
+ 2.0 = {'TP': 6, 'FP': 3, 'TN': 9, 'FN': 1}
+ 5.0 = {'TP': 0, 'FP': 3, 'TN': 15, 'FN': 1}
+ 6.0 = {'TP': 0, 'FP': 1, 'TN': 17, 'FN': 1}
+ 7.0 = {'TP': 1, 'FP': 0, 'TN': 16, 'FN': 2}
+ Accuracy- 1.0: 0.8421052631578947 Precision- 1.0: 0.8
+ Accuracy- 3.0: 0.9473684210526315 Precision- 3.0: INF
+ Accuracy- 2.0: 0.7894736842105263 Precision- 2.0: 0.6666666666666666
+ Accuracy- 5.0: 0.7894736842105263 Precision- 5.0: 0.0
+ Accuracy- 6.0: 0.8947368421052632 Precision- 6.0: 0.0
+ Accuracy- 7.0: 0.8947368421052632 Precision- 7.0: 1.0
+ 1.0 = {'TP': 5, 'FP': 1, 'TN': 14, 'FN': 2}
+ 3.0 = {'TP': 1, 'FP': 0, 'TN': 20, 'FN': 1}
+ 2.0 = {'TP': 7, 'FP': 3, 'TN': 12, 'FN': 0}
+ 5.0 = {'TP': 2, 'FP': 0, 'TN': 20, 'FN': 0}
+ 6.0 = {'TP': 1, 'FP': 0, 'TN': 21, 'FN': 0}
+ 7.0 = {'TP': 2, 'FP': 0, 'TN': 19, 'FN': 1}
+ Accuracy- 1.0: 0.8636363636363636 Precision- 1.0: 0.8333333333333334
+ Accuracy- 3.0: 0.9545454545454546 Precision- 3.0: 1.0
+ Accuracy- 2.0: 0.8636363636363636 Precision- 2.0: 0.7
+ Accuracy- 5.0: 1.0 Precision- 5.0: 1.0
+ Accuracy- 6.0: 1.0 Precision- 6.0: 1.0
+ Accuracy- 7.0: 0.9545454545454546 Precision- 7.0: 1.0
+ 1.0 = {'TP': 6, 'FP': 1, 'TN': 15, 'FN': 0}
+ 3.0 = {'TP': 1, 'FP': 0, 'TN': 20, 'FN': 1}
+ 2.0 = {'TP': 8, 'FP': 0, 'TN': 14, 'FN': 0}
+ 5.0 = {'TP': 2, 'FP': 0, 'TN': 20, 'FN': 0}
+ 6.0 = {'TP': 1, 'FP': 0, 'TN': 21, 'FN': 0}
+ 7.0 = {'TP': 3, 'FP': 0, 'TN': 19, 'FN': 0}
+ Accuracy- 1.0: 0.9545454545454546 Precision- 1.0: 0.8571428571428571
+ Accuracy- 3.0: 0.9545454545454546 Precision- 3.0: 1.0
+ Accuracy- 2.0: 1.0 Precision- 2.0: 1.0
+ Accuracy- 5.0: 1.0 Precision- 5.0: 1.0
+ Accuracy- 6.0: 1.0 Precision- 6.0: 1.0
+ Accuracy- 7.0: 1.0 Precision- 7.0: 1.0
+ 1.0 = {'TP': 7, 'FP': 0, 'TN': 14, 'FN': 0}
+ 3.0 = {'TP': 1, 'FP': 0, 'TN': 19, 'FN': 1}
+ 2.0 = {'TP': 7, 'FP': 1, 'TN': 13, 'FN': 0}
+ 5.0 = {'TP': 1, 'FP': 0, 'TN': 20, 'FN': 0}
+ 6.0 = {'TP': 1, 'FP': 0, 'TN': 20, 'FN': 0}
+ 7.0 = {'TP': 3, 'FP': 0, 'TN': 18, 'FN': 0}
+ Accuracy- 1.0: 1.0 Precision- 1.0: 1.0
+ Accuracy- 3.0: 0.9523809523809523 Precision- 3.0: 1.0
+ Accuracy- 2.0: 0.9523809523809523 Precision- 2.0: 0.875
+ Accuracy- 5.0: 1.0 Precision- 5.0: 1.0
+ Accuracy- 6.0: 1.0 Precision- 6.0: 1.0
+ Accuracy- 7.0: 1.0 Precision- 7.0: 1.0
+ 1.0 = {'TP': 6, 'FP': 1, 'TN': 15, 'FN': 0}
+ 3.0 = {'TP': 1, 'FP': 0, 'TN': 20, 'FN': 1}
+ 2.0 = {'TP': 7, 'FP': 0, 'TN': 14, 'FN': 1}
+ 5.0 = {'TP': 2, 'FP': 1, 'TN': 19, 'FN': 0}
+ 6.0 = {'TP': 1, 'FP': 0, 'TN': 21, 'FN': 0}
+ 7.0 = {'TP': 3, 'FP': 0, 'TN': 19, 'FN': 0}
+ Accuracy- 1.0: 0.9545454545454546 Precision- 1.0: 0.8571428571428571
+ Accuracy- 3.0: 0.9545454545454546 Precision- 3.0: 1.0
+ Accuracy- 2.0: 0.9545454545454546 Precision- 2.0: 1.0
+ Accuracy- 5.0: 0.9545454545454546 Precision- 5.0: 0.6666666666666666
+ Accuracy- 6.0: 1.0 Precision- 6.0: 1.0
+ Accuracy- 7.0: 1.0 Precision- 7.0: 1.0
+ 1.0 = {'TP': 7, 'FP': 0, 'TN': 14, 'FN': 0}
+ 3.0 = {'TP': 1, 'FP': 0, 'TN': 20, 'FN': 0}
+ 2.0 = {'TP': 7, 'FP': 0, 'TN': 14, 'FN': 0}
+ 5.0 = {'TP': 2, 'FP': 0, 'TN': 19, 'FN': 0}
+ 6.0 = {'TP': 1, 'FP': 0, 'TN': 20, 'FN': 0}
+ 7.0 = {'TP': 3, 'FP': 0, 'TN': 18, 'FN': 0}
+ Accuracy- 1.0: 1.0 Precision- 1.0: 1.0
+ Accuracy- 3.0: 1.0 Precision- 3.0: 1.0
+ Accuracy- 2.0: 1.0 Precision- 2.0: 1.0
+ Accuracy- 5.0: 1.0 Precision- 5.0: 1.0
+ Accuracy- 6.0: 1.0 Precision- 6.0: 1.0
+ Accuracy- 7.0: 1.0 Precision- 7.0: 1.0
+ 1.0 = {'TP': 6, 'FP': 0, 'TN': 14, 'FN': 0}
+ 3.0 = {'TP': 2, 'FP': 0, 'TN': 18, 'FN': 0}
+ 2.0 = {'TP': 7, 'FP': 0, 'TN': 13, 'FN': 0}
+ 5.0 = {'TP': 1, 'FP': 0, 'TN': 19, 'FN': 0}
+ 6.0 = {'TP': 1, 'FP': 0, 'TN': 19, 'FN': 0}
+ 7.0 = {'TP': 3, 'FP': 0, 'TN': 17, 'FN': 0}
+ Accuracy- 1.0: 1.0 Precision- 1.0: 1.0
+ Accuracy- 3.0: 1.0 Precision- 3.0: 1.0
+ Accuracy- 2.0: 1.0 Precision- 2.0: 1.0
+ Accuracy- 5.0: 1.0 Precision- 5.0: 1.0
+ Accuracy- 6.0: 1.0 Precision- 6.0: 1.0
+ Accuracy- 7.0: 1.0 Precision- 7.0: 1.0
+ 1.0 = {'TP': 7, 'FP': 0, 'TN': 16, 'FN': 0}
+ 3.0 = {'TP': 2, 'FP': 0, 'TN': 21, 'FN': 0}
+ 2.0 = {'TP': 8, 'FP': 0, 'TN': 15, 'FN': 0}
+ 5.0 = {'TP': 2, 'FP': 0, 'TN': 21, 'FN': 0}
+ 6.0 = {'TP': 1, 'FP': 0, 'TN': 22, 'FN': 0}
+ 7.0 = {'TP': 3, 'FP': 0, 'TN': 20, 'FN': 0}
+ Accuracy- 1.0: 1.0 Precision- 1.0: 1.0
+ Accuracy- 3.0: 1.0 Precision- 3.0: 1.0
+ Accuracy- 2.0: 1.0 Precision- 2.0: 1.0
+ Accuracy- 5.0: 1.0 Precision- 5.0: 1.0
+ Accuracy- 6.0: 1.0 Precision- 6.0: 1.0
+ Accuracy- 7.0: 1.0 Precision- 7.0: 1.0
+ 1.0 = {'TP': 6, 'FP': 0, 'TN': 15, 'FN': 0}
+ 3.0 = {'TP': 2, 'FP': 0, 'TN': 19, 'FN': 0}
+ 2.0 = {'TP': 7, 'FP': 0, 'TN': 14, 'FN': 0}
+ 5.0 = {'TP': 2, 'FP': 0, 'TN': 19, 'FN': 0}
+ 6.0 = {'TP': 1, 'FP': 0, 'TN': 20, 'FN': 0}
+ 7.0 = {'TP': 3, 'FP': 0, 'TN': 18, 'FN': 0}
+ Accuracy- 1.0: 1.0 Precision- 1.0: 1.0
+ Accuracy- 3.0: 1.0 Precision- 3.0: 1.0
+ Accuracy- 2.0: 1.0 Precision- 2.0: 1.0
+ Accuracy- 5.0: 1.0 Precision- 5.0: 1.0
+ Accuracy- 6.0: 1.0 Precision- 6.0: 1.0
+ Accuracy- 7.0: 1.0 Precision- 7.0: 1.0
+ 1.0 = {'TP': 6, 'FP': 1, 'TN': 15, 'FN': 1}
+ 3.0 = {'TP': 1, 'FP': 1, 'TN': 20, 'FN': 1}
+ 2.0 = {'TP': 6, 'FP': 1, 'TN': 14, 'FN': 2}
+ 5.0 = {'TP': 1, 'FP': 1, 'TN': 20, 'FN': 1}
+ 6.0 = {'TP': 1, 'FP': 1, 'TN': 21, 'FN': 0}
+ 7.0 = {'TP': 3, 'FP': 0, 'TN': 20, 'FN': 0}
+ Accuracy- 1.0: 0.9130434782608695 Precision- 1.0: 0.8571428571428571
+ Accuracy- 3.0: 0.9130434782608695 Precision- 3.0: 0.5
+ Accuracy- 2.0: 0.8695652173913043 Precision- 2.0: 0.8571428571428571
+ Accuracy- 5.0: 0.9130434782608695 Precision- 5.0: 0.5
+ Accuracy- 6.0: 0.9565217391304348 Precision- 6.0: 0.5
+ Accuracy- 7.0: 1.0 Precision- 7.0: 1.0
+
+************************
+Accuracy- 1.0: 0.9527876014146036
+Precision- 1.0: 0.9204761904761906
+Accuracy- 3.0: 0.8729060794278185
+Precision- 3.0: 0.85
+Accuracy- 2.0: 0.9429601672164601
+Precision- 2.0: 0.9098809523809525
+Accuracy- 5.0: 0.9657062617016849
+Precision- 5.0: 0.8166666666666667
+Accuracy- 6.0: 0.9851258581235699
+Precision- 6.0: 0.85
+Accuracy- 7.0: 0.9849282296650717
+Precision- 7.0: 1.0
+************************
+***************************
+house-votes-84
+***************************
+republican = {'TP': 16, 'FP': 2, 'TN': 24, 'FN': 0}
 democrat = {'TP': 24, 'FP': 0, 'TN': 16, 'FN': 2}
- Accuracy-republican: 0.9523809523809523 Precision-republican: 0.8888888888888888 Accuracy-democrat: 0.9523809523809523 Precision-democrat: 1.0republican = {'TP': 14, 'FP': 4, 'TN': 22, 'FN': 2}
-democrat = {'TP': 22, 'FP': 2, 'TN': 14, 'FN': 4}
- Accuracy-republican: 0.8571428571428571 Precision-republican: 0.7777777777777778 Accuracy-democrat: 0.8571428571428571 Precision-democrat: 0.9166666666666666republican = {'TP': 15, 'FP': 2, 'TN': 24, 'FN': 1}
-democrat = {'TP': 24, 'FP': 1, 'TN': 15, 'FN': 2}
- Accuracy-republican: 0.9285714285714286 Precision-republican: 0.8823529411764706 Accuracy-democrat: 0.9285714285714286 Precision-democrat: 0.96republican = {'TP': 15, 'FP': 6, 'TN': 20, 'FN': 1}
-democrat = {'TP': 20, 'FP': 1, 'TN': 15, 'FN': 6}
- Accuracy-republican: 0.8333333333333334 Precision-republican: 0.7142857142857143 Accuracy-democrat: 0.8333333333333334 Precision-democrat: 0.9523809523809523republican = {'TP': 13, 'FP': 1, 'TN': 25, 'FN': 3}
-democrat = {'TP': 25, 'FP': 3, 'TN': 13, 'FN': 1}
- Accuracy-republican: 0.9047619047619048 Precision-republican: 0.9285714285714286 Accuracy-democrat: 0.9047619047619048 Precision-democrat: 0.8928571428571429republican = {'TP': 14, 'FP': 1, 'TN': 25, 'FN': 2}
-democrat = {'TP': 25, 'FP': 2, 'TN': 14, 'FN': 1}
- Accuracy-republican: 0.9285714285714286 Precision-republican: 0.9333333333333333 Accuracy-democrat: 0.9285714285714286 Precision-democrat: 0.9259259259259259republican = {'TP': 14, 'FP': 1, 'TN': 25, 'FN': 2}
-democrat = {'TP': 25, 'FP': 2, 'TN': 14, 'FN': 1}
- Accuracy-republican: 0.9285714285714286 Precision-republican: 0.9333333333333333 Accuracy-democrat: 0.9285714285714286 Precision-democrat: 0.9259259259259259republican = {'TP': 16, 'FP': 1, 'TN': 25, 'FN': 0}
-democrat = {'TP': 25, 'FP': 0, 'TN': 16, 'FN': 1}
- Accuracy-republican: 0.9761904761904762 Precision-republican: 0.9411764705882353 Accuracy-democrat: 0.9761904761904762 Precision-democrat: 1.0republican = {'TP': 15, 'FP': 4, 'TN': 22, 'FN': 1}
-democrat = {'TP': 22, 'FP': 1, 'TN': 15, 'FN': 4}
- Accuracy-republican: 0.8809523809523809 Precision-republican: 0.7894736842105263 Accuracy-democrat: 0.8809523809523809 Precision-democrat: 0.9565217391304348republican = {'TP': 14, 'FP': 6, 'TN': 20, 'FN': 2}
-democrat = {'TP': 20, 'FP': 2, 'TN': 14, 'FN': 6}
- Accuracy-republican: 0.8095238095238095 Precision-republican: 0.7 Accuracy-democrat: 0.8095238095238095 Precision-democrat: 0.9090909090909091republican = {'TP': 16, 'FP': 3, 'TN': 23, 'FN': 1}
-democrat = {'TP': 23, 'FP': 1, 'TN': 16, 'FN': 3}
- Accuracy-republican: 0.9069767441860465 Precision-republican: 0.8421052631578947 Accuracy-democrat: 0.9069767441860465 Precision-democrat: 0.9583333333333334republican = {'TP': 16, 'FP': 3, 'TN': 23, 'FN': 1}
-democrat = {'TP': 23, 'FP': 1, 'TN': 16, 'FN': 3}
- Accuracy-republican: 0.9069767441860465 Precision-republican: 0.8421052631578947 Accuracy-democrat: 0.9069767441860465 Precision-democrat: 0.9583333333333334republican = {'TP': 16, 'FP': 2, 'TN': 24, 'FN': 1}
-democrat = {'TP': 24, 'FP': 1, 'TN': 16, 'FN': 2}
- Accuracy-republican: 0.9302325581395349 Precision-republican: 0.8888888888888888 Accuracy-democrat: 0.9302325581395349 Precision-democrat: 0.96republican = {'TP': 16, 'FP': 6, 'TN': 20, 'FN': 1}
-democrat = {'TP': 20, 'FP': 1, 'TN': 16, 'FN': 6}
- Accuracy-republican: 0.8372093023255814 Precision-republican: 0.7272727272727273 Accuracy-democrat: 0.8372093023255814 Precision-democrat: 0.9523809523809523republican = {'TP': 13, 'FP': 1, 'TN': 25, 'FN': 4}
-democrat = {'TP': 25, 'FP': 4, 'TN': 13, 'FN': 1}
- Accuracy-republican: 0.8837209302325582 Precision-republican: 0.9285714285714286 Accuracy-democrat: 0.8837209302325582 Precision-democrat: 0.8620689655172413republican = {'TP': 14, 'FP': 1, 'TN': 25, 'FN': 3}
-democrat = {'TP': 25, 'FP': 3, 'TN': 14, 'FN': 1}
- Accuracy-republican: 0.9069767441860465 Precision-republican: 0.9333333333333333 Accuracy-democrat: 0.9069767441860465 Precision-democrat: 0.8928571428571429republican = {'TP': 15, 'FP': 1, 'TN': 25, 'FN': 2}
+ Accuracy-republican: 0.9523809523809523 Precision-republican: 0.8888888888888888
+ Accuracy-democrat: 0.9523809523809523 Precision-democrat: 1.0
+republican = {'TP': 15, 'FP': 4, 'TN': 23, 'FN': 2}
+democrat = {'TP': 23, 'FP': 2, 'TN': 15, 'FN': 4}
+ Accuracy-republican: 0.8636363636363636 Precision-republican: 0.7894736842105263
+ Accuracy-democrat: 0.8636363636363636 Precision-democrat: 0.92
+republican = {'TP': 16, 'FP': 2, 'TN': 25, 'FN': 1}
+democrat = {'TP': 25, 'FP': 1, 'TN': 16, 'FN': 2}
+ Accuracy-republican: 0.9318181818181818 Precision-republican: 0.8888888888888888
+ Accuracy-democrat: 0.9318181818181818 Precision-democrat: 0.9615384615384616
+republican = {'TP': 15, 'FP': 7, 'TN': 19, 'FN': 2}
+democrat = {'TP': 19, 'FP': 2, 'TN': 15, 'FN': 7}
+ Accuracy-republican: 0.7906976744186046 Precision-republican: 0.6818181818181818
+ Accuracy-democrat: 0.7906976744186046 Precision-democrat: 0.9047619047619048
+republican = {'TP': 15, 'FP': 0, 'TN': 27, 'FN': 2}
+democrat = {'TP': 27, 'FP': 2, 'TN': 15, 'FN': 0}
+ Accuracy-republican: 0.9545454545454546 Precision-republican: 1.0
+ Accuracy-democrat: 0.9545454545454546 Precision-democrat: 0.9310344827586207
+republican = {'TP': 14, 'FP': 1, 'TN': 26, 'FN': 2}
+democrat = {'TP': 26, 'FP': 2, 'TN': 14, 'FN': 1}
+ Accuracy-republican: 0.9302325581395349 Precision-republican: 0.9333333333333333
+ Accuracy-democrat: 0.9302325581395349 Precision-democrat: 0.9285714285714286
+republican = {'TP': 15, 'FP': 1, 'TN': 25, 'FN': 2}
 democrat = {'TP': 25, 'FP': 2, 'TN': 15, 'FN': 1}
- Accuracy-republican: 0.9302325581395349 Precision-republican: 0.9375 Accuracy-democrat: 0.9302325581395349 Precision-democrat: 0.9259259259259259republican = {'TP': 17, 'FP': 3, 'TN': 23, 'FN': 0}
-democrat = {'TP': 23, 'FP': 0, 'TN': 17, 'FN': 3}
- Accuracy-republican: 0.9302325581395349 Precision-republican: 0.85 Accuracy-democrat: 0.9302325581395349 Precision-democrat: 1.0republican = {'TP': 14, 'FP': 7, 'TN': 19, 'FN': 3}
-democrat = {'TP': 19, 'FP': 3, 'TN': 14, 'FN': 7}
- Accuracy-republican: 0.7674418604651163 Precision-republican: 0.6666666666666666 Accuracy-democrat: 0.7674418604651163 Precision-democrat: 0.8636363636363636republican = {'TP': 13, 'FP': 4, 'TN': 22, 'FN': 4}
-democrat = {'TP': 22, 'FP': 4, 'TN': 13, 'FN': 4}
- Accuracy-republican: 0.813953488372093 Precision-republican: 0.7647058823529411 Accuracy-democrat: 0.813953488372093 Precision-democrat: 0.8461538461538461Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
+ Accuracy-republican: 0.9302325581395349 Precision-republican: 0.9375
+ Accuracy-democrat: 0.9302325581395349 Precision-democrat: 0.9259259259259259
+republican = {'TP': 17, 'FP': 1, 'TN': 26, 'FN': 0}
+democrat = {'TP': 26, 'FP': 0, 'TN': 17, 'FN': 1}
+ Accuracy-republican: 0.9772727272727273 Precision-republican: 0.9444444444444444
+ Accuracy-democrat: 0.9772727272727273 Precision-democrat: 1.0
+republican = {'TP': 15, 'FP': 7, 'TN': 20, 'FN': 2}
+democrat = {'TP': 20, 'FP': 2, 'TN': 15, 'FN': 7}
+ Accuracy-republican: 0.7954545454545454 Precision-republican: 0.6818181818181818
+ Accuracy-democrat: 0.7954545454545454 Precision-democrat: 0.9090909090909091
+republican = {'TP': 16, 'FP': 3, 'TN': 24, 'FN': 1}
+democrat = {'TP': 24, 'FP': 1, 'TN': 16, 'FN': 3}
+ Accuracy-republican: 0.9090909090909091 Precision-republican: 0.8421052631578947
+ Accuracy-democrat: 0.9090909090909091 Precision-democrat: 0.96
+
+************************
+Accuracy-republican: 0.9035361924896808
+Precision-republican: 0.8588270866560339
+Accuracy-democrat: 0.9035361924896808
+Precision-democrat: 0.9440923112647251
+************************
+***************************
+house-votes-84-scrambled
+***************************
+republican = {'TP': 16, 'FP': 3, 'TN': 23, 'FN': 0}
+democrat = {'TP': 23, 'FP': 0, 'TN': 16, 'FN': 3}
+ Accuracy-republican: 0.9285714285714286 Precision-republican: 0.8421052631578947
+ Accuracy-democrat: 0.9285714285714286 Precision-democrat: 1.0
+republican = {'TP': 16, 'FP': 4, 'TN': 23, 'FN': 1}
+democrat = {'TP': 23, 'FP': 1, 'TN': 16, 'FN': 4}
+ Accuracy-republican: 0.8863636363636364 Precision-republican: 0.8
+ Accuracy-democrat: 0.8863636363636364 Precision-democrat: 0.9583333333333334
+republican = {'TP': 15, 'FP': 1, 'TN': 25, 'FN': 2}
+democrat = {'TP': 25, 'FP': 2, 'TN': 15, 'FN': 1}
+ Accuracy-republican: 0.9302325581395349 Precision-republican: 0.9375
+ Accuracy-democrat: 0.9302325581395349 Precision-democrat: 0.9259259259259259
+republican = {'TP': 13, 'FP': 6, 'TN': 21, 'FN': 4}
+democrat = {'TP': 21, 'FP': 4, 'TN': 13, 'FN': 6}
+ Accuracy-republican: 0.7727272727272727 Precision-republican: 0.6842105263157895
+ Accuracy-democrat: 0.7727272727272727 Precision-democrat: 0.84
+republican = {'TP': 13, 'FP': 2, 'TN': 25, 'FN': 4}
+democrat = {'TP': 25, 'FP': 4, 'TN': 13, 'FN': 2}
+ Accuracy-republican: 0.8636363636363636 Precision-republican: 0.8666666666666667
+ Accuracy-democrat: 0.8636363636363636 Precision-democrat: 0.8620689655172413
+republican = {'TP': 16, 'FP': 0, 'TN': 26, 'FN': 1}
+democrat = {'TP': 26, 'FP': 1, 'TN': 16, 'FN': 0}
+ Accuracy-republican: 0.9767441860465116 Precision-republican: 1.0
+ Accuracy-democrat: 0.9767441860465116 Precision-democrat: 0.9629629629629629
+republican = {'TP': 13, 'FP': 0, 'TN': 27, 'FN': 4}
+democrat = {'TP': 27, 'FP': 4, 'TN': 13, 'FN': 0}
+ Accuracy-republican: 0.9090909090909091 Precision-republican: 1.0
+ Accuracy-democrat: 0.9090909090909091 Precision-democrat: 0.8709677419354839
+republican = {'TP': 16, 'FP': 1, 'TN': 25, 'FN': 1}
+democrat = {'TP': 25, 'FP': 1, 'TN': 16, 'FN': 1}
+ Accuracy-republican: 0.9534883720930233 Precision-republican: 0.9411764705882353
+ Accuracy-democrat: 0.9534883720930233 Precision-democrat: 0.9615384615384616
+republican = {'TP': 16, 'FP': 8, 'TN': 19, 'FN': 1}
+democrat = {'TP': 19, 'FP': 1, 'TN': 16, 'FN': 8}
+ Accuracy-republican: 0.7954545454545454 Precision-republican: 0.6666666666666666
+ Accuracy-democrat: 0.7954545454545454 Precision-democrat: 0.95
+republican = {'TP': 14, 'FP': 4, 'TN': 23, 'FN': 3}
+democrat = {'TP': 23, 'FP': 3, 'TN': 14, 'FN': 4}
+ Accuracy-republican: 0.8409090909090909 Precision-republican: 0.7777777777777778
+ Accuracy-democrat: 0.8409090909090909 Precision-democrat: 0.8846153846153846
+
+************************
+Accuracy-republican: 0.8857218363032316
+Precision-republican: 0.8516103371173032
+Accuracy-democrat: 0.8857218363032316
+Precision-democrat: 0.9216412775828793
+************************
+***************************
+iris-cleaned-discrete
+***************************
+Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
 Iris-versicolo = {'TP': 2, 'FP': 3, 'TN': 7, 'FN': 3}
 Iris-virginic = {'TP': 2, 'FP': 3, 'TN': 7, 'FN': 3}
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-versicolo: 0.6 Precision-Iris-versicolo: 0.4 Accuracy-Iris-virginic: 0.6 Precision-Iris-virginic: 0.4Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
+ Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0
+ Accuracy-Iris-versicolo: 0.6 Precision-Iris-versicolo: 0.4
+ Accuracy-Iris-virginic: 0.6 Precision-Iris-virginic: 0.4
+Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
 Iris-versicolo = {'TP': 3, 'FP': 1, 'TN': 9, 'FN': 2}
 Iris-virginic = {'TP': 4, 'FP': 2, 'TN': 8, 'FN': 1}
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-versicolo: 0.8 Precision-Iris-versicolo: 0.75 Accuracy-Iris-virginic: 0.8 Precision-Iris-virginic: 0.6666666666666666Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
+ Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0
+ Accuracy-Iris-versicolo: 0.8 Precision-Iris-versicolo: 0.75
+ Accuracy-Iris-virginic: 0.8 Precision-Iris-virginic: 0.6666666666666666
+Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
 Iris-versicolo = {'TP': 3, 'FP': 2, 'TN': 8, 'FN': 2}
 Iris-virginic = {'TP': 3, 'FP': 2, 'TN': 8, 'FN': 2}
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-versicolo: 0.7333333333333333 Precision-Iris-versicolo: 0.6 Accuracy-Iris-virginic: 0.7333333333333333 Precision-Iris-virginic: 0.6Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
+ Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0
+ Accuracy-Iris-versicolo: 0.7333333333333333 Precision-Iris-versicolo: 0.6
+ Accuracy-Iris-virginic: 0.7333333333333333 Precision-Iris-virginic: 0.6
+Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
 Iris-versicolo = {'TP': 4, 'FP': 1, 'TN': 9, 'FN': 1}
 Iris-virginic = {'TP': 4, 'FP': 1, 'TN': 9, 'FN': 1}
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-versicolo: 0.8666666666666667 Precision-Iris-versicolo: 0.8 Accuracy-Iris-virginic: 0.8666666666666667 Precision-Iris-virginic: 0.8Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
+ Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0
+ Accuracy-Iris-versicolo: 0.8666666666666667 Precision-Iris-versicolo: 0.8
+ Accuracy-Iris-virginic: 0.8666666666666667 Precision-Iris-virginic: 0.8
+Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
 Iris-versicolo = {'TP': 1, 'FP': 1, 'TN': 9, 'FN': 4}
 Iris-virginic = {'TP': 4, 'FP': 4, 'TN': 6, 'FN': 1}
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-versicolo: 0.6666666666666666 Precision-Iris-versicolo: 0.5 Accuracy-Iris-virginic: 0.6666666666666666 Precision-Iris-virginic: 0.5Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
+ Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0
+ Accuracy-Iris-versicolo: 0.6666666666666666 Precision-Iris-versicolo: 0.5
+ Accuracy-Iris-virginic: 0.6666666666666666 Precision-Iris-virginic: 0.5
+Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
 Iris-versicolo = {'TP': 1, 'FP': 0, 'TN': 10, 'FN': 4}
 Iris-virginic = {'TP': 5, 'FP': 4, 'TN': 6, 'FN': 0}
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-versicolo: 0.7333333333333333 Precision-Iris-versicolo: 1.0 Accuracy-Iris-virginic: 0.7333333333333333 Precision-Iris-virginic: 0.5555555555555556Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
+ Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0
+ Accuracy-Iris-versicolo: 0.7333333333333333 Precision-Iris-versicolo: 1.0
+ Accuracy-Iris-virginic: 0.7333333333333333 Precision-Iris-virginic: 0.5555555555555556
+Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
 Iris-versicolo = {'TP': 4, 'FP': 1, 'TN': 9, 'FN': 1}
 Iris-virginic = {'TP': 4, 'FP': 1, 'TN': 9, 'FN': 1}
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-versicolo: 0.8666666666666667 Precision-Iris-versicolo: 0.8 Accuracy-Iris-virginic: 0.8666666666666667 Precision-Iris-virginic: 0.8Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
+ Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0
+ Accuracy-Iris-versicolo: 0.8666666666666667 Precision-Iris-versicolo: 0.8
+ Accuracy-Iris-virginic: 0.8666666666666667 Precision-Iris-virginic: 0.8
+Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
 Iris-versicolo = {'TP': 3, 'FP': 0, 'TN': 10, 'FN': 2}
 Iris-virginic = {'TP': 5, 'FP': 2, 'TN': 8, 'FN': 0}
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-versicolo: 0.8666666666666667 Precision-Iris-versicolo: 1.0 Accuracy-Iris-virginic: 0.8666666666666667 Precision-Iris-virginic: 0.7142857142857143Iris-setos = {'TP': 4, 'FP': 0, 'TN': 10, 'FN': 1}
+ Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0
+ Accuracy-Iris-versicolo: 0.8666666666666667 Precision-Iris-versicolo: 1.0
+ Accuracy-Iris-virginic: 0.8666666666666667 Precision-Iris-virginic: 0.7142857142857143
+Iris-setos = {'TP': 4, 'FP': 0, 'TN': 10, 'FN': 1}
 Iris-versicolo = {'TP': 4, 'FP': 2, 'TN': 8, 'FN': 1}
 Iris-virginic = {'TP': 4, 'FP': 1, 'TN': 9, 'FN': 1}
- Accuracy-Iris-setos: 0.9333333333333333 Precision-Iris-setos: 1.0 Accuracy-Iris-versicolo: 0.8 Precision-Iris-versicolo: 0.6666666666666666 Accuracy-Iris-virginic: 0.8666666666666667 Precision-Iris-virginic: 0.8Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
+ Accuracy-Iris-setos: 0.9333333333333333 Precision-Iris-setos: 1.0
+ Accuracy-Iris-versicolo: 0.8 Precision-Iris-versicolo: 0.6666666666666666
+ Accuracy-Iris-virginic: 0.8666666666666667 Precision-Iris-virginic: 0.8
+Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
 Iris-versicolo = {'TP': 4, 'FP': 1, 'TN': 9, 'FN': 1}
 Iris-virginic = {'TP': 4, 'FP': 1, 'TN': 9, 'FN': 1}
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-versicolo: 0.8666666666666667 Precision-Iris-versicolo: 0.8 Accuracy-Iris-virginic: 0.8666666666666667 Precision-Iris-virginic: 0.8Iris-setos = {'TP': 3, 'FP': 2, 'TN': 8, 'FN': 1}
-Iris-virginic = {'TP': 3, 'FP': 4, 'TN': 5, 'FN': 2}
-Iris-versicolo = {'TP': 0, 'FP': 2, 'TN': 7, 'FN': 5}
- Accuracy-Iris-setos: 0.7857142857142857 Precision-Iris-setos: 0.6 Accuracy-Iris-virginic: 0.5714285714285714 Precision-Iris-virginic: 0.42857142857142855 Accuracy-Iris-versicolo: 0.5 Precision-Iris-versicolo: 0.0Iris-setos = {'TP': 4, 'FP': 0, 'TN': 10, 'FN': 0}
-Iris-virginic = {'TP': 2, 'FP': 1, 'TN': 8, 'FN': 3}
-Iris-versicolo = {'TP': 4, 'FP': 3, 'TN': 6, 'FN': 1}
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-virginic: 0.7142857142857143 Precision-Iris-virginic: 0.6666666666666666 Accuracy-Iris-versicolo: 0.7142857142857143 Precision-Iris-versicolo: 0.5714285714285714Iris-setos = {'TP': 4, 'FP': 0, 'TN': 10, 'FN': 0}
-Iris-virginic = {'TP': 4, 'FP': 0, 'TN': 9, 'FN': 1}
-Iris-versicolo = {'TP': 5, 'FP': 1, 'TN': 8, 'FN': 0}
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-virginic: 0.9285714285714286 Precision-Iris-virginic: 1.0 Accuracy-Iris-versicolo: 0.9285714285714286 Precision-Iris-versicolo: 0.8333333333333334Iris-setos = {'TP': 4, 'FP': 0, 'TN': 10, 'FN': 0}
-Iris-virginic = {'TP': 2, 'FP': 1, 'TN': 8, 'FN': 3}
-Iris-versicolo = {'TP': 4, 'FP': 3, 'TN': 6, 'FN': 1}
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-virginic: 0.7142857142857143 Precision-Iris-virginic: 0.6666666666666666 Accuracy-Iris-versicolo: 0.7142857142857143 Precision-Iris-versicolo: 0.5714285714285714Iris-setos = {'TP': 4, 'FP': 0, 'TN': 10, 'FN': 0}
-Iris-virginic = {'TP': 3, 'FP': 2, 'TN': 7, 'FN': 2}
-Iris-versicolo = {'TP': 3, 'FP': 2, 'TN': 7, 'FN': 2}
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-virginic: 0.7142857142857143 Precision-Iris-virginic: 0.6 Accuracy-Iris-versicolo: 0.7142857142857143 Precision-Iris-versicolo: 0.6Iris-setos = {'TP': 4, 'FP': 0, 'TN': 10, 'FN': 0}
-Iris-virginic = {'TP': 5, 'FP': 5, 'TN': 4, 'FN': 0}
-Iris-versicolo = {'TP': 0, 'FP': 0, 'TN': 9, 'FN': 5}
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-virginic: 0.6428571428571429 Precision-Iris-virginic: 0.5 Accuracy-Iris-versicolo: 0.6428571428571429 Precision-Iris-versicolo: INFIris-setos = {'TP': 4, 'FP': 0, 'TN': 10, 'FN': 0}
-Iris-virginic = {'TP': 4, 'FP': 1, 'TN': 8, 'FN': 1}
-Iris-versicolo = {'TP': 4, 'FP': 1, 'TN': 8, 'FN': 1}
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-virginic: 0.8571428571428571 Precision-Iris-virginic: 0.8 Accuracy-Iris-versicolo: 0.8571428571428571 Precision-Iris-versicolo: 0.8Iris-setos = {'TP': 4, 'FP': 0, 'TN': 10, 'FN': 0}
-Iris-virginic = {'TP': 5, 'FP': 3, 'TN': 6, 'FN': 0}
-Iris-versicolo = {'TP': 2, 'FP': 0, 'TN': 9, 'FN': 3}
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-virginic: 0.7857142857142857 Precision-Iris-virginic: 0.625 Accuracy-Iris-versicolo: 0.7857142857142857 Precision-Iris-versicolo: 1.0Iris-setos = {'TP': 4, 'FP': 0, 'TN': 10, 'FN': 0}
-Iris-virginic = {'TP': 3, 'FP': 1, 'TN': 8, 'FN': 2}
-Iris-versicolo = {'TP': 4, 'FP': 2, 'TN': 7, 'FN': 1}
- Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0 Accuracy-Iris-virginic: 0.7857142857142857 Precision-Iris-virginic: 0.75 Accuracy-Iris-versicolo: 0.7857142857142857 Precision-Iris-versicolo: 0.6666666666666666Iris-setos = {'TP': 3, 'FP': 0, 'TN': 10, 'FN': 1}
-Iris-virginic = {'TP': 3, 'FP': 2, 'TN': 7, 'FN': 2}
-Iris-versicolo = {'TP': 3, 'FP': 3, 'TN': 6, 'FN': 2}
- Accuracy-Iris-setos: 0.9285714285714286 Precision-Iris-setos: 1.0 Accuracy-Iris-virginic: 0.7142857142857143 Precision-Iris-virginic: 0.6 Accuracy-Iris-versicolo: 0.6428571428571429 Precision-Iris-versicolo: 0.5D1 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
+ Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0
+ Accuracy-Iris-versicolo: 0.8666666666666667 Precision-Iris-versicolo: 0.8
+ Accuracy-Iris-virginic: 0.8666666666666667 Precision-Iris-virginic: 0.8
+
+************************
+Accuracy-Iris-setos: 0.9933333333333334
+Precision-Iris-setos: 1.0
+Accuracy-Iris-versicolo: 0.7799999999999999
+Precision-Iris-versicolo: 0.7316666666666667
+Accuracy-Iris-virginic: 0.7866666666666667
+Precision-Iris-virginic: 0.6636507936507936
+************************
+***************************
+iris-cleaned-discrete-scrambled
+***************************
+Iris-setos = {'TP': 5, 'FP': 3, 'TN': 5, 'FN': 0}
+Iris-virginic = {'TP': 1, 'FP': 4, 'TN': 5, 'FN': 3}
+Iris-versicolo = {'TP': 0, 'FP': 0, 'TN': 9, 'FN': 4}
+ Accuracy-Iris-setos: 0.7692307692307693 Precision-Iris-setos: 0.625
+ Accuracy-Iris-virginic: 0.46153846153846156 Precision-Iris-virginic: 0.2
+ Accuracy-Iris-versicolo: 0.6923076923076923 Precision-Iris-versicolo: INF
+Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
+Iris-virginic = {'TP': 4, 'FP': 2, 'TN': 8, 'FN': 1}
+Iris-versicolo = {'TP': 3, 'FP': 1, 'TN': 9, 'FN': 2}
+ Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0
+ Accuracy-Iris-virginic: 0.8 Precision-Iris-virginic: 0.6666666666666666
+ Accuracy-Iris-versicolo: 0.8 Precision-Iris-versicolo: 0.75
+Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
+Iris-virginic = {'TP': 4, 'FP': 3, 'TN': 7, 'FN': 1}
+Iris-versicolo = {'TP': 2, 'FP': 1, 'TN': 9, 'FN': 3}
+ Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0
+ Accuracy-Iris-virginic: 0.7333333333333333 Precision-Iris-virginic: 0.5714285714285714
+ Accuracy-Iris-versicolo: 0.7333333333333333 Precision-Iris-versicolo: 0.6666666666666666
+Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
+Iris-virginic = {'TP': 4, 'FP': 1, 'TN': 9, 'FN': 1}
+Iris-versicolo = {'TP': 4, 'FP': 1, 'TN': 9, 'FN': 1}
+ Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0
+ Accuracy-Iris-virginic: 0.8666666666666667 Precision-Iris-virginic: 0.8
+ Accuracy-Iris-versicolo: 0.8666666666666667 Precision-Iris-versicolo: 0.8
+Iris-setos = {'TP': 6, 'FP': 2, 'TN': 8, 'FN': 0}
+Iris-virginic = {'TP': 2, 'FP': 4, 'TN': 7, 'FN': 3}
+Iris-versicolo = {'TP': 1, 'FP': 1, 'TN': 10, 'FN': 4}
+ Accuracy-Iris-setos: 0.875 Precision-Iris-setos: 0.75
+ Accuracy-Iris-virginic: 0.5625 Precision-Iris-virginic: 0.3333333333333333
+ Accuracy-Iris-versicolo: 0.6875 Precision-Iris-versicolo: 0.5
+Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
+Iris-virginic = {'TP': 5, 'FP': 2, 'TN': 8, 'FN': 0}
+Iris-versicolo = {'TP': 3, 'FP': 0, 'TN': 10, 'FN': 2}
+ Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0
+ Accuracy-Iris-virginic: 0.8666666666666667 Precision-Iris-virginic: 0.7142857142857143
+ Accuracy-Iris-versicolo: 0.8666666666666667 Precision-Iris-versicolo: 1.0
+Iris-setos = {'TP': 5, 'FP': 1, 'TN': 9, 'FN': 0}
+Iris-virginic = {'TP': 3, 'FP': 3, 'TN': 7, 'FN': 2}
+Iris-versicolo = {'TP': 2, 'FP': 1, 'TN': 9, 'FN': 3}
+ Accuracy-Iris-setos: 0.9333333333333333 Precision-Iris-setos: 0.8333333333333334
+ Accuracy-Iris-virginic: 0.6666666666666666 Precision-Iris-virginic: 0.5
+ Accuracy-Iris-versicolo: 0.7333333333333333 Precision-Iris-versicolo: 0.6666666666666666
+Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
+Iris-virginic = {'TP': 5, 'FP': 1, 'TN': 9, 'FN': 0}
+Iris-versicolo = {'TP': 4, 'FP': 0, 'TN': 10, 'FN': 1}
+ Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0
+ Accuracy-Iris-virginic: 0.9333333333333333 Precision-Iris-virginic: 0.8333333333333334
+ Accuracy-Iris-versicolo: 0.9333333333333333 Precision-Iris-versicolo: 1.0
+Iris-setos = {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 0}
+Iris-virginic = {'TP': 4, 'FP': 0, 'TN': 10, 'FN': 1}
+Iris-versicolo = {'TP': 5, 'FP': 1, 'TN': 9, 'FN': 0}
+ Accuracy-Iris-setos: 1.0 Precision-Iris-setos: 1.0
+ Accuracy-Iris-virginic: 0.9333333333333333 Precision-Iris-virginic: 1.0
+ Accuracy-Iris-versicolo: 0.9333333333333333 Precision-Iris-versicolo: 0.8333333333333334
+Iris-setos = {'TP': 2, 'FP': 1, 'TN': 9, 'FN': 4}
+Iris-virginic = {'TP': 4, 'FP': 5, 'TN': 6, 'FN': 1}
+Iris-versicolo = {'TP': 2, 'FP': 2, 'TN': 9, 'FN': 3}
+ Accuracy-Iris-setos: 0.6875 Precision-Iris-setos: 0.6666666666666666
+ Accuracy-Iris-virginic: 0.625 Precision-Iris-virginic: 0.4444444444444444
+ Accuracy-Iris-versicolo: 0.6875 Precision-Iris-versicolo: 0.5
+
+************************
+Accuracy-Iris-setos: 0.9265064102564103
+Precision-Iris-setos: 0.8874999999999998
+Accuracy-Iris-virginic: 0.7449038461538462
+Precision-Iris-virginic: 0.6063492063492064
+Accuracy-Iris-versicolo: 0.7241666666666667
+Precision-Iris-versicolo: 0.6716666666666666
+************************
+***************************
+soybean-small-cleaned
+***************************
+D1 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
 D2 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
 D3 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
 D4 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D2: 1.0 Precision-D2: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0D1 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+D1 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D2 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D3 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D4 = {'TP': 2, 'FP': 0, 'TN': 3, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+D1 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D2 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D3 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D4 = {'TP': 2, 'FP': 0, 'TN': 3, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+D1 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
 D2 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
 D3 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
 D4 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D2: 1.0 Precision-D2: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0D1 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+D1 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D2 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D3 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D4 = {'TP': 2, 'FP': 0, 'TN': 3, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+D1 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D2 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D3 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D4 = {'TP': 2, 'FP': 0, 'TN': 3, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+D1 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
 D2 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
 D3 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
 D4 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D2: 1.0 Precision-D2: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0D1 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
-D2 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
-D3 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+D1 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D2 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D3 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D4 = {'TP': 2, 'FP': 0, 'TN': 3, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+D1 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D2 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D3 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D4 = {'TP': 2, 'FP': 0, 'TN': 3, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+D1 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D2 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D3 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D4 = {'TP': 2, 'FP': 0, 'TN': 3, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+
+************************
+Accuracy-D1: 1.0
+Precision-D1: 1.0
+Accuracy-D2: 1.0
+Precision-D2: 1.0
+Accuracy-D3: 1.0
+Precision-D3: 1.0
+Accuracy-D4: 1.0
+Precision-D4: 1.0
+************************
+***************************
+soybean-small-cleaned-scrambled
+***************************
+D1 = {'TP': 0, 'FP': 0, 'TN': 3, 'FN': 0}
+D4 = {'TP': 1, 'FP': 1, 'TN': 1, 'FN': 0}
+D3 = {'TP': 0, 'FP': 0, 'TN': 2, 'FN': 1}
+D2 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: INF
+ Accuracy-D4: 0.6666666666666666 Precision-D4: 0.5
+ Accuracy-D3: 0.6666666666666666 Precision-D3: INF
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+D1 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D4 = {'TP': 2, 'FP': 0, 'TN': 3, 'FN': 0}
+D3 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D2 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+D1 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D4 = {'TP': 2, 'FP': 0, 'TN': 3, 'FN': 0}
+D3 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D2 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+D1 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D4 = {'TP': 2, 'FP': 0, 'TN': 3, 'FN': 0}
+D3 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D2 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+D1 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D4 = {'TP': 2, 'FP': 0, 'TN': 3, 'FN': 0}
+D3 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D2 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+D1 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
 D4 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D2: 1.0 Precision-D2: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0D1 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
-D2 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
 D3 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
-D4 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D2: 1.0 Precision-D2: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0D1 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
 D2 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
-D3 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
-D4 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D2: 1.0 Precision-D2: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0D1 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
-D2 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
-D3 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
-D4 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D2: 1.0 Precision-D2: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0D1 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
-D2 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
-D3 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
-D4 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D2: 1.0 Precision-D2: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0D1 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
-D2 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
-D3 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
-D4 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D2: 1.0 Precision-D2: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0D1 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
-D2 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
-D3 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
-D4 = {'TP': 1, 'FP': 0, 'TN': 3, 'FN': 0}
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D2: 1.0 Precision-D2: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0D1 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
-D4 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
-D3 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0D1 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
-D4 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
-D3 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0D1 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
-D4 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
-D3 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0D1 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
-D4 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
-D3 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0D1 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
-D4 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
-D3 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0D1 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
-D4 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
-D3 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0D1 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
-D4 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
-D3 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0D1 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
-D4 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
-D3 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0D1 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
-D4 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
-D3 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0D1 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
-D4 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
-D3 = {'TP': 1, 'FP': 0, 'TN': 2, 'FN': 0}
- Accuracy-D1: 1.0 Precision-D1: 1.0 Accuracy-D4: 1.0 Precision-D4: 1.0 Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+D1 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D4 = {'TP': 2, 'FP': 0, 'TN': 3, 'FN': 0}
+D3 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D2 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+D1 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D4 = {'TP': 2, 'FP': 0, 'TN': 3, 'FN': 0}
+D3 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D2 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+D1 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D4 = {'TP': 2, 'FP': 0, 'TN': 3, 'FN': 0}
+D3 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D2 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+D1 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D4 = {'TP': 2, 'FP': 0, 'TN': 3, 'FN': 0}
+D3 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D2 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+
+************************
+Accuracy-D1: 0.9
+Precision-D1: 0.9
+Accuracy-D4: 0.9666666666666666
+Precision-D4: 0.95
+Accuracy-D3: 0.9
+Precision-D3: 0.9
+Accuracy-D2: 1.0
+Precision-D2: 1.0
+************************
+D2 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+D1 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D4 = {'TP': 2, 'FP': 0, 'TN': 3, 'FN': 0}
+D3 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D2 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+D1 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D4 = {'TP': 2, 'FP': 0, 'TN': 3, 'FN': 0}
+D3 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D2 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+D1 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D4 = {'TP': 2, 'FP': 0, 'TN': 3, 'FN': 0}
+D3 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+D2 = {'TP': 1, 'FP': 0, 'TN': 4, 'FN': 0}
+ Accuracy-D1: 1.0 Precision-D1: 1.0
+ Accuracy-D4: 1.0 Precision-D4: 1.0
+ Accuracy-D3: 1.0 Precision-D3: 1.0
+ Accuracy-D2: 1.0 Precision-D2: 1.0
+
+************************
+Accuracy-D1: 0.9
+Precision-D1: 0.9
+Accuracy-D4: 0.9666666666666666
+Precision-D4: 0.95
+Accuracy-D3: 0.9
+Precision-D3: 0.9
+Accuracy-D2: 1.0
+Precision-D2: 1.0
+************************

@@ -1,0 +1,97 @@
+***************************
+breast-cancer-wisconsin-cleaned
+************************
+Accuracy-2: 0.9770594581984661
+Precision-2: 0.9976190476190476
+Accuracy-4: 0.9770594581984661
+Precision-4: 0.9438009768009769
+************************
+Accuracy-2: 0.938320065319453
+Precision-2: 0.9907187257187257
+Accuracy-4: 0.938320065319453
+Precision-4: 0.8684501170409125
+***************************
+
+***************************
+glass-cleaned-discrete
+***************************
+************************
+Accuracy- 1.0: 0.9500721500721501
+Precision- 1.0: 0.9380952380952381
+Accuracy- 2.0: 0.95995670995671
+Precision- 2.0: 0.9338888888888889
+Accuracy- 3.0: 0.7952380952380953
+Precision- 3.0: 0.8
+Accuracy- 5.0: 0.8954545454545455
+Precision- 5.0: 0.85
+Accuracy- 6.0: 0.9
+Precision- 6.0: 0.9
+Accuracy- 7.0: 0.98989898989899
+Precision- 7.0: 0.9666666666666666
+************************
+Accuracy- 1.0: 0.9527876014146036
+Precision- 1.0: 0.9204761904761906
+Accuracy- 3.0: 0.8729060794278185
+Precision- 3.0: 0.85
+Accuracy- 2.0: 0.9429601672164601
+Precision- 2.0: 0.9098809523809525
+Accuracy- 5.0: 0.9657062617016849
+Precision- 5.0: 0.8166666666666667
+Accuracy- 6.0: 0.9851258581235699
+Precision- 6.0: 0.85
+Accuracy- 7.0: 0.9849282296650717
+Precision- 7.0: 1.0
+************************
+
+***************************
+house-votes-84
+***************************
+Accuracy-republican: 0.9035361924896808
+Precision-republican: 0.8588270866560339
+Accuracy-democrat: 0.9035361924896808
+Precision-democrat: 0.9440923112647251
+************************
+Accuracy-republican: 0.8857218363032316
+Precision-republican: 0.8516103371173032
+Accuracy-democrat: 0.8857218363032316
+Precision-democrat: 0.9216412775828793
+************************
+
+***************************
+iris-cleaned-discrete
+***************************
+Accuracy-Iris-setos: 0.9933333333333334
+Precision-Iris-setos: 1.0
+Accuracy-Iris-versicolo: 0.7799999999999999
+Precision-Iris-versicolo: 0.7316666666666667
+Accuracy-Iris-virginic: 0.7866666666666667
+Precision-Iris-virginic: 0.6636507936507936
+************************
+Accuracy-Iris-setos: 0.9265064102564103
+Precision-Iris-setos: 0.8874999999999998
+Accuracy-Iris-virginic: 0.7449038461538462
+Precision-Iris-virginic: 0.6063492063492064
+Accuracy-Iris-versicolo: 0.7241666666666667
+Precision-Iris-versicolo: 0.6716666666666666
+************************
+
+***************************
+soybean-small-cleaned
+***************************
+Accuracy-D1: 1.0
+Precision-D1: 1.0
+Accuracy-D2: 1.0
+Precision-D2: 1.0
+Accuracy-D3: 1.0
+Precision-D3: 1.0
+Accuracy-D4: 1.0
+Precision-D4: 1.0
+************************
+Accuracy-D1: 0.9
+Precision-D1: 0.9
+Accuracy-D4: 0.9666666666666666
+Precision-D4: 0.95
+Accuracy-D3: 0.9
+Precision-D3: 0.9
+Accuracy-D2: 1.0
+Precision-D2: 1.0

@@ -22,6 +22,7 @@
 #optional:
 #add attribute header names to dataset
 
+import os
 
 #split into 10 even sections, counts of each class, frequency of attribute
 #returns 10 lists of even lenght of records that are each are proportional to the origional data set's classes
@@ -45,10 +46,10 @@ def stratify(data,class_col): # file data, # of class column in data
 
     for key in class_data: #assign records to each strata
         #fix rounding
-        strata_subsize = int(class_frequency[key]/10)
+        strata_subsize = class_frequency[key]/10
         for i in range(10):
-            start_range = i * strata_subsize
-            end_range = i * strata_subsize + strata_subsize
+            start_range = int(i * strata_subsize)
+            end_range = int(i * strata_subsize + strata_subsize)
             records = class_data[key].split('\n')
             ten_strata[i]+=(records[start_range:end_range])
     
@@ -160,6 +161,7 @@ def training(ten_strata, class_column):
     #print(ten_strata)
     training = []
     #ten fold validation
+    loss = {}
     for j in range(10):# j is the index of the test data set in each round
         for i in range(len(ten_strata)):
             if(i!=j):
@@ -172,7 +174,7 @@ def training(ten_strata, class_column):
         classAttributeFrequencies = classAttributeFrequency(training, class_column, test_class_counts)
         #print(classAttributeFrequencies)
 
-        resultsFile = open('Results.txt','a')
+        resultsFile = open('Results.txt','a+')
 
         confusion = {}
         for class_name in classAttributeFrequencies:
@@ -214,10 +216,25 @@ def training(ten_strata, class_column):
             except:
                 precision = 'INF'
             #print('Precision-'+class_name+": "+str(precision))
-            resultsFile.write(' Precision-'+class_name+": "+str(precision))
+            resultsFile.write(' Precision-'+class_name+": "+str(precision)+"\n")
+            try:                
+                loss[class_name]['Accuracy'] += accuracy
+                loss[class_name]['Precision'] += precision
+            except:    
+                loss.update({class_name:{'Accuracy':accuracy,'Precision':precision}})
         
         resultsFile.close()
-        
+    
+    resultsFile = open('Results.txt','a+')
+    resultsFile.write('\n************************\n')
+    for class_name in loss:
+        loss[class_name]['Accuracy'] /= 10
+        loss[class_name]['Precision'] /= 10
+        resultsFile.write('Accuracy-'+class_name+": "+str(loss[class_name]['Accuracy'])+"\n")
+        resultsFile.write('Precision-'+class_name+": "+str(loss[class_name]['Precision'])+"\n")
+    resultsFile.write('************************\n')   
+    resultsFile.close()
+
     #average our loss functions
     
 
@@ -226,21 +243,42 @@ def training(ten_strata, class_column):
 
 def main():
 
-    cleanDiscreteData = ["breast-cancer-wisconsin-cleaned", "glass-cleaned", "house-votes-84", "iris-cleaned-discrete", "soybean-small-cleaned"]
-    scrambledData = ["breast-cancer-wisconsin-cleaned-scrambled", "glass-cleaned-scrambled", "house-votes-84-scrambled", "iris-cleaned-discrete-scrambled", "soybean-small-cleaned-scrambled"]
+    cleanDiscreteData = ["breast-cancer-wisconsin-cleaned", "glass-cleaned-discrete", "house-votes-84", "iris-cleaned-discrete", "soybean-small-cleaned"]
+    scrambledData = ["breast-cancer-wisconsin-cleaned-scrambled", "glass-cleaned-discrete-scrambled", "house-votes-84-scrambled", "iris-cleaned-discrete-scrambled", "soybean-small-cleaned-scrambled"]
     classCol = [10, 10, 0, 4, 35]
 
+    try:
+        os.remove("Results.txt")
+    except:
+        print("Results File not removed!!!!!!!!!!!")
+
+    
+     
+
     for i in range(len(classCol)):
+        resultsFile = open('Results.txt','a+') 
+        resultsFile.write("***************************\n")
+        resultsFile.write(cleanDiscreteData[i])
+        resultsFile.write("\n***************************\n")
+        resultsFile.close()
         file = open('./processed_data/'+ cleanDiscreteData[i] +'.data','r')
         class_column = classCol[i]
         ten_strata, class_counts = stratify(file,class_column)
         file.close()
         training(ten_strata, class_column)
 
+        resultsFile = open('Results.txt','a+') 
+        resultsFile.write("***************************\n")
+        resultsFile.write(scrambledData[i])
+        resultsFile.write("\n***************************\n")
+        resultsFile.close()
         file = open('./processed_data/'+ scrambledData[i] +'.data','r')
         class_column = classCol[i]
         ten_strata, class_counts = stratify(file,class_column)
         file.close()
         training(ten_strata, class_column)
+
+
     
+
 main()

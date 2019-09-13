@@ -89,7 +89,7 @@ def clean_data(filename):
     clean.close()
 
 
-    
+'''  
 clean_data('breast-cancer-wisconsin')
 scramble_data('breast-cancer-wisconsin-cleaned')
 clean_data('glass')
@@ -100,3 +100,6 @@ clean_data('iris')
 scramble_data('iris-cleaned-discrete')
 clean_data('soybean-small')
 scramble_data('soybean-small-cleaned')
+'''
+
+scramble_data('glass-cleaned-discrete')

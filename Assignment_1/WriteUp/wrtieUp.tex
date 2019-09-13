@@ -12,6 +12,69 @@
 
 \maketitle
 
-\section{Introduction}
+\section{Abstract}
+
+One paragraph
+
+\section{Problem Statement}
+
+Problem statement including hypothesis
+
+\section{Description of Algorithm implemented}
+
+The algorithm used in this assignment was Naive Bayes. Naive Bayes uses probabilities to develop a model to classify data based on its attributes. It is developed from Bayes Theorem:
+\begin{center}
+    $P(A|B) = \frac{P(A)*P(B|A)}{P(B)}$
+\end{center}
+$P(A|B)$ is the probability that A occurs if B occurs, $P(B|A)$ is the probability that B occurs if A occurs, and $P(A)$ \& $P(B)$ are the probability that A and B occur, respectively. (reference: An Elementary Introduction to Statistical Learning Theory). 
+
+This theorem serves as the basis for the Naive Bayes Algorithm. This algorithm is  "naive" because the assumption is made that the attributes of each class are independent of each other. For example, this means that if a class consists of the attributes X, Y, Z the value of the X attribute has no effect on the value of the Y or Z attribute. This holds for every attribute. (reference:Machine Learning)
+
+Below is a description of the steps for the training algorithm.  
+
+First we calculate the fraction of the test data set made up by each of the classes, $c_i$, using the equation below. 
+\begin{center}
+    $Q(C=c_i) = \frac{#x\epsilon c_i}{N}$
+\end{center}
+This equation take the number of times class $i$ is seen and divides it by the total number of test data points, $N$.
+
+Each respective class is then taken and the frequency of every attribute is calculated for that class using the below equation:
+\begin{center}
+    $F(A_j = a_k, C = c_i) = \frac{#\{x_{A_j} = a_k \wedge (x \epsilon c_i)\} + 1}{N_{c_i} + d} $
+\end{center}
+where F is the frequency of attribute $a_k$ for class $c_i$, $#\{x_{A_j} = a_k \wedge (x \epsilon c_i)\}$ is the number of times attribute $a_k$ show up in class $c_i$, $N_c_i$ is the number of times class $c_i$ shows up in the training data, and $d$ is the number of attributes. The $1$ is added at the top and $d$ is added on the bottom to smooth the data in case that attribute value does not exist for that class. 
+
+From the results of the training algorithm above, the test data is then classified using the below equation:
+\begin{center}
+    $C(x) = Q(C=C_i) * \prod_{j=1}^d F(A_j = a_k, C = c_i)$
+\end{center}
+$C(x)$
+We then search for the class that has the highest C value using the $argmax$ function:
+\begin{center}
+    $class(x) = argmax\ C(x)$
+\end{center}
+Algorithm Description
+
+\section{Experimental Approach}
+
+Description of your experimental approach
+
+\section{Results}
+
+Presentation of the results of your experiments (in words, tables, and graphs)
+
+\section{Discussion}
+
+A discussion of the behavior of your algorithms, combined with any conclusions you can draw
+
+\section{Summary}
+
+Summary
+
+\section{References}
+
+References
+
+
 
 \end{document}
