@@ -180,7 +180,7 @@ def training(ten_strata, class_column):
         #confusion{class:{TP:0,FP:0,TN:0,FN:0}}
         for i in ten_strata[j]:
             actual_class = i.split(',')[class_column]
-            guess = classify(i, classAttributeFrequencies, class_column)
+            guess = classify(i, classAttributeFrequencies, class_column, test_class_counts)
             #print(guess)            
             for class_name in classAttributeFrequencies:
                 if class_name == guess and class_name == actual_class:
@@ -196,8 +196,8 @@ def training(ten_strata, class_column):
         print(confusion)
         
 
-        for key,val in confusion.items():
-            output = str(((key, " = ", val)))
+        for key in confusion:
+            output = str(key)+" = "+str(confusion[key])
             resultsFile.write(output)
             resultsFile.write("\n")
 
@@ -243,6 +243,4 @@ def main():
         file.close()
         training(ten_strata, class_column)
     
-
-
 main()

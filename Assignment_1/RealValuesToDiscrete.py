@@ -1,4 +1,24 @@
-def catData(fileName):
+import pandas as pd
+import numpy as np
+
+
+def catDataGlass():
+    try:
+        glass = pd.read_csv("glass-cleaned.csv")
+    
+    except:
+        print("nope")
+    
+    #dfm = pd.DataFrame(glass['data'])
+    #dfm.columns = glass['measurments']
+    #print(dfm.shape)  
+    #print(dfm.index)
+
+    
+
+
+
+def catDataIris(fileName):
     try:
         file = open('./processed_data/'+fileName+'.data','r')
     except:
@@ -87,7 +107,11 @@ def catData(fileName):
     
 
 def main():
-    catData("iris-cleaned")
+    #catDataIris("iris-cleaned")
+    catDataGlass()
+    print("finished")
+
+    
 
 if __name__ == "__main__":
     main()
