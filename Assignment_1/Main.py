@@ -59,75 +59,10 @@ def stratify(data,class_col): # file data, # of class column in data
 
 # need table of frequency of attribute value, given class -> F(Aj|Ci)
 
-def main():
-
-    class_column = 10 #which column the class is in
-    
-    file = open('./processed_data/glass-cleaned-scrambled.data','r')
-    #file = open('./data/house-votes-84.data','r')
 
 
-    ten_strata, class_counts = stratify(file,class_column)
-
-    file.close()
-    #print(ten_strata)
-    training = []
-    #ten fold validation
-    for j in range(10):# j is the index of the test data set in each round
-        for i in range(len(ten_strata)):
-            if(i!=j):
-                training+=(ten_strata[i])
-        #print(training)
-        global entry_num 
-        entry_num = len(training)
-        test_class_counts = classFrequency(training, class_column)
-
-        classAttributeFrequencies = classAttributeFrequency(training, class_column, test_class_counts)
-        #print(classAttributeFrequencies)
-
-        resultsFile = open('Results.txt','a')
-
-        confusion = {}
-        for class_name in classAttributeFrequencies:
-            confusion.update({class_name:{'TP':0,'FP':0,'TN':0,'FN':0}})
-        #confusion{class:{TP:0,FP:0,TN:0,FN:0}}
-        for i in ten_strata[j]:
-            actual_class = i.split(',')[class_column]
-            guess = classify(i, classAttributeFrequencies, class_column)
-            #print(guess)            
-            for class_name in classAttributeFrequencies:
-                if class_name == guess and class_name == actual_class:
-                    value = 'TP'
-                if class_name == guess and class_name != actual_class:
-                    value = 'FP'
-                if class_name != guess and class_name == actual_class:
-                    value = 'FN'
-                if class_name != guess and class_name != actual_class:
-                    value = 'TN'
-                confusion[class_name][value] += 1
-        
-        print(confusion)
-        
-
-        for key,val in confusion.items():
-            output = str(((key, " = ", val)))
-            resultsFile.write(output)
-            resultsFile.write("\n")
 
 
-        
-        for class_name in classAttributeFrequencies:
-            total = confusion[class_name]['TP'] + confusion[class_name]['FP'] + confusion[class_name]['TN'] + confusion[class_name]['FN']
-            accuracy = (confusion[class_name]['TP'] + confusion[class_name]['TN'])/ total
-            #print('Accuracy-'+class_name+": "+str(accuracy))
-            resultsFile.write('Accuracy-'+class_name+": "+str(accuracy))
-            positives = confusion[class_name]['TP'] + confusion[class_name]['FP']
-            try:
-                precision = confusion[class_name]['TP'] / positives
-            except:
-                precision = 'INF'
-            #print('Precision-'+class_name+": "+str(precision))
-            resultsFile.write('Precision-'+class_name+": "+str(precision))
 
         
 
@@ -179,7 +114,7 @@ def classAttributeFrequency(data_set, class_col, class_counts):
     return attribute_probability
 
 #returns the probability that an example is of a class...
-def classify(example, attribute_probability, class_col): 
+def classify(example, attribute_probability, class_col, class_counts): 
     prob_calc = {} # Stores the probability of the example appearing in the dataset - probability:class
     columns = example.split(",") # Turns the string into a list, separated by commas
     #class_name = columns[class_col]
@@ -187,7 +122,7 @@ def classify(example, attribute_probability, class_col):
         #for j in range(len(columns)):
             #print("key class", key_class)
             #prob_calc[key_class] = class_frequency
-        class_prob = 1 #class frequency
+        class_prob = class_counts[key_class]/class_counts['total'] #class frequency
         for example_col in range(len(columns)):
             if(example_col!=class_col):
                 attr_value = columns[example_col]
@@ -220,5 +155,94 @@ def classFrequency(data,class_col):
         total += 1
     class_freq.update([('total',total)])
     return class_freq
+
+def training(ten_strata, class_column):
+    #print(ten_strata)
+    training = []
+    #ten fold validation
+    for j in range(10):# j is the index of the test data set in each round
+        for i in range(len(ten_strata)):
+            if(i!=j):
+                training+=(ten_strata[i])
+        #print(training)
+        global entry_num 
+        entry_num = len(training)
+        test_class_counts = classFrequency(training, class_column)
+
+        classAttributeFrequencies = classAttributeFrequency(training, class_column, test_class_counts)
+        #print(classAttributeFrequencies)
+
+        resultsFile = open('Results.txt','a')
+
+        confusion = {}
+        for class_name in classAttributeFrequencies:
+            confusion.update({class_name:{'TP':0,'FP':0,'TN':0,'FN':0}})
+        #confusion{class:{TP:0,FP:0,TN:0,FN:0}}
+        for i in ten_strata[j]:
+            actual_class = i.split(',')[class_column]
+            guess = classify(i, classAttributeFrequencies, class_column)
+            #print(guess)            
+            for class_name in classAttributeFrequencies:
+                if class_name == guess and class_name == actual_class:
+                    value = 'TP'
+                if class_name == guess and class_name != actual_class:
+                    value = 'FP'
+                if class_name != guess and class_name == actual_class:
+                    value = 'FN'
+                if class_name != guess and class_name != actual_class:
+                    value = 'TN'
+                confusion[class_name][value] += 1
+        
+        print(confusion)
+        
+
+        for key,val in confusion.items():
+            output = str(((key, " = ", val)))
+            resultsFile.write(output)
+            resultsFile.write("\n")
+
+
+        
+        for class_name in classAttributeFrequencies:
+            total = confusion[class_name]['TP'] + confusion[class_name]['FP'] + confusion[class_name]['TN'] + confusion[class_name]['FN']
+            accuracy = (confusion[class_name]['TP'] + confusion[class_name]['TN'])/ total
+            #print('Accuracy-'+class_name+": "+str(accuracy))
+            resultsFile.write(' Accuracy-'+class_name+": "+str(accuracy))
+            positives = confusion[class_name]['TP'] + confusion[class_name]['FP']
+            try:
+                precision = confusion[class_name]['TP'] / positives
+            except:
+                precision = 'INF'
+            #print('Precision-'+class_name+": "+str(precision))
+            resultsFile.write(' Precision-'+class_name+": "+str(precision))
+        
+        resultsFile.close()
+        
+    #average our loss functions
+    
+
+
+
+
+def main():
+
+    cleanDiscreteData = ["breast-cancer-wisconsin-cleaned", "glass-cleaned", "house-votes-84", "iris-cleaned-discrete", "soybean-small-cleaned"]
+    scrambledData = ["breast-cancer-wisconsin-cleaned-scrambled", "glass-cleaned-scrambled", "house-votes-84-scrambled", "iris-cleaned-discrete-scrambled", "soybean-small-cleaned-scrambled"]
+    classCol = [10, 10, 0, 4, 35]
+
+    for i in range(len(classCol)):
+        file = open('./processed_data/'+ cleanDiscreteData[i] +'.data','r')
+        class_column = classCol[i]
+        ten_strata, class_counts = stratify(file,class_column)
+        file.close()
+        training(ten_strata, class_column)
+
+        file = open('./processed_data/'+ scrambledData[i] +'.data','r')
+        class_column = classCol[i]
+        ten_strata, class_counts = stratify(file,class_column)
+        file.close()
+        training(ten_strata, class_column)
+    
+
 
 main()
