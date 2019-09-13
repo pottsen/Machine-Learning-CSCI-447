@@ -1,23 +1,35 @@
-\documentclass{article}
+\documentclass[twoside,11pt]{article}
 \usepackage[utf8]{jmlr2e}
 
-\title{CSCI 447 Machine Learning}
-\author{Peter Ottsen, Bruce Clark, Justin McGowen, Forest Edwards}
-\date{September 2019}
+\jmlrheading{Format}{2019}{5}{9/19}{9/19}{Assign1}{Peter Ottsen\u{a} and Bruce Clark\u{a} Justin McGowen\u{a} Forest Edwards}
+
+\ShortHeadings{CSCI 447 Machine Learning Assignment 1}{{Ottsen, Clark, McGowen, Edwards}}
 
 \begin{document}
 
+\title{CSCI 447 Machine Learning Assignment 1}
+
+\author{\name Peter Ottsen \email peter.k.ottsen@gmail.com\\
+\name Bruce Clark \email brucewestonmt@gmail.com\\
+\name Forest Edwards \email forestjedwards@gmail.com\\
+\name Justin McGowen \email jmpanthers15@gmail.com}
+
+\editor{None}
+
 \maketitle
 
-\section{Abstract}
+\begin{abstract}%
 
-One paragraph
+This paper contains the algorithm, experimental approach, results, and discussion of the first assignment.  Naive Bayes was the algorithm given for the assignment due to its relatively straightforward implementation. Five different data sets were used on the algorithm. Once the data sets were cleaned and processed, ten-fold cross-validation was used for each set and the accuracy and precision were recorded. Ten percent of the data in each data set was then scrambled and ten-fold cross-validation was again used with accuracy and precision being recorded.  The accuracy and precision of the scrambled vs non-scrambled data is discussed and theories for differences are offered.
+
+\end{abstract}
 
 \section{Problem Statement}
 
 Problem statement including hypothesis
 
-Searching for trends and patterns in data can prove to be quite a difficult and time-consuming challenge for data analysts, especially when they are dealing with very large ammounts of data.  A more efficient method of analysis can be far more beneficial for finding data patterns.  The Naive Bayes algorithm can be very useful tool for this, as it can predict patterns in a dataset with high accuracy, by only using a small fraction of the data.  
+Searching for trends and patterns in data can prove to be quite a difficult and time-consuming challenge for data analysts, especially when they are dealing with very large amounts of data.  A more efficient method of analysis can be far more beneficial for finding data patterns.  The Naive Bayes algorithm can be very useful tool for this, as it can predict patterns in a dataset with high accuracy, by only using a small fraction of the data.  
+
 In order to get a more accurate prediction for patterns in our data, we hypothesize that running the algorithm on the randomly scrambled data will be more accurate than running it on the ordered dataset.  We say this because a scrambled sample of data will be an unbiased, and more representative sample of the entire dataset.  This is important as it means that these randomized samples will be better at predicting patterns in the entire dataset.
 
 \section{Description of Algorithm implemented}
@@ -28,7 +40,7 @@ The algorithm used in this assignment was Naive Bayes. Naive Bayes uses probabil
 \end{center}
 $P(A|B)$ is the probability that A occurs if B occurs, $P(B|A)$ is the probability that B occurs if A occurs, and $P(A)$ \& $P(B)$ are the probability that A and B occur, respectively. (reference: An Elementary Introduction to Statistical Learning Theory). 
 
-This theorem serves as the basis for the Naive Bayes Algorithm. This algorithm is  "naive" because the assumption is made that the attributes of each class are independent of each other. For example, this means that if a class consists of the attributes X, Y, Z the value of the X attribute has no effect on the value of the Y or Z attribute. This holds for every attribute. (reference:Machine Learning)
+This theorem serves as the basis for the Naive Bayes Algorithm. This algorithm is  "naive" because the assumption is made that the attributes of each class are independent of each other. For example, this means that if a class consists of the attributes X, Y, Z the value of the X attribute has no effect on the value of the Y or Z attribute. This holds for each attribute. (reference:Machine Learning)
 
 Below is a description of the steps for the training algorithm.  
 
@@ -74,10 +86,9 @@ The evaluation methods or loss function used were accuracy and precision. These 
 \section{Results}
 
 Presentation of the results of your experiments (in words, tables, and graphs)
-We set out to try to figure out if introducing noise into a data set would improve the ability of our naive bayes algorithm. We tested our data sets with and without noise with ten fold validation and with with a confusion matrix.\\
+We set out to try to figure out if introducing noise into a data set would improve the ability of our naive bayes algorithm. We tested our data sets with and without noise with a ten-fold cross-validation and with with a confusion matrix. The extensive results of these tests can be found in our results.txt folder in our folder. I will summarize the massive amounts of data generated by these data sets here.
 
-
-
+In reguards to our ten-fold cross-validation, we averaged the accuracies and we found when testing the ten-fold cross-validation. We then averaged the accuracy between the classes here:
 
 
 \begin{figure}[htp]
@@ -86,7 +97,20 @@ We set out to try to figure out if introducing noise into a data set would impro
 \end{figure}
 
 
-th
+We can see that in general our scrambled data was less was less accurate than our regular data except in the glass dataset.
+
+Taking a look at these results side by side shows differences in results we get upon scrambling our data. Here we can clearly see the differences between three important datasets.
+
+\begin{center}
+\includegraphics[width=10cm]{iris.png}
+\end{center}
+\begin{center}
+\includegraphics[width=10cm]{breastCan.png}
+
+
+\includegraphics[width=10cm]{soybean.png}
+\end{center}
+
 
 
 
@@ -94,9 +118,9 @@ th
 
 A discussion of the behavior of your algorithms, combined with any conclusions you can draw
 
-Our algorithm usually had a slight decrease in effectively predicting the correct class when we introduced randomized data to our data set. When we introduced scrambled data, our data set would containg 10\% randomized data. What is interesting is that most of the time, the accuracy of predicting the classes of data sets with random data was not 10\% less than the accuracy of data that was not randomized.
+Our algorithm usually had a slight decrease in effectively predicting the correct class when we introduced randomized data to our data set. When we introduced scrambled data, our data set would contain 10\% randomized data. What is interesting is that most of the time, the accuracy of predicting the classes of data sets with random data was not 10\% less than the accuracy of data that was not randomized.
 
-Naive Bayes assumes classes and attributes are independent. We know that two of the three classes in Iris are not independent of each other. When predicting these classes, the class that is independent of the other two was predicted with over 90\% accuracy. What is suprizing is that the two classes that are not linearly independent of eachother were still able to be predicted with over 70\% accuracy.
+Naive Bayes assumes classes and attributes are independent. We know that two of the three classes in Iris are not independent of each other. When predicting these classes, the class that is independent of the other two was predicted with over 90\% accuracy. What is surprising is that the two classes that are not linearly independent of each other were still able to be predicted with over 70\% accuracy.
 
 In the soybeans data set, we noticed that some of the classes are strictly dependent on certain attributes. An example of this would be that attribute #26 is only value 2 when the class is D2. This was the set where our model was able to predict the class 100\% accurately. This leads us to draw the conclusion that this type of classification is more accurate when attributes have a stronger force on determining the class. 
 
