@@ -7,9 +7,6 @@
 
 \begin{document}
 
-
-
-
 \maketitle
 
 \section{Abstract}
@@ -19,6 +16,9 @@ One paragraph
 \section{Problem Statement}
 
 Problem statement including hypothesis
+
+Searching for trends and patterns in data can prove to be quite a difficult and time-consuming challenge for data analysts, especially when they are dealing with very large ammounts of data.  A more efficient method of analysis can be far more beneficial for finding data patterns.  The Naive Bayes algorithm can be very useful tool for this, as it can predict patterns in a dataset with high accuracy, by only using a small fraction of the data.  
+In order to get a more accurate prediction for patterns in our data, we hypothesize that running the algorithm on the randomly scrambled data will be more accurate than running it on the ordered dataset.  We say this because a scrambled sample of data will be an unbiased, and more representative sample of the entire dataset.  This is important as it means that these randomized samples will be better at predicting patterns in the entire dataset.
 
 \section{Description of Algorithm implemented}
 
@@ -48,16 +48,19 @@ From the results of the training algorithm above, the test data is then classifi
 \begin{center}
     $C(x) = Q(C=C_i) * \prod_{j=1}^d F(A_j = a_k, C = c_i)$
 \end{center}
-$C(x)$
-We then search for the class that has the highest C value using the $argmax$ function:
+$C(x)$ is an array of values corresponding to the probabilities that the given test data belongs to each class. We then search for the class that has the highest relative probability value using the $argmax$ function:
 \begin{center}
     $class(x) = argmax\ C(x)$
 \end{center}
-Algorithm Description
+This class, $class(x)$, is then the predicted class for the test data.
 
 \section{Experimental Approach}
 
-Description of your experimental approach
+The first thing we did when approaching this project was to examine the data and determined pre-processing was needed. The breast cancer data set was missing values so we randomly generated attribute values to fill them. The iris and glass data sets needed to be transformed into discrete values. We used the Gaussian distribution to split the attributes into four equally populated categories for these data sets.
+
+Ten-fold validation was used to test accuracy of the algorithm.  Each data set was split into ten sub-sets, where nine of the ten were used to train the algorithm and the tenth was used to test the algorithm. This was done ten times over so that each sub-set served as the test data once. 
+
+Data scrambling was used to test the resiliency of the algorithm. Once we tested the algorithm with ten-fold validation for each data set, ten percent of the data set was scrambled to have random values. These scrambled data sets were then tested on the algorithm using the same ten-fold validation method described above.  
 
 \section{Results}
 
@@ -75,6 +78,18 @@ Summary
 
 References
 
+Data Sets:
 
+Wolberg, William H. Dr. "Wisconsin Breast Cancer Database", January 8 1991.
+
+German, B. "Glass Identification Database", September 1987.
+
+Congressional Quarterly Almanac, 98th Congress, 2nd session 1984, Volume XL: Congressional Quarterly Inc. Washington, D.C., 1985. "1984 United States Congressional Voting Records Database", April 27 1987.
+
+Fisher, R.A. "Iris Plants Database", July 1988.
+
+Michalski,R.S. "Small Soybean Database", 1987.
+
+“A Gentle Introduction to k-Fold Cross-Validation.” Machine Learning Mastery, 8 Aug. 2019, https://machinelearningmastery.com/k-fold-cross-validation/.
 
 \end{document}
