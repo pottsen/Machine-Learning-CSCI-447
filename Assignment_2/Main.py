@@ -103,7 +103,6 @@ def main():
     
     #load data into pandas--> data_frames[[data_file_Name, dataFrame] , .....]
     data_frames = load_data()
-    print(data_frames)
     
 
     # suffle Data
@@ -111,7 +110,7 @@ def main():
 
     # clean Data
     # must turn string values into numbers
-    clean_data(data_frames)
+    #clean_data(data_frames)
 
     # Descretize Data
     # With kNN It is not nesessary
