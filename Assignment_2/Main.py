@@ -1,10 +1,10 @@
 import pandas as pd
 import numpy as np
 
-def suffle_pd_df(data_frames):
+def shuffle_pd_df(data_frames):
     for i in range(len(data_frames)):
-        suffled_data_frame = data_frames[i][1].sample(frac=1)
-        data_frames[i][1] = suffled_data_frame
+        shuffled_data_frame = data_frames[i][1].sample(frac=1)
+        data_frames[i][1] = shuffled_data_frame
     return data_frames
 
 
@@ -30,34 +30,49 @@ def clean_data(data_frames):
     
     #abalone
     abalone = {"M":"1", "F":"2", "I":"3"}
-    data_frames[0][1].replace(abalone)
+    data_frames[0][1] = data_frames[0][1].replace(abalone)
 
     #car
     car = {"v-high":"4", "high":"3", "med":"2", "low":"1", "5-more":"5", "more":"6" 
     ,"small":"1", "big":"3"}
-    data_frames[1][1].replace(car)
+    data_frames[1][1] = data_frames[1][1].replace(car)
 
     #forestfires
     forrestfires = {"jan":"1", "feb":"2", "mar":"3", "apr":"4", "may":"5", "jun":"6", "jul":"7",
     "aug":"8", "sep":"9", "oct":"10", "nov":"11", "dec":"12", "sun":"1", "mon":"2", 
     "tue":"3", "wed":"4", "thu":"5", "fri":"6", "sat":"7"}
-    data_frames[2][1].replace(forrestfires)
+    data_frames[2][1] = data_frames[2][1].replace(forrestfires)
     
+
     #machine
-    machine = {}
-    vendors = "adviser, amdahl, apollo, basf, bti, burroughs, c.r.d, cambex, cdc, dec, dg, formation, four-phase, gould, honeywell, hp, ibm, ipl, magnuson, microdata, nas, ncr, nixdorf, perkin-elmer, prime, siemens, sperry, sratus, wang"
+    vendors = "adviser, amdahl, apollo, basf, bti, burroughs, c.r.d, cambex, cdc, dec, dg, formation, four-phase, gould, harris, honeywell, hp, ibm, ipl, magnuson, microdata, nas, ncr, nixdorf, perkin-elmer, prime, siemens, sperry, sratus, wang"
     vendors = vendors.split(", ")
+    
+    values = []
     for i in range(len(vendors)):
-        machine.update(vendors[i] = str(i+1))
-    data_frames[3][1].replace(machine)
-    data_frames[[]]
+        values.append(str(i+1))
 
-    data_frames[3][1]
+    machine = dict(zip(vendors, values))
+    data_frames[3][1] = data_frames[3][1].replace(machine)
+    
+    unique_values = data_frames[3][1]["1"].unique().tolist()
+    values = []
+    for i in range(len(unique_values)):
+        values.append(str(i+1))
+    machine = dict(zip(unique_values, values))
+    data_frames[3][1] = data_frames[3][1].replace(machine)
+    print(data_frames[3][1])
+    
 
-
-    data_frames[4][1]
-    data_frames[5][1]
-
+    #segmentation
+    #data_frames[4][1]
+    #no cleaning needed
+    
+    #wine
+    #data_frames[5][1]
+    #no clearning needed
+    
+    return data_frames
 
 
 def load_data():
@@ -105,12 +120,12 @@ def main():
     data_frames = load_data()
     
 
-    # suffle Data
-    data_frames = suffle_pd_df(data_frames)
+    # shuffle Data
+    data_frames = shuffle_pd_df(data_frames)
 
     # clean Data
     # must turn string values into numbers
-    #clean_data(data_frames)
+    clean_data(data_frames)
 
     # Descretize Data
     # With kNN It is not nesessary
