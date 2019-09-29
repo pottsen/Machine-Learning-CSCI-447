@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from K_Nearest import nearest_k_points
 
 def shuffle_pd_df(data_frames):
     for i in range(len(data_frames)):
@@ -21,7 +22,6 @@ def slice_pd_df_using_np(sections, data_frames):
 
     return data_frames
     
-
 
 def clean_data(data_frames):
     #figure out what columns have strings
@@ -61,7 +61,6 @@ def clean_data(data_frames):
         values.append(str(i+1))
     machine = dict(zip(unique_values, values))
     data_frames[3][1] = data_frames[3][1].replace(machine)
-    print(data_frames[3][1])
     
 
     #segmentation
@@ -129,14 +128,17 @@ def main():
 
     # Descretize Data
     # With kNN It is not nesessary
-    # kNN is a lacy algorithm
+    # kNN is a lazy algorithm
 
     #cut the data into ten for validation
     #divide_data(10)
+    #data_frames = [[(String)name, [slice1][slice2][slice3][sliceN]], ...]
     number_of_sections = 10
     data_frames = slice_pd_df_using_np(number_of_sections, data_frames)
     
     #perform the nearest neighbor algorithm
+    #print(data_frames[5][1][0])
+    nearest_k_points(3, data_frames[5][1][0])
 
 
 
