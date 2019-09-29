@@ -138,8 +138,8 @@ def main():
     data_frames = slice_pd_df_using_np(number_of_sections, data_frames)
     
     #perform the nearest neighbor algorithm
-    nearest_k_points(3, data_frames[5][1][0], data_frames[5][1][0].iloc[0])
-    #k_nearst_neighbor(3, data_frames)
+    #nearest_k_points(1, data_frames[5][1][0], data_frames[5][1][0].iloc[0])
+    k_nearst_neighbor(3, data_frames)
 
 
 
