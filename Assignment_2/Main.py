@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from K_Nearest import nearest_k_points
+from K_Nearest import k_nearst_neighbor
 
 def shuffle_pd_df(data_frames):
     for i in range(len(data_frames)):
@@ -132,16 +133,16 @@ def main():
 
     #cut the data into ten for validation
     #divide_data(10)
-    #data_frames = [[(String)name, [slice1][slice2][slice3][sliceN]], ...]
+    #data_frames = [[(String)name, [[slice1][slice2][slice3][sliceN]]], ...]
     number_of_sections = 10
     data_frames = slice_pd_df_using_np(number_of_sections, data_frames)
     
     #perform the nearest neighbor algorithm
-    #print(data_frames[5][1][0])
-    nearest_k_points(3, data_frames[5][1][0])
-
+    nearest_k_points(3, data_frames[5][1][0], data_frames[5][1][0].iloc[0])
+    #k_nearst_neighbor(3, data_frames)
 
 
 
 if __name__ == "__main__":
     main()
+
