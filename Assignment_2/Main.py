@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from K_Nearest import nearest_k_points
-from K_Nearest import k_nearst_neighbor
+from K_Nearest import k_nearest_neighbor
 
 def shuffle_pd_df(data_frames):
     for i in range(len(data_frames)):
@@ -10,7 +10,7 @@ def shuffle_pd_df(data_frames):
     return data_frames
 
 
-
+#TODO: Two functions?
 def slice_pd_df_using_np(sections, data_frames):
     
     for i in range(len(data_frames)):
@@ -44,7 +44,7 @@ def clean_data(data_frames):
     "tue":"3", "wed":"4", "thu":"5", "fri":"6", "sat":"7"}
     data_frames[2][1] = data_frames[2][1].replace(forrestfires)
     
-
+    # TODO: clean up variables better ??
     #machine
     vendors = "adviser, amdahl, apollo, basf, bti, burroughs, c.r.d, cambex, cdc, dec, dg, formation, four-phase, gould, harris, honeywell, hp, ibm, ipl, magnuson, microdata, nas, ncr, nixdorf, perkin-elmer, prime, siemens, sperry, sratus, wang"
     vendors = vendors.split(", ")
@@ -68,6 +68,7 @@ def clean_data(data_frames):
     #data_frames[4][1]
     #no cleaning needed
     
+    # TODO: use new wine data
     #wine
     #data_frames[5][1]
     #no clearning needed
@@ -139,7 +140,7 @@ def main():
     
     #perform the nearest neighbor algorithm
     #nearest_k_points(1, data_frames[5][1][0], data_frames[5][1][0].iloc[0])
-    k_nearst_neighbor(3, data_frames)
+    k_nearest_neighbor(3, data_frames)
 
 
 
