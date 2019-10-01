@@ -6,7 +6,7 @@ import pandas as pd
 #input k -> how many nearest points to return
 #input dataframe -> the dataset to search in
 #input example -> 
-#return -> [[index, 1st_closest_distance], [index, 2nd_closest_distance]...]
+#return -> [[index, 1st_closest_distance, class], [index, 2nd_closest_distance, class]...]
 def nearest_k_points(k, dataframe, example):
     if (len(example)) != (len(dataframe.iloc[0])):
         raise Exception ("example and dataframe row are not the same length")
@@ -17,10 +17,12 @@ def nearest_k_points(k, dataframe, example):
     distances = []
     for index, row in dataframe.iterrows():
         distance = 0
+        row_class = row[0]
         #dont use the first column = class
         for i in range(len(row)-1):
             distance += (float(example[i+1]) - float(row[i+1])) ** 2
-        distances.append([index, distance])
+        distances.append([index, distance, row_class])
+    
     
     #find k number of smallest distances from distances
     closest = []
@@ -29,10 +31,11 @@ def nearest_k_points(k, dataframe, example):
         smallest_list = distances[0]
         for index_distance in range(len(distances)):
             if smallest > distances[index_distance][1]:
+                #return the class 
                 smallest_list = distances[index_distance]
         
         closest.append(smallest_list)
-        distances.remove([smallest_list[0], smallest_list[1]])
+        distances.remove([smallest_list[0], smallest_list[1], smallest_list[2]])
     
     return closest
 
@@ -48,44 +51,36 @@ def concat_df(sliced_dataframes):
     return single_dataframe
 
 #should make it so we only pass in a split data frame and a k
-def k_nearest_neighbor(k, dataframes):
-    
-    test_data_index = 0
-    test_data = dataframes[0][1].pop(test_data_index)
-    training_data = concat_df(dataframes[0][1])
-    
+#def k_nearest_neighbor(k, dataframes):
+def k_nearest_neighbor(k, training_data, test_data):
+  
+    all_guesses = []
     #take each row of our test_data and find KNN in training_data
-    #is that collumns or rows
+    #is that collumns or rows??
     for i in range(len(test_data)):
         k_closest = nearest_k_points(k, training_data, test_data.iloc[i])
-        print(k_closest)
-        #get the class
+        
+        actual_class = test_data.iloc[i, 0]
+        #average the class
+        guesses = []
+        for j in range(k):
+            guesses.append(k_closest[j][-1])
+        
+        guesses = max(set(guesses), key = guesses.count) 
 
-        #for j in range(k):
-        #    guesses = []
-            #print(training_data.iloc[k_closest[j][0]])
-            #get classes of the k
-            #guesses.append(training_data.iloc[k_closest[j][0], 0])
-            #print(guesses)
-        #print(test_data.iloc[i, 0])
-        # make prediction    
+        #print('actual = '+actual_class+' predicted = '+guesses)
+
+        all_guesses.append([actual_class, guesses])
+    
+    return all_guesses
 
 
 def k_nearest_neighbor_pilot(k, dataframes):
-    test_data_index = 0
-    test_data = dataframes[0][1].pop(test_data_index)
-    training_data = concat_df(dataframes[0][1])
+    
+    for i in range(len(dataframes[0][1])):
+        print("test data set: " + i)
+        test_data = dataframes[0][1].pop(i)
+        training_data = concat_df(dataframes[0][1])
 
-    # k_nearest_neighbor(k,training_data, test_data)
+
         
-
-def cross_validation(k, dataframes, algorithm_name):
-    folds = 10
-    if algorithm_name == 'k-nn':
-        for i in range(folds):
-            test_data = dataframes[0][i].pop(i)
-            training_data = concat_df(dataframes[0][i])
-
-            # guessed_classes = k_nearest_neighbor(k,training_data, test_data)
-
-            #TODO Loss functions here

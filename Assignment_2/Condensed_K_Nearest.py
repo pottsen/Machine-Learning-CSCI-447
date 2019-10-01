@@ -1,2 +1,2 @@
-def condensed_k_nearest(k, training_set):
+def condensed_k_nearest(): 
     

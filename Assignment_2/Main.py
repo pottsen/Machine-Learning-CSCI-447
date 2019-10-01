@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
-from K_Nearest import nearest_k_points
-from K_Nearest import k_nearest_neighbor
+from K_Nearest import nearest_k_points, concat_df, k_nearest_neighbor
+
 
 def shuffle_pd_df(data_frames):
     for i in range(len(data_frames)):
@@ -112,15 +112,45 @@ def load_data():
 
     return dataFrames
     
+def cross_validation(k, dataframes, algorithm_name):
+    folds = 10
+    if algorithm_name == 'k-nn':
+        for i in range(folds):
+            # print(dataframes[1])
+            test_data = dataframes[1].pop(i)
+            #print(test_data)
+            training_data = concat_df(dataframes[1])
 
+            guessed_classes = k_nearest_neighbor(k,training_data, test_data)
+            print(guessed_classes)
 
+            #TODO Loss functions here
+    if algorithm_name == 'condensed':
+        for i in range(folds):
+            test_data = dataframes[1].pop(i)
+            training_data = concat_df(dataframes[1])
+
+            guessed_classes = Condensed_k_nearest(k,training_data, test_data)
+
+            #TODO Loss functions here
+
+    if algorithm_name == 'edited':
+        for i in range(folds):
+            # print(dataframes[1])
+            test_data = dataframes[1].pop(i)
+            #print(test_data)
+            training_data = concat_df(dataframes[1])
+
+            guessed_classes = k_nearest_neighbor(k,training_data, test_data)
+            print(guessed_classes)
+
+            #TODO Loss functions here
 
 def main():
     
     #load data into pandas--> data_frames[[data_file_Name, dataFrame] , .....]
     data_frames = load_data()
     
-
     # shuffle Data
     data_frames = shuffle_pd_df(data_frames)
 
@@ -140,8 +170,7 @@ def main():
     
     #perform the nearest neighbor algorithm
     #nearest_k_points(1, data_frames[5][1][0], data_frames[5][1][0].iloc[0])
-    k_nearest_neighbor(3, data_frames)
-
+    cross_validation(67,data_frames[0],'k-nn')
 
 
 if __name__ == "__main__":
