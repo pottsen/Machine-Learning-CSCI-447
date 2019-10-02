@@ -75,12 +75,7 @@ def k_nearest_neighbor(k, training_data, test_data):
     return all_guesses
 
 
-def k_nearest_neighbor_pilot(k, dataframes):
-    
-    for i in range(len(dataframes[0][1])):
-        print("test data set: " + i)
-        test_data = dataframes[0][1].pop(i)
-        training_data = concat_df(dataframes[0][1])
+
 
 
         

@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from Edited_K_Nearest import edited_k_nearest
 from K_Nearest import nearest_k_points, concat_df, k_nearest_neighbor
 
 
@@ -130,21 +131,17 @@ def cross_validation(k, dataframes, algorithm_name):
             test_data = dataframes[1].pop(i)
             training_data = concat_df(dataframes[1])
 
-            guessed_classes = Condensed_k_nearest(k,training_data, test_data)
+            #guessed_classes = Condensed_k_nearest(k,training_data, test_data)
 
             #TODO Loss functions here
 
     if algorithm_name == 'edited':
         for i in range(folds):
-            # print(dataframes[1])
             test_data = dataframes[1].pop(i)
-            #print(test_data)
             training_data = concat_df(dataframes[1])
-
+            training_data = edited_k_nearest(k, training_data)
             guessed_classes = k_nearest_neighbor(k,training_data, test_data)
-            print(guessed_classes)
-
-            #TODO Loss functions here
+            
 
 def main():
     
@@ -170,9 +167,17 @@ def main():
     
     #perform the nearest neighbor algorithm
     #nearest_k_points(1, data_frames[5][1][0], data_frames[5][1][0].iloc[0])
-    cross_validation(67,data_frames[0],'k-nn')
+    #cross_validation(67,data_frames[0],'k-nn')
+
+
+    #Test EditedK_Neatest
+    cross_validation(13, dataframes[4] , edited)
+
+
+    
 
 
 if __name__ == "__main__":
     main()
+    
 
