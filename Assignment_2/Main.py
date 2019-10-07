@@ -10,17 +10,16 @@ def shuffle_pd_df(data_frames):
         data_frames[i][1] = shuffled_data_frame
     return data_frames
 
+#takes single df with number of sections
+#returns dataframe[section]
+def slicer(sections, dataframe):   
+    return np.array_split(dataframe, 10)
 
-#TODO: Two functions?
+
+#goes through each file(df) and passes to slicer
 def slice_pd_df_using_np(sections, data_frames):
-    
     for i in range(len(data_frames)):
-        valid = False
-        while(valid == False):
-            new_df = np.array_split(data_frames[i][1], 10)
-            valid = True
-            data_frames[i][1] = new_df
-            
+        data_frames[i][1]
 
     return data_frames
     
