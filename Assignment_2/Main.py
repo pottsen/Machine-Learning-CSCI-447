@@ -147,6 +147,7 @@ def process_data():
     df_white = name_pd_df_columns(df_white)
     combined_df = concat_df([df_red, df_white])
     write_dataframe_csv(combined_df, "./data/wine")
+    
 
 
     #load data into pandas--> data_frames[[data_file_Name, dataFrame] , .....]
@@ -209,29 +210,29 @@ def main():
     process_data()
 
     #load processed data into dataframes 
-    files = [["abalone_processed", 0],
-             ["car_processed", 0],
-             ["forestfires_processed", 0],
-             ["machine_processed", 0],
-             ["segmentation_processed", 0],
-             ["wine_processed", 0]] 
-    data_frames = load_data(files, "./processed/")
+    # files = [["abalone_processed", 0],
+    #          ["car_processed", 0],
+    #          ["forestfires_processed", 0],
+    #          ["machine_processed", 0],
+    #          ["segmentation_processed", 0],
+    #          ["wine_processed", 0]] 
+    # data_frames = load_data(files, "./processed/")
 
     #cut the data into ten for validation
     #data_frames = [[(String)name, [[slice1][slice2][slice3][sliceN]]], ...]
-    number_of_sections = 10
-    data_frames = slice_pd_df_using_np(number_of_sections, data_frames)
-    return data_frames
+    #number_of_sections = 5
+    #data_frames = slice_pd_df_using_np(number_of_sections, data_frames)
+    #return data_frames
 
     #define our K Values
-    k = [13, 37,61]
-    
-    #perform the nearest neighbor algorithm
-    cross_validation(67,data_frames[0],'k-nn')
+    #k = [13, 37,61]
 
-
-    #Test EditedK_Neatest
-    cross_validation(13, data_frames[4] , "edited")
+    #for num in k:    
+    #    #perform the nearest neighbor algorithm
+    #    cross_validation(num,data_frames[0],'k-nn')
+    #
+    #    #Test EditedK_Neatest
+    #   cross_validation(num, data_frames[4] , "edited")
 
 
     
