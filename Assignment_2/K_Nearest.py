@@ -45,9 +45,9 @@ def nearest_k_points(k, dataframe, example):
 def concat_df(sliced_dataframes):
     if (len(sliced_dataframes)) < 2:
         return sliced_dataframes
-    single_dataframe = pd.concat([sliced_dataframes[0], sliced_dataframes[1]], sort=False)
+    single_dataframe = pd.concat([sliced_dataframes[0], sliced_dataframes[1]])
     for i in range(len(sliced_dataframes)-2):
-        single_dataframe = pd.concat([single_dataframe, sliced_dataframes[i+2]], sort=False)
+        single_dataframe = pd.concat([single_dataframe, sliced_dataframes[i+2]])
     return single_dataframe
 
 #should make it so we only pass in a split data frame and a k

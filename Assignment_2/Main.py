@@ -112,6 +112,7 @@ def load_data():
 
     return dataFrames
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 #writes processed data to csv file
@@ -137,6 +138,8 @@ def process_data():
     #load data into pandas--> data_frames[[data_file_Name, dataFrame] , .....]
     data_frames = load_data(files, "./data/")
 >>>>>>> parent of aeab7f7... Update Main.py
+=======
+>>>>>>> parent of 149a511... added new wine data, cleaned up the data cleaning proccess, made it so
     
 def cross_validation(k, dataframes, algorithm_name):
     folds = 10
@@ -190,6 +193,7 @@ def main():
     number_of_sections = 10
     data_frames = slice_pd_df_using_np(number_of_sections, data_frames)
 <<<<<<< HEAD
+<<<<<<< HEAD
     
     #perform the nearest neighbor algorithm
     #nearest_k_points(1, data_frames[5][1][0], data_frames[5][1][0].iloc[0])
@@ -209,10 +213,16 @@ def main():
 >>>>>>> parent of aeab7f7... Update Main.py
 =======
 >>>>>>> parent of aeab7f7... Update Main.py
+=======
+    
+    #perform the nearest neighbor algorithm
+    #nearest_k_points(1, data_frames[5][1][0], data_frames[5][1][0].iloc[0])
+>>>>>>> parent of 149a511... added new wine data, cleaned up the data cleaning proccess, made it so
     #cross_validation(67,data_frames[0],'k-nn')
 
 
     #Test EditedK_Neatest
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -226,6 +236,9 @@ def main():
 =======
     #cross_validation(13, data_frames[4] , "edited")
 >>>>>>> parent of aeab7f7... Update Main.py
+=======
+    cross_validation(13, dataframes[4] , edited)
+>>>>>>> parent of 149a511... added new wine data, cleaned up the data cleaning proccess, made it so
 
 
     
