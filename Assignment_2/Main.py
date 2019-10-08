@@ -68,7 +68,7 @@ def clean_data(data_frames):
     #data_frames[4][1]
     #no cleaning needed
     
-    # TODO: use new wine data
+    
     #wine
     #data_frames[5][1]
     #no clearning needed
