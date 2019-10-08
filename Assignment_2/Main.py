@@ -203,6 +203,9 @@ def main():
     #perform the nearest neighbor algorithm
     nearest_k_points(1, data_frames[5][1][0], data_frames[5][1][0].iloc[0])
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of aeab7f7... Update Main.py
+=======
 >>>>>>> parent of aeab7f7... Update Main.py
 =======
 >>>>>>> parent of aeab7f7... Update Main.py
@@ -212,7 +215,11 @@ def main():
     #Test EditedK_Neatest
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     cross_validation(13, dataframes[4] , edited)
+=======
+    #cross_validation(13, data_frames[4] , "edited")
+>>>>>>> parent of aeab7f7... Update Main.py
 =======
     #cross_validation(13, data_frames[4] , "edited")
 >>>>>>> parent of aeab7f7... Update Main.py
