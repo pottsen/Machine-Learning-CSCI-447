@@ -149,7 +149,6 @@ def process_data():
     write_dataframe_csv(combined_df, "./data/wine")
 
 
-
     #load data into pandas--> data_frames[[data_file_Name, dataFrame] , .....]
     data_frames = load_data(files, "./data/")
     
@@ -224,17 +223,15 @@ def main():
     data_frames = slice_pd_df_using_np(number_of_sections, data_frames)
     return data_frames
 
-
-    
-    
+    #define our K Values
+    k = [13, 37,61]
     
     #perform the nearest neighbor algorithm
-    nearest_k_points(1, data_frames[5][1][0], data_frames[5][1][0].iloc[0])
-    #cross_validation(67,data_frames[0],'k-nn')
+    cross_validation(67,data_frames[0],'k-nn')
 
 
     #Test EditedK_Neatest
-    #cross_validation(13, data_frames[4] , "edited")
+    cross_validation(13, data_frames[4] , "edited")
 
 
     
