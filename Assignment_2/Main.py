@@ -139,7 +139,7 @@ def process_data():
              ["machine", 0],
              ["segmentation", 0],
              ["wine", 0]] 
-
+    print("got here")
     #combine the winedata sets
     df_red = pd.read_csv("./data/" + "winequality-red" + ".csv", sep = ";") 
     df_white = pd.read_csv("./data/" + "winequality-white" + ".csv", sep = ";") 
