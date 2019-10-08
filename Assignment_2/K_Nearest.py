@@ -73,9 +73,3 @@ def k_nearest_neighbor(k, training_data, test_data):
         all_guesses.append([actual_class, guesses])
     
     return all_guesses
-
-
-
-
-
-        
