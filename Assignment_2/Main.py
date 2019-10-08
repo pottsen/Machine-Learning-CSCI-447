@@ -111,6 +111,32 @@ def load_data():
         dataFrames.append(info)
 
     return dataFrames
+<<<<<<< HEAD
+=======
+
+#writes processed data to csv file
+def process_data():
+
+    files = [["abalone", 0],
+             ["car", 6],
+             ["forestfires", 12],
+             ["machine", 0],
+             ["segmentation", 0],
+             ["wine", 0]] 
+
+    #combine the winedata sets
+    df_red = pd.read_csv("./data/" + "winequality-red" + ".csv", sep = ";") 
+    df_white = pd.read_csv("./data/" + "winequality-white" + ".csv", sep = ";") 
+    df_red = name_pd_df_columns(df_red)
+    df_white = name_pd_df_columns(df_white)
+    combined_df = concat_df([df_red, df_white])
+    write_dataframe_csv(combined_df, "./data/wine")
+
+
+
+    #load data into pandas--> data_frames[[data_file_Name, dataFrame] , .....]
+    data_frames = load_data(files, "./data/")
+>>>>>>> parent of aeab7f7... Update Main.py
     
 def cross_validation(k, dataframes, algorithm_name):
     folds = 10
@@ -163,14 +189,36 @@ def main():
     #data_frames = [[(String)name, [[slice1][slice2][slice3][sliceN]]], ...]
     number_of_sections = 10
     data_frames = slice_pd_df_using_np(number_of_sections, data_frames)
+<<<<<<< HEAD
     
     #perform the nearest neighbor algorithm
     #nearest_k_points(1, data_frames[5][1][0], data_frames[5][1][0].iloc[0])
+=======
+    return data_frames
+
+
+    
+    
+    
+    #perform the nearest neighbor algorithm
+    nearest_k_points(1, data_frames[5][1][0], data_frames[5][1][0].iloc[0])
+<<<<<<< HEAD
+>>>>>>> parent of aeab7f7... Update Main.py
+=======
+>>>>>>> parent of aeab7f7... Update Main.py
     #cross_validation(67,data_frames[0],'k-nn')
 
 
     #Test EditedK_Neatest
+<<<<<<< HEAD
+<<<<<<< HEAD
     cross_validation(13, dataframes[4] , edited)
+=======
+    #cross_validation(13, data_frames[4] , "edited")
+>>>>>>> parent of aeab7f7... Update Main.py
+=======
+    #cross_validation(13, data_frames[4] , "edited")
+>>>>>>> parent of aeab7f7... Update Main.py
 
 
     
