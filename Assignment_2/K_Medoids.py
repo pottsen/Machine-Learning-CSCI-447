@@ -18,8 +18,8 @@ def k_medoids(medoids, training_data):
     medoids_df = pd.DataFrame(medoids)
     #print(training_data)
     #print(training_data_df)
-    #print(len(medoids))
-    #print(medoids_df)
+    print(medoids)
+    print(medoids_df)
     
     count = 0
     runFull = True
@@ -50,55 +50,56 @@ def k_medoids(medoids, training_data):
             minimum_cost = 0
 
             #include medoid in the cluster
-            cluster_points = [medoids_df.iloc[key]]
+            cluster_points = [medoids_df.loc[key]]
 
             #add points mapped to medoid to cluster
-            for value in medoid_dictionary[key]:
-                print("training data", value)
-                cluster_points.append(training_data_df.iloc[value])
+            for training_index in medoid_dictionary[key]:
+                
+                #print("training data", training_index)
+                cluster_points.append(training_data_df.loc[training_index])
                 # for index, row in training_data_df.iterrows():
                 #     if value == index:
                 #         cluster_points.append(training_data_df.iloc[index])
-
+            #print(cluster_points)
             cluster_points_df = pd.DataFrame(cluster_points)
             #calculate cost of all points in cluster and update medoid if cost is less than medoid cost
             #have counter k=0 since first point will be medoid
-            print(cluster_points_df)
-    return medoids
-"""
+            #print(cluster_points_df)
+
             k=0
             for index, test_point in cluster_points_df.iterrows():
                 #resets cost for each point in cluster
                 cost = 0
 
                 #returns array of the points with the distances to each from from the test point
-                print("# of cluster points", len(cluster_points))
+                #print("# of cluster points", len(cluster_points))
                 all_point_distance_array = nearest_k_points(len(cluster_points),cluster_points_df, test_point)
-                print(all_point_distance_array)
+                #print(all_point_distance_array)
 
                 #add up costs to get total
                 for point in range(len(all_point_distance_array)):
                     cost = cost + all_point_distance_array[point][1]
-                    print("cost", cost)
+                    #print("cost", cost)
                 #if new cost is less than medoid cost or previous, update
                 if k==0:
                     minimum_cost = cost
                     k = k + 1
                     
-                print("minimum cost", minimum_cost)
+                #print("minimum cost", minimum_cost)
                 if cost < minimum_cost:
                     minimum_cost = cost
                     #will need to rerun full medoid if a point is swapped
                     runFull = True
 
                     #swap out medoied with data point that has lower cost
-                    temp_medoid = medoids[key]
-                    medoids[key] = test_point
-                    print("new medoid", medoids[key])
-                    training_data_df.iloc[test_point.index] = temp_medoid
-                    print("new training", training_data[test_point.index])
+                    temp_medoid = medoids_df.loc[key]
+                    #medoids_df.loc[key] = test_point
+                    medoids_df.loc[key] = training_data_df.loc[index]
+                    #print("new medoid", medoids_df.loc[key])
+                    training_data_df.loc[index] = temp_medoid
+                    #print("new training", training_data[test_point.index])
 
-"""
+    return medoids_df
              
 
 

@@ -15,13 +15,13 @@ def shuffle_pd_df(data_frames):
 #takes single df with number of sections
 #returns dataframe[section]
 def slicer(sections, dataframe):   
-    return np.array_split(dataframe, 10)
+    return np.array_split(dataframe, sections)
 
 
 #goes through each file(df) and passes to slicer
 def slice_pd_df_using_np(sections, data_frames):
     for i in range(len(data_frames)):
-        data_frames[i][1]
+        data_frames[i][1] = slicer(sections, data_frames[i][1])
 
     return data_frames
     
@@ -75,6 +75,32 @@ def clean_data(data_frames):
     #data_frames[5][1]
     #no clearning needed
     
+    return data_frames
+
+def normalize(data_frames):
+    #data_frames = pd.DataFrame(data_frames)
+    for i in data_frames:
+        data = i[1]
+        for col in range(len(data.iloc[0])-1):
+            
+            max = np.max(data[str(col+1)])
+            min = np.min(data[str(col+1)])
+            print(max)
+            print(min)
+            for j in range(len(data)):
+                data[j][str(col)]= data[j][(col+1)]/np.abs(max-min)
+            
+        
+
+    # for i in range(len(data_frames)):
+    #     for j in range(len(data_frames[i][1])):
+    #         # data_frames[column]
+    #         max = np.max(data_frames[i].loc[:,j])
+    #         min = np.min(data_frames[i].loc[:,j])
+    #         print(max)
+    #        print(min)
+            
+
     return data_frames
 
 #writes a single data frame to a csv file in the specified path
@@ -161,6 +187,9 @@ def process_data():
     # must turn string values into numbers
     data_frames = clean_data(data_frames)
 
+    #normalize data
+    data_frames = normalize(data_frames)
+
     # Descretize Data
     # With kNN It is not nesessary
     # kNN is a lazy algorithm
@@ -168,14 +197,7 @@ def process_data():
     #write the data out into a file
     write_dataframes_csv(data_frames)
 
-    
-def confusion_matrix(dataframe, predicted, actual):
-    #grab unique classes and put in list
-    unique_classes = data_frame["0"].unique().tolist()
-    for data_class in unique_classes:
-        if actual == data_class and actual == predicted:
-            TP
-        
+           
 
 def cross_validation(folds, k, dataframes, algorithm_name):
 #dataframes = [db_name, [section1,..,sectionN]]
@@ -185,13 +207,13 @@ def cross_validation(folds, k, dataframes, algorithm_name):
 
     if algorithm_name == 'k-nn':
         for i in range(folds):
-            # print(dataframes[1])
+            print(dataframes[1])
             test_data = dataframes[1].pop(i)
-            #print(test_data)
             training_data = concat_df(dataframes[1])
 
-            guessed_classes.append(k_nearest_neighbor(k,training_data, test_data))
+            guessed_classes+=k_nearest_neighbor(k,training_data, test_data)
             print(guessed_classes)
+            dataframes[1].append(test_data)
 
             #TODO Loss functions here
     if algorithm_name == 'condensed':
@@ -208,7 +230,7 @@ def cross_validation(folds, k, dataframes, algorithm_name):
             test_data = dataframes[1].pop(i)
             training_data = concat_df(dataframes[1])
             training_data = edited_k_nearest(k, training_data)
-            guessed_classes.append(k_nearest_neighbor(k,training_data, test_data))
+            guessed_classes+=k_nearest_neighbor(k,training_data, test_data)
 
     if algorithm_name == 'k-means':
         for i in range(folds):
@@ -237,13 +259,17 @@ def cross_validation(folds, k, dataframes, algorithm_name):
     #-----------------
 
     confusion = {}#confusion matrix
-    unique_classes = data_frame['0'].unique().tolist()
+    unique_classes = concat_df(dataframes[1])['0'].unique().tolist()
     for class_name in unique_classes:
         confusion.update({class_name:{'TP':0,'FP':0,'TN':0,'FN':0}})#class_name is the key for each classes confusion matrix
     #confusion{class:{TP:0,FP:0,TN:0,FN:0}}
 
     for class_name in unique_classes:
         for result in guessed_classes: #result[0] is actual class and result[1] is our guess
+            #class_name = int(class_name)
+            #result[0] = int(result[0])
+            #result[1] = int(result[1])
+            #print(result)
             if class_name == result[1] and class_name == result[0]: #guess is accurate with what the class actually was
                 value = 'TP'
             if class_name == result[1] and class_name != result[0]: #guessed that a record was part of a class and it wasn't
@@ -256,11 +282,11 @@ def cross_validation(folds, k, dataframes, algorithm_name):
 
     num_of_classes = len(confusion)
     average_cm = {'TP':0,'FP':0,'TN':0,'FN':0}  #average confusion matrix over every class
-    for class1, matrix in confusion:
-        for key, value in matrix:
+    for class1, matrix in confusion.items():
+        for key, value in matrix.items():
             average_cm[key] += value
-    for key, value in average_cm:
-        average_cm[key] =  value / num_of_classes
+    for key, value in average_cm.items():
+        average_cm[key] =  int(value) / num_of_classes
 
     precision = average_cm['TP'] / (average_cm['TP'] + average_cm['FP'])
     recall = average_cm['TP'] / (average_cm['TP'] + average_cm['FN'])
@@ -274,7 +300,7 @@ def main():
 
     #processes all data and store in procecessed folder
     #DONT RUN EVERY TIME
-    #process_data()
+    process_data()
 
     #load processed data into dataframes 
     files = [["abalone_processed", 0],
@@ -288,27 +314,27 @@ def main():
     #cut the data into ten for validation
     #data_frames = [[(String)name, [[slice1][slice2][slice3][sliceN]]], ...]
     number_of_sections = 5
-    #data_frames = slice_pd_df_using_np(number_of_sections, data_frames)
-
-    #pull k random data points from training data to be medoids
-    #randomize the training data
-    #shuffled_training = shuffle_pd_df(data_frames)
-    #slice into sections for medoids and training set
-    shuffled_sliced_training = slicer(4, data_frames[3][1])
-    #set medoids
-    medoids = shuffled_sliced_training.pop(0)
-    #set training data
-    training_data = concat_df(shuffled_sliced_training)
+    data_frames= slice_pd_df_using_np(number_of_sections, data_frames)
+    
+    # #pull k random data points from training data to be medoids
+    # #randomize the training data
+    # #shuffled_training = shuffle_pd_df(data_frames)
+    # #slice into sections for medoids and training set
+    # shuffled_sliced_training = slicer(4, data_frames[3][1])
+    # #set medoids
+    # medoids = shuffled_sliced_training.pop(0)
+    # #set training data
+    # training_data = concat_df(shuffled_sliced_training)
     
 
     #define our K Values
     k = [13, 37,61]
     folds = number_of_sections
 
-    #print(medoids)
-    #print(training_data)
-    returned_medoids = k_medoids(medoids, training_data)
-    #print(returned_medoids)
+    # #print(medoids)
+    # #print(training_data)
+    # returned_medoids = k_medoids(medoids, training_data)
+    # print(returned_medoids)
 
     #for num in k:    
         #for file_index in range(len(files)):
@@ -321,12 +347,17 @@ def main():
             #cross_validation(folds, num, data_frames[file_index],'k-means')
 
             #cross_validation(folds, num, data_frames[file_index],'k-medoids')
-
-    cf,fscore = cross_validation(folds, num, data_frames[3],'k-nn')
-    print(fscore)
-
+    num = 13
     
 
+    cf,fscore = cross_validation(folds, num, data_frames[3],'k-nn')
+    
+    # results_file.write(num + " machineData " + fscore)
+    # results_file.close()
+    print(num,"machineData",fscore)
+    
+
+    
 
 if __name__ == "__main__":
     main()

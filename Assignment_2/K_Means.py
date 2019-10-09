@@ -6,9 +6,9 @@ def k_means(k, dataframe):
     shuffled_sliced_training = dataframe.values.tolist()
     #shuffled_sliced_training = dataframe
 
-    if(k>len(shuffled_sliced_training)){
+    if(k>len(shuffled_sliced_training)):
         return shuffled_sliced_training
-    }
+    
     k_clusters = shuffled_sliced_training[0:k]
     # place k centroids randomly
 
