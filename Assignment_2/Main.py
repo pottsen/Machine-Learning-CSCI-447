@@ -79,16 +79,30 @@ def clean_data(data_frames):
 
 def normalize(data_frames):
     #data_frames = pd.DataFrame(data_frames)
-    for i in data_frames:
-        data = i[1]
-        for col in range(len(data.iloc[0])-1):
+    for i in range(len(data_frames)):
+        data = data_frames[i][1]
+        #if each column is a number we could do this:
+        #normalized_data = (data-data.min())/(data.max()-data.min())
+        
+        #this is to account for first column being class:
+        col_num = 0
+        for feature in data.columns:
+            if(col_num!=0):
+                max_val = data[feature].max()
+                min_val = data[feature].min()
+                data[feature] = (data[feature] - min_val)/(max_val - min_val)
+            col_num+=1
+        data_frames[i][1] = data
+        
+        
+        #for col in range(len(data.iloc[0])-1):
             
-            max = np.max(data[str(col+1)])
-            min = np.min(data[str(col+1)])
-            print(max)
-            print(min)
-            for j in range(len(data)):
-                data[j][str(col)]= data[j][(col+1)]/np.abs(max-min)
+        #    max = np.max(data[str(col+1)])
+        #    min = np.min(data[str(col+1)])
+        #    print(max)
+        #    print(min)
+        #    for j in range(len(data)):
+        #        data[j][str(col)]= data[j][(col+1)]/np.abs(max-min)
             
         
 
