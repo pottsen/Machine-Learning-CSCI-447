@@ -306,11 +306,13 @@ def cross_validation(folds, k, dataframes, algorithm_name):
     for key, value in average_cm.items():
         average_cm[key] =  int(value) / num_of_classes
 
+    accuracy = (average_cm['TP']+average_cm['TN'])/(average_cm['TP']+average_cm['TN']+average_cm['FP']+average_cm['FN'])
     precision = average_cm['TP'] / (average_cm['TP'] + average_cm['FP'])
     recall = average_cm['TP'] / (average_cm['TP'] + average_cm['FN'])
     f1 = 2*precision*recall/(precision+recall)
     
-    return average_cm, f1
+    metrics = {'F1': f1, 'Precision':precision, 'Recall':recall, 'Accuracy': accuracy}
+    return average_cm, metrics
 
 
 
@@ -368,11 +370,11 @@ def main():
     num = 13
     
 
-    cf,fscore = cross_validation(folds, num, data_frames[3],'k-nn')
+    cf,metrics = cross_validation(folds, num, data_frames[3],'k-nn')
     
     # results_file.write(num + " machineData " + fscore)
     # results_file.close()
-    print(num,"machineData",fscore)
+    print(num,"machineData",metrics)
     
 
     
