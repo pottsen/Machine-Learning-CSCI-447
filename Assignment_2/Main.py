@@ -83,28 +83,32 @@ def normalize(data_frames):
         data = data_frames[i][1]
         #if each column is a number we could do this:
         #normalized_data = (data-data.min())/(data.max()-data.min())
-        
+
         #this is to account for first column being class:
+        print(data)
         col_num = 0
         for feature in data.columns:
-            if(col_num!=0):
+            #print(col_num,feature)
+            if(col_num>0):
+                data[feature] = pd.to_numeric(data[feature])
                 max_val = data[feature].max()
                 min_val = data[feature].min()
                 data[feature] = (data[feature] - min_val)/(max_val - min_val)
             col_num+=1
+        print(data)
         data_frames[i][1] = data
-        
-        
+
+
         #for col in range(len(data.iloc[0])-1):
-            
+
         #    max = np.max(data[str(col+1)])
         #    min = np.min(data[str(col+1)])
         #    print(max)
         #    print(min)
         #    for j in range(len(data)):
         #        data[j][str(col)]= data[j][(col+1)]/np.abs(max-min)
-            
-        
+
+
 
     # for i in range(len(data_frames)):
     #     for j in range(len(data_frames[i][1])):
@@ -113,7 +117,7 @@ def normalize(data_frames):
     #         min = np.min(data_frames[i].loc[:,j])
     #         print(max)
     #        print(min)
-            
+
 
     return data_frames
 
