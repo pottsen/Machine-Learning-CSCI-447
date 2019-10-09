@@ -318,7 +318,7 @@ def main():
 
     #processes all data and store in procecessed folder
     #DONT RUN EVERY TIME
-    process_data()
+    #process_data()
 
     #load processed data into dataframes 
     files = [["abalone_processed", 0],
