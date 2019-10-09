@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 from Edited_K_Nearest import edited_k_nearest
 from K_Nearest import nearest_k_points, concat_df, k_nearest_neighbor
+from K_Medoids import k_medoids
+#from K_Means import k_means
 
 
 def shuffle_pd_df(data_frames):
@@ -98,7 +100,7 @@ def pull_classes_front(df, class_index):
     df = df.reindex(columns = column_names)
     return df
 
-# name the columns 1,2,3,4,5...
+# name the columns 0,1,2,3,4,5...
 def name_pd_df_columns(df):
     column_index_names = []
     for j in range (len(df.columns)):
@@ -167,10 +169,20 @@ def process_data():
     write_dataframes_csv(data_frames)
 
     
-
-
+def confusion_matrix(dataframe, predicted, actual):
+    #grab unique classes and put in list
+    unique_classes = data_frame["0"].unique().tolist()
+    for data_class in unique_classes:
+        if actual == data_class and actual == predicted:
+            TP
+        
 
 def cross_validation(folds, k, dataframes, algorithm_name):
+#dataframes = [db_name, [section1,..,sectionN]]
+        #confusion matrix
+    guessed_classes = []
+
+
     if algorithm_name == 'k-nn':
         for i in range(folds):
             # print(dataframes[1])
@@ -178,7 +190,7 @@ def cross_validation(folds, k, dataframes, algorithm_name):
             #print(test_data)
             training_data = concat_df(dataframes[1])
 
-            guessed_classes = k_nearest_neighbor(k,training_data, test_data)
+            guessed_classes.append(k_nearest_neighbor(k,training_data, test_data))
             print(guessed_classes)
 
             #TODO Loss functions here
@@ -187,7 +199,7 @@ def cross_validation(folds, k, dataframes, algorithm_name):
             test_data = dataframes[1].pop(i)
             training_data = concat_df(dataframes[1])
 
-            #guessed_classes = Condensed_k_nearest(k,training_data, test_data)
+            #guessed_classes.append(Condensed_k_nearest(k,training_data, test_data))
 
             #TODO Loss functions here
 
@@ -196,8 +208,65 @@ def cross_validation(folds, k, dataframes, algorithm_name):
             test_data = dataframes[1].pop(i)
             training_data = concat_df(dataframes[1])
             training_data = edited_k_nearest(k, training_data)
-            guessed_classes = k_nearest_neighbor(k,training_data, test_data)
+            guessed_classes.append(k_nearest_neighbor(k,training_data, test_data))
+
+    if algorithm_name == 'k-means':
+        for i in range(folds):
+            test_data = dataframes[1].pop(i)
+            training_data = concat_df(dataframes[1])
             
+            training_data = slicer(4, training_data) # 1/4 of data for this algorithm
+            training_data = shuffle_pd_df(training_data)
+            
+            training_data = k_means(k, training_data)
+            guessed_classes.append(k_nearest_neighbor(k,training_data, test_data))
+
+    if algorithm_name == 'k-medoids':
+        for i in range(folds):
+            test_data = dataframes[1].pop(i)
+            training_data = concat_df(dataframes[1])
+            
+            training_data = slicer(4, training_data) # 1/4 of data for this algorithm
+            training_data = shuffle_pd_df(training_data)
+            
+            training_data = k_medoids(k, training_data)
+            guessed_classes.append(k_nearest_neighbor(k,training_data, test_data))
+
+    #-----------------
+    #evaluation metrics for the algorithm's guessed_classes 
+    #-----------------
+
+    confusion = {}#confusion matrix
+    unique_classes = data_frame['0'].unique().tolist()
+    for class_name in unique_classes:
+        confusion.update({class_name:{'TP':0,'FP':0,'TN':0,'FN':0}})#class_name is the key for each classes confusion matrix
+    #confusion{class:{TP:0,FP:0,TN:0,FN:0}}
+
+    for class_name in unique_classes:
+        for result in guessed_classes: #result[0] is actual class and result[1] is our guess
+            if class_name == result[1] and class_name == result[0]: #guess is accurate with what the class actually was
+                value = 'TP'
+            if class_name == result[1] and class_name != result[0]: #guessed that a record was part of a class and it wasn't
+                value = 'FP'
+            if class_name != result[1] and class_name == result[0]: #guessed that a record was not part of a class and it was
+                value = 'FN'
+            if class_name != result[1] and class_name != result[0]: #guess is accurate that the record did not belong to a class
+                value = 'TN'
+            confusion[class_name][value] += 1 #increment that classes TP/FP/TN/FN count accordingly
+
+    num_of_classes = len(confusion)
+    average_cm = {'TP':0,'FP':0,'TN':0,'FN':0}  #average confusion matrix over every class
+    for class1, matrix in confusion:
+        for key, value in matrix:
+            average_cm[key] += value
+    for key, value in average_cm:
+        average_cm[key] =  value / num_of_classes
+
+    precision = average_cm['TP'] / (average_cm['TP'] + average_cm['FP'])
+    recall = average_cm['TP'] / (average_cm['TP'] + average_cm['FN'])
+    f1 = 2*precision*recall/(precision+recall)
+    
+    return average_cm, f1
 
 
 
@@ -205,9 +274,9 @@ def main():
 
     #processes all data and store in procecessed folder
     #DONT RUN EVERY TIME
-    process_data()
+    #process_data()
 
-    load processed data into dataframes 
+    #load processed data into dataframes 
     files = [["abalone_processed", 0],
              ["car_processed", 0],
              ["forestfires_processed", 0],
@@ -219,21 +288,42 @@ def main():
     #cut the data into ten for validation
     #data_frames = [[(String)name, [[slice1][slice2][slice3][sliceN]]], ...]
     number_of_sections = 5
-    data_frames = slice_pd_df_using_np(number_of_sections, data_frames)
+    #data_frames = slice_pd_df_using_np(number_of_sections, data_frames)
+
+    #pull k random data points from training data to be medoids
+    #randomize the training data
+    #shuffled_training = shuffle_pd_df(data_frames)
+    #slice into sections for medoids and training set
+    shuffled_sliced_training = slicer(4, data_frames[3][1])
+    #set medoids
+    medoids = shuffled_sliced_training.pop(0)
+    #set training data
+    training_data = concat_df(shuffled_sliced_training)
     
 
-    define our K Values
+    #define our K Values
     k = [13, 37,61]
     folds = number_of_sections
-    for num in k:    
-        #for each file
 
-        #perform the nearest neighbor algorithm
-        cross_validation(folds, num, data_frames[0],'k-nn')
+    #print(medoids)
+    #print(training_data)
+    returned_medoids = k_medoids(medoids, training_data)
+    #print(returned_medoids)
 
-        #Test EditedK_Neatest
-        cross_validation(folds, num, data_frames[4] , "edited")
+    #for num in k:    
+        #for file_index in range(len(files)):
+            #cross_validation(folds, num, data_frames[file_index],'k-nn')
 
+            #cross_validation(folds, num, data_frames[file_index],'edited')
+
+            #cross_validation(folds, num, data_frames[file_index],'condensed')
+
+            #cross_validation(folds, num, data_frames[file_index],'k-means')
+
+            #cross_validation(folds, num, data_frames[file_index],'k-medoids')
+
+    cf,fscore = cross_validation(folds, num, data_frames[3],'k-nn')
+    print(fscore)
 
     
 

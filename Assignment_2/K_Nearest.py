@@ -31,7 +31,8 @@ def nearest_k_points(k, dataframe, example):
         smallest_list = distances[0]
         for index_distance in range(len(distances)):
             if smallest > distances[index_distance][1]:
-                #return the class 
+                #return the class
+                smallest = distances[index_distance][1]
                 smallest_list = distances[index_distance]
         
         closest.append(smallest_list)
