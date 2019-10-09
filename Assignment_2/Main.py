@@ -139,7 +139,6 @@ def process_data():
              ["machine", 0],
              ["segmentation", 0],
              ["wine", 0]] 
-    print("got here")
     #combine the winedata sets
     df_red = pd.read_csv("./data/" + "winequality-red" + ".csv", sep = ";") 
     df_white = pd.read_csv("./data/" + "winequality-white" + ".csv", sep = ";") 
@@ -171,8 +170,7 @@ def process_data():
 
 
 
-def cross_validation(k, dataframes, algorithm_name):
-    folds = 10
+def cross_validation(folds, k, dataframes, algorithm_name):
     if algorithm_name == 'k-nn':
         for i in range(folds):
             # print(dataframes[1])
@@ -209,30 +207,32 @@ def main():
     #DONT RUN EVERY TIME
     process_data()
 
-    #load processed data into dataframes 
-    # files = [["abalone_processed", 0],
-    #          ["car_processed", 0],
-    #          ["forestfires_processed", 0],
-    #          ["machine_processed", 0],
-    #          ["segmentation_processed", 0],
-    #          ["wine_processed", 0]] 
-    # data_frames = load_data(files, "./processed/")
+    load processed data into dataframes 
+    files = [["abalone_processed", 0],
+             ["car_processed", 0],
+             ["forestfires_processed", 0],
+             ["machine_processed", 0],
+             ["segmentation_processed", 0],
+             ["wine_processed", 0]] 
+    data_frames = load_data(files, "./processed/")
 
     #cut the data into ten for validation
     #data_frames = [[(String)name, [[slice1][slice2][slice3][sliceN]]], ...]
-    #number_of_sections = 5
-    #data_frames = slice_pd_df_using_np(number_of_sections, data_frames)
-    #return data_frames
+    number_of_sections = 5
+    data_frames = slice_pd_df_using_np(number_of_sections, data_frames)
+    
 
-    #define our K Values
-    #k = [13, 37,61]
+    define our K Values
+    k = [13, 37,61]
+    folds = number_of_sections
+    for num in k:    
+        #for each file
 
-    #for num in k:    
-    #    #perform the nearest neighbor algorithm
-    #    cross_validation(num,data_frames[0],'k-nn')
-    #
-    #    #Test EditedK_Neatest
-    #   cross_validation(num, data_frames[4] , "edited")
+        #perform the nearest neighbor algorithm
+        cross_validation(folds, num, data_frames[0],'k-nn')
+
+        #Test EditedK_Neatest
+        cross_validation(folds, num, data_frames[4] , "edited")
 
 
     
