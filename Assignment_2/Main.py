@@ -328,30 +328,34 @@ def cross_validation(folds, k, dataframes, algorithm_name):
             correct+=1
         total+=1
     accuracy = correct/total
-    print(accuracy)
 
     num_of_classes = len(confusion)
     average_cm = {'TP':0,'FP':0,'TN':0,'FN':0}  #average confusion matrix over every class
-    for class1, matrix in confusion.items():
-        for key, value in matrix.items():
-            average_cm[key] += value
-    for key, value in average_cm.items():
-        average_cm[key] =  int(value) / num_of_classes
-    print(average_cm)
+    print(confusion)
 
-    #if((average_cm['TP']+average_cm['TN']+average_cm['FP']+average_cm['FN'])!=0):
-    #    accuracy = (average_cm['TP']+average_cm['TN'])/(average_cm['TP']+average_cm['TN']+average_cm['FP']+average_cm['FN'])
-    #else:
-    #    accuracy = 'This should not happen'
-    if((average_cm['TP'] + average_cm['FP'])!=0):
-        precision = average_cm['TP'] / (average_cm['TP'] + average_cm['FP'])
-    else:
-        precision = 0
-    if((average_cm['TP'] + average_cm['FN'])!=0):
-        recall = average_cm['TP'] / (average_cm['TP'] + average_cm['FN'])
-    else:
-        recall = 0
-    f1 = 2*precision*recall/(precision+recall)
+    count = 0
+    precision = 0
+    recall=0
+    f1=0
+    for class1, matrix in confusion.items():
+        TP = matrix['TP']
+        TN = matrix['TN']
+        FP = matrix['FP']
+        FN = matrix['FN']
+        if((TP+FP) != 0):
+            precision += TP/(TP+FP)
+            ptemp = TP/(TP+FP)
+        if((TP+FN) != 0):
+            recall += TP/(TP+FN)
+            rtemp = TP/(TP+FN)
+        if((precision+recall)!=0):
+            f1 += 2*ptemp*rtemp/(ptemp+rtemp)
+        count+=1
+    precision = precision/count
+    recall = recall/count
+    f1 = f1/count
+    
+    #f1 = 2*precision*recall/(precision+recall)
 
     metrics = {'F1': f1, 'Precision':precision, 'Recall':recall, 'Accuracy': accuracy}
     return average_cm, metrics
