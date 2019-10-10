@@ -18,8 +18,8 @@ def k_medoids(medoids, training_data):
     medoids_df = pd.DataFrame(medoids)
     #print(training_data)
     #print(training_data_df)
-    print(medoids)
-    print(medoids_df)
+    # print(medoids)
+    # print(medoids_df)
     
     count = 0
     runFull = True
@@ -29,8 +29,8 @@ def k_medoids(medoids, training_data):
         medoid_dictionary = {}
         for index, row in training_data_df.iterrows():
             #find the closest medoid
-            closest_medoid = nearest_k_points(3, medoids_df, row)
-            print("closest medoid ", closest_medoid)
+            closest_medoid = nearest_k_points(1, medoids_df, row)
+            # print("closest medoid ", closest_medoid)
             closest_medoid_index = closest_medoid[0][0]
             #store lists of data points assigned to that medoid in a dictionary
             try: #add traning data
@@ -39,13 +39,13 @@ def k_medoids(medoids, training_data):
             except:
                 medoid_dictionary.update({closest_medoid_index:[index]})
 
-        print(medoid_dictionary)
+        # print(medoid_dictionary)
         #Swap to false so it wil not be rerun unnless a medoid is swapped below
         runFull = False
         count = count + 1
 
         for key in medoid_dictionary:
-            print("key ", key)
+            # print("key ", key)
             #initialize minimum cost to large value
             minimum_cost = 0
 

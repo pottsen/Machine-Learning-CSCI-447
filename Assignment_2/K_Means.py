@@ -35,25 +35,33 @@ def k_means(k, dataframe):
     print(old_clusters)
     iterations = 0
 
-    while(old_clusters.equals(k_clusters.all() or iterations<10): #recompute  data point assignment until centroids no longer move
+    while(old_clusters.equals(k_clusters) and iterations<10): #recompute  data point assignment until centroids no longer move
         old_clusters = k_clusters
-        k_clusters = []
+        #k_clusters = []
 
-        for centroid, list1 in clusters:
+        for centroid_idx, list1 in clusters.items():
             df = pd.DataFrame(list1)
-            print(df)
+            #print(df)
             num_points = 0
             new_centroid = []
-            for point in list1:# for each point in centroid cluster, recompute distance by mean of points
-                if (num_points == 0):
-                    new_centroid=point
-                else:
-                    for i in range(len(new_centroid)):
-                        new_centroid[i]=new_centroid[i]+points[i]
-                num_points+=1
-            for i in range(len(new_centroid)):
-                new_centroid[i]=new_centroid[i]/num_points
-            k_clusters.append(new_centroid)
+            #print(df)
+            #pd.to_numeric(df)
+            new_centroid = df.mean(axis = 1)
+            k_clusters[centroid_idx] = new_centroid
+            #for point in list1:# for each point in centroid cluster, recompute distance by mean of points
+            #    if (num_points == 0):
+            #        new_centroid=point
+            #    else:
+            #        for i in range(len(new_centroid)):
+            #            new_centroid[i]=new_centroid[i]+points[i]
+            #    num_points+=1
+            #for i in range(len(new_centroid)):
+            #    new_centroid[i]=new_centroid[i]/num_points
+            #k_clusters.append(new_centroid)
+        print(k_clusters)
+        print('-----')
+        print(old_clusters)
+        iterations+=1
 
 
 

@@ -221,17 +221,21 @@ def cross_validation(folds, k, dataframes, algorithm_name):
 
 
     if algorithm_name == 'k-nn':
+        print("New Data Set")
         for i in range(folds):
             test_data = dataframes[1].pop(i)
             training_data = concat_df(dataframes[1])
 
             guessed_classes+=k_nearest_neighbor(k,training_data, test_data)
             dataframes[1].append(test_data)
+
+            
             
 
 
 
     if algorithm_name == 'edited':
+        print("New Data Set")
         for i in range(folds):
             test_data = dataframes[1].pop(i)
             training_data = concat_df(dataframes[1])
@@ -239,19 +243,22 @@ def cross_validation(folds, k, dataframes, algorithm_name):
             guessed_classes += k_nearest_neighbor(k,training_data, test_data)
             dataframes[1].append(test_data)
             
+            
     
-    if algorithm_name == 'condensed':
-        for i in range(folds):
-            test_data = dataframes[1].pop(i)
-            training_data = concat_df(dataframes[1])
+    # if algorithm_name == 'condensed':
+    #     for i in range(folds):
+    #         test_data = dataframes[1].pop(i)
+    #         training_data = concat_df(dataframes[1])
+    #         training_data = condensed_k_nearest(k, training_data , .........)
+    #         guessed_classes += k_nearest_neighbor(k,training_data, test_data)
+    #         dataframes[1].append(test_data)
 
-            #guessed_classes.append(Condensed_k_nearest(k,training_data, test_data))
-
-            #TODO Loss functions here
+            
 
     
 
     if algorithm_name == 'k-means':
+        print("New Data Set")
         for i in range(folds):
             test_data = dataframes[1].pop(i)
             training_data = concat_df(dataframes[1])
@@ -260,15 +267,18 @@ def cross_validation(folds, k, dataframes, algorithm_name):
             #training_data = shuffle_pd_df(training_data)
 
             training_data = k_means(k, training_data)
-            guessed_classes.append(k_nearest_neighbor(k,training_data, test_data))
+            guessed_classes+=(k_nearest_neighbor(k,training_data, test_data))
+
+            dataframes[1].append(test_data)
 
     if algorithm_name == 'k-medoids':
+        print("New Data Set")
         for i in range(folds):
             test_data = dataframes[1].pop(i)
             training_data = concat_df(dataframes[1])
             
             
-            training_data = shuffle_pd_df(training_data)
+            # training_data = shuffle_pd_df(training_data)
             training_data = slicer(4, training_data) # 1/4 of data for this algorithm
 
             #set medoids to 1/4 data
@@ -281,7 +291,9 @@ def cross_validation(folds, k, dataframes, algorithm_name):
             returned_medoids = k_medoids(medoids, training_data)
             
             #run k-NN with medoids
-            guessed_classes.append(k_nearest_neighbor(k,returned_medoids, test_data))
+            guessed_classes += k_nearest_neighbor(k,returned_medoids, test_data)
+
+            dataframes[1].append(test_data)
 
     #-----------------
     #evaluation metrics for the algorithm's guessed_classes 
@@ -317,30 +329,38 @@ def cross_validation(folds, k, dataframes, algorithm_name):
     for key, value in average_cm.items():
         average_cm[key] =  int(value) / num_of_classes
 
-    precision = average_cm['TP'] / (average_cm['TP'] + average_cm['FP'])
-    recall = average_cm['TP'] / (average_cm['TP'] + average_cm['FN'])
+    if((average_cm['TP']+average_cm['TN']+average_cm['FP']+average_cm['FN'])!=0):
+        accuracy = (average_cm['TP']+average_cm['TN'])/(average_cm['TP']+average_cm['TN']+average_cm['FP']+average_cm['FN'])
+    else:
+        accuracy = 'This should not happen'
+    if((average_cm['TP'] + average_cm['FP'])!=0):
+        precision = average_cm['TP'] / (average_cm['TP'] + average_cm['FP'])
+    else:
+        precision = 0
+    if((average_cm['TP'] + average_cm['FN'])!=0):
+        recall = average_cm['TP'] / (average_cm['TP'] + average_cm['FN'])
+    else:
+        recall = 0
     f1 = 2*precision*recall/(precision+recall)
-    
+
+    metrics = {'F1': f1, 'Precision':precision, 'Recall':recall, 'Accuracy': accuracy}
+    return average_cm, metrics
 
 
-    
+def print_results(matrix, k, file_name, algorithm_name ):
+    #matrix = {'F1': f1, 'Precision':precision, 'Recall':recall, 'Accuracy': accuracy}
 
-
-    return average_cm, f1
-
-
-def print_results(f_score, k, file_name, algorithm_name ):
     results_file = open("./results/" + algorithm_name + "_results.txt", "a+")
-    results_file.write(" Algorithm_name: " + algorithm_name.ljust(20) + "k: " + k.ljust(10) +  + "K-value: " + k.ljust(15) + "F-score: " + f_score)
+    results_file.write(algorithm_name.ljust(10) + " Algorithm_name: " + str(algorithm_name).ljust(20) + "K-value:" + str(k).ljust(10) + "F-score: " + str(matrix['F1']) + " Accuracy: " + str(matrix['Accuracy']) + "\n")
     results_file.close()
-    print(" Algorithm_name: " + algorithm_name.ljust(20) + "k: " + k.ljust(10) +  + "K-value: " + k.ljust(15) + "F-score: " + f_score)
+    print(algorithm_name.ljust(10) + " Algorithm_name: " + str(algorithm_name).ljust(20) + "K-value:" + str(k).ljust(10) + "F-score: " + str(matrix['F1']) + " Accuracy: " + str(matrix['Accuracy']) + "\n")
 
 
 def main():
 
     #processes all data and store in procecessed folder
     #DONT RUN EVERY TIME
-    #process_data()
+    # process_data()
 
     #load processed data into dataframes 
     files = [["abalone_processed", 0],
@@ -353,26 +373,38 @@ def main():
 
     #cut the data into ten for validation
     #data_frames = [[(String)name, [[slice1][slice2][slice3][sliceN]]], ...]
-    number_of_sections = 5
-    data_frames= slice_pd_df_using_np(number_of_sections, data_frames)
+    folds = 5
+    data_frames= slice_pd_df_using_np(folds, data_frames)
     
+    # f,metrics = cross_validation(5, 13, data_frames[4],'k-means')
+    
+    # cf,fscore = cross_validation(5, 13, data_frames[1],'condensed')
+    # print_results(fscore, num, (files[i][0][:-10]), "condensed")
 
-    # for num in k:    
-    #     for file_index in range(len(files)):
-    #         cf,fscore = cross_validation(folds, num, data_frames[file_index],'k-nn')
-    #         print_results(fscore, num, (files[i][0]][:-10]), "k-nn")
+    k = [13, 37, 67]
 
-    #         cf,fscore = cross_validation(folds, num, data_frames[file_index],'edited')
-    #         print_results(fscore, num, (files[i][0]][:-10]), "edited")            
+    for num in k:    
+        for file_index in range(len(files)):
 
-    #         cf,fscore = cross_validation(folds, num, data_frames[file_index],'condensed')
-    #         print_results(fscore, num, (files[i][0]][:-10]), "condensed")
+            #evals = {'F1': f1, 'Precision':precision, 'Recall':recall, 'Accuracy': accuracy}
 
-    #         cf,fscore = cross_validation(folds, num, data_frames[file_index],'k-means')
-    #         print_results(fscore, num, (files[i][0]][:-10]), "k-means")
+            cf,evals = cross_validation(folds, num, data_frames[file_index],'k-nn')
+            print_results(evals['F1'], num, (files[i][0][:-10]), "k-nn")
 
-    #         cf,fscore = cross_validation(folds, num, data_frames[file_index],'k-medoids')
-    #         print_results(fscore, num, (files[i][0]][:-10]), "k-medoids")
+            # cf,evals = cross_validation(folds, num, data_frames[file_index],'edited')
+            # print_results(evals['F1'], num, (files[i][0][:-10]), "edited")            
+
+            # cf,evals = cross_validation(folds, num, data_frames[file_index],'condensed')
+            # print_results(evals['F1'], num, (files[i][0][:-10]), "condensed")
+
+    #         cf,evals = cross_validation(folds, num, data_frames[file_index],'k-means')
+    #         print_results(evals['F1'], num, (files[i][0][:-10]), "k-means")
+
+            if file_index > 2:
+                cf,evals = cross_validation(folds, num, data_frames[file_index],'k-medoids')
+                print_results(evals, num, (files[file_index][0][:-10]), "k-medoids")
+        
+            
 
     
     

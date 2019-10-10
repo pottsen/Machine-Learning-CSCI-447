@@ -67,7 +67,10 @@ def k_nearest_neighbor(k, training_data, test_data):
         #average the class
         guesses = []
         for j in range(k):
-            guesses.append(k_closest[j][-1])
+            # print("j ", j)
+            if(j < len(k_closest)):
+                # print(k_closest[j])
+                guesses.append(k_closest[j][-1])
         
         guesses = max(set(guesses), key = guesses.count) 
 
