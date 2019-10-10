@@ -37,7 +37,9 @@ def nearest_k_points(k, dataframe, example):
         
         closest.append(smallest_list)
         distances.remove([smallest_list[0], smallest_list[1], smallest_list[2]])
-    
+        #if our k is larger than the amount of points in our training data, return what we have
+        if (len(distances)) == k:
+            return closest
     return closest
 
 

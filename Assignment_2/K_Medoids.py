@@ -23,14 +23,14 @@ def k_medoids(medoids, training_data):
     
     count = 0
     runFull = True
-    while runFull == True and count < 10:
+    while runFull == True and count < 50:
         #for left over data points associate each to the closest medoid by using distance
         #make dictionary to assign associated points to medoids
         medoid_dictionary = {}
         for index, row in training_data_df.iterrows():
             #find the closest medoid
-            closest_medoid = nearest_k_points(1, medoids_df, row)
-            #print("closest medoid ", closest_medoid)
+            closest_medoid = nearest_k_points(3, medoids_df, row)
+            print("closest medoid ", closest_medoid)
             closest_medoid_index = closest_medoid[0][0]
             #store lists of data points assigned to that medoid in a dictionary
             try: #add traning data
@@ -100,41 +100,3 @@ def k_medoids(medoids, training_data):
                     #print("new training", training_data[test_point.index])
 
     return medoids_df
-             
-
-
-# def test():
-
-#     #processes all data and store in procecessed folder
-#     #DONT RUN EVERY TIME
-#     #process_data()
-
-#     #load processed data into dataframes 
-#     data_frames = load_data_from_csv("./processed/machine_processed")
-
-#     #cut the data into ten for validation
-#     #data_frames = [[(String)name, [[slice1][slice2][slice3][sliceN]]], ...]
-#     # number_of_sections = 1
-#     # data_frames = slice_pd_df_using_np(number_of_sections, data_frames)
-    
-#     returned_medoids = k_medoids(1, data_frames)
-
-#     print(returned_medoids)
-
-#     # define our K Values
-#     # k = [13, 37,61]
-#     # folds = number_of_sections
-#     # for num in k:    
-#     #     #for each file
-
-#     #     #perform the nearest neighbor algorithm
-#     #     cross_validation(folds, num, data_frames[0],'k-nn')
-
-#     #     #Test EditedK_Neatest
-#     #     cross_validation(folds, num, data_frames[4] , "edited")
-
-
-    
-
-# test()
-# return 

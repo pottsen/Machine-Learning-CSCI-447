@@ -3,7 +3,7 @@ import numpy as np
 from Edited_K_Nearest import edited_k_nearest
 from K_Nearest import nearest_k_points, concat_df, k_nearest_neighbor
 from K_Medoids import k_medoids
-#from K_Means import k_means
+from K_Means import k_means
 
 
 def shuffle_pd_df(data_frames):
@@ -85,17 +85,14 @@ def normalize(data_frames):
         #normalized_data = (data-data.min())/(data.max()-data.min())
 
         #this is to account for first column being class:
-        print(data)
         col_num = 0
         for feature in data.columns:
-            #print(col_num,feature)
             if(col_num>0):
                 data[feature] = pd.to_numeric(data[feature])
                 max_val = data[feature].max()
                 min_val = data[feature].min()
                 data[feature] = (data[feature] - min_val)/(max_val - min_val)
             col_num+=1
-        print(data)
         data_frames[i][1] = data
 
 
@@ -225,12 +222,10 @@ def cross_validation(folds, k, dataframes, algorithm_name):
 
     if algorithm_name == 'k-nn':
         for i in range(folds):
-            print(dataframes[1])
             test_data = dataframes[1].pop(i)
             training_data = concat_df(dataframes[1])
 
             guessed_classes+=k_nearest_neighbor(k,training_data, test_data)
-            print(guessed_classes)
             dataframes[1].append(test_data)
             
 
@@ -242,7 +237,7 @@ def cross_validation(folds, k, dataframes, algorithm_name):
             training_data = concat_df(dataframes[1])
             training_data = edited_k_nearest(k, training_data)
             guessed_classes += k_nearest_neighbor(k,training_data, test_data)
-            
+            dataframes[1].append(test_data)
             
     
     if algorithm_name == 'condensed':
@@ -261,9 +256,9 @@ def cross_validation(folds, k, dataframes, algorithm_name):
             test_data = dataframes[1].pop(i)
             training_data = concat_df(dataframes[1])
             
-            training_data = slicer(4, training_data) # 1/4 of data for this algorithm
-            training_data = shuffle_pd_df(training_data)
-            
+            #training_data = slicer(4, training_data) # 1/4 of data for this algorithm
+            #training_data = shuffle_pd_df(training_data)
+
             training_data = k_means(k, training_data)
             guessed_classes.append(k_nearest_neighbor(k,training_data, test_data))
 
@@ -272,17 +267,27 @@ def cross_validation(folds, k, dataframes, algorithm_name):
             test_data = dataframes[1].pop(i)
             training_data = concat_df(dataframes[1])
             
-            training_data = slicer(4, training_data) # 1/4 of data for this algorithm
-            training_data = shuffle_pd_df(training_data)
             
-            training_data = k_medoids(k, training_data)
-            guessed_classes.append(k_nearest_neighbor(k,training_data, test_data))
+            training_data = shuffle_pd_df(training_data)
+            training_data = slicer(4, training_data) # 1/4 of data for this algorithm
+
+            #set medoids to 1/4 data
+            medoids = training_data.pop(0)
+
+            #set training data to leftover 3/4 data
+            training_data = concat_df(training_data)
+
+            #run PAM-NN
+            returned_medoids = k_medoids(medoids, training_data)
+            
+            #run k-NN with medoids
+            guessed_classes.append(k_nearest_neighbor(k,returned_medoids, test_data))
 
     #-----------------
     #evaluation metrics for the algorithm's guessed_classes 
     #-----------------
 
-    confusion = {}#confusion matrix
+    confusion = {} #confusion matrix
     unique_classes = concat_df(dataframes[1])['0'].unique().tolist()
     for class_name in unique_classes:
         confusion.update({class_name:{'TP':0,'FP':0,'TN':0,'FN':0}})#class_name is the key for each classes confusion matrix
@@ -316,8 +321,19 @@ def cross_validation(folds, k, dataframes, algorithm_name):
     recall = average_cm['TP'] / (average_cm['TP'] + average_cm['FN'])
     f1 = 2*precision*recall/(precision+recall)
     
+
+
+    
+
+
     return average_cm, f1
 
+
+def print_results(f_score, k, file_name, algorithm_name ):
+    results_file = open("./results/" + algorithm_name + "_results.txt", "a+")
+    results_file.write(" Algorithm_name: " + algorithm_name.ljust(20) + "k: " + k.ljust(10) +  + "K-value: " + k.ljust(15) + "F-score: " + f_score)
+    results_file.close()
+    print(" Algorithm_name: " + algorithm_name.ljust(20) + "k: " + k.ljust(10) +  + "K-value: " + k.ljust(15) + "F-score: " + f_score)
 
 
 def main():
@@ -340,6 +356,7 @@ def main():
     number_of_sections = 5
     data_frames= slice_pd_df_using_np(number_of_sections, data_frames)
     
+    f,metrics = cross_validation(5, 13, data_frames[4],'k-means')
     # #pull k random data points from training data to be medoids
     # #randomize the training data
     # #shuffled_training = shuffle_pd_df(data_frames)
@@ -349,38 +366,59 @@ def main():
     # medoids = shuffled_sliced_training.pop(0)
     # #set training data
     # training_data = concat_df(shuffled_sliced_training)
-    
-
-    #define our K Values
-    k = [13, 37,61]
-    folds = number_of_sections
-
     # #print(medoids)
     # #print(training_data)
     # returned_medoids = k_medoids(medoids, training_data)
     # print(returned_medoids)
 
-    #for num in k:    
-        #for file_index in range(len(files)):
-            #cross_validation(folds, num, data_frames[file_index],'k-nn')
+    # #define our K Values
+    # k = [13, 37, 61]
+    # folds = number_of_sections
 
-            #cross_validation(folds, num, data_frames[file_index],'edited')
+    # for num in k:    
+    #     for file_index in range(len(files)):
+    #         cf,fscore = cross_validation(folds, num, data_frames[file_index],'k-nn')
+    #         print_results(fscore, num, (files[i][0]][:-10]), "k-nn")
 
-            #cross_validation(folds, num, data_frames[file_index],'condensed')
+    #         cf,fscore = cross_validation(folds, num, data_frames[file_index],'edited')
+    #         print_results(fscore, num, (files[i][0]][:-10]), "edited")            
 
-            #cross_validation(folds, num, data_frames[file_index],'k-means')
+    #         cf,fscore = cross_validation(folds, num, data_frames[file_index],'condensed')
+    #         print_results(fscore, num, (files[i][0]][:-10]), "condensed")
 
-            #cross_validation(folds, num, data_frames[file_index],'k-medoids')
-    num = 13
+    #         cf,fscore = cross_validation(folds, num, data_frames[file_index],'k-means')
+    #         print_results(fscore, num, (files[i][0]][:-10]), "k-means")
+
+    #         cf,fscore = cross_validation(folds, num, data_frames[file_index],'k-medoids')
+    #         print_results(fscore, num, (files[i][0]][:-10]), "k-medoids")
+
+    
+    
     
 
-    #cf,fscore = cross_validation(folds, num, data_frames[3],'k-nn')
-    #cf,fscore = cross_validation(folds, num, data_frames[0],'edited')
-    
-    # results_file.write(num + " machineData " + fscore)
-    # results_file.close()
-    #print(num,"machineData",fscore)
-    
+# # Steps
+# # 1. reprocess data
+
+
+# # 2. Run k-NN all data sets
+
+
+# # 3. Run E-NN on Abalone, Car, and Machine
+
+
+# # 4. Run C-NN on Abalone, Car, and Machine
+
+
+# # 5. Run k-Means on E-NN from Abalone, Car, and Image
+
+
+# # 6. Run PAM-NN on E-NN from Abalone, Car, and Image
+
+
+# # 7. Run K-means with 1/4n as the means size for Comp HW, Fire, Wine
+
+
+# # 8. Run PAM-NN with 1/4n  as the medoids size Comp HW, Fire, Wine
 
     
 
