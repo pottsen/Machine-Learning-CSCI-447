@@ -8,6 +8,9 @@ import pandas as pd
 #input example -> 
 #return -> [[index, 1st_closest_distance, class], [index, 2nd_closest_distance, class]...]
 def nearest_k_points(k, dataframe, example):
+    
+    if type(dataframe) == list:
+        dataframe = pd.DataFrame(dataframe)
     if (len(example)) != (len(dataframe.iloc[0])):
         raise Exception ("example and dataframe row are not the same length")
     if (len(dataframe)) < k :
