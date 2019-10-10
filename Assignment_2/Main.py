@@ -232,8 +232,19 @@ def cross_validation(folds, k, dataframes, algorithm_name):
             guessed_classes+=k_nearest_neighbor(k,training_data, test_data)
             print(guessed_classes)
             dataframes[1].append(test_data)
+            
 
-            #TODO Loss functions here
+
+
+    if algorithm_name == 'edited':
+        for i in range(folds):
+            test_data = dataframes[1].pop(i)
+            training_data = concat_df(dataframes[1])
+            training_data = edited_k_nearest(k, training_data)
+            guessed_classes += k_nearest_neighbor(k,training_data, test_data)
+            
+            
+    
     if algorithm_name == 'condensed':
         for i in range(folds):
             test_data = dataframes[1].pop(i)
@@ -243,12 +254,7 @@ def cross_validation(folds, k, dataframes, algorithm_name):
 
             #TODO Loss functions here
 
-    if algorithm_name == 'edited':
-        for i in range(folds):
-            test_data = dataframes[1].pop(i)
-            training_data = concat_df(dataframes[1])
-            training_data = edited_k_nearest(k, training_data)
-            guessed_classes+=k_nearest_neighbor(k,training_data, test_data)
+    
 
     if algorithm_name == 'k-means':
         for i in range(folds):
@@ -306,13 +312,11 @@ def cross_validation(folds, k, dataframes, algorithm_name):
     for key, value in average_cm.items():
         average_cm[key] =  int(value) / num_of_classes
 
-    accuracy = (average_cm['TP']+average_cm['TN'])/(average_cm['TP']+average_cm['TN']+average_cm['FP']+average_cm['FN'])
     precision = average_cm['TP'] / (average_cm['TP'] + average_cm['FP'])
     recall = average_cm['TP'] / (average_cm['TP'] + average_cm['FN'])
     f1 = 2*precision*recall/(precision+recall)
     
-    metrics = {'F1': f1, 'Precision':precision, 'Recall':recall, 'Accuracy': accuracy}
-    return average_cm, metrics
+    return average_cm, f1
 
 
 
@@ -370,11 +374,12 @@ def main():
     num = 13
     
 
-    cf,metrics = cross_validation(folds, num, data_frames[3],'k-nn')
+    #cf,fscore = cross_validation(folds, num, data_frames[3],'k-nn')
+    #cf,fscore = cross_validation(folds, num, data_frames[0],'edited')
     
     # results_file.write(num + " machineData " + fscore)
     # results_file.close()
-    print(num,"machineData",metrics)
+    #print(num,"machineData",fscore)
     
 
     
