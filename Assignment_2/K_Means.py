@@ -30,11 +30,12 @@ def k_means(k, dataframe):
         #print(cent_index)
         #clusters[cent_index].append(row)
 
-    old_clusters = k_clusters.drop(df.index)
+    old_clusters = k_clusters
+    old_clusters['1'].iloc[1] = 4
     print(old_clusters)
     iterations = 0
 
-    while(old_clusters != k_clusters or iterations<10): #recompute  data point assignment until centroids no longer move
+    while(old_clusters.equals(k_clusters.all() or iterations<10): #recompute  data point assignment until centroids no longer move
         old_clusters = k_clusters
         k_clusters = []
 

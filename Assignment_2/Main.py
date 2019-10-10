@@ -356,24 +356,6 @@ def main():
     number_of_sections = 5
     data_frames= slice_pd_df_using_np(number_of_sections, data_frames)
     
-    f,metrics = cross_validation(5, 13, data_frames[4],'k-means')
-    # #pull k random data points from training data to be medoids
-    # #randomize the training data
-    # #shuffled_training = shuffle_pd_df(data_frames)
-    # #slice into sections for medoids and training set
-    # shuffled_sliced_training = slicer(4, data_frames[3][1])
-    # #set medoids
-    # medoids = shuffled_sliced_training.pop(0)
-    # #set training data
-    # training_data = concat_df(shuffled_sliced_training)
-    # #print(medoids)
-    # #print(training_data)
-    # returned_medoids = k_medoids(medoids, training_data)
-    # print(returned_medoids)
-
-    # #define our K Values
-    # k = [13, 37, 61]
-    # folds = number_of_sections
 
     # for num in k:    
     #     for file_index in range(len(files)):
