@@ -1,1 +1,1 @@
- Algorithm_name: k-medoids           K-value:13        F-score: 0.1116504854368932 Accuracy: 0.938734516237027 Algorithm_name: k-medoids           K-value:13        F-score: 0.10526315789473684 Accuracy: 0.744360902255639
+machine    Algorithm_name: k-medoids           K-value:13        F-score: 0.1116504854368932 Accuracy: 0.11165048543689321 Precision: 0.1116504854368932 Recall: 0.1116504854368932

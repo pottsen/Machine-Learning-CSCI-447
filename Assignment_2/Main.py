@@ -320,6 +320,15 @@ def cross_validation(folds, k, dataframes, algorithm_name):
             if class_name != result[1] and class_name != result[0]: #guess is accurate that the record did not belong to a class
                 value = 'TN'
             confusion[class_name][value] += 1 #increment that classes TP/FP/TN/FN count accordingly
+    
+    correct = 0
+    total = 0
+    for result in guessed_classes:
+        if(result[0]==result[1]):
+            correct+=1
+        total+=1
+    accuracy = correct/total
+    print(accuracy)
 
     num_of_classes = len(confusion)
     average_cm = {'TP':0,'FP':0,'TN':0,'FN':0}  #average confusion matrix over every class
@@ -328,11 +337,12 @@ def cross_validation(folds, k, dataframes, algorithm_name):
             average_cm[key] += value
     for key, value in average_cm.items():
         average_cm[key] =  int(value) / num_of_classes
+    print(average_cm)
 
-    if((average_cm['TP']+average_cm['TN']+average_cm['FP']+average_cm['FN'])!=0):
-        accuracy = (average_cm['TP']+average_cm['TN'])/(average_cm['TP']+average_cm['TN']+average_cm['FP']+average_cm['FN'])
-    else:
-        accuracy = 'This should not happen'
+    #if((average_cm['TP']+average_cm['TN']+average_cm['FP']+average_cm['FN'])!=0):
+    #    accuracy = (average_cm['TP']+average_cm['TN'])/(average_cm['TP']+average_cm['TN']+average_cm['FP']+average_cm['FN'])
+    #else:
+    #    accuracy = 'This should not happen'
     if((average_cm['TP'] + average_cm['FP'])!=0):
         precision = average_cm['TP'] / (average_cm['TP'] + average_cm['FP'])
     else:
@@ -351,9 +361,9 @@ def print_results(matrix, k, file_name, algorithm_name ):
     #matrix = {'F1': f1, 'Precision':precision, 'Recall':recall, 'Accuracy': accuracy}
 
     results_file = open("./results/" + algorithm_name + "_results.txt", "a+")
-    results_file.write(algorithm_name.ljust(10) + " Algorithm_name: " + str(algorithm_name).ljust(20) + "K-value:" + str(k).ljust(10) + "F-score: " + str(matrix['F1']) + " Accuracy: " + str(matrix['Accuracy']) + "\n")
+    results_file.write(file_name.ljust(10) + " Algorithm_name: " + str(algorithm_name).ljust(20) + "K-value:" + str(k).ljust(10) + "F-score: " + str(matrix['F1']) + " Accuracy: " + str(matrix['Accuracy'])+ " Precision: " + str(matrix['Precision'])+ " Recall: " + str(matrix['Recall'])  + "\n")
     results_file.close()
-    print(algorithm_name.ljust(10) + " Algorithm_name: " + str(algorithm_name).ljust(20) + "K-value:" + str(k).ljust(10) + "F-score: " + str(matrix['F1']) + " Accuracy: " + str(matrix['Accuracy']) + "\n")
+    print(file_name.ljust(10) + " Algorithm_name: " + str(algorithm_name).ljust(20) + "K-value:" + str(k).ljust(10) + "F-score: " + str(matrix['F1']) + " Accuracy: " + str(matrix['Accuracy']) + " Precision: " + str(matrix['Precision'])+ " Recall: " + str(matrix['Recall'])  +"\n")
 
 
 def main():
@@ -365,9 +375,9 @@ def main():
     #load processed data into dataframes 
     files = [["abalone_processed", 0],
              ["car_processed", 0],
-             ["forestfires_processed", 0],
-             ["machine_processed", 0],
              ["segmentation_processed", 0],
+             ["machine_processed", 0],
+             ["forestfires_processed", 0],
              ["wine_processed", 0]] 
     data_frames = load_data(files, "./processed/")
 
@@ -388,8 +398,8 @@ def main():
 
             #evals = {'F1': f1, 'Precision':precision, 'Recall':recall, 'Accuracy': accuracy}
 
-            cf,evals = cross_validation(folds, num, data_frames[file_index],'k-nn')
-            print_results(evals['F1'], num, (files[i][0][:-10]), "k-nn")
+            # cf,evals = cross_validation(folds, num, data_frames[file_index],'k-nn')
+            # print_results(evals['F1'], num, (files[i][0][:-10]), "k-nn")
 
             # cf,evals = cross_validation(folds, num, data_frames[file_index],'edited')
             # print_results(evals['F1'], num, (files[i][0][:-10]), "edited")            
