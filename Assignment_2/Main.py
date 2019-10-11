@@ -348,7 +348,7 @@ def cross_validation(folds, k, dataframes, algorithm_name):
         if((TP+FN) != 0):
             recall += TP/(TP+FN)
             rtemp = TP/(TP+FN)
-        if((precision+recall)!=0):
+        if((ptemp+rtemp)!=0):
             f1 += 2*ptemp*rtemp/(ptemp+rtemp)
         count+=1
     precision = precision/count
@@ -406,13 +406,13 @@ def main():
             # print_results(evals['F1'], num, (files[i][0][:-10]), "k-nn")
 
             # cf,evals = cross_validation(folds, num, data_frames[file_index],'edited')
-            # print_results(evals['F1'], num, (files[i][0][:-10]), "edited")            
+            # print_results(evals['F1'], num, (files[file_index][0][:-10]), "edited")            
 
             # cf,evals = cross_validation(folds, num, data_frames[file_index],'condensed')
-            # print_results(evals['F1'], num, (files[i][0][:-10]), "condensed")
+            # print_results(evals['F1'], num, (files[file_index][0][:-10]), "condensed")
 
     #         cf,evals = cross_validation(folds, num, data_frames[file_index],'k-means')
-    #         print_results(evals['F1'], num, (files[i][0][:-10]), "k-means")
+    #         print_results(evals['F1'], num, (files[file_index][0][:-10]), "k-means")
 
             if file_index > 2:
                 cf,evals = cross_validation(folds, num, data_frames[file_index],'k-medoids')
