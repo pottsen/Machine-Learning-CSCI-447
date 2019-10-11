@@ -370,9 +370,13 @@ def cross_validation(folds, k, dataframes, algorithm_name, evaluation_metric):
             if((TP+FP) != 0):
                 precision += TP/(TP+FP)
                 ptemp = TP/(TP+FP)
+            else:
+                ptemp = 0
             if((TP+FN) != 0):
                 recall += TP/(TP+FN)
                 rtemp = TP/(TP+FN)
+            else:
+                rtemp = 0
             if((ptemp+rtemp)!=0):
                 f1 += 2*ptemp*rtemp/(ptemp+rtemp)
             count+=1
