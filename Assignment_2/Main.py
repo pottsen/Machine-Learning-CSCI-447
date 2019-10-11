@@ -374,7 +374,7 @@ def cross_validation(folds, k, dataframes, algorithm_name, evaluation_metric):
 def print_results(matrix, k, file_name, algorithm_name):
     #matrix = {'F1': f1, 'Precision':precision, 'Recall':recall, 'Accuracy': accuracy}
 
-    print(matrix)
+    print("matrix", matrix)
     results_file = open("./results/" + algorithm_name + "_results.txt", "a+")
     results_file.write(file_name.ljust(10) + " Algorithm_name: " + str(algorithm_name).ljust(20) + "K-value:" + str(k).ljust(10) + "F-score: " + str(matrix['F1']) + " Accuracy: " + str(matrix['Accuracy'])+ " Precision: " + str(matrix['Precision'])+ " Recall: " + str(matrix['Recall'])  + "\n")
     results_file.close()
@@ -419,16 +419,16 @@ def main():
             #evals = {'F1': f1, 'Precision':precision, 'Recall':recall, 'Accuracy': accuracy}
 
             # cf,evals = cross_validation(folds, num, data_frames[file_index],'k-nn', 'fscore')
-            # print_results(evals['F1'], num, (files[file_index][0][:-10]), "k-nn")
+            # print_results(evals, num, (files[file_index][0][:-10]), "k-nn")
 
             # cf,evals = cross_validation(folds, num, data_frames[file_index],'edited', 'fscore')
-            # print_results(evals['F1'], num, (files[file_index][0][:-10]), "edited")            
+            # print_results(evals, num, (files[file_index][0][:-10]), "edited")            
 
             # cf,evals = cross_validation(folds, num, data_frames[file_index],'condensed', 'fscore')
-            # print_results(evals['F1'], num, (files[file_index][0][:-10]), "condensed")
+            # print_results(evals, num, (files[file_index][0][:-10]), "condensed")
 
     #         cf,evals = cross_validation(folds, num, data_frames[file_index],'k-means')
-    #         print_results(evals['F1'], num, (files[file_index][0][:-10]), "k-means")
+    #         print_results(evals, num, (files[file_index][0][:-10]), "k-means")
 
             if file_index <= 2:
                 cf,evals = cross_validation(folds, num, data_frames[file_index],'k-medoids', 'fscore')
