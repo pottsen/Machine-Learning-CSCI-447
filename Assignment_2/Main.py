@@ -214,7 +214,7 @@ def process_data():
 
            
 
-def cross_validation(folds, k, dataframes, algorithm_name):
+def cross_validation(folds, k, dataframes, algorithm_name, evaluation_metric):
 #dataframes = [db_name, [section1,..,sectionN]]
         #confusion matrix
     guessed_classes = []
@@ -235,13 +235,14 @@ def cross_validation(folds, k, dataframes, algorithm_name):
 
 
     if algorithm_name == 'edited':
-        print("New Data Set")
         for i in range(folds):
             test_data = dataframes[1].pop(i)
             training_data = concat_df(dataframes[1])
             training_data = edited_k_nearest(k, training_data)
             guessed_classes += k_nearest_neighbor(k,training_data, test_data)
             dataframes[1].append(test_data)
+
+
             
             
     
@@ -298,68 +299,70 @@ def cross_validation(folds, k, dataframes, algorithm_name):
     #-----------------
     #evaluation metrics for the algorithm's guessed_classes 
     #-----------------
+    if evaluation_metric == 'fscore':
+        confusion = {} #confusion matrix
+        unique_classes = concat_df(dataframes[1])['0'].unique().tolist()
+        for class_name in unique_classes:
+            confusion.update({class_name:{'TP':0,'FP':0,'TN':0,'FN':0}})#class_name is the key for each classes confusion matrix
+        #confusion{class:{TP:0,FP:0,TN:0,FN:0}}
 
-    confusion = {} #confusion matrix
-    unique_classes = concat_df(dataframes[1])['0'].unique().tolist()
-    for class_name in unique_classes:
-        confusion.update({class_name:{'TP':0,'FP':0,'TN':0,'FN':0}})#class_name is the key for each classes confusion matrix
-    #confusion{class:{TP:0,FP:0,TN:0,FN:0}}
+        for class_name in unique_classes:
+            for result in guessed_classes: #result[0] is actual class and result[1] is our guess
+                #class_name = int(class_name)
+                #result[0] = int(result[0])
+                #result[1] = int(result[1])
+                #print(result)
+                if class_name == result[1] and class_name == result[0]: #guess is accurate with what the class actually was
+                    value = 'TP'
+                if class_name == result[1] and class_name != result[0]: #guessed that a record was part of a class and it wasn't
+                    value = 'FP'
+                if class_name != result[1] and class_name == result[0]: #guessed that a record was not part of a class and it was
+                    value = 'FN'
+                if class_name != result[1] and class_name != result[0]: #guess is accurate that the record did not belong to a class
+                    value = 'TN'
+                confusion[class_name][value] += 1 #increment that classes TP/FP/TN/FN count accordingly
+        
+        correct = 0
+        total = 0
+        for result in guessed_classes:
+            if(result[0]==result[1]):
+                correct+=1
+            total+=1
+        accuracy = correct/total
 
-    for class_name in unique_classes:
-        for result in guessed_classes: #result[0] is actual class and result[1] is our guess
-            #class_name = int(class_name)
-            #result[0] = int(result[0])
-            #result[1] = int(result[1])
-            #print(result)
-            if class_name == result[1] and class_name == result[0]: #guess is accurate with what the class actually was
-                value = 'TP'
-            if class_name == result[1] and class_name != result[0]: #guessed that a record was part of a class and it wasn't
-                value = 'FP'
-            if class_name != result[1] and class_name == result[0]: #guessed that a record was not part of a class and it was
-                value = 'FN'
-            if class_name != result[1] and class_name != result[0]: #guess is accurate that the record did not belong to a class
-                value = 'TN'
-            confusion[class_name][value] += 1 #increment that classes TP/FP/TN/FN count accordingly
-    
-    correct = 0
-    total = 0
-    for result in guessed_classes:
-        if(result[0]==result[1]):
-            correct+=1
-        total+=1
-    accuracy = correct/total
+        num_of_classes = len(confusion)
+        average_cm = {'TP':0,'FP':0,'TN':0,'FN':0}  #average confusion matrix over every class
+        print(confusion)
 
-    num_of_classes = len(confusion)
-    average_cm = {'TP':0,'FP':0,'TN':0,'FN':0}  #average confusion matrix over every class
-    print(confusion)
+        count = 0
+        precision = 0
+        recall=0
+        f1=0
+        for class1, matrix in confusion.items():
+            TP = matrix['TP']
+            TN = matrix['TN']
+            FP = matrix['FP']
+            FN = matrix['FN']
+            if((TP+FP) != 0):
+                precision += TP/(TP+FP)
+                ptemp = TP/(TP+FP)
+            if((TP+FN) != 0):
+                recall += TP/(TP+FN)
+                rtemp = TP/(TP+FN)
+            if((ptemp+rtemp)!=0):
+                f1 += 2*ptemp*rtemp/(ptemp+rtemp)
+            count+=1
+        precision = precision/count
+        recall = recall/count
+        f1 = f1/count
+        
+        #f1 = 2*precision*recall/(precision+recall)
 
-    count = 0
-    precision = 0
-    recall=0
-    f1=0
-    for class1, matrix in confusion.items():
-        TP = matrix['TP']
-        TN = matrix['TN']
-        FP = matrix['FP']
-        FN = matrix['FN']
-        if((TP+FP) != 0):
-            precision += TP/(TP+FP)
-            ptemp = TP/(TP+FP)
-        if((TP+FN) != 0):
-            recall += TP/(TP+FN)
-            rtemp = TP/(TP+FN)
-        if((ptemp+rtemp)!=0):
-            f1 += 2*ptemp*rtemp/(ptemp+rtemp)
-        count+=1
-    precision = precision/count
-    recall = recall/count
-    f1 = f1/count
-    
-    #f1 = 2*precision*recall/(precision+recall)
+        metrics = {'F1': f1, 'Precision':precision, 'Recall':recall, 'Accuracy': accuracy}
+        return average_cm, metrics
 
-    metrics = {'F1': f1, 'Precision':precision, 'Recall':recall, 'Accuracy': accuracy}
-    return average_cm, metrics
-
+    if evaluation_metric == 'regression':
+        print("regression")
 
 def print_results(matrix, k, file_name, algorithm_name ):
     #matrix = {'F1': f1, 'Precision':precision, 'Recall':recall, 'Accuracy': accuracy}
@@ -398,25 +401,25 @@ def main():
     k = [13, 37, 67]
 
     for num in k:    
-        for file_index in range(len(files)):
+        for file_index in range(len(files)-3):
 
             #evals = {'F1': f1, 'Precision':precision, 'Recall':recall, 'Accuracy': accuracy}
 
-            # cf,evals = cross_validation(folds, num, data_frames[file_index],'k-nn')
-            # print_results(evals['F1'], num, (files[i][0][:-10]), "k-nn")
+            cf,evals = cross_validation(folds, num, data_frames[file_index],'k-nn', 'fscore')
+            print_results(evals['F1'], num, (files[file_index][0][:-10]), "k-nn")
 
-            # cf,evals = cross_validation(folds, num, data_frames[file_index],'edited')
-            # print_results(evals['F1'], num, (files[file_index][0][:-10]), "edited")            
+            cf,evals = cross_validation(folds, num, data_frames[file_index],'edited', 'fscore')
+            print_results(evals['F1'], num, (files[file_index][0][:-10]), "edited")            
 
-            # cf,evals = cross_validation(folds, num, data_frames[file_index],'condensed')
-            # print_results(evals['F1'], num, (files[file_index][0][:-10]), "condensed")
+            cf,evals = cross_validation(folds, num, data_frames[file_index],'condensed', 'fscore')
+            print_results(evals['F1'], num, (files[file_index][0][:-10]), "condensed")
 
     #         cf,evals = cross_validation(folds, num, data_frames[file_index],'k-means')
     #         print_results(evals['F1'], num, (files[file_index][0][:-10]), "k-means")
 
-            if file_index > 2:
-                cf,evals = cross_validation(folds, num, data_frames[file_index],'k-medoids')
-                print_results(evals, num, (files[file_index][0][:-10]), "k-medoids")
+            # if file_index > 2:
+            #     cf,evals = cross_validation(folds, num, data_frames[file_index],'k-medoids')
+            #     print_results(evals, num, (files[file_index][0][:-10]), "k-medoids")
         
             
 
