@@ -58,7 +58,7 @@ def concat_df(sliced_dataframes):
 
 #should make it so we only pass in a split data frame and a k
 #def k_nearest_neighbor(k, dataframes):
-def k_nearest_neighbor(k, training_data, test_data):
+def k_nearest_neighbor_regression(k, training_data, test_data):
   
     all_guesses = []
     #take each row of our test_data and find KNN in training_data

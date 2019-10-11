@@ -1,4 +1,4 @@
-from K_Nearest import nearest_k_points
+from K_Nearest import nearest_k_points, concat_df, k_nearest_neighbor_regression
 
 
 def edited_k_nearest(k, training_data):

@@ -1,1 +1,3 @@
 machine    Algorithm_name: k-medoids           K-value:13        F-score: 0.1116504854368932 Accuracy: 0.11165048543689321 Precision: 0.1116504854368932 Recall: 0.1116504854368932
+machine    Algorithm_name: k-medoids           K-value:13        Mean Squared Error:48.40842558251468
+machine    Algorithm_name: k-medoids           K-value:13        Mean Squared Error:48.40842558251468

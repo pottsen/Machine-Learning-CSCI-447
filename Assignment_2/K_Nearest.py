@@ -5,12 +5,13 @@ import pandas as pd
 
 #input k -> how many nearest points to return
 #input dataframe -> the dataset to search in
-#input example -> 
+#input example -> a point
 #return -> [[index, 1st_closest_distance, class], [index, 2nd_closest_distance, class]...]
 def nearest_k_points(k, dataframe, example):
-    
-    if type(dataframe) == list:
+    #make sure we are passing a df 
+    if type(dataframe) == list: # Fixes a really weird bug from Condensed KNN
         dataframe = pd.DataFrame(dataframe)
+    #make sure the length of the example is the length of a row our data set
     if (len(example)) != (len(dataframe.iloc[0])):
         raise Exception ("example and dataframe row are not the same length")
     if (len(dataframe)) < k :
@@ -18,11 +19,13 @@ def nearest_k_points(k, dataframe, example):
     
     #find distance from example to point
     distances = []
+    #go through each point in the dataframe an record distences from our example to each point
     for index, row in dataframe.iterrows():
         distance = 0
         row_class = row[0]
         #dont use the first column = class
         for i in range(len(row)-1):
+            #caluculating euclidean distence without SQRT
             distance += (float(example[i+1]) - float(row[i+1])) ** 2
         distances.append([index, distance, row_class])
     
@@ -76,6 +79,30 @@ def k_nearest_neighbor(k, training_data, test_data):
                 guesses.append(k_closest[j][-1])
         
         guesses = max(set(guesses), key = guesses.count) 
+
+        #print('actual = '+actual_class+' predicted = '+guesses)
+
+        all_guesses.append([actual_class, guesses])
+    
+    return all_guesses
+
+def k_nearest_neighbor_regression(k, training_data, test_data):
+  
+    all_guesses = []
+    #take each row of our test_data and find KNN in training_data
+    #is that collumns or rows??
+    for i in range(len(test_data)):
+        k_closest = nearest_k_points(k, training_data, test_data.iloc[i])
+        
+        actual_class = test_data.iloc[i, 0]
+        #average the class
+        guesses = []
+        sum = 0.0
+        for j in range(k):
+            if(j < len(k_closest)):
+                sum = sum + float(k_closest[j][-1])
+        
+        guesses = sum/k
 
         #print('actual = '+actual_class+' predicted = '+guesses)
 

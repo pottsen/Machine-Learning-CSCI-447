@@ -1,0 +1,2 @@
+machine    Algorithm_name: k-means             K-value:13        Mean Squared Error:56.26526684667086
+machine    Algorithm_name: k-means             K-value:13        Mean Squared Error:56.26526684667086

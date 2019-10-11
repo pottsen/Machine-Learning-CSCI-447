@@ -1,0 +1,1 @@
+car        Algorithm_name: edited-k-means      K-value:13        F-score: 0.8402013561977449 Accuracy: 0.9484356894553881 Precision: 0.9443382896395809 Recall: 0.7944727075245988
