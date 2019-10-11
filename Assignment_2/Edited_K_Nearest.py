@@ -24,7 +24,7 @@ def edited_k_nearest(k, training_data):
 
             #if the point was classified incorrectly, drop is from our training dataframe
             if actual_class != guess:
-                training_data.drop(index)
+                training_data = training_data.drop(index)
             
             #if we ever get to a point where k is greater than the number of points in a training dataset, KNN cannot do its job properly
             if (len(training_data) <= k):

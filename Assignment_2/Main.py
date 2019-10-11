@@ -305,8 +305,10 @@ def cross_validation(folds, k, dataframes, algorithm_name, evaluation_metric):
             medoids = edited_k_nearest(k, training_data)
 
             #remove medoid data points from training data
-            for medoid in medoids.iterrows():
-                training_data.drop(training_data.loc(medoid.index)) 
+            for index, row in medoids.iterrows():
+                training_data = training_data.drop(index)
+            print("size of training data", len(training_data))
+            print("size of medoids data", len(medoids))
 
             #run PAM-NN to generate medoids with edited-kNN data set as initial guesses
             returned_medoids = k_medoids(medoids, training_data)
@@ -441,79 +443,79 @@ def main():
 
     k = [13, 37, 67]
     
-    #Justin
-    for num in k:    
-        for file_index in range(len(files)):
+    # #Justin
+    # for num in k:    
+    #     for file_index in range(len(files)):
 
-            if file_index>=3:
-                evals = cross_validation(folds, num, data_frames[file_index],'k-nn-regression', 'regression')
-                print_results_discrete(evals, num, (files[file_index][0][:-10]), "k-nn")
-            else:
-                cf,evals = cross_validation(folds, num, data_frames[file_index],'k-nn', 'fscore')
-                print_results(evals, num, (files[file_index][0][:-10]), "k-nn")
+    #         if file_index>=3:
+    #             evals = cross_validation(folds, num, data_frames[file_index],'k-nn-regression', 'regression')
+    #             print_results_discrete(evals, num, (files[file_index][0][:-10]), "k-nn")
+    #         else:
+    #             cf,evals = cross_validation(folds, num, data_frames[file_index],'k-nn', 'fscore')
+    #             print_results(evals, num, (files[file_index][0][:-10]), "k-nn")
 
-            # cf,evals = cross_validation(folds, num, data_frames[file_index],'edited', 'fscore')
-            # print_results(evals, num, (files[file_index][0][:-10]), "edited")            
+    #         # cf,evals = cross_validation(folds, num, data_frames[file_index],'edited', 'fscore')
+    #         # print_results(evals, num, (files[file_index][0][:-10]), "edited")            
 
-            # cf,evals = cross_validation(folds, num, data_frames[file_index],'condensed', 'fscore')
-            # print_results(evals, num, (files[file_index][0][:-10]), "condensed")
+    #         # cf,evals = cross_validation(folds, num, data_frames[file_index],'condensed', 'fscore')
+    #         # print_results(evals, num, (files[file_index][0][:-10]), "condensed")
 
-            # cf,evals = cross_validation(folds, num, data_frames[file_index+1],'edited-k-means', 'fscore')
-            # print_results(evals, num, (files[file_index+1][0][:-10]), "edited-k-means")
+    #         # cf,evals = cross_validation(folds, num, data_frames[file_index+1],'edited-k-means', 'fscore')
+    #         # print_results(evals, num, (files[file_index+1][0][:-10]), "edited-k-means")
 
-            # cf,evals = cross_validation(folds, num, data_frames[file_index],'edited-k-medoids', 'fscore')
-            # print_results(evals, num, (files[file_index][0][:-10]), "edited-k-medoids")
+    #         # cf,evals = cross_validation(folds, num, data_frames[file_index],'edited-k-medoids', 'fscore')
+    #         # print_results(evals, num, (files[file_index][0][:-10]), "edited-k-medoids")
 
     #peter
     for num in k:    
-        for file_index in range(len(files)-3):
+        for file_index in range(len(files)-4):
 
             # cf,evals = cross_validation(folds, num, data_frames[file_index],'k-nn', 'fscore')
             # print_results(evals, num, (files[file_index][0][:-10]), "k-nn")
-
-            cf,evals = cross_validation(folds, num, data_frames[file_index],'edited', 'fscore')
-            print_results(evals, num, (files[file_index][0][:-10]), "edited")            
+            
+           # # cf,evals = cross_validation(folds, num, data_frames[file_index+1],'edited', 'fscore')
+           # # print_results(evals, num, (files[file_index+1][0][:-10]), "edited")            
 
             # cf,evals = cross_validation(folds, num, data_frames[file_index],'condensed', 'fscore')
             # print_results(evals, num, (files[file_index][0][:-10]), "condensed")
 
-            cf,evals = cross_validation(folds, num, data_frames[file_index+1],'edited-k-means', 'fscore')
-            print_results(evals, num, (files[file_index+1][0][:-10]), "edited-k-means")
+            ## cf,evals = cross_validation(folds, num, data_frames[file_index+2],'edited-k-means', 'fscore')
+            ## print_results(evals, num, (files[file_index+2][0][:-10]), "edited-k-means")
 
-            # cf,evals = cross_validation(folds, num, data_frames[file_index],'edited-k-medoids', 'fscore')
-            # print_results(evals, num, (files[file_index][0][:-10]), "edited-k-medoids")
+            cf,evals = cross_validation(folds, num, data_frames[file_index+2],'edited-k-medoids', 'fscore')
+            print_results(evals, num, (files[file_index+2][0][:-10]), "edited-k-medoids")
     
-    #Forest    
-    for num in k:    
-        for file_index in range(len(files)-3):
+    # #Forest    
+    # for num in k:    
+    #     for file_index in range(len(files)-3):
 
-            # cf,evals = cross_validation(folds, num, data_frames[file_index],'k-nn', 'fscore')
-            # print_results(evals, num, (files[file_index][0][:-10]), "k-nn")
+    #         # cf,evals = cross_validation(folds, num, data_frames[file_index],'k-nn', 'fscore')
+    #         # print_results(evals, num, (files[file_index][0][:-10]), "k-nn")
 
-            # cf,evals = cross_validation(folds, num, data_frames[file_index],'edited', 'fscore')
-            # print_results(evals, num, (files[file_index][0][:-10]), "edited")            
+    #         # cf,evals = cross_validation(folds, num, data_frames[file_index],'edited', 'fscore')
+    #         # print_results(evals, num, (files[file_index][0][:-10]), "edited")            
 
-            cf,evals = cross_validation(folds, num, data_frames[file_index],'condensed', 'fscore')
-            print_results(evals, num, (files[file_index][0][:-10]), "condensed")
+    #         cf,evals = cross_validation(folds, num, data_frames[file_index],'condensed', 'fscore')
+    #         print_results(evals, num, (files[file_index][0][:-10]), "condensed")
 
-            # cf,evals = cross_validation(folds, num, data_frames[file_index+1],'edited-k-means', 'fscore')
-            # print_results(evals, num, (files[file_index+1][0][:-10]), "edited-k-means")
+    #         # cf,evals = cross_validation(folds, num, data_frames[file_index+1],'edited-k-means', 'fscore')
+    #         # print_results(evals, num, (files[file_index+1][0][:-10]), "edited-k-means")
 
-            cf,evals = cross_validation(folds, num, data_frames[file_index],'edited-k-medoids', 'fscore')
-            print_results(evals, num, (files[file_index][0][:-10]), "edited-k-medoids")
+    #         cf,evals = cross_validation(folds, num, data_frames[file_index],'edited-k-medoids', 'fscore')
+    #         print_results(evals, num, (files[file_index][0][:-10]), "edited-k-medoids")
 
-    #Bruce:
-    for num in k:    
-        for file_index in range(len(files)-3):
+    # #Bruce:
+    # for num in k:    
+    #     for file_index in range(len(files)-3):
 
-            # cf,evals = cross_validation(folds, num, data_frames[file_index+3],'k-nn', 'regression')
-            # print_results_discrete(evals, num, (files[file_index+3][0][:-10]), "k-nn")
+    #         # cf,evals = cross_validation(folds, num, data_frames[file_index+3],'k-nn', 'regression')
+    #         # print_results_discrete(evals, num, (files[file_index+3][0][:-10]), "k-nn")
 
-            evals = cross_validation(folds, num, data_frames[file_index+3],'k-means', 'regression')
-            print_results_discrete(evals, num, (files[file_index+3][0][:-10]), "k-means")
+    #         evals = cross_validation(folds, num, data_frames[file_index+3],'k-means', 'regression')
+    #         print_results_discrete(evals, num, (files[file_index+3][0][:-10]), "k-means")
 
-            evals = cross_validation(folds, num, data_frames[file_index+3],'k-medoids', 'regression')
-            print_results_discrete(evals, num, (files[file_index+3][0][:-10]), "k-medoids")
+    #         evals = cross_validation(folds, num, data_frames[file_index+3],'k-medoids', 'regression')
+    #         print_results_discrete(evals, num, (files[file_index+3][0][:-10]), "k-medoids")
 
     
 
