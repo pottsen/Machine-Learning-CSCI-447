@@ -363,15 +363,28 @@ def cross_validation(folds, k, dataframes, algorithm_name, evaluation_metric):
 
     if evaluation_metric == 'regression':
         print("regression")
+        sum_of_error = 0.0
+        for result in guessed_classes:
+            sum_of_error += (result[0]-result[1])**2
+        
+        mean_square_error = sum_of_error/len(guessed_classes)
 
-def print_results(matrix, k, file_name, algorithm_name ):
+        return mean_square_error
+
+def print_results(matrix, k, file_name, algorithm_name):
     #matrix = {'F1': f1, 'Precision':precision, 'Recall':recall, 'Accuracy': accuracy}
 
+    print(matrix)
     results_file = open("./results/" + algorithm_name + "_results.txt", "a+")
     results_file.write(file_name.ljust(10) + " Algorithm_name: " + str(algorithm_name).ljust(20) + "K-value:" + str(k).ljust(10) + "F-score: " + str(matrix['F1']) + " Accuracy: " + str(matrix['Accuracy'])+ " Precision: " + str(matrix['Precision'])+ " Recall: " + str(matrix['Recall'])  + "\n")
     results_file.close()
     print(file_name.ljust(10) + " Algorithm_name: " + str(algorithm_name).ljust(20) + "K-value:" + str(k).ljust(10) + "F-score: " + str(matrix['F1']) + " Accuracy: " + str(matrix['Accuracy']) + " Precision: " + str(matrix['Precision'])+ " Recall: " + str(matrix['Recall'])  +"\n")
 
+def print_results_discrete(mean_square, k, file_name, algorithm_name):
+    results_file = open("./results/" + algorithm_name + "_results.txt", "a+")
+    results_file.write(file_name.ljust(10) + " Algorithm_name: " + str(algorithm_name).ljust(20) + "K-value:" + str(k).ljust(10) + "Mean Squared Error:" + str(mean_square) + "\n")
+    results_file.close()
+    print(file_name.ljust(10) + " Algorithm_name: " + str(algorithm_name).ljust(20) + "K-value:" + str(k).ljust(10) + "Mean Squared Error:" + str(mean_square) + "\n")
 
 def main():
 
@@ -405,21 +418,21 @@ def main():
 
             #evals = {'F1': f1, 'Precision':precision, 'Recall':recall, 'Accuracy': accuracy}
 
-            cf,evals = cross_validation(folds, num, data_frames[file_index],'k-nn', 'fscore')
-            print_results(evals['F1'], num, (files[file_index][0][:-10]), "k-nn")
+            # cf,evals = cross_validation(folds, num, data_frames[file_index],'k-nn', 'fscore')
+            # print_results(evals['F1'], num, (files[file_index][0][:-10]), "k-nn")
 
-            cf,evals = cross_validation(folds, num, data_frames[file_index],'edited', 'fscore')
-            print_results(evals['F1'], num, (files[file_index][0][:-10]), "edited")            
+            # cf,evals = cross_validation(folds, num, data_frames[file_index],'edited', 'fscore')
+            # print_results(evals['F1'], num, (files[file_index][0][:-10]), "edited")            
 
-            cf,evals = cross_validation(folds, num, data_frames[file_index],'condensed', 'fscore')
-            print_results(evals['F1'], num, (files[file_index][0][:-10]), "condensed")
+            # cf,evals = cross_validation(folds, num, data_frames[file_index],'condensed', 'fscore')
+            # print_results(evals['F1'], num, (files[file_index][0][:-10]), "condensed")
 
     #         cf,evals = cross_validation(folds, num, data_frames[file_index],'k-means')
     #         print_results(evals['F1'], num, (files[file_index][0][:-10]), "k-means")
 
-            # if file_index > 2:
-            #     cf,evals = cross_validation(folds, num, data_frames[file_index],'k-medoids')
-            #     print_results(evals, num, (files[file_index][0][:-10]), "k-medoids")
+            if file_index <= 2:
+                cf,evals = cross_validation(folds, num, data_frames[file_index],'k-medoids', 'fscore')
+                print_results(evals, num, (files[file_index][0][:-10]), "k-medoids")
         
             
 

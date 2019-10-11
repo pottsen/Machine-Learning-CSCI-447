@@ -13,14 +13,13 @@ def condensed_k_nearest(k, training_data):
 ##            print(i)
             print(type(training_data))
             nearest = nearest_k_points(k, training_data, training_data.iloc[i]) # Finds k nearest neighbors 
-            #print(df_row_in_list(test_data.iloc[i], condensed))
-            #print(df_row_in_list(test_data.iloc[i], condensed))
-            for j in nearest: # Go through each of the k nearest neighbors.
-                if training_data.iloc[i][0] != j[2] and not df_row_in_list(training_data.iloc[i], condensed): #Is the test data class the same as the nearest neighbor's class? 
-                    condensed.append(training_data.iloc[i])
-                    #training_data = training_data.drop(labels = j[0]) # Remove the item from training data
-                    new_data_point = True # New datapoint added to condensed, continue while loop
-                    break
+            guesses = [] # stores the class of each of the points in nearest
+            for j in range(len(nearest)):
+                guesses.append(nearest[j][-1]) # append class of each point in nearest
+            guess = max(set(guesses), key = guesses.count)
+            if training_data.iloc[i][0] != guess and not df_row_in_list(training_data.iloc[i], condensed): #Is the test data class the same as the nearest neighbor's class? 
+                condensed.append(training_data.iloc[i])
+                new_data_point = True # New datapoint added to condensed, continue while loop
     return condensed
 
 def df_row_in_list(df_row, my_list):

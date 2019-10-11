@@ -10,11 +10,11 @@ def edited_k_nearest(k, training_data):
         pre_triaining_data = training_data
 
         for index, row in training_data.iterrows():
-            print(k)
+            # print(k)
             k_closest = nearest_k_points(k, training_data, row)
             k_closest = k_closest[1:]
-            print(k_closest)
-            print("our traing")
+            # print(k_closest)
+            # print("our traing")
             guesses = []
             for j in range(len(k_closest)):
                 guesses.append(k_closest[j][-1])

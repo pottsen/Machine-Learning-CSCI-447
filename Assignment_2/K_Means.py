@@ -42,8 +42,8 @@ def k_means(k, dataframe):
 
         cent_id = 0
         for centroid_idx, list1 in clusters.items():
-            print('#cluster list#'+str(centroid_idx))
-            print(list1)
+            # print('#cluster list#'+str(centroid_idx))
+            # print(list1)
             df = pd.DataFrame(list1)
             #print(df)
             num_points = 0
@@ -55,8 +55,8 @@ def k_means(k, dataframe):
             new_centroid['0']=classlabel
             #print(centroid_idx)
             #print(k_clusters.iloc[1])
-            print("#new centroid#")
-            print(new_centroid)
+            # print("#new centroid#")
+            # print(new_centroid)
             k_clusters.iloc[cent_id] = new_centroid
             #for point in list1:# for each point in centroid cluster, recompute distance by mean of points
             #    if (num_points == 0):
