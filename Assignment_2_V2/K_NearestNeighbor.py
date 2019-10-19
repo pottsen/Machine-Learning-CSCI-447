@@ -25,23 +25,41 @@ def k_Nearest_Points(k, training, example):
                 closest = distance[j]
         closest_points.append(closest)
         distance.remove(closest)
-    print("Closest Points Ordered: ", closest_points)
     return closest_points
 
 #input-> training data as 2d list, test data as 2d list
 #return-> [[actual, guess, index], ...]
-def K_Nearest_Neigbor(k, training_data, test_data):
+def K_Nearest_Neigbor(k, training_data, test_data, class_or_reg):
     results = []
     for i in range(len(test_data)):
         closest_points = k_Nearest_Points(k, training_data, test_data[i])
-        guesses = []
-        for j in range(len(closest_points)):
-            guesses.append(closest_points[j][0])
-        guess = max(set(guesses), key = guesses.count) 
+
+        if(class_or_reg == "class"):
+            guess = classification_guess(closest_points)
+        elif(class_or_reg == "reg"):
+            guess = regression_guess(classification_guess)
+        else:
+            raise Exception("Enter 'class' for classification or reg for 'regression'")
+
         actual = test_data[i][0]
         index = test_data[i][2]
+
         results.append([actual, guess, index])
-    print(results)
     return results
 
+#input-> an array of closest_points = [[label, distance, index]...]
+#return-> a guess of the most popular nearest neibors from the closest_points
+def classification_guess(closest_points):
+    guesses = []
+    for j in range(len(closest_points)):
+        guesses.append(closest_points[j][0])
+    return max(set(guesses), key = guesses.count) 
+
+#input-> an array of closest_points = [[label, distance, index]...]
+#return-> the average of the most popular nearest neibors from the closest_points
+def regression_guess(closest_points):
+    guesses = []
+    for j in range(len(closest_points)):
+        guesses.append(closest_points[j][0])
+    return sum(guesses) / len(guesses)
 
