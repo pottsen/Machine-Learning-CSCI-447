@@ -54,7 +54,6 @@ class Loss_Functions:
         except:
             recall = 0
         try:
-            print("fscore")
             return 2*((precision*recall)/(precision+recall))
         except:
             raise Exception ("precision: " + precision + " or recall: " + recall + " add to 0.")
