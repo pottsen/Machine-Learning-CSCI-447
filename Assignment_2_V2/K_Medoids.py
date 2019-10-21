@@ -59,7 +59,7 @@ def k_medoids(medoids, training_data):
             #counter used because we want to initialize cost to medoid cost
             k=0
             minimum_index = 0
-            print("NEW CLUSTER")
+            # print("NEW CLUSTER")
             for index in range(len(cluster_points)):
                 #resets cost for each point in cluster
                 cost = 0
@@ -81,7 +81,7 @@ def k_medoids(medoids, training_data):
                 if cost < minimum_cost:
                     minimum_cost = cost
                     minimum_index = index
-                    print("NEW LOWEST COST ---- index = ", indices[index])
+                    # print("NEW LOWEST COST ---- index = ", indices[index])
                     # print("New lowest cost ", minimum_cost)
                     #will need to rerun full medoid if a point is swapped
                     
@@ -89,12 +89,12 @@ def k_medoids(medoids, training_data):
                     #swap out medoied with data point that has lower cost
             if minimum_index != 0:
                 runFull = True
-                print("ADDING KEY AND INDEX TO LIST")
+                # print("ADDING KEY AND INDEX TO LIST")
 
                 medoids_to_remove.append(key)
-                print("MEDOID KEY LIST", medoids_to_remove)
+                # print("MEDOID KEY LIST", medoids_to_remove)
                 training_data_to_medoid.append(indices[minimum_index])
-                print("TRIANING DATA KEY LIST", training_data_to_medoid)
+                # print("TRIANING DATA KEY LIST", training_data_to_medoid)
                 # try: 
                 #     medoids_to_remove.append(key)
                 #     print("MEDOID KEY LIST", medoids_to_remove)
@@ -108,16 +108,16 @@ def k_medoids(medoids, training_data):
                 #     # print("Length of indices ", len(indices))
                 #     training_data_to_medoid = [indices[index]]
             # print(training_data_to_medoid)
-        print("Medoids: ", len(medoids))
-        for i in range(len(medoids)):
-            print(medoids[i])
+        # print("Medoids: ", len(medoids))
+        # for i in range(len(medoids)):
+        #     print(medoids[i])
         for i in training_data_to_medoid:
             # print("appended training data: ", training_data[i])
             new_medoid = training_data[int(i)]
             medoids.append(new_medoid)
-        print("Appended Medoids: ", len(medoids))
-        for i in range(len(medoids)):
-            print(medoids[i])
+        # print("Appended Medoids: ", len(medoids))
+        # for i in range(len(medoids)):
+        #     print(medoids[i])
         for i in medoids_to_remove:
             training_data.append(medoids[i])
         # medoids.append(training_data[training_data_to_medoid)
@@ -138,35 +138,3 @@ def k_medoids(medoids, training_data):
         # print("Length of medoids ", len(medoids))
 
     return medoids
-
-
-
-
-
-
-
-
-# def distance_calc(k, training, data_point):
-#     if (len(data_point)) != len(training[0]):
-#         raise Exception ("Example and dataframe row are not the same length")
-#     if len(training) < k:
-#         raise Exception("k number of closest points is larger than our training data set")
-
-#     distances = np.zeros([len(training),1])
-#     print(distances)
-
-#     for i in range(len(training)):
-#         for j in range(len(data_point)):
-#             distances[i] += (data_point[j] - training[i,j])**2
-#     sorted_distances = np.sort(distances, axis=0)
-#     print(sorted_distances[0])        
-#     print("Training ", training[0])
-#     training_with_distances = np.append(training, distances, axis = -1)
-#     print("Training with distance ", training_with_distances)
-#     # training_with_distances = np.sort(training_with_distances[:,:], axis = -1)
-#     # training_with_distances = np.argsort(training_with_distances[:], axis=-1)
-#     training_with_distances = training_with_distances[training_with_distances[:,-1].argsort()]
-#     print("Sorted training with distance: ", training_with_distances)
-#     training_with_distances = training_with_distances[:k,:]
-#     print(training_with_distances)
-#     return training_with_distances
