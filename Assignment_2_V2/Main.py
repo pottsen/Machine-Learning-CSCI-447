@@ -4,6 +4,8 @@ from Data_Processing_Lists import Data_Processing_Lists
 from K_Medoids import k_medoids
 from Loss_Functions import Loss_Functions
 from Edited_NN import edited_nn
+from K_Means import k_means
+
 
 def main():
     data_aba = Data_Processing_Pd("abalone", 0, "./data")
