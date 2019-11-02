@@ -1,10 +1,10 @@
-import Data_Processing_Lists
-import Data_Processing_Pd
-import MLP
+from Data_Processing_Lists import Data_Processing_Lists
+from Data_Processing_Pd import Data_Processing_Pd
+from MLP import MLP
 
 
 def main():
-    print("Bruce")
+    
 
     data_aba = Data_Processing_Pd("abalone", 0, "./data")
     data_aba.strings_to_specific_num({"M":"1", "F":"2", "I":"3"})
@@ -19,7 +19,7 @@ def main():
 
 
     #data_as_2dList, number_of_hidden_layers, number_of_hidden_nodes_in_each_layer
-    mlp = MLP(data, number_of_classes, 1, [5])
+    mlp = MLP(data_array.file_array, number_of_classes, 1, [5])
 
 
     
