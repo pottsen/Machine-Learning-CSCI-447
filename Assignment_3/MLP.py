@@ -2,10 +2,10 @@ import numpy as np
 
 class MLP():
     #input-> #data_as_2dList, number_of_hidden_layers, number_of_hidden_nodes_in_each_layer
-    def __init__(self, data, outputs, number_of_layers, number_of_nodes):
+    def __init__(self, data, output, number_of_layers, number_of_nodes):
         self.data = data
-        self.outputs = outputs #should this be a list of the possible classes????????
-        
+        self.outputs = np.array(len(output)) #should this be a list of the possible classes????????
+
         self.hidden_layers = []
         for layer in range(number_of_layers):
             # self.hidden_layers.append(np.transpose(np.random.rand(number_of_nodes[layer])))
@@ -37,12 +37,10 @@ class MLP():
     
     def train(self):
         temp = 0
-        while(temp!=self.matricies):
-            temp = self.matricies
-
-            
-    
-    
+        while(temp!=self.weight_matricies):
+            temp = self.weight_matricies
+            network_train_iteration()
+  
     # gradient:
 
 
@@ -54,27 +52,27 @@ class MLP():
     def sigmoid(self, x):
         return 1/(1 + np.exp(-x)) 
 
-    def feed_forward(self):
-        for input in self.data:
-            values = np.transpose(input)
-            for wm in range(len(weight_matricies)):
-                #multiply weight matrix
-                values = values * weight_matricies[wm]
-                if wm <= len(hidden_layers):
-                    #calculate node values of layer
-                    raw_layer = values * hidden_nodes[wm]
-                    #convert to sigmoid value
-                    sigmoid_layer = sigmoidify_layer(raw_layer)
-                    #save sigmoid values of layer
-                    hidden_nodes[wm] = sigmoid_layer
-                    values = sigmoid_layer
+    # def feed_forward(self):
+    #     for input in self.data:
+    #         values = np.transpose(input)
+    #         for wm in range(len(weight_matricies)):
+    #             #multiply weight matrix
+    #             values = values * weight_matricies[wm]
+    #             if wm <= len(hidden_layers):
+    #                 #calculate node values of layer
+    #                 raw_layer = values * hidden_nodes[wm]
+    #                 #convert to sigmoid value
+    #                 sigmoid_layer = sigmoidify_layer(raw_layer)
+    #                 #save sigmoid values of layer
+    #                 hidden_nodes[wm] = sigmoid_layer
+    #                 values = sigmoid_layer
 
-            #Calculate Errors
-            #total
+    #         #Calculate Errors
+    #         #total
 
-            #by class
+    #         #by class
 
-    def network_train(self):
+    def network_train_iteration(self):
         #for every data point vector
         for d in self.data:
 
@@ -83,13 +81,23 @@ class MLP():
             #for every weight matrix (# of hidden layers + 1)
             for i in range(len(self.hidden_layers)+1):
                 if(len(self.hidden_layers)> layer_target_num): # the current layers output will be the classification/output layer
-                    pass
+                    next_layer = self.outputs   #target layer of curr_layer
+                    weights = self.weight_matricies[i]  #weights mapping from curr_layer to target_layer
+                    curr_layer = feed_forward_layer(curr_layer,next_layer,weights)
+                    if (len(outputs) >1): #this is a classifcation problem, and we want our outputs to be between 0-1
+                        curr_layer = sigmoidify_layer(curr_layer)
+                    self.outputs = curr_layer                    
+
                 else: #the output of the current layer is the input to another hidden layer
                     next_layer = self.hidden_layers[layer_target_num]   #target layer of curr_layer
                     weights = self.weight_matricies[i]  #weights mapping from curr_layer to target_layer
                     curr_layer = feed_forward_layer(curr_layer,next_layer,weights)
                     curr_layer = sigmoidify_layer(curr_layer)
                     self.hidden_layers[layer_target_num] = curr_layer
+            
+            #calculate errors Total and by class
+            
+        #backprop
 
 
     
