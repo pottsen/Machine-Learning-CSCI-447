@@ -19,7 +19,14 @@ def main():
 
 
     #data_as_2dList, number_of_hidden_layers, number_of_hidden_nodes_in_each_layer
-    mlp = MLP(data_array.file_array, number_of_classes, 1, [5])
+    mlp = MLP(data_array.file_array, number_of_classes, 2, [5, 5])
+
+
+    #testing feed forward
+    l1 = np.array([5,2,1])
+    l2 = np.array([1,1,7,1])
+    weights = np.array([1,1,7,1],[1,1,7,1],[1,1,7,1],[1,1,7,1])
+    mlp.feed_forward_layer
 
 
     
@@ -27,3 +34,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
