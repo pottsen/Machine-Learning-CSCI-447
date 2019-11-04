@@ -1,8 +1,11 @@
 import numpy as np
 
+
+
 class MLP():
     #input-> #data_as_2dList, possible_outputs, number_of_hidden_layers, number_of_hidden_nodes_in_each_layer
     def __init__(self, data, output, number_of_layers, number_of_nodes):
+        self.learing_rate = .1
         self.data = data
         self.outputs = np.zeros(len(output))
         self.outputs.shape = (len(output),1)
@@ -42,11 +45,16 @@ class MLP():
 
     def train(self):
         temp = 0
-        while(temp!=self.weight_matricies):
-            temp = self.weight_matricies
+        equal = False
+        while(not equal):
+            temp = np.copy(self.weight_matricies)
             self.network_train_iteration()
-
-    # gradient:
+            print(self.weight_matricies)
+            equal = True
+            for i in range(len(self.weight_matricies)):
+                self.weight_matricies[i] =self.weight_matricies[i].round(decimals = 4)
+                if(not np.array_equal(self.weight_matricies[i],temp[i])):
+                    equal = False
 
 
     def sigmoidify_layer(self, layer):
@@ -60,8 +68,8 @@ class MLP():
 
     def network_train_iteration(self):
         self.errors = 0
-        self.total_error = 0
-
+        #self.total_error = 0
+        layer_target_num = 0
         #for every data point (vector)
         for d in self.data:
 
@@ -99,9 +107,10 @@ class MLP():
 
             #calculate errors Total and by class
             self.errors += self.error_update(actual, self.outputs)
+        self.errors = self.errors / len(self.data)
 
 
-        #backprop
+        self.backpropagate(layer_target_num - 1, self.errors)
 
 
     #calculating node values for a hidden layer
@@ -122,15 +131,18 @@ class MLP():
     def error_update(self,actual, outputs): #(MSE)
 
         if len(outputs) == 1:  #regression problem
-            errors = [ (outputs[0] - actual)**2 ]
+            errors = [ (outputs[0] - actual)]#**2 ]
         else:  #classification
-            actual_vector = np.zeros((len(outputs),1))
-            actual_vector[int(actual) - 1] = 1    #ex: actual = 3 -->   [0, 0, 1]
+            if(type(actual) == int):
+                actual_vector = np.zeros((len(outputs),1))
+                actual_vector[int(actual) - 1] = 1    #ex: actual = 3 -->   [0, 0, 1]
+            else:
+                actual_vector = actual
 
 
             #errors = (guessed - actual)^2
             errors = np.subtract(outputs, actual_vector) #np array
-            errors = np.power(errors, 2)
+            #errors = np.power(errors, 2)
 
 
         return errors
@@ -147,10 +159,59 @@ class MLP():
         #         self.errors[i] += 0.5 * (0-outputs[i])**2
         #         self.error_partials[i] += -(0-outputs[i])
 
-    def backpropogate_layer():
-        pass
-        # ∇E = 1/n * Σ (g_n - a_n) * sigmoid ** -1 * weight
+
+    def backpropagate(self, layer, errors):
+        #for every weight matrix (# of hidden layers + 1)
+        feed_back_values = self.outputs
+        for i in range(len(self.hidden_layers)+1):
+
+            if(layer > 1): #we are at least past the first hidden layer, so we need to backpropogate the "actual" values of the previous hidden layer
+                feed_back_values = np.dot(self.weight_matricies[layer-1], feed_back_values)
+                prev_error = self.error_update(np.transpose(feed_back_values), self.hidden_layers[layer-2])[0]
+
+            self.backpropagate_layer(layer, errors)
+
+            if (layer> 1):
+                errors = prev_error
+
+
+            layer -= 1 #iterate the target layer to next layer
+
+
+    def backpropagate_layer(self,layer_no,errors):
+
+        # ∇E(h,n) = 1/n * Σ (g_n - a_n) * regularizer' * weight_n_h
+        # errors = 1/n * Σ (g_n - a_n)
+        # regulizer is the derivative of the node normalization function
+        # n is the output node
+        # h is a hidden layer node
+        # weight_n_h is the weight from node h to node n
+
         # partial_totalE_Wij = pE_t/pO_i * pO_i/pNet_i * pNet_i/pW_ijhttp://csci491-01.cs.montana.edu/~w32g348/www/montanahang/
+
+        weight_gradient = np.zeros((self.weight_matricies[layer_no-1].shape))
+
+        #output layer:
+        if(len(self.hidden_layers) < layer_no): # the current layers output will be the classification/output layer
+            if (len(self.outputs) >1): #this is a classifcation problem, and we want to multiply by the derivative of our sigmoid
+                regularizer = self.outputs * (1-self.outputs)
+
+            for i in range(len(self.weight_matricies[layer_no-1][0])):
+                matrix = self.weight_matricies[layer_no-1]
+                i = np.transpose(np.transpose(matrix)[i])
+                i.shape = (len(i),1)
+                weight_gradient += i * np.transpose(errors * regularizer)
+
+        #hidden layer:
+        else: #the output of the current layer is the input to another hidden layer
+            for i in range(len(self.weight_matricies[layer_no-1][0])):
+                matrix = self.weight_matricies[layer_no-1]
+                i = np.transpose(np.transpose(matrix)[i])
+                i.shape = (len(i),1)
+                regularizer = self.hidden_layers[layer_no -1] * (1-self.hidden_layers[layer_no -1])
+                weight_gradient += i * (errors * regularizer)
+
+        self.weight_matricies[layer_no-1] -= self.learing_rate * weight_gradient
 
 
 
