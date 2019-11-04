@@ -14,22 +14,13 @@ def main():
 
 
     data_array = Data_Processing_Lists("./processed", "abalone_processed")
-    data_array.file_array = data_array.file_array[:500]
+    data_array.file_array = data_array.file_array[:5]
     number_of_classes = 3
 
 
-    #data_as_2dList, number_of_hidden_layers, number_of_hidden_nodes_in_each_layer
-    mlp = MLP(data_array.file_array, number_of_classes, 2, [5, 5])
-
-
-    #testing feed forward
-    l1 = np.array([5,2,1])
-    l2 = np.array([1,1,7,1])
-    weights = np.array([1,1,7,1],[1,1,7,1],[1,1,7,1],[1,1,7,1])
-    mlp.feed_forward_layer
-
-
-    
+    #data_as_2dList, possible_outputs, number_of_hidden_layers, number_of_hidden_nodes_in_each_layer
+    mlp = MLP(data_array.file_array, [1,2,3], 1, [5])
+    mlp.train()
     
 
 if __name__ == "__main__":
