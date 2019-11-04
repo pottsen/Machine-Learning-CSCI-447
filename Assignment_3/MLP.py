@@ -48,20 +48,23 @@ class MLP():
         for i in range(len(self.weight_matricies)):
             stringify+= "\nWEIGHTS:\n"+str(self.weight_matricies[i])
             if i == len(self.weight_matricies) - 1:
-                stringify += "\nOUTPUTS:\n"+str(self.outputs)
+                pass #stringify += "\nOUTPUTS:\n"+str(self.outputs)
             else:
                 stringify += "\nHIDDEN LAYER\n"+str(self.hidden_layers[i])
         stringify += "\nEND NETWORK"
         return stringify
 
     def train(self):
-        temp = 0
+        temp = []
         equal = False
         while(not equal):
-            temp = np.copy(self.weight_matricies)
+            temp = []
+            for i in self.weight_matricies:
+                temp.append(np.copy(i))
             self.network_train_iteration()
             #print("outputs\n",self.outputs)
             print(self)
+
             equal = True
             for i in range(len(self.weight_matricies)):
                 self.weight_matricies[i] =self.weight_matricies[i].round(decimals = 4)
@@ -151,7 +154,7 @@ class MLP():
             if(type(actual) == int or type(actual) == float ):
                 actual_vector = np.zeros((1,len(outputs[0])))
                 actual_vector[0][int(actual) - 1] = 1    #ex: actual = 3 -->   [0, 0, 1]
-                
+
             else:
                 actual_vector = actual
 
@@ -235,6 +238,30 @@ class MLP():
 
 
 
+    def classify(self, point):
+        layer_target_num=1
+        curr_layer = point
+        for i in range(len(self.hidden_layers)+1):
+            #output layer:
+            if(len(self.hidden_layers) < layer_target_num): # the current layers output will be the classification/output layer
+                next_layer = self.outputs   #target layer of curr_layer
+                weights = self.weight_matricies[i]  #weights mapping from curr_layer to target_layer
+                curr_layer = self.feed_forward_layer(curr_layer,next_layer,weights)
+                if (len(self.outputs[0]) >1): #this is a classifcation problem, and we want our outputs to be between 0-1
+                    curr_layer = self.sigmoidify_layer(curr_layer)
+                self.outputs = curr_layer
+
+            #hidden layer:
+            else: #the output of the current layer is the input to another hidden layer
+                next_layer = self.hidden_layers[layer_target_num-1]   #target layer of curr_layer
+                weights = self.weight_matricies[i]  #weights mapping from curr_layer to target_layer
+                curr_layer = self.feed_forward_layer(curr_layer,next_layer,weights)
+                curr_layer = self.sigmoidify_layer(curr_layer)
+                self.hidden_layers[layer_target_num-1] = curr_layer
+
+            layer_target_num += 1 #iterate the target layer to next layer
+
+        return self.outputs #index of max (self.outputs)
 
 
     #input-> error asscoiate with each output neron

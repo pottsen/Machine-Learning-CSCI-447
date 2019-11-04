@@ -19,9 +19,13 @@ def main():
 
 
     #data_as_2dList, possible_outputs, number_of_hidden_layers, number_of_hidden_nodes_in_each_layer
-    print("point: ",data_array.file_array)
-    mlp = MLP(data_array.file_array, [1,2,3], 1, [10])
+    mlp = MLP(data_array.file_array[:49], [1,2,3], 1, [10])
     mlp.train()
+    test = data_array.file_array[-1:][0]
+    test_class = test[0]
+    test=test[1:]
+    print(test_class)
+    print(mlp.classify(test))
 
 
 if __name__ == "__main__":
