@@ -1,6 +1,7 @@
 from Data_Processing_Lists import Data_Processing_Lists
 from Data_Processing_Pd import Data_Processing_Pd
 from MLP import MLP
+import numpy as np
 
 
 def main():
@@ -17,15 +18,19 @@ def main():
     data_array.file_array = data_array.file_array[:50]
     number_of_classes = 3
 
+    XOR = np.array([[0, 1, 1],[1, 1, 0],[1, 0, 1],[0, 0, 0]])
+    mlp = MLP(XOR, [0,1], 0, [])
+    mlp.train()
 
     #data_as_2dList, possible_outputs, number_of_hidden_layers, number_of_hidden_nodes_in_each_layer
-    mlp = MLP(data_array.file_array[:49], [1,2,3], 1, [10])
-    mlp.train()
-    test = data_array.file_array[-1:][0]
+    # mlp = MLP(data_array.file_array[:49], [1,2,3], 1, [10])
+    # mlp.train()
+    # test = data_array.file_array[-1:][0]
+    test = np.array([1, 0, 1])
     test_class = test[0]
     test=test[1:]
     print(test_class)
-    print(mlp.classify(test))
+    mlp.classify(test)
 
 
 if __name__ == "__main__":

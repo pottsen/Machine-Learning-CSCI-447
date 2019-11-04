@@ -33,7 +33,7 @@ class MLP():
                 self.weight_matricies.append(layer)
             self.weight_matricies.append(np.random.rand(number_of_nodes[-1], len(output)))
         else:
-            self.weight_matricies.append(np.random.rand(len(self.data[0]), len(output)))
+            self.weight_matricies.append(np.random.rand(len(self.data[0])-1, len(output)))
 
 
 
@@ -57,14 +57,16 @@ class MLP():
     def train(self):
         temp = []
         equal = False
-        while(not equal):
+        iterations = 0
+        while(not equal) and iterations < 10:
             temp = []
             for i in self.weight_matricies:
                 temp.append(np.copy(i))
             self.network_train_iteration()
             #print("outputs\n",self.outputs)
             print(self)
-
+            iterations +=1
+            print("Iteration ", iterations)
             equal = True
             for i in range(len(self.weight_matricies)):
                 self.weight_matricies[i] =self.weight_matricies[i].round(decimals = 4)
@@ -260,7 +262,7 @@ class MLP():
                 self.hidden_layers[layer_target_num-1] = curr_layer
 
             layer_target_num += 1 #iterate the target layer to next layer
-
+        print(self.outputs)
         return self.outputs #index of max (self.outputs)
 
 
