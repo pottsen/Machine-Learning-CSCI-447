@@ -14,11 +14,12 @@ def main():
 
 
     data_array = Data_Processing_Lists("./processed", "abalone_processed")
-    data_array.file_array = data_array.file_array[:5]
+    data_array.file_array = data_array.file_array[:50]
     number_of_classes = 3
 
 
     #data_as_2dList, possible_outputs, number_of_hidden_layers, number_of_hidden_nodes_in_each_layer
+    print("point: ",data_array.file_array)
     mlp = MLP(data_array.file_array, [1,2,3], 1, [10])
     mlp.train()
 

@@ -8,7 +8,7 @@ class MLP():
         self.learing_rate = .1
         self.data = data
         self.outputs = np.zeros(len(output))
-        self.outputs.shape = (len(output),1)
+        self.outputs.shape = (1,len(output))
         #self.class_names = output #should this be a list of the possible classes????????
 
         if (len(number_of_nodes) != number_of_layers):
@@ -43,13 +43,25 @@ class MLP():
         # print(self.weight_matricies[2].shape)
         # print(self.hidden_layers[1].shape)
 
+    def __str__(self):
+        stringify = "NETWORK:"
+        for i in range(len(self.weight_matricies)):
+            stringify+= "\nWEIGHTS:\n"+str(self.weight_matricies[i])
+            if i == len(self.weight_matricies) - 1:
+                stringify += "\nOUTPUTS:\n"+str(self.outputs)
+            else:
+                stringify += "\nHIDDEN LAYER\n"+str(self.hidden_layers[i])
+        stringify += "\nEND NETWORK"
+        return stringify
+
     def train(self):
         temp = 0
         equal = False
         while(not equal):
             temp = np.copy(self.weight_matricies)
             self.network_train_iteration()
-            print(self.weight_matricies)
+            #print("outputs\n",self.outputs)
+            print(self)
             equal = True
             for i in range(len(self.weight_matricies)):
                 self.weight_matricies[i] =self.weight_matricies[i].round(decimals = 4)
@@ -67,7 +79,7 @@ class MLP():
 
 
     def network_train_iteration(self):
-        self.errors = 0
+        self.errors = np.zeros(self.outputs.shape)
         #self.total_error = 0
         layer_target_num = 0
         #for every data point (vector)
@@ -75,7 +87,7 @@ class MLP():
 
             actual = d[0] #first index is the class
 
-            curr_layer = d[1:]  #for any two adjacent layers, curr_layer is the input layer
+            curr_layer = np.transpose(d[1:])  #for any two adjacent layers, curr_layer is the input layer
 
             layer_target_num = 1 # the layer (not exclusively hidden) the local output is targeting
 
@@ -86,7 +98,7 @@ class MLP():
                     next_layer = self.outputs   #target layer of curr_layer
                     weights = self.weight_matricies[i]  #weights mapping from curr_layer to target_layer
                     curr_layer = self.feed_forward_layer(curr_layer,next_layer,weights)
-                    if (len(self.outputs) >1): #this is a classifcation problem, and we want our outputs to be between 0-1
+                    if (len(self.outputs[0]) >1): #this is a classifcation problem, and we want our outputs to be between 0-1
                         curr_layer = self.sigmoidify_layer(curr_layer)
                     self.outputs = curr_layer
 
@@ -104,10 +116,10 @@ class MLP():
             #print("outputs")
             #print(self.outputs)
 
-
             #calculate errors Total and by class
             self.errors += self.error_update(actual, self.outputs)
         self.errors = self.errors / len(self.data)
+        #print("ERROR:",str(self.errors))
 
 
         self.backpropagate(layer_target_num - 1, self.errors)
@@ -117,10 +129,13 @@ class MLP():
     def feed_forward_layer(self,layer1,layer2,layer1_weights):
         #self.hidden_layers
         #self.weight_matricies[np[][],np[][]...]
-        for i in range(len(layer2)):
+        #for i in range(len(layer2)):
             #each node in the second layer is the dotproduct of the first layer and the first layer's weight functions
             # layer2[i] = np.dot(np.transpose(layer1), layer1_weights[:,i])
-            layer2[i] = np.dot(layer1, layer1_weights[:,i])  #TODO: add bias here
+        #    layer2[i] = np.dot(layer1, layer1_weights[:,i])  #TODO: add bias here
+
+        layer2 = np.dot(layer1,layer1_weights)
+        layer2.shape = (1,len(layer1_weights[0]))
         return layer2
 
     #inputs-> actual class index,  output array values
@@ -130,22 +145,23 @@ class MLP():
     #actual is either the class index from 1-n or the value of the discrete class
     def error_update(self,actual, outputs): #(MSE)
 
-        if len(outputs) == 1:  #regression problem
+        if len(outputs[0]) == 1:  #regression problem
             errors = [ (outputs[0] - actual)]#**2 ]
         else:  #classification
-            if(type(actual) == int):
-                actual_vector = np.zeros((len(outputs),1))
-                actual_vector[int(actual) - 1] = 1    #ex: actual = 3 -->   [0, 0, 1]
+            if(type(actual) == int or type(actual) == float ):
+                actual_vector = np.zeros((1,len(outputs[0])))
+                actual_vector[0][int(actual) - 1] = 1    #ex: actual = 3 -->   [0, 0, 1]
+                
             else:
                 actual_vector = actual
 
 
             #errors = (guessed - actual)^2
             errors = np.subtract(outputs, actual_vector) #np array
+            #print("errors\n",errors)
             #errors = np.power(errors, 2)
 
-
-        return errors
+        return np.transpose(np.transpose(errors))
 
         # for i in range(len(outputs)):
         #     if (actual-1) == i:
@@ -166,7 +182,9 @@ class MLP():
         for i in range(len(self.hidden_layers)+1):
 
             if(layer > 1): #we are at least past the first hidden layer, so we need to backpropogate the "actual" values of the previous hidden layer
-                feed_back_values = np.dot(self.weight_matricies[layer-1], feed_back_values)
+                #reverse_weights = 1/self.weight_matricies[layer-1]
+                reverse_weights = self.weight_matricies[layer-1]
+                feed_back_values = np.dot(reverse_weights, np.transpose(feed_back_values))
                 prev_error = self.error_update(np.transpose(feed_back_values), self.hidden_layers[layer-2])[0]
 
             self.backpropagate_layer(layer, errors)
@@ -181,7 +199,7 @@ class MLP():
     def backpropagate_layer(self,layer_no,errors):
 
         # ∇E(h,n) = 1/n * Σ (g_n - a_n) * regularizer' * weight_n_h
-        # errors = 1/n * Σ (g_n - a_n)
+        # errors = [1/n * Σ (g_n0 - a_n0), 1/n * Σ (g_n1 - a_n1), ...]
         # regulizer is the derivative of the node normalization function
         # n is the output node
         # h is a hidden layer node
@@ -193,14 +211,16 @@ class MLP():
 
         #output layer:
         if(len(self.hidden_layers) < layer_no): # the current layers output will be the classification/output layer
-            if (len(self.outputs) >1): #this is a classifcation problem, and we want to multiply by the derivative of our sigmoid
+            if (len(self.outputs[0]) >1): #this is a classifcation problem, and we want to multiply by the derivative of our sigmoid
                 regularizer = self.outputs * (1-self.outputs)
+            else:
+                regularizer = 1
 
             for i in range(len(self.weight_matricies[layer_no-1][0])):
                 matrix = self.weight_matricies[layer_no-1]
                 i = np.transpose(np.transpose(matrix)[i])
                 i.shape = (len(i),1)
-                weight_gradient += i * np.transpose(errors * regularizer)
+                weight_gradient += i * (errors * regularizer)
 
         #hidden layer:
         else: #the output of the current layer is the input to another hidden layer
