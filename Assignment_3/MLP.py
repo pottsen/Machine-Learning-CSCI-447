@@ -58,7 +58,7 @@ class MLP():
         temp = []
         equal = False
         iterations = 0
-        while(not equal) and iterations < 10:
+        while(not equal):
             temp = []
             for i in self.weight_matricies:
                 temp.append(np.copy(i))
@@ -183,13 +183,14 @@ class MLP():
 
     def backpropagate(self, layer, errors):
         #for every weight matrix (# of hidden layers + 1)
-        feed_back_values = self.outputs
+        feed_back_values = np.transpose(self.outputs)
         for i in range(len(self.hidden_layers)+1):
 
             if(layer > 1): #we are at least past the first hidden layer, so we need to backpropogate the "actual" values of the previous hidden layer
                 #reverse_weights = 1/self.weight_matricies[layer-1]
+                print(feed_back_values.shape)
                 reverse_weights = self.weight_matricies[layer-1]
-                feed_back_values = np.dot(reverse_weights, np.transpose(feed_back_values))
+                feed_back_values = np.dot(reverse_weights, feed_back_values)
                 prev_error = self.error_update(np.transpose(feed_back_values), self.hidden_layers[layer-2])[0]
 
             self.backpropagate_layer(layer, errors)
