@@ -305,7 +305,7 @@ class MLP():
                     regularizer = 1
 
                 #calculate the change for the weight matrix
-                delta_WM = self.delta_weight_matrix(self.weight_matricies[0], regularizer, self.errors, self.cumulative_inputs, self.previous_deltaWM[0])
+                delta_WM = self.delta_weight_matrix(self.weight_matricies[0], regularizer, self.errors, self.cumulative_inputs, self.previous_WM_delta[0])
                 #claculate new weight matrix
                 self.weight_matricies[0] -= delta_WM 
                 #set previous delta for momentum use

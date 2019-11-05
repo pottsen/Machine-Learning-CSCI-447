@@ -23,9 +23,9 @@ def main():
     #mlp.train()
 
     #data_as_2dList, possible_outputs, number_of_hidden_layers, number_of_hidden_nodes_in_each_layer
-    mlp = MLP(data_array.file_array[:3999], [1,2,3], 2, [10,12], True)
+    # mlp = MLP(data_array.file_array[:3999], [1,2,3], 2, [10,12], True)
     # mlp = MLP(data_array.file_array[:49], [1,2,3], 1, [12], True)
-    # mlp = MLP(data_array.file_array[:49], [1,2,3], 0, [], True)
+    mlp = MLP(data_array.file_array[:49], [1,2,3], 0, [], True)
     mlp.train()
     test = data_array.file_array[-1:][0]
     #test = np.array([1, 0, 1])
