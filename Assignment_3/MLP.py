@@ -44,8 +44,8 @@ class MLP():
             self.weight_matricies.append(np.random.rand(len(self.data[0])-1, len(output)))
             self.previous_WM_delta.append(np.zeros((len(self.data[0])-1, len(output))))
 
-        print("# weight matrices ", len(self.weight_matricies))
-        print(self.weight_matricies)
+        # print("# weight matrices ", len(self.weight_matricies))
+        # print(self.weight_matricies)
         # print("prev weight matrices ", len(self.previous_WM_delta))
         
     def __str__(self):
@@ -68,8 +68,8 @@ class MLP():
             for i in self.weight_matricies:
                 temp.append(np.copy(i))
             self.network_train_iteration()
-            #print("outputs\n",self.outputs)
-            print(self)
+            # print("outputs\n",self.outputs)
+            # print(self)
             iterations +=1
             print("Iteration ", iterations)
             equal = True
@@ -370,7 +370,7 @@ class MLP():
 
         # if momentum is being used
         elif (self.momentum):
-            print("Momentum is being used")
+            # print("Momentum is being used")
             error_regularizer = error_vector * regularizer
             delta_weight_matrix = self.learing_rate * np.dot(np.transpose(avg_layer_values), error_regularizer) + self.momentum_factor * previous_deltaWM
 
@@ -378,6 +378,14 @@ class MLP():
             raise Exception ("Specify momentun y or n")
 
         return delta_weight_matrix
+    
+    def classify_batch(self, test_data):
+        tuples = []
+        for i in test_data:
+            point_class = i[0]
+            guess = self.classify(i[1:])
+            tuples.append([point_class,guess])
+        return tuples
 
     def classify(self, point):
         layer_target_num=1
@@ -401,7 +409,7 @@ class MLP():
                 self.hidden_layers[layer_target_num-1] = curr_layer
 
             layer_target_num += 1 #iterate the target layer to next layer
-        print(self.outputs)
+        #print(self.outputs)
         return self.outputs #index of max (self.outputs)
 
 
