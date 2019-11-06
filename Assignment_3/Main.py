@@ -14,7 +14,7 @@ def main():
 
     data_ff = Data_Processing_Pd("forestfires", 0, "./data")
     data_ff.strings_to_specific_num({"jan":"1", "feb":"2", "mar":"3", "apr":"4", "may":"5", "jun":"6", "jul":"7",
-    "aug":"8", "sep":"9", "oct":"10", "nov":"11", "dec":"12", "sun":"1", "mon":"2", 
+    "aug":"8", "sep":"9", "oct":"10", "nov":"11", "dec":"12", "sun":"1", "mon":"2",
     "tue":"3", "wed":"4", "thu":"5", "fri":"6", "sat":"7"})
     data_ff.shuffle_rows_df()
     data_ff.write_df_csv("./processed", "auto")

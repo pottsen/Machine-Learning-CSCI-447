@@ -3,7 +3,7 @@ class Loss_Functions:
     def __init__(self, results):
         self.results = results
         self.confusion = False
-    
+
     def accuracy(self):
         accurate = 0
         inaccurate = 0
@@ -58,11 +58,13 @@ class Loss_Functions:
         except:
             raise Exception ("precision: " + precision + " or recall: " + recall + " add to 0.")
 
-        
-            
+    def mse(self):
+        #For datasets: machine, forestfirest, wine
+        print("regression")
+        sum_of_error = 0.0
+        for result in self.results:
+            sum_of_error += (result[0]-result[1])**2
 
+        mean_square_error = sum_of_error/len(guessed_classes)
 
-
-
-
-
+        return mean_square_error
