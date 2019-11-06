@@ -360,6 +360,7 @@ class MLP():
             #decrement counters
             i -= 1
             j -= 1
+            #print("delta WM", delta_WM)
 
     #momentum can be used here
     def delta_weight_matrix(self, weight_matrix, regularizer, error_vector, avg_layer_values, previous_deltaWM):
@@ -385,6 +386,7 @@ class MLP():
             point_class = i[0]
             guess = self.classify(i[1:])
             tuples.append([point_class,guess])
+        #print(tuples)
         return tuples
 
     def classify(self, point):
@@ -410,7 +412,7 @@ class MLP():
 
             layer_target_num += 1 #iterate the target layer to next layer
         #print(self.outputs)
-        return self.outputs #index of max (self.outputs)
+        return np.argmax(self.outputs[0])+1 #index of max (self.outputs)
 
 
 

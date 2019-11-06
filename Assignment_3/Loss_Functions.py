@@ -2,6 +2,7 @@ class Loss_Functions:
     #input-> [[actual, guess, index], ... ]
     def __init__(self, results):
         self.results = results
+        #print(results)
         self.confusion = False
 
     def accuracy(self):
@@ -54,9 +55,11 @@ class Loss_Functions:
         except:
             recall = 0
         try:
-            return 2*((precision*recall)/(precision+recall))
+            f =  2*((precision*recall)/(precision+recall))
         except:
-            raise Exception ("precision: " + precision + " or recall: " + recall + " add to 0.")
+            print("precision: " + str(precision) + " or recall: " + str(recall) + " add to 0.")
+            f= 0
+        return f
 
     def mse(self):
         #For datasets: machine, forestfirest, wine
@@ -65,6 +68,7 @@ class Loss_Functions:
         for result in self.results:
             sum_of_error += (result[0]-result[1])**2
 
-        mean_square_error = sum_of_error/len(guessed_classes)
+        # mean_square_error = sum_of_error/len(guessed_classes)
+        mean_square_error = sum_of_error/len(self.results)
 
         return mean_square_error

@@ -56,10 +56,10 @@ class Data_Processing_Pd:
     
     #pull the class to the front column of the df
     #get a list of the column names
-    def pull_classes_front(self, class_index):
+    def pull_classes_front(self):
         column_names = list(self.df.columns)
-        column_names.pop(class_index)
-        column_names.insert(0, str(class_index))
+        column_names.pop(self.column_class)
+        column_names.insert(0, str(self.column_class))
         self.df = self.df.reindex(columns = column_names)
         self.class_at_front = True
     
@@ -77,5 +77,56 @@ class Data_Processing_Pd:
             single_dataframe = pd.concat([self.df[0], self.df[1]], sort=False)
             for i in range(len(self.df)-2):
                 single_dataframe = pd.concat([single_dataframe, self.df[i+2]], sort=False)
-            self.df = single_dataframe
+            self.df = single_datafram
 
+
+if __name__ == "__main__":
+    #abalone
+    data_aba = Data_Processing_Pd("abalone", 0, "./data")
+    data_aba.strings_to_specific_num({"M":"1", "F":"2", "I":"3"})
+    data_aba.name_pd_df_columns()
+    data_aba.pull_classes_front()
+    data_aba.shuffle_rows_df()
+    data_aba.write_df_csv("./processed", "auto")
+
+    #car
+    data_car = Data_Processing_Pd("car", 6, "./data")
+    data_car.strings_to_specific_num({"vhigh":"4", "high":"3", "med":"2", "low":"1", "5more":"5", "more":"6" ,"small":"1", "big":"3", "unacc":"1", "acc":"2", "good":"3", "vgood":"4"})
+    data_car.name_pd_df_columns()
+    data_car.pull_classes_front()
+    data_car.shuffle_rows_df()
+    data_car.write_df_csv("./processed", "auto")
+    
+    #segmentation
+    data_img = Data_Processing_Pd("segmentation", 0, "./data")
+    data_img.name_pd_df_columns()
+    data_img.strings_to_specific_num({"FOLIAGE":"1","PATH":"2","BRICKFACE":"3","GRASS":"4", "SKY":"5", "WINDOW":"6", "CEMENT":"7"})
+    data_img.pull_classes_front()    
+    data_img.shuffle_rows_df()
+    data_img.write_df_csv("./processed", "auto")
+
+    #machine
+    data_mach = Data_Processing_Pd("machine", 0, "./data")
+    data_mach.name_pd_df_columns()
+    data_mach.unique_column_values_to_num(0)
+    data_mach.unique_column_values_to_num(1)
+    data_mach.pull_classes_front()
+    data_mach.shuffle_rows_df()
+    data_mach.write_df_csv("./processed", "auto")
+
+    #forestfires
+    data_ff = Data_Processing_Pd("forestfires", 12, "./data")
+    data_ff.strings_to_specific_num({"jan":"1", "feb":"2", "mar":"3", "apr":"4", "may":"5", "jun":"6", "jul":"7",
+    "aug":"8", "sep":"9", "oct":"10", "nov":"11", "dec":"12", "sun":"1", "mon":"2",
+    "tue":"3", "wed":"4", "thu":"5", "fri":"6", "sat":"7"})
+    data_ff.name_pd_df_columns()
+    data_ff.pull_classes_front()
+    data_ff.shuffle_rows_df()
+    data_ff.write_df_csv("./processed", "auto")    
+
+    #wine
+    data_wine = Data_Processing_Pd("wine", 0, "./data")
+    data_wine.name_pd_df_columns()
+    data_wine.pull_classes_front()
+    data_wine.shuffle_rows_df()
+    data_wine.write_df_csv("./processed", "auto")

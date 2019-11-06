@@ -1,45 +1,18 @@
 from Data_Processing_Lists import Data_Processing_Lists
 from Data_Processing_Pd import Data_Processing_Pd
 from MLP import MLP
+from Loss_Functions import Loss_Functions
 import numpy as np
 import copy
 
 
 def main():
+    #in order to process the data, run the data processing file
 
-
-    data_aba = Data_Processing_Pd("abalone", 0, "./data")
-    data_aba.strings_to_specific_num({"M":"1", "F":"2", "I":"3"})
-    data_aba.shuffle_rows_df()
-    data_aba.write_df_csv("./processed", "auto")
-
-    data_car = Data_Processing_Pd("car", 0, "./data")
-    data_car.strings_to_specific_num({"vhigh":"4", "high":"3", "med":"2", "low":"1", "5more":"5", "more":"6" 
-    ,"small":"1", "big":"3"})
-    data_car.shuffle_rows_df()
-    data_car.write_df_csv("./processed", "auto")
-    
-    data_img = Data_Processing_Pd("segmentation", 0, "./data")    
-    data_img.shuffle_rows_df()
-    data_img.write_df_csv("./processed", "auto")
-
-    data_mach = Data_Processing_Pd("machine", 0, "./data")
-    data_mach.shuffle_rows_df()
-    data_mach.write_df_csv("./processed", "auto")
-
-    data_ff = Data_Processing_Pd("forestfires", 0, "./data")
-    data_ff.strings_to_specific_num({"jan":"1", "feb":"2", "mar":"3", "apr":"4", "may":"5", "jun":"6", "jul":"7",
-    "aug":"8", "sep":"9", "oct":"10", "nov":"11", "dec":"12", "sun":"1", "mon":"2",
-    "tue":"3", "wed":"4", "thu":"5", "fri":"6", "sat":"7"})
-    data_ff.shuffle_rows_df()
-    data_ff.write_df_csv("./processed", "auto")    
-
-    data_wine = Data_Processing_Pd("wine", 0, "./data")
-    data_wine.shuffle_rows_df()
-    data_wine.write_df_csv("./processed", "auto")
-
-    df_list = ["abalone", "car", "segmentation", "machine", "forestfires", "wine"]
-    df_class_num = [3, 4, 7, 1, 1, 1]
+    # df_list = ["abalone", "car", "segmentation", "machine", "forestfires", "wine"]
+    df_list = ["machine", "forestfires", "wine"]
+    # df_class_num = [3, 4, 7, 1, 1, 1]
+    df_class_num = [1, 1, 1]
 
     #data = []
     #classes = []
@@ -50,15 +23,15 @@ def main():
         data_array = Data_Processing_Lists("./processed", df_list[i]+"_processed")
         data_array.file_array = data_array.file_array[:]
         class_list = []
-        for j in range(len(df_class_num)):  #makes an array of integers the same lenght as the number of classes each data set has
+        for j in range(df_class_num[i]):  #makes an array of integers the same lenght as the number of classes each data set has
             class_list.append(j)
         #data.append(data_array)
         #classes.append(class_list)
 
         data_array.slicer(5)
         
-        layer_num = 2
-        layer_nodes = [10,12]
+        # layer_num = 2
+        
 
         for k in range(5):
             
@@ -67,27 +40,56 @@ def main():
             test_data = toy.file_array.pop(k)
             toy.join_array()
             training_data = toy.file_array
-    
-            mlp = MLP(training_data, class_list, layer_num, layer_nodes, True)
+            x = int(len(training_data[0])*1.5)
+            layer_nodes_2 = [x,x]
+            layer_nodes_1 = [x]
+            
+            mlp = MLP(training_data, class_list, 2, layer_nodes_2, True)
             mlp.train()
             #mlp = MLP(training_data, class_list, 1, [12], True)
             guesses = mlp.classify_batch(test_data)
             losses = Loss_Functions(guesses)
 
             if (len(class_list)==1):#regression
-                print("MSE for",df_list[i],"fold:",k, "\n Network layer dimensions",layer_nodes)
+                print_str = "MSE for "+str(df_list[i])+" fold: "+str(k)+ " \nNetwork layer dimensions "+str(layer_nodes_2)
+                print(print_str)
                 print(losses.mse())
 
-                results_file.write("\nMSE for",df_list[i],"fold:",k, "\n Network layer dimensions",layer_nodes)
-                results_file.write(losses.mse())
+                results_file.write("\n"+print_str)
+                results_file.write("\nMSE: "+str(losses.mse())+"\n")
             
             else:#classification
                 losses.confusion_matrix_generator()
-                print("Fscore for",df_list[i],"fold:",k, "\n Network layer dimensions",layer_nodes)
-                print(losses.fscore())
+                print_str = "Fscore for "+str(df_list[i])+" fold: "+str(k)+ "\nNetwork layer dimensions "+str(layer_nodes_2)
+                print(print_str)
+                print(losses.f_score())
 
-                results_file.write("\nFscore for",df_list[i],"fold:",k, "\n Network layer dimensions",layer_nodes)
-                results_file.write(losses.fscore())
+                results_file.write("\n"+print_str)
+                results_file.write("\nF-score: "+str(losses.f_score())+"\n")
+
+            mlp = MLP(training_data, class_list, 1, layer_nodes_1, True)
+            mlp.train()
+            #mlp = MLP(training_data, class_list, 1, [12], True)
+            guesses = mlp.classify_batch(test_data)
+            losses = Loss_Functions(guesses)
+
+            if (len(class_list)==1):#regression
+                print_str = "MSE for "+str(df_list[i])+" fold: "+str(k)+ " \nNetwork layer dimensions "+str(layer_nodes_1)
+                print(print_str)
+                print(losses.mse())
+
+                results_file.write("\n"+print_str)
+                results_file.write("\nMSE: "+str(losses.mse())+"\n")
+            
+            else:#classification
+                losses.confusion_matrix_generator()
+                print_str = "Fscore for "+str(df_list[i])+" fold: "+str(k)+ "\nNetwork layer dimensions "+str(layer_nodes_1)
+                print(print_str)
+                print(losses.f_score())
+
+                results_file.write("\n"+print_str)
+                results_file.write("\nF-score: "+str(losses.f_score())+"\n")
+
 
     results_file.close()
             
