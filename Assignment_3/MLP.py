@@ -7,8 +7,8 @@ class MLP():
     def __init__(self, data, output, number_of_layers, number_of_nodes, momentum):
         # flag 
         self.momentum = bool(momentum)
-        self.momentum_factor = 0.75
-        self.learing_rate = 0.5
+        self.momentum_factor = 0.3
+        self.learing_rate = 0.1
         self.data = data
         self.outputs = np.zeros(len(output))
         self.outputs.shape = (1,len(output))
@@ -45,7 +45,8 @@ class MLP():
             self.previous_WM_delta.append(np.zeros((len(self.data[0])-1, len(output))))
 
         print("# weight matrices ", len(self.weight_matricies))
-        print("prev weight matrices ", len(self.previous_WM_delta))
+        print(self.weight_matricies)
+        # print("prev weight matrices ", len(self.previous_WM_delta))
         
     def __str__(self):
         stringify = "NETWORK:"
@@ -62,7 +63,7 @@ class MLP():
         temp = []
         equal = False
         iterations = 0
-        while(not equal) and iterations < 20000:
+        while(not equal) and iterations < 10000:
             temp = []
             for i in self.weight_matricies:
                 temp.append(np.copy(i))
@@ -131,8 +132,8 @@ class MLP():
                 layer_target_num += 1 #iterate the target layer to next layer
             #print("hidden layer")
             #print(self.hidden_layers)
-            #print("outputs")
-            #print(self.outputs)
+            # print("outputs")
+            # print(self.outputs)
 
             #calculate errors Total and by class
             self.errors += self.cumulative_update(actual, self.outputs)
@@ -171,7 +172,8 @@ class MLP():
             self.cumulative_targets += actual
 
             #sum the hidden layer values for use in backprop
-            self.cumulative_hidden_layers[0] += self.hidden_layers[0]
+            for i in range(len(self.hidden_layers)):
+                self.cumulative_hidden_layers[i] += self.hidden_layers[i]
 
         else:  #classification
             if(type(actual) == int or type(actual) == float ):
