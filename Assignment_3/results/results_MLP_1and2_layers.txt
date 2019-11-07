@@ -1,4 +1,3 @@
-
 Fscore for abalone fold: 0
 Network layer dimensions [13, 13]
 F-score: 0.37918660287081346
@@ -238,5 +237,3 @@ MSE: 40.20433359013869
 MSE for wine fold: 4 
 Network layer dimensions [18]
 MSE: 40.20433359013869
-
-

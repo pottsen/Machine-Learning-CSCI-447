@@ -43,7 +43,7 @@ def run():
             #medoids = toy.file_array.pop(0)
             #training_data = toy.join_array()
             print("training_data ", len(training_data))
-            print("Run condensed")
+            print("Run k-means")
             centers = k_means(100, training_data)
             # print(centers)
             print("centers size",len(centers))
@@ -52,7 +52,7 @@ def run():
             print("class list", class_list)
 
             rbn = RBN(training_data, class_list, 1, centers)
-            # rbn.train()
+            rbn.train()
 
             # guesses = rbn.classify(test_data)
             # losses = Loss_Functions(guesses)
