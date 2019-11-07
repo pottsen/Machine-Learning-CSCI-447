@@ -30,7 +30,7 @@ class RBN():
         temp = []
         equal = False
         iterations = 0
-        while(not equal) and iterations < 50:
+        while(not equal) and iterations < 2:
             # store weight matrices to check for convergence
             tempWM = np.copy(self.weight_matrix)
             self.network_train_iteration()

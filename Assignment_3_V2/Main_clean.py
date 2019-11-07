@@ -1,6 +1,6 @@
 from Data_Processing_Lists import Data_Processing_Lists
 from Data_Processing_Pd import Data_Processing_Pd
-from RBN import RBN
+from RBN_clean import RBN
 from Loss_Functions import Loss_Functions
 import numpy as np
 import copy
@@ -8,46 +8,45 @@ from Edited_NN import edited_nn
 from Condensed_K_Nearest import condensed_k_nearest
 from K_Means import k_means
 from K_Medoids import k_medoids
+from MLP_clean import MLP
 
-
-# def main():
 def run():
     #in order to process the data, run the data processing file
-    df_list = ["abalone", "car", "segmentation", "machine", "forestfires", "wine"]
-    df_class_num = [3, 4, 7, 1, 1, 1]
+    #List of data sets and corresponding classes for video
+    df_list = ["abalone", "wine"]
+    df_class_num = [3, 1]
 
-    results_file = open("./results/results_rbn.txt", "a+")
+    results_file = open("./results/results_video.txt", "a+")
     for i in range(len(df_list)):
-
         data_array = Data_Processing_Lists("./processed", df_list[i]+"_processed")
         data_array.file_array = data_array.file_array[:]
+        
+        #makes an array of integers the same lenght as the number of classes each data set has
         class_list = []
-        for j in range(df_class_num[i]):  #makes an array of integers the same lenght as the number of classes each data set has
+        for j in range(df_class_num[i]): 
             class_list.append(j)
-        #data.append(data_array)
-        #classes.append(class_list)
 
+        #5 fold validation
         data_array.slicer(5)
         
-        for k in range(5):
-            test_data = data_array.file_array.pop(k)
-            data_array.join_array()
-            training_data = data_array.file_array
-            
-            toy = copy.deepcopy(data_array)
-            #1/4 of remaining data was used for kmeans and kmedoids sizes
-            toy.slicer(4)
-            medoids = toy.file_array.pop(0)
-            toy.join_array()
-            training_data_toy = toy.file_array
+        test_data = data_array.file_array.pop(0)
+        data_array.join_array()
+        training_data = data_array.file_array
 
-            knn = [edited_nn(13,training_data)[:int(len(training_data)/4)], k_means(int(len(training_data)/4), training_data), k_medoids(medoids, training_data_toy)]
+        #copy to pass data to condensing algorithms (edited, k mean, k medoids)
+        toy = copy.deepcopy(data_array)
+        toy.slicer(4)
+        medoids = toy.file_array.pop(0)
+        toy.join_array()
+        training_data_toy = toy.file_array
 
-            algo_name = ['edited knn', 'kmeans', "kmedoids"]
+        knn = [edited_nn(13,training_data)[:int(len(training_data)/4)], k_means(int(len(training_data)/4), training_data), k_medoids(medoids, training_data_toy)]
 
-            algo_idx = 0
+        algo_name = ['edited knn', 'kmeans', "kmedoids"]
 
-            for centers in knn:
+        algo_idx = 0
+        for centers in knn:
+            for k in range(1):
                 
                 # def __init__(self, data, output, gaussian_function_type, centers):
                 print("class list", class_list)

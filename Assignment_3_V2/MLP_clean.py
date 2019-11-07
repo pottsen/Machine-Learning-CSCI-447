@@ -1,6 +1,6 @@
 import numpy as np
 
-class MLP2():
+class MLP():
     #input-> #data_as_2dList, possible_outputs, number_of_hidden_layers, number_of_hidden_nodes_in_each_layer, momentum(T/F)
     def __init__(self, data, output, number_of_layers, number_of_nodes, momentum):
          
@@ -49,12 +49,12 @@ class MLP2():
         temp = []
         equal = False
         iterations = 0
-        while(not equal) and iterations < 10000:
+        while(not equal) and iterations < 2:
             # store weight matrices to check for convergence
             temp = []
             for i in self.weight_matricies:
                 temp.append(np.copy(i))
-                
+
             self.network_train_iteration()
             # print("outputs\n",self.outputs)
             print(self)
