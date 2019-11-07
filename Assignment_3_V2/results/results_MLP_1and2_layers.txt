@@ -1,0 +1,239 @@
+Fscore for abalone fold: 0
+Network layer dimensions [13, 13]
+F-score: 0.37918660287081346
+
+Fscore for abalone fold: 0
+Network layer dimensions [13]
+F-score: 0.37918660287081346
+
+Fscore for abalone fold: 1
+Network layer dimensions [13, 13]
+F-score: 0.3449101796407186
+
+Fscore for abalone fold: 1
+Network layer dimensions [13]
+F-score: 0.3449101796407186
+
+Fscore for abalone fold: 2
+Network layer dimensions [13, 13]
+F-score: 0.36047904191616764
+
+Fscore for abalone fold: 2
+Network layer dimensions [13]
+F-score: 0.36047904191616764
+
+Fscore for abalone fold: 3
+Network layer dimensions [13, 13]
+F-score: 0.38323353293413176
+
+Fscore for abalone fold: 3
+Network layer dimensions [13]
+F-score: 0.38323353293413176
+
+Fscore for abalone fold: 4
+Network layer dimensions [13, 13]
+F-score: 0.36047904191616764
+
+Fscore for abalone fold: 4
+Network layer dimensions [13]
+F-score: 0.36047904191616764
+
+Fscore for car fold: 0
+Network layer dimensions [10, 10]
+F-score: 0.7254335260115607
+
+Fscore for car fold: 0
+Network layer dimensions [10]
+F-score: 0.7254335260115607
+
+Fscore for car fold: 1
+Network layer dimensions [10, 10]
+F-score: 0.6647398843930635
+
+Fscore for car fold: 1
+Network layer dimensions [10]
+F-score: 0.6647398843930635
+
+Fscore for car fold: 2
+Network layer dimensions [10, 10]
+F-score: 0.6869565217391305
+
+Fscore for car fold: 2
+Network layer dimensions [10]
+F-score: 0.6869565217391305
+
+Fscore for car fold: 3
+Network layer dimensions [10, 10]
+F-score: 0.736231884057971
+
+Fscore for car fold: 3
+Network layer dimensions [10]
+F-score: 0.736231884057971
+
+Fscore for car fold: 4
+Network layer dimensions [10, 10]
+F-score: 0.6869565217391305
+
+Fscore for car fold: 4
+Network layer dimensions [10]
+F-score: 0.6869565217391305
+
+Fscore for segmentation fold: 0
+Network layer dimensions [30, 30]
+F-score: 0.09523809523809523
+
+Fscore for segmentation fold: 0
+Network layer dimensions [30]
+F-score: 0.19047619047619047
+
+Fscore for segmentation fold: 1
+Network layer dimensions [30, 30]
+F-score: 0.16666666666666666
+
+Fscore for segmentation fold: 1
+Network layer dimensions [30]
+F-score: 0.047619047619047616
+
+Fscore for segmentation fold: 2
+Network layer dimensions [30, 30]
+F-score: 0.07142857142857142
+
+Fscore for segmentation fold: 2
+Network layer dimensions [30]
+F-score: 0.09523809523809523
+
+Fscore for segmentation fold: 3
+Network layer dimensions [30, 30]
+F-score: 0.07142857142857142
+
+Fscore for segmentation fold: 3
+Network layer dimensions [30]
+F-score: 0.19047619047619047
+
+Fscore for segmentation fold: 4
+Network layer dimensions [30, 30]
+F-score: 0.1951219512195122
+
+Fscore for segmentation fold: 4
+Network layer dimensions [30]
+F-score: 0.12195121951219512
+
+MSE for machine fold: 0 
+Network layer dimensions [15, 15]
+MSE: 341.23809523809524
+
+MSE for machine fold: 0 
+Network layer dimensions [15]
+MSE: 341.23809523809524
+
+MSE for machine fold: 1 
+Network layer dimensions [15, 15]
+MSE: 307.35714285714283
+
+MSE for machine fold: 1 
+Network layer dimensions [15]
+MSE: 307.35714285714283
+
+MSE for machine fold: 2 
+Network layer dimensions [15, 15]
+MSE: 330.1904761904762
+
+MSE for machine fold: 2 
+Network layer dimensions [15]
+MSE: 330.1904761904762
+
+MSE for machine fold: 3 
+Network layer dimensions [15, 15]
+MSE: 283.1707317073171
+
+MSE for machine fold: 3 
+Network layer dimensions [15]
+MSE: 283.1707317073171
+
+MSE for machine fold: 4 
+Network layer dimensions [15, 15]
+MSE: 293.6585365853659
+
+MSE for machine fold: 4 
+Network layer dimensions [15]
+MSE: 293.6585365853659
+
+MSE for forestfires fold: 0 
+Network layer dimensions [19, 19]
+MSE: 835.0507576923076
+
+MSE for forestfires fold: 0 
+Network layer dimensions [19]
+MSE: 835.0507576923076
+
+MSE for forestfires fold: 1 
+Network layer dimensions [19, 19]
+MSE: 12301.619486407764
+
+MSE for forestfires fold: 1 
+Network layer dimensions [19]
+MSE: 12301.619486407764
+
+MSE for forestfires fold: 2 
+Network layer dimensions [19, 19]
+MSE: 1546.881021359223
+
+MSE for forestfires fold: 2 
+Network layer dimensions [19]
+MSE: 1546.881021359223
+
+MSE for forestfires fold: 3 
+Network layer dimensions [19, 19]
+MSE: 5535.503019417476
+
+MSE for forestfires fold: 3 
+Network layer dimensions [19]
+MSE: 5535.503019417476
+
+MSE for forestfires fold: 4 
+Network layer dimensions [19, 19]
+MSE: 777.002312621359
+
+MSE for forestfires fold: 4 
+Network layer dimensions [19]
+MSE: 777.002312621359
+
+MSE for wine fold: 0 
+Network layer dimensions [18, 18]
+MSE: 40.45782140107777
+
+MSE for wine fold: 0 
+Network layer dimensions [18]
+MSE: 40.45782140107777
+
+MSE for wine fold: 1 
+Network layer dimensions [18, 18]
+MSE: 40.315535026943856
+
+MSE for wine fold: 1 
+Network layer dimensions [18]
+MSE: 40.315535026943856
+
+MSE for wine fold: 2 
+Network layer dimensions [18, 18]
+MSE: 40.33342763664356
+
+MSE for wine fold: 2 
+Network layer dimensions [18]
+MSE: 40.33342763664356
+
+MSE for wine fold: 3 
+Network layer dimensions [18, 18]
+MSE: 40.23967282525016
+
+MSE for wine fold: 3 
+Network layer dimensions [18]
+MSE: 40.23967282525016
+
+MSE for wine fold: 4 
+Network layer dimensions [18, 18]
+MSE: 40.20433359013869
+
+MSE for wine fold: 4 
+Network layer dimensions [18]
+MSE: 40.20433359013869

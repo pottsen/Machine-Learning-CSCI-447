@@ -1,0 +1,15 @@
+Fscore for abalone fold: 0
+ Network layer dimensions [10, 12]
+F-score: 0.37918660287081346
+Fscore for abalone fold: 1
+ Network layer dimensions [10, 12]
+F-score: 0.3449101796407186
+Fscore for abalone fold: 2
+ Network layer dimensions [10, 12]
+F-score: 0.36047904191616764
+Fscore for abalone fold: 3
+ Network layer dimensions [10, 12]
+F-score: 0.38323353293413176
+Fscore for abalone fold: 4
+ Network layer dimensions [10, 12]
+F-score: 0.36047904191616764
