@@ -92,9 +92,6 @@ class MLP2():
             else: 
                 self.target_vector = target_class
 
-            # print("target vector\n", self.target_vector)
-            
-
             #set inputs
             inputs = np.vstack(d[1:])
             # print("inputs", inputs)
@@ -141,14 +138,14 @@ class MLP2():
             # print("next layer\n", self.layers[i-1], self.layers[i-1].shape)
             delta_WM = self.learing_rate * np.dot(regularizer_error, np.transpose(self.layers[i-1]))
             # print("delta_wm\n", delta_WM)
+            next_error = np.dot(np.transpose(self.weight_matricies[i-1]), next_error)
             if self.momentum == True:
                 # print("Momemtum")
                 delta_WM_momentum = delta_WM + np.multiply(self.previous_WM_delta[i-1],self.momentum_factor)
                 self.previous_WM_delta[i-1] = delta_WM
-            next_error = np.dot(np.transpose(self.weight_matricies[i-1]), next_error)
-            # print("next error\n", next_error, next_error.shape)
-            self.weight_matricies[i-1] -= delta_WM
-            # print("weight matrix\n", self.weight_matricies[i-1])
+                self.weight_matricies[i-1] -= delta_WM_momentum
+            else:
+                self.weight_matricies[i-1] -= delta_WM
             i -= 1
 
     # def sigmoidify_layer(self, layer):

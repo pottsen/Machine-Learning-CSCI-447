@@ -18,7 +18,7 @@ def k_medoids(medoids, training_data):
         #for left over data points associate each to the closest medoid by using distance
         #make dictionary to assign associated points to medoids
         medoid_dictionary = {}
-        print("count ", count)
+        # print("count ", count)
         #iterate through training data
         for row in range(len(training_data)):
             #find the closest medoid
@@ -123,9 +123,9 @@ def k_medoids(medoids, training_data):
         # medoids.append(training_data[training_data_to_medoid)
         # training_data.append(medoids[medoids_to_remove])
         medoids_to_remove.sort()
-        print("MEDOIDS TO REMOVE ", medoids_to_remove)
+        # print("MEDOIDS TO REMOVE ", medoids_to_remove)
         training_data_to_medoid.sort()
-        print("TRAINING DATA TO MEDOIDS ", training_data_to_medoid)
+        # print("TRAINING DATA TO MEDOIDS ", training_data_to_medoid)
         for i in reversed(medoids_to_remove):
             # print("medoid to remove: ", medoids[i])
             medoid_removed = medoids.pop(i)

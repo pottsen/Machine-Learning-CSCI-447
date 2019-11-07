@@ -1,0 +1,40 @@
+
+Fscore for abalone fold: 0
+Network layer dimensions [13, 13]
+F-score: 0.10616438356164383
+
+Fscore for abalone fold: 0
+Network layer dimensions [13]
+F-score: 0.16057233704292528
+
+Fscore for car fold: 0
+Network layer dimensions [10, 10]
+F-score: 0.004524886877828054
+
+Fscore for car fold: 0
+Network layer dimensions [10]
+F-score: 0.01366742596810934
+
+Fscore for segmentation fold: 0
+Network layer dimensions [30, 30]
+F-score: 0.05063291139240506
+
+Fscore for segmentation fold: 0
+Network layer dimensions [30]
+F-score: 0
+
+MSE for machine fold: 0 
+Network layer dimensions [15, 15]
+MSE: 376.6190476190476
+
+MSE for machine fold: 0 
+Network layer dimensions [15]
+MSE: 376.6190476190476
+
+MSE for forestfires fold: 0 
+Network layer dimensions [19, 19]
+MSE: 851.8349884615386
+
+MSE for forestfires fold: 0 
+Network layer dimensions [19]
+MSE: 851.8349884615386

@@ -9,14 +9,15 @@ class RBN():
     def __init__(self, data, output, gaussian_function_type, centers):
         
         self.data = np.array(data)
-        self.learning_rate = 0.1
+        self.learning_rate = 0.01
+        self.number_of_nodes = len(centers)
         self.centers = np.array(centers)
         self.rbf_layer = np.random.rand(1,len(centers))
         self.outputs = np.zeros(len(output))
         self.outputs.shape = (1,len(output))
         self.weight_matrix = np.random.rand(len(output), len(centers))
         self.weight_matrix /= len(centers)**2
-        print(self.weight_matrix)
+        # print(self.weight_matrix)
         self.d_max = self.distance_max(self.centers)
         self.stdev = float(self.d_max) / (2 * len(self.centers))**0.5
         self.errors = np.zeros(self.outputs.shape)
@@ -38,12 +39,12 @@ class RBN():
         temp = []
         equal = False
         iterations = 0
-        while(not equal) and iterations < 1:
+        while(not equal) and iterations < 1000:
             tempWM = np.copy(self.weight_matrix)
             # tempLM = self.linear_matrix
             self.network_train_iteration()
             #print("outputs\n",self.outputs)
-            print(self)
+            # print(self)
             iterations +=1
             print("Iteration ", iterations)
             equal = True
@@ -58,20 +59,20 @@ class RBN():
 
     def network_train_iteration(self):
         self.cumulative_errors = np.multiply(self.cumulative_errors,0)
-        print("cum error\n", self.cumulative_errors.shape)
+        # print("cum error\n", self.cumulative_errors.shape)
         self.cumulative_targets = np.multiply(self.cumulative_errors,0)
-        print("cum target\n", self.cumulative_targets.shape)
+        # print("cum target\n", self.cumulative_targets.shape)
         self.cumulative_outputs = np.multiply(self.cumulative_outputs,0)
-        print("cum target\n", self.cumulative_targets.shape)
+        # print("cum target\n", self.cumulative_targets.shape)
         self.cumulative_inputs = np.multiply(self.cumulative_inputs,0)
         self.cumulative_weight_matrix = np.multiply(self.cumulative_weight_matrix,0)
         self.cumulative_rbf_layer = np.multiply(self.cumulative_rbf_layer,0)
 
             
         #for every data point (vector)
-        for d in self.data[:1]:
+        for d in self.data:
 
-            actual = d[0] #first index is the class
+            self.target = d[0] #first index is the class
             inputs = np.stack(d[1:])
             centers_no_class = self.centers[:,1:]
             #center_classes = self.centers[:,0]
@@ -84,6 +85,22 @@ class RBN():
 
             #calculate errors Total and by class
             # self.cumulative_update(actual, self.outputs)
+            if len(self.outputs) == 1:  #regression problem
+                # print("here")
+                self.errors = (self.target - self.outputs)
+                # print("errors shape\n", self.errors, self.errors.shape)
+                # print("outputs \n", self.outputs, self.outputs.shape)
+                # print("target vector\n", self.target)
+
+            else:  #classification
+                # print("AQUI")
+                self.target_vector = np.zeros((self.outputs.shape))
+                # print("target vector\n", self.target_vector.shape)
+                self.target_vector[(int(self.target)-1)] = 1    #ex: actual = 3 -->   [0, 0, 1]
+                # print(self.target_vector)
+                self.errors = np.subtract(self.target_vector, self.outputs) #np array
+                # print("errors shape\n", self.errors, self.errors.shape)
+                # print("outputs \n", self.outputs, self.outputs.shape)
 
             self.backprop_single_peter()
             # print(self)
@@ -118,8 +135,10 @@ class RBN():
         else:  #classification
             # print("AQUI")
             # if(type(actual) == int or type(actual) == float ):
-            actual_vector = np.zeros((1,len(outputs[0])))
-            actual_vector[0][int(actual) - 1] = 1    #ex: actual = 3 -->   [0, 0, 1]
+            actual_vector = np.zeros((len(outputs[0],1)))
+            print("actual vector\n", actual_vector.shape)
+            actual_vector[int(actual) - 1][0] = 1    #ex: actual = 3 -->   [0, 0, 1]
+            print(actual_vector)
 
             # else:
             #     actual_vector = actual
@@ -152,14 +171,15 @@ class RBN():
             sum_exp[i,0] = np.sum(exp_inside[i])
         # print("sum exp\n", sum_exp)
         exp = np.exp(sum_exp)
-        print("exp\n", exp.shape)
+        # print("exp\n", exp.shape)
         self.rbf_layer = exp
-        print("rbf layer \n", self.rbf_layer.shape)
+        # print("rbf layer \n", self.rbf_layer.shape)
         
 
         #now multiply RBF layer by weights to get output
         self.outputs = np.dot(self.weight_matrix, self.rbf_layer)
-        # print("outputs", self.outputs)
+        self.outputs = np.divide(self.outputs, self.number_of_nodes)
+        # print("outputs", self.outputs.shape)
         
 
     def distance_max(self, centers):
@@ -184,11 +204,11 @@ class RBN():
 
     def backprop_single_peter(self):
         #update WMs. All cumulative values were averaged before calling back prop
-        # print("Cumulative RBF\n", self.rbf_layer.shape)
-        # print("Errors \n", self.errors.shape)
-        # print("Errors\n", self.errors)
-        delta_WM = self.learning_rate * np.dot(np.transpose(self.rbf_layer), self.errors)
-        print("Delta WM\n", delta_WM)
+        # print("rbf shape\n", self.rbf_layer.shape)
+        # print("errors shape\n", self.errors.shape)
+        # print("WM shape\n", self.weight_matrix.shape)
+        delta_WM = self.learning_rate * np.dot(self.errors, np.transpose(self.rbf_layer))
+        # print("Delta WM\n", delta_WM)
         self.weight_matrix += delta_WM
 
 
