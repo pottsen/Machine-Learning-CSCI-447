@@ -39,7 +39,7 @@ def run2():
 
             test_data = toy.file_array.pop(k)
             toy.join_array()
-            training_data = toy.file_array[:113]
+            training_data = toy.file_array
             x = int(len(training_data[0])*1.5)
             layer_nodes_2 = [x,x]
             layer_nodes_1 = [x]

@@ -39,7 +39,7 @@ class RBN():
         temp = []
         equal = False
         iterations = 0
-        while(not equal) and iterations < 1000:
+        while(not equal) and iterations < 50:
             tempWM = np.copy(self.weight_matrix)
             # tempLM = self.linear_matrix
             self.network_train_iteration()

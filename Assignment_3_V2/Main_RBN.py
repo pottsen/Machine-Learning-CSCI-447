@@ -38,8 +38,8 @@ def run():
         medoids = toy.file_array.pop(0)
         toy.join_array()
         training_data_toy = toy.file_array
-        
-        knn = [edited_nn(13,training_data)[:1000], k_means(100, training_data), k_medoids(medoids, training_data_toy)]
+        d = int(len(training_data)/4)
+        knn = [edited_nn(13,training_data)[:int(len(training_data)/4)], k_means(int(len(training_data)/4), training_data), k_medoids(medoids, training_data_toy)]
         # knn = [k_means(int(len(training_data)/4), training_data), k_medoids(medoids, training_data_toy)]
         algo_name = ['edited knn', 'kmeans', "kmedoids"]
         # algo_name = ['kmeans', "kmedoids"]

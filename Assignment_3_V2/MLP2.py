@@ -53,7 +53,7 @@ class MLP2():
         temp = []
         equal = False
         iterations = 0
-        while(not equal) and iterations < 100:
+        while(not equal) and iterations < 10000:
             temp = []
             for i in self.weight_matricies:
                 temp.append(np.copy(i))
