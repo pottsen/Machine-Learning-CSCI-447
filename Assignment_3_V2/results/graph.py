@@ -21,10 +21,10 @@ def get_data_RBN():
         fold = re.search(r"(?:fold: *)(\d*)", i).group(1)
         try:
             mse = re.search(r"(?:MSE: )([\d\.]*)", i).group(1)
-            fold = {'network':network_file,'dataset':dataset,'fold':fold,'MSE':float(mse), 'total-folds':1}
+            fold = {'network':network,'dataset':dataset,'fold':fold,'MSE':float(mse), 'total-folds':1}
         except:
             f = re.search(r"(?:F-score: )([\d\.]*)", i).group(1)
-            fold = {'network':network_file,'dataset':dataset,'fold':fold, 'F-score':float(f), 'total-folds':1}
+            fold = {'network':network,'dataset':dataset,'fold':fold, 'F-score':float(f), 'total-folds':1}
         dicts.append(fold)
     return dicts
    
@@ -33,7 +33,7 @@ def get_data_RBN():
 
 
 def get_data_MLP():
-    file = open("./MLP.txt", "r")
+    file = open("MLP.txt", "r")
 
     str = ""
     for i in file:
@@ -83,7 +83,7 @@ def get_data_MLP():
 
 if __name__ == "__main__":
     dataMLP = get_data_MLP()
-    dataMLP = get_data_RBN()
+    dataRBN = get_data_RBN()
 
     graph1=[[],[],[],[]]  #MLP F
     graph2=[[],[],[],[]]  #MLP MSE
