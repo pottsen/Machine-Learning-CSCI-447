@@ -2,9 +2,6 @@ import re
 import matplotlib.pyplot as plt
 import numpy as np
 
-
-
-
 def get_data_RBN():
     
     file = open("./RBN.txt", "r")
@@ -111,11 +108,11 @@ if __name__ == "__main__":
             graph2[3] = ["abalone", "car", "segmentation"]
     for i in dataRBN:
         try:
-            if ((len(i["edited knn"]))== True):
+            if i["dataset"] == "edited KNN":
                 graph3[0].append(i["MSE"])
-            elif len(i["kmeans"]) == True:
+            elif i["dataset"] == "kmeans":
                 graph3[1].append(i["MSE"])
-            elif len(i["kmedoids"]) == True:
+            elif len(i["dataset"]) == "kmedoids":
                 graph3[2].append(i["MSE"])
             graph3[3] = ["abalone", "car", "segmentation"]
         except:
