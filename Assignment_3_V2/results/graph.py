@@ -123,7 +123,7 @@ if __name__ == "__main__":
                     graph3[1].append(i["MSE"])
                 elif i["algo"] == 'kmedoids':
                     graph3[2].append(i["MSE"])
-                graph3[3] = ["abalone", "car", "segmentation"]
+                graph3[3] = ["machine", "forestfires", "wine"]
             except:
                 if i["algo"] == 'edited':
                     graph4[0].append(i["F-score"])
@@ -131,33 +131,34 @@ if __name__ == "__main__":
                     graph4[1].append(i["F-score"])
                 elif i["algo"] == 'kmedoids':
                     graph4[2].append(i["F-score"])
-                graph4[3] = ["machine", "forestfires", "wine"]
+                graph4[3] = ["abalone", "car", "segmentation"]
 
     print(graph1)
     print(graph2)
     print(graph3)
     print(graph4)
 
-    titles = ['MLP','MLP','RBF','RBF']
+    titles = ['MLP Classification','MLP Regression','RBF Regression','RBF Classification']
     error = ['MSE', 'F-score','MSE','F-score']
     inc = 0
     for i in graphs:
         # width of the bars
-        barWidth = 0.2
+        barWidth = 0.3
 
         # The x position of bars
         r1 = np.arange(len(i[2]))
         r2 = [x + barWidth for x in r1]
         r3 = [y + 2*barWidth for y in r1]
 
+        plt.figure(figsize=(10,6))
         # Create blue bars
-        plt.bar(r1, i[1], width = barWidth, color = 'blue', edgecolor = 'black', capsize=7, label='poacee')
+        r = plt.bar(r1, i[0], width = barWidth, color = 'blue', edgecolor = 'black', capsize=7, label='poacee')
 
         # Create cyan bars
-        plt.bar(r2, i[2], width = barWidth, color = 'cyan', edgecolor = 'black', capsize=7, label='sorgho')
+        r+=plt.bar(r2, i[1], width = barWidth, color = 'cyan', edgecolor = 'black', capsize=7, label='sorgho')
 
         # Create green bars
-        plt.bar(r3, i[3], width = barWidth, color = 'green', edgecolor = 'black', capsize=7, label='sorgho')
+        r+=plt.bar(r3, i[2], width = barWidth, color = 'green', edgecolor = 'black', capsize=7, label='null')
 
         # general layout
         plt.xticks([r + barWidth for r in range(len(i[2]))], i[3])
@@ -165,7 +166,11 @@ if __name__ == "__main__":
         plt.title(titles[inc])
         #plt.legend()
 
+        for h in r:
+            height = h.get_height()
+            plt.text(h.get_x(), 1.01*height, '{0:.2f}'.format(height), va='bottom')
         # Show graphic
+
         plt.show()
 
         inc +=1

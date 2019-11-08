@@ -1,5 +1,4 @@
 
-NEW RUN
 Fscore for abalone fold: 0
 edited knn
 F-score: 0.37918660287081346
