@@ -77,7 +77,7 @@ class MLP():
             self.target_vector = np.ones(1)
         
         # itereate through data and train
-        for d in self.data:
+        for d in self.data[:2]:
             #reset target vector for each data point
             self.target_vector = np.multiply(self.target_vector,0)
             target_class = d[0]
@@ -136,7 +136,7 @@ class MLP():
     def __str__(self):
         stringify = "NETWORK:"
         stringify+= "\nINPUT:\n"+str(self.layers[0])
-        # for i in range(len(self.weight_matricies)):
+        for i in range(len(self.weight_matricies)):
             stringify+= "\nWEIGHTS:\n"+str(self.weight_matricies[i])
         stringify += "\nOUTPUT\n"+str(self.layers[-1])
         stringify += "\nEND NETWORK"

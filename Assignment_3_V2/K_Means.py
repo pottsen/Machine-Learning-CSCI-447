@@ -5,7 +5,7 @@ from K_NearestNeighbor import k_Nearest_Points, K_Nearest_Neigbor
 
 def k_means(k, training_data):
 
-    print('----------')
+    # print('----------')
 
     #if our k value is greater than the training data, we already have as many centroids as we need
     if(k>len(training_data)):
@@ -99,7 +99,7 @@ def k_means(k, training_data):
 
     training_data = k_clusters
 
-    print(iterations)
+    # print(iterations)
 
 
 

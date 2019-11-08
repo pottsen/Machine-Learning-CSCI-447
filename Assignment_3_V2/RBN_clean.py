@@ -45,7 +45,7 @@ class RBN():
 
     def network_train_iteration(self):            
         #for every data point (vector)
-        for d in self.data:
+        for d in self.data[:2]:
             self.target = d[0] #first index is the class
             inputs = np.stack(d[1:])
             centers_no_class = self.centers[:,1:]
@@ -110,9 +110,9 @@ class RBN():
             target = i[0]
             data = i[1:]
             self.feed_forward(data, centers_no_class)
-            output = self.outputs
-            if(len(out)==1):#regression
-                output = out[0]
+            # output = self.outputs
+            if(len(self.outputs)==1):#regression
+                output = self.outputs
             else:#classification
                 output = np.argmax(self.outputs[0])+1 #index of max (self.outputs)
     
