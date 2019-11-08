@@ -1,64 +1,4 @@
 
-Fscore for abalone fold: 0
-edited knn
-F-score: 0.37918660287081346
-
-Fscore for abalone fold: 0
-kmeans
-F-score: 0.37918660287081346
-
-Fscore for abalone fold: 0
-kmedoids
-F-score: 0.37918660287081346
-
-Fscore for car fold: 0
-edited knn
-F-score: 0.7254335260115607
-
-Fscore for car fold: 0
-kmeans
-F-score: 0.7254335260115607
-
-Fscore for car fold: 0
-kmedoids
-F-score: 0.7254335260115607
-
-Fscore for segmentation fold: 0
-edited knn
-F-score: 0.11904761904761904
-
-Fscore for segmentation fold: 0
-kmeans
-F-score: 0.11904761904761904
-
-Fscore for segmentation fold: 0
-kmedoids
-F-score: 0.11904761904761904
-
-MSE for machine fold: 0 
-edited knn
-MSE: [108.89747034]
-
-MSE for machine fold: 0 
-kmeans
-MSE: [108.89747985]
-
-MSE for machine fold: 0 
-kmedoids
-MSE: [108.87726541]
-
-MSE for forestfires fold: 0 
-edited knn
-MSE: [851.83391798]
-
-MSE for forestfires fold: 0 
-kmeans
-MSE: [851.83485566]
-
-MSE for forestfires fold: 0 
-kmedoids
-MSE: [851.52197708]
-
 NEW RUN
 Fscore for abalone fold: 0
 edited knn
@@ -96,38 +36,38 @@ Fscore for segmentation fold: 0
 kmedoids
 F-score: 0.11904761904761904
 
-MSE for machine fold: 0 
+MSE for machine fold: 0
 edited knn
 MSE: [46.93041832]
 
-MSE for machine fold: 0 
+MSE for machine fold: 0
 kmeans
 MSE: [46.93092831]
 
-MSE for machine fold: 0 
+MSE for machine fold: 0
 kmedoids
 MSE: [46.93055793]
 
-MSE for forestfires fold: 0 
+MSE for forestfires fold: 0
 edited knn
 MSE: [851.71240512]
 
-MSE for forestfires fold: 0 
+MSE for forestfires fold: 0
 kmeans
 MSE: [851.77953242]
 
-MSE for forestfires fold: 0 
+MSE for forestfires fold: 0
 kmedoids
 MSE: [851.46963292]
 
-MSE for wine fold: 0 
+MSE for wine fold: 0
 edited knn
 MSE: [1.15890385]
 
-MSE for wine fold: 0 
+MSE for wine fold: 0
 kmeans
 MSE: [1.16460771]
 
-MSE for wine fold: 0 
+MSE for wine fold: 0
 kmedoids
 MSE: [1.50933599]

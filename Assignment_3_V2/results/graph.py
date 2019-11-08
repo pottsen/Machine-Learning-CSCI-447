@@ -11,17 +11,25 @@ def get_data_RBN():
         str+= i
 
     arr = str.split("\n\n")
+    #print(arr)
     dicts = []
     for i in arr:
+        #print(i)
         network = "RBN"
         dataset = re.search(r"(?:for )(\w*)(?: fold)", i).group(1)
         fold = re.search(r"(?:fold: *)(\d*)", i).group(1)
+        if('edited' in i):
+            algo = 'edited'
+        elif('kmeans' in i):
+            algo = 'kmeans'
+        elif('kmedoids' in i):
+            algo = 'kmedoids'
         try:
-            mse = re.search(r"(?:MSE: )([\d\.]*)", i).group(1)
-            fold = {'network':network,'dataset':dataset,'fold':fold,'MSE':float(mse), 'total-folds':1}
+            mse = re.search(r"(?:MSE: \[)([\d\.]*)", i).group(1)
+            fold = {'network':network,'dataset':dataset,'fold':fold,'MSE':float(mse), 'total-folds':1, 'algo':algo}
         except:
             f = re.search(r"(?:F-score: )([\d\.]*)", i).group(1)
-            fold = {'network':network,'dataset':dataset,'fold':fold, 'F-score':float(f), 'total-folds':1}
+            fold = {'network':network,'dataset':dataset,'fold':fold, 'F-score':float(f), 'total-folds':1, 'algo':algo}
         dicts.append(fold)
     return dicts
 
@@ -81,7 +89,7 @@ def get_data_MLP():
 if __name__ == "__main__":
     dataMLP = get_data_MLP()
     dataMLP += get_data_RBN()
-
+    print(dataMLP)
     graph1=[[],[],[],[]]  #MLP F
     graph2=[[],[],[],[]]  #MLP MSE
     graph3=[[],[],[],[]]  #RBN F
@@ -90,39 +98,40 @@ if __name__ == "__main__":
     graphs = [graph1,graph2,graph3,graph4]
 
     for i in dataMLP:
-        try:
-            if ((len(i["Hidden-layers"]))== 0):
-                graph1[0].append(i["MSE"])
-            elif len(i["Hidden-layers"]) != 0 and not "," in i["Hidden-layers"]:
-                graph1[1].append(i["MSE"])
-            else:
-                graph1[2].append(i["MSE"])
-            graph1[3] =["machine", "forestfires", "wine"]
-        except:
-            if len(i["Hidden-layers"]) == 0:
-                graph2[0].append(i["F-score"])
-            elif len(i["Hidden-layers"])!= 0 and not "," in i["Hidden-layers"]:
-                graph2[1].append(i["F-score"])
-            else:
-                graph2[2].append(i["F-score"])
-            graph2[3] = ["abalone", "car", "segmentation"]
-    for i in dataRBN:
-        try:
-            if i["dataset"] == "edited KNN":
-                graph3[0].append(i["MSE"])
-            elif i["dataset"] == "kmeans":
-                graph3[1].append(i["MSE"])
-            elif len(i["dataset"]) == "kmedoids":
-                graph3[2].append(i["MSE"])
-            graph3[3] = ["abalone", "car", "segmentation"]
-        except:
-            if len(i["edited knn"]) == True:
-                graph4[0].append(i["F-score"])
-            elif len(i["kmeans"]) == True:
-                graph4[1].append(i["F-score"])
-            elif len(i["kmedoids"]) == True:
-                graph4[2].append(i["F-score"])
-            graph4[3] = ["machine", "forestfires", "wine"]
+        if(i['network']=='MLP'):
+            try:
+                if ((len(i["Hidden-layers"]))== 0):
+                    graph1[0].append(i["MSE"])
+                elif len(i["Hidden-layers"]) != 0 and not "," in i["Hidden-layers"]:
+                    graph1[1].append(i["MSE"])
+                else:
+                    graph1[2].append(i["MSE"])
+                graph1[3] =["machine", "forestfires", "wine"]
+            except:
+                if len(i["Hidden-layers"]) == 0:
+                    graph2[0].append(i["F-score"])
+                elif len(i["Hidden-layers"])!= 0 and not "," in i["Hidden-layers"]:
+                    graph2[1].append(i["F-score"])
+                else:
+                    graph2[2].append(i["F-score"])
+                graph2[3] = ["abalone", "car", "segmentation"]
+        elif(i['network']=='RBN'):
+            try:
+                if i["algo"] == 'edited':
+                    graph3[0].append(i["MSE"])
+                elif i["algo"] == 'kmeans':
+                    graph3[1].append(i["MSE"])
+                elif i["algo"] == 'kmedoids':
+                    graph3[2].append(i["MSE"])
+                graph3[3] = ["abalone", "car", "segmentation"]
+            except:
+                if i["algo"] == 'edited':
+                    graph4[0].append(i["F-score"])
+                elif i["algo"] == 'kmeans':
+                    graph4[1].append(i["F-score"])
+                elif i["algo"] == 'kmedoids':
+                    graph4[2].append(i["F-score"])
+                graph4[3] = ["machine", "forestfires", "wine"]
 
     print(graph1)
     print(graph2)
@@ -134,17 +143,21 @@ if __name__ == "__main__":
     inc = 0
     for i in graphs:
         # width of the bars
-        barWidth = 0.3
+        barWidth = 0.2
 
         # The x position of bars
         r1 = np.arange(len(i[2]))
         r2 = [x + barWidth for x in r1]
+        r3 = [y + 2*barWidth for y in r1]
 
         # Create blue bars
         plt.bar(r1, i[1], width = barWidth, color = 'blue', edgecolor = 'black', capsize=7, label='poacee')
 
         # Create cyan bars
         plt.bar(r2, i[2], width = barWidth, color = 'cyan', edgecolor = 'black', capsize=7, label='sorgho')
+
+        # Create green bars
+        plt.bar(r3, i[3], width = barWidth, color = 'green', edgecolor = 'black', capsize=7, label='sorgho')
 
         # general layout
         plt.xticks([r + barWidth for r in range(len(i[2]))], i[3])
