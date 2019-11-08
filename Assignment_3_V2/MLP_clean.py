@@ -23,7 +23,7 @@ class MLP():
 
         # check for correct inputs
         if (len(number_of_nodes) != number_of_layers):
-                raise Exception ("we need to know how many nodes are in each hidden layer")
+            raise Exception ("we need to know how many nodes are in each hidden layer")
 
         #make a layers list of np arrays. input is first layer and output is last layer
         self.layers = []
@@ -49,7 +49,7 @@ class MLP():
         temp = []
         equal = False
         iterations = 0
-        while(not equal) and iterations < 2:
+        while(not equal) and iterations < 1000:
             # store weight matrices to check for convergence
             temp = []
             for i in self.weight_matricies:
@@ -57,8 +57,9 @@ class MLP():
 
             self.network_train_iteration()
             # print("outputs\n",self.outputs)
-            print(self)
+            # print(self)
             iterations +=1
+            print(iterations)
             equal = True
             #check for convergence
             for i in range(len(self.weight_matricies)):
@@ -77,7 +78,7 @@ class MLP():
             self.target_vector = np.ones(1)
         
         # itereate through data and train
-        for d in self.data[:2]:
+        for d in self.data:
             #reset target vector for each data point
             self.target_vector = np.multiply(self.target_vector,0)
             target_class = d[0]

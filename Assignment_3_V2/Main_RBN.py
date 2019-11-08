@@ -31,7 +31,7 @@ def run():
 
         data_array.slicer(5)
         
-        for k in range(1):
+        for k in range(5):
             test_data = data_array.file_array.pop(k)
             data_array.join_array()
             training_data = data_array.file_array
@@ -84,7 +84,5 @@ def run():
                 algo_idx+=1
     results_file.close()
 
-    # if __name__ == "__main__":
-    #     main()
 
 run()

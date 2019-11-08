@@ -9,12 +9,12 @@ import copy
 def run2():
     #in order to process the data, run the data processing file
 
-    # df_list = ["abalone", "car", "segmentation", "machine", "forestfires", "wine"]
-    df_list = ["car", "wine"]
-    # df_class_num = [3, 4, 7, 1, 1, 1]
-    df_class_num = [4, 1]
+    df_list = ["abalone", "car", "segmentation", "machine", "forestfires", "wine"]
+    # df_list = ["car", "wine"]
+    df_class_num = [3, 4, 7, 1, 1, 1]
+    # df_class_num = [4, 1]
 
-    results_file = open("./results/results_video_mlp.txt", "a+")
+    results_file = open("./results/results_test_mlp.txt", "a+")
     for i in range(len(df_list)):
 
         data_array = Data_Processing_Lists("./processed", df_list[i]+"_processed")
@@ -28,7 +28,7 @@ def run2():
         data_array.slicer(5)
         
 
-        for k in range(1):
+        for k in range(5):
             
             toy = copy.deepcopy(data_array)
             test_data = toy.file_array.pop(k)
@@ -53,8 +53,8 @@ def run2():
                 results_file.write("\n"+print_str)
                 results_file.write("\nMSE: "+str(losses.mse())+"\n")
                 
-                # results_file.close()
-                # results_file = open("./results/results.txt", "a+")
+                results_file.close()
+                results_file = open("./results/results.txt", "a+")
             
             else:#classification
                 losses.confusion_matrix_generator()
@@ -65,8 +65,8 @@ def run2():
                 results_file.write("\n"+print_str)
                 results_file.write("\nF-score: "+str(losses.f_score())+"\n")
 
-                # results_file.close()
-                # results_file = open("./results/results.txt", "a+")
+                results_file.close()
+                results_file = open("./results/results.txt", "a+")
 
             mlp = MLP(training_data, class_list, 1, layer_nodes_1, True)
             mlp.train()
@@ -81,8 +81,8 @@ def run2():
                 results_file.write("\n"+print_str)
                 results_file.write("\nMSE: "+str(losses.mse())+"\n")
 
-                # results_file.close()
-                # results_file = open("./results/results.txt", "a+")
+                results_file.close()
+                results_file = open("./results/results.txt", "a+")
             
             else:#classification
                 losses.confusion_matrix_generator()
@@ -93,8 +93,8 @@ def run2():
                 results_file.write("\n"+print_str)
                 results_file.write("\nF-score: "+str(losses.f_score())+"\n")
 
-                # results_file.close()
-                # results_file = open("./results/results.txt", "a+")
+                results_file.close()
+                results_file = open("./results/results.txt", "a+")
 
 
             mlp = MLP(training_data, class_list, 0, [], True)
@@ -112,8 +112,8 @@ def run2():
                 results_file.write("\n"+print_str)
                 results_file.write("\nMSE: "+str(losses.mse())+"\n")
                 
-                # results_file.close()
-                # results_file = open("./results/results.txt", "a+")
+                results_file.close()
+                results_file = open("./results/results.txt", "a+")
             
             else:#classification
                 losses.confusion_matrix_generator()
@@ -124,8 +124,8 @@ def run2():
                 results_file.write("\n"+print_str)
                 results_file.write("\nF-score: "+str(losses.f_score())+"\n")
 
-                # results_file.close()
-                # results_file = open("./results/results.txt", "a+")
+                results_file.close()
+                results_file = open("./results/results.txt", "a+")
 
 
 
