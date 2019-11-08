@@ -2,9 +2,6 @@ import re
 import matplotlib.pyplot as plt
 import numpy as np
 
-
-
-
 def get_data_RBN():
     
     file = open("./RBN.txt", "r")
@@ -21,10 +18,10 @@ def get_data_RBN():
         fold = re.search(r"(?:fold: *)(\d*)", i).group(1)
         try:
             mse = re.search(r"(?:MSE: )([\d\.]*)", i).group(1)
-            fold = {'network':network_file,'dataset':dataset,'fold':fold,'MSE':float(mse), 'total-folds':1}
+            fold = {'network':network,'dataset':dataset,'fold':fold,'MSE':float(mse), 'total-folds':1}
         except:
             f = re.search(r"(?:F-score: )([\d\.]*)", i).group(1)
-            fold = {'network':network_file,'dataset':dataset,'fold':fold, 'F-score':float(f), 'total-folds':1}
+            fold = {'network':network,'dataset':dataset,'fold':fold, 'F-score':float(f), 'total-folds':1}
         dicts.append(fold)
     return dicts
    
@@ -33,7 +30,7 @@ def get_data_RBN():
 
 
 def get_data_MLP():
-    file = open("./MLP.txt", "r")
+    file = open("MLP.txt", "r")
 
     str = ""
     for i in file:
@@ -83,7 +80,7 @@ def get_data_MLP():
 
 if __name__ == "__main__":
     dataMLP = get_data_MLP()
-    dataMLP = get_data_RBN()
+    dataRBN = get_data_RBN()
 
     graph1=[[],[],[],[]]  #MLP F
     graph2=[[],[],[],[]]  #MLP MSE
@@ -111,11 +108,11 @@ if __name__ == "__main__":
             graph2[3] = ["abalone", "car", "segmentation"]
     for i in dataRBN:
         try:
-            if ((len(i["edited knn"]))== True):
+            if i["dataset"] == "edited KNN":
                 graph3[0].append(i["MSE"])
-            elif len(i["kmeans"]) == True:
+            elif i["dataset"] == "kmeans":
                 graph3[1].append(i["MSE"])
-            elif len(i["kmedoids"]) == True:
+            elif len(i["dataset"]) == "kmedoids":
                 graph3[2].append(i["MSE"])
             graph3[3] = ["abalone", "car", "segmentation"]
         except:
