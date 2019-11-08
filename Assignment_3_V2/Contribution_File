@@ -1,8 +1,18 @@
 For the code found in the project there 4 contributors:
 Peter Ottsen the bold
+--learning rate: passable
+--momentum: eager
 Justin McGowen the smart
+--learning rate: commendable effort
+--momentum: irritable
 Bruce Clark the goofy
+--learning rate: mediocre
+--momentum: sleep deprived
 Forest Edwards the noble
+--learning rate: decent
+--momentum: steady
+
+Based on the results, the learning rate of the group far exceeded the network overall. Take that singularity! HUMANS >>>>>>>>>> MACHINES.
 
 For the program, each of the authors made contributions in the following way:
 
@@ -16,4 +26,4 @@ Feed Forward Network - Justin McGownen, Peter Ottsen, Bruce Clark
 Backpropogation - Justin McGowen, Peter Ottsen
 Radial Basis Network - Peter Ottsen
 
-Everyone debugged and reveiwed each others code. We provided intense phycological and emotional support to eachother throught the entire process.
+Everyone debugged and reveiwed each others code. We provided intense psychological and emotional support to eachother throught the entire process.

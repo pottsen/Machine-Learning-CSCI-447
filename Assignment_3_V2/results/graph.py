@@ -2,28 +2,28 @@ import re
 import matplotlib.pyplot as plt
 import numpy as np
 
-def get_data_RBN():
+# def get_data_RBN():
     
-    file = open("./RBN.txt", "r")
+#     file = open("./RBN.txt", "r")
 
-    str = ""
-    for i in file:
-        str+= i
+#     str = ""
+#     for i in file:
+#         str+= i
 
-    arr = str.split("\n\n")
-    dicts = []
-    for i in arr:
-        network = "RBN"
-        dataset = re.search(r"(?:for )(\w*)(?: fold)", i).group(1)
-        fold = re.search(r"(?:fold: *)(\d*)", i).group(1)
-        try:
-            mse = re.search(r"(?:MSE: )([\d\.]*)", i).group(1)
-            fold = {'network':network,'dataset':dataset,'fold':fold,'MSE':float(mse), 'total-folds':1}
-        except:
-            f = re.search(r"(?:F-score: )([\d\.]*)", i).group(1)
-            fold = {'network':network,'dataset':dataset,'fold':fold, 'F-score':float(f), 'total-folds':1}
-        dicts.append(fold)
-    return dicts
+#     arr = str.split("\n\n")
+#     dicts = []
+#     for i in arr:
+#         network = "RBN"
+#         dataset = re.search(r"(?:for )(\w*)(?: fold)", i).group(1)
+#         fold = re.search(r"(?:fold: *)(\d*)", i).group(1)
+#         try:
+#             mse = re.search(r"(?:MSE: )([\d\.]*)", i).group(1)
+#             fold = {'network':network,'dataset':dataset,'fold':fold,'MSE':float(mse), 'total-folds':1}
+#         except:
+#             f = re.search(r"(?:F-score: )([\d\.]*)", i).group(1)
+#             fold = {'network':network,'dataset':dataset,'fold':fold, 'F-score':float(f), 'total-folds':1}
+#         dicts.append(fold)
+#     return dicts
    
 
 
@@ -80,7 +80,7 @@ def get_data_MLP():
 
 if __name__ == "__main__":
     dataMLP = get_data_MLP()
-    dataRBN = get_data_RBN()
+    #dataRBN = get_data_RBN()
 
     graph1=[[],[],[],[]]  #MLP F
     graph2=[[],[],[],[]]  #MLP MSE
@@ -106,23 +106,23 @@ if __name__ == "__main__":
             else:
                 graph2[2].append(i["F-score"])
             graph2[3] = ["abalone", "car", "segmentation"]
-    for i in dataRBN:
-        try:
-            if i["dataset"] == "edited KNN":
-                graph3[0].append(i["MSE"])
-            elif i["dataset"] == "kmeans":
-                graph3[1].append(i["MSE"])
-            elif len(i["dataset"]) == "kmedoids":
-                graph3[2].append(i["MSE"])
-            graph3[3] = ["abalone", "car", "segmentation"]
-        except:
-            if len(i["edited knn"]) == True:
-                graph4[0].append(i["F-score"])
-            elif len(i["kmeans"]) == True:
-                graph4[1].append(i["F-score"])
-            elif len(i["kmedoids"]) == True:
-                graph4[2].append(i["F-score"])
-            graph4[3] = ["machine", "forestfires", "wine"]
+    # for i in dataRBN:
+    #     try:
+    #         if i["dataset"] == "edited KNN":
+    #             graph3[0].append(i["MSE"])
+    #         elif i["dataset"] == "kmeans":
+    #             graph3[1].append(i["MSE"])
+    #         elif len(i["dataset"]) == "kmedoids":
+    #             graph3[2].append(i["MSE"])
+    #         graph3[3] = ["abalone", "car", "segmentation"]
+    #     except:
+    #         if len(i["edited knn"]) == True:
+    #             graph4[0].append(i["F-score"])
+    #         elif len(i["kmeans"]) == True:
+    #             graph4[1].append(i["F-score"])
+    #         elif len(i["kmedoids"]) == True:
+    #             graph4[2].append(i["F-score"])
+    #         graph4[3] = ["machine", "forestfires", "wine"]
 
     print(graph1)
     print(graph2)
