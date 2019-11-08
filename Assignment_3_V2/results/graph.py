@@ -2,29 +2,29 @@ import re
 import matplotlib.pyplot as plt
 import numpy as np
 
-# def get_data_RBN():
-    
-#     file = open("./RBN.txt", "r")
+def get_data_RBN():
 
-#     str = ""
-#     for i in file:
-#         str+= i
+    file = open("./RBN.txt", "r")
 
-#     arr = str.split("\n\n")
-#     dicts = []
-#     for i in arr:
-#         network = "RBN"
-#         dataset = re.search(r"(?:for )(\w*)(?: fold)", i).group(1)
-#         fold = re.search(r"(?:fold: *)(\d*)", i).group(1)
-#         try:
-#             mse = re.search(r"(?:MSE: )([\d\.]*)", i).group(1)
-#             fold = {'network':network,'dataset':dataset,'fold':fold,'MSE':float(mse), 'total-folds':1}
-#         except:
-#             f = re.search(r"(?:F-score: )([\d\.]*)", i).group(1)
-#             fold = {'network':network,'dataset':dataset,'fold':fold, 'F-score':float(f), 'total-folds':1}
-#         dicts.append(fold)
-#     return dicts
-   
+    str = ""
+    for i in file:
+        str+= i
+
+    arr = str.split("\n\n")
+    dicts = []
+    for i in arr:
+        network = "RBN"
+        dataset = re.search(r"(?:for )(\w*)(?: fold)", i).group(1)
+        fold = re.search(r"(?:fold: *)(\d*)", i).group(1)
+        try:
+            mse = re.search(r"(?:MSE: )([\d\.]*)", i).group(1)
+            fold = {'network':network,'dataset':dataset,'fold':fold,'MSE':float(mse), 'total-folds':1}
+        except:
+            f = re.search(r"(?:F-score: )([\d\.]*)", i).group(1)
+            fold = {'network':network,'dataset':dataset,'fold':fold, 'F-score':float(f), 'total-folds':1}
+        dicts.append(fold)
+    return dicts
+
 
 
 
@@ -66,7 +66,7 @@ def get_data_MLP():
         if(not in_list):
             dict_list.append(i)
 
-    
+
     for i in range(len(dict_list)):
         try:
             dict_list[i]['MSE']/=dict_list[i]['total-folds']
@@ -80,7 +80,7 @@ def get_data_MLP():
 
 if __name__ == "__main__":
     dataMLP = get_data_MLP()
-    #dataRBN = get_data_RBN()
+    dataMLP += get_data_RBN()
 
     graph1=[[],[],[],[]]  #MLP F
     graph2=[[],[],[],[]]  #MLP MSE
@@ -88,7 +88,7 @@ if __name__ == "__main__":
     graph4=[[],[],[],[]]  #RBN MSE
 
     graphs = [graph1,graph2,graph3,graph4]
-    
+
     for i in dataMLP:
         try:
             if ((len(i["Hidden-layers"]))== 0):
@@ -106,23 +106,23 @@ if __name__ == "__main__":
             else:
                 graph2[2].append(i["F-score"])
             graph2[3] = ["abalone", "car", "segmentation"]
-    # for i in dataRBN:
-    #     try:
-    #         if i["dataset"] == "edited KNN":
-    #             graph3[0].append(i["MSE"])
-    #         elif i["dataset"] == "kmeans":
-    #             graph3[1].append(i["MSE"])
-    #         elif len(i["dataset"]) == "kmedoids":
-    #             graph3[2].append(i["MSE"])
-    #         graph3[3] = ["abalone", "car", "segmentation"]
-    #     except:
-    #         if len(i["edited knn"]) == True:
-    #             graph4[0].append(i["F-score"])
-    #         elif len(i["kmeans"]) == True:
-    #             graph4[1].append(i["F-score"])
-    #         elif len(i["kmedoids"]) == True:
-    #             graph4[2].append(i["F-score"])
-    #         graph4[3] = ["machine", "forestfires", "wine"]
+    for i in dataRBN:
+        try:
+            if i["dataset"] == "edited KNN":
+                graph3[0].append(i["MSE"])
+            elif i["dataset"] == "kmeans":
+                graph3[1].append(i["MSE"])
+            elif len(i["dataset"]) == "kmedoids":
+                graph3[2].append(i["MSE"])
+            graph3[3] = ["abalone", "car", "segmentation"]
+        except:
+            if len(i["edited knn"]) == True:
+                graph4[0].append(i["F-score"])
+            elif len(i["kmeans"]) == True:
+                graph4[1].append(i["F-score"])
+            elif len(i["kmedoids"]) == True:
+                graph4[2].append(i["F-score"])
+            graph4[3] = ["machine", "forestfires", "wine"]
 
     print(graph1)
     print(graph2)
@@ -135,23 +135,23 @@ if __name__ == "__main__":
     for i in graphs:
         # width of the bars
         barWidth = 0.3
-        
+
         # The x position of bars
         r1 = np.arange(len(i[2]))
         r2 = [x + barWidth for x in r1]
-        
+
         # Create blue bars
         plt.bar(r1, i[1], width = barWidth, color = 'blue', edgecolor = 'black', capsize=7, label='poacee')
-        
+
         # Create cyan bars
         plt.bar(r2, i[2], width = barWidth, color = 'cyan', edgecolor = 'black', capsize=7, label='sorgho')
-        
+
         # general layout
         plt.xticks([r + barWidth for r in range(len(i[2]))], i[3])
         plt.ylabel(error[inc])
         plt.title(titles[inc])
         #plt.legend()
-        
+
         # Show graphic
         plt.show()
 
