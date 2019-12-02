@@ -42,6 +42,13 @@ class MLP():
 
         return string
 
+    def print_weights(self):
+        iter = 0
+        for layer in self.layers:
+            print("---matrix "+ str(iter) +"---")
+            print(layer.next_weights)
+            iter += 1
+
     def predict(self, point, regression):
         dat = np.transpose(point)
         self.layers[0].set_nodes(dat)
@@ -56,3 +63,23 @@ class MLP():
 
         #print(self.layers[-1])
         return(self.layers[-1])
+
+    #this method will return a vector representation of the hidden weight matricies for easy cross breeding
+    def unzip_neuron(self):
+        neuron = []
+        for layer in self.layers:
+            weights = layer.next_weights
+            if(type(weights) != str and weights != 'end'):
+                for i in weights:
+                    for j in i:
+                        neuron.append(j)
+        return neuron
+
+    #this method will take a vector representation of hidden weight matricies (neurons_as_vector) and set this MLP's weights to a zipped version of it
+    def rezip_neuron(self, neurons_as_vector):
+        for layer in self.layers:
+            weights = layer.next_weights
+            if(type(weights) != str and weights != 'end'):
+                for i in range(len(weights)):
+                    for j in range(len(weights[i])):
+                        layer.next_weights[i][j] = neurons_as_vector.pop(0)
