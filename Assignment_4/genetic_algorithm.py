@@ -42,8 +42,8 @@ if __name__ == "__main__":
     for i in training_data:
         inputs.append(ga.population[0].predict(i[1:]))
         actual_classes.append(i[0])
-    
-    
+    print(inputs)
+    print(len(inputs[0]))
 
     fitness = ga.population[0].fitness(inputs, actual_classes)
     print(fitness)
