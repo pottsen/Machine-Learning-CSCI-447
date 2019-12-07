@@ -3,7 +3,7 @@ from population_manager import PopulationManager
 from mlp import MLP
 
 def main():
-    data_aba = Data_Processing(["abalone"], [8], {"M":"1", "F":"2", "I":"3"})
+    data_aba = Data_Processing(["abalone",], [8], {"M":"1", "F":"2", "I":"3"})
     #either:
     data_aba.process_data("./data")
     data_aba.write_data("./processed")
@@ -46,7 +46,7 @@ def main():
     #end 3-------------------------------------
 
     #4: demo of population manager crossing :
-
+    '''
     population = PopulationManager(2,[4,5,3])
     iter = 0
     for i in population.population:
@@ -56,7 +56,7 @@ def main():
     child = population.uniform_cross(population.population[0],population.population[1])
     print('----child----')
     print(child.print_weights())
-
+    '''
     #end 4-------------------------------------
 
 if __name__ == "__main__":

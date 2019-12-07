@@ -3,6 +3,7 @@ import numpy as np
 
 class MLP():
 
+    #includes input and output node sizes - ie:[4,1] is a 0 hidden layer mlp (regression)
     def __init__(self, nodes_per_layer):
 
         self.layers = []
