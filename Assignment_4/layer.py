@@ -38,7 +38,7 @@ class Layer():
         return self.nodes.shape[0]
 
     def set_nodes(self, vector):
-        if(type(vector) == str and adjustment == 'random'):
+        if(type(vector) == str):
             for row in range(len(self.nodes)):
                 for col in range(len(self.nodes[row])):
                     self.nodes[row][col] = random.random()

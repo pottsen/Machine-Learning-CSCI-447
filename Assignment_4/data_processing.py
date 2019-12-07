@@ -63,3 +63,13 @@ class Data_Processing:
             #grab from the back of the array (-(0+1) = -1)
             new_file_array[i].append(self.file_array[name][-(i+1)])
         self.file_array = new_file_array
+
+    #input-> a 3d array [[[line1],[line2]], [[line3],[line4]]... ]
+    #return-> a 2d array [[line1],[line2]...]
+    def combine(self, file_array):
+        new_file_array = []
+        for i in file_array:
+            for j in i:
+                new_file_array.append(j)
+        return new_file_array
+
