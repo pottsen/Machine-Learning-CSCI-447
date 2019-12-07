@@ -34,6 +34,9 @@ class Layer():
 
         return string
 
+    def get_layer_size(self):
+        return self.nodes.shape[0]
+
     def set_nodes(self, vector):
         if(type(vector) == str and adjustment == 'random'):
             for row in range(len(self.nodes)):

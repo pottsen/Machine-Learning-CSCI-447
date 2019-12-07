@@ -19,8 +19,11 @@ def main():
 
     tp = data_aba.file_array['abalone'][0][1:]
     print(tp)
-    prediction = mlp.predict([tp],False)
+    print(mlp.layers[0].get_layer_size())
+    prediction = mlp.predict([tp])
     print(prediction)'''
+
+
     #end 1------------------
 
     #2: demo of changing neuron weights (used to cross two neurons together easily)
@@ -58,6 +61,18 @@ def main():
     print(child.print_weights())
     '''
     #end 4-------------------------------------
+
+    #5: demo of fitness:
+    '''
+    mlp = MLP([4,5,3])
+    print(mlp)
+
+    prediction = mlp.predict([1,1,0,1])
+    print(prediction)
+    print(mlp.fitness([[1,1,0,1]],[[0,1,0]]))
+    print(mlp.fitness([[1,1,0,1]],[[0,0,1]]))
+    '''
+    #end 5--------------------------------------
 
 if __name__ == "__main__":
     main()

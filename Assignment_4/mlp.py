@@ -50,12 +50,18 @@ class MLP():
             print(layer.next_weights)
             iter += 1
 
-    def predict(self, point, regression):
-        dat = np.transpose(point)
+    def predict(self, point, regression='default'):
+        dat = np.transpose([point])
         self.layers[0].set_nodes(dat)
         for i in range(len(self.layers)-1):
             nxt_lyr = self.layers[i].feed_forward_sigmoid()
             self.layers[i+1].set_nodes(nxt_lyr)
+        if(regression == 'default'):
+            if(self.layers[-1].get_layer_size() == 1):
+                regression = True
+            else:
+                regression = False
+
         if(regression):
             nxt_lyr = self.layers[-2].feed_forward()
         else:
@@ -63,7 +69,11 @@ class MLP():
         self.layers[-1].set_nodes(nxt_lyr)
 
         #print(self.layers[-1])
-        return(self.layers[-1])
+        oned = []
+        for i in self.layers[-1].nodes:
+            oned.append(i[0])
+        #print(self.layers[-1])
+        return(oned)
 
     #this method will return a vector representation of the hidden weight matricies for easy cross breeding
     def unzip_neuron(self):
@@ -84,3 +94,12 @@ class MLP():
                 for i in range(len(weights)):
                     for j in range(len(weights[i])):
                         layer.next_weights[i][j] = neurons_as_vector.pop(0)
+
+    def fitness(self, inputs, outputs):
+        diff = 0
+        for i in range(len(inputs)):
+            guess = self.predict(inputs[i])
+            for g in range(len(guess)):
+                diff += (outputs[i][g] - guess[g])**2
+        diff /= len(inputs)
+        return 1/diff
