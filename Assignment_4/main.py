@@ -103,14 +103,9 @@ def main():
     a.update(s)
     #input sizes = []
     #output sizes = []
-    #data_aba = Data_Processing(["abalone","car","forestfires","machine","segmentation","wine"], [8,6,12,9,0,11], {})
+    data = Data_Processing(["abalone","car","forestfires","machine","segmentation","wine"], [8,6,12,9,0,11], {})
     #machine is the one where we want an auto generated dictionary
-    data_aba = Data_Processing(["abalone","car","forestfires","segmentation","wine"], [8,6,12,0,11], a)
-
-    #either:
-    data_aba.process_data("./data")
-    data_aba.write_data("./processed")
-
+    data.load_data("./processed")
 
 
     #1: demo of MLP prediction:

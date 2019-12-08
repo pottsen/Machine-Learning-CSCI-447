@@ -74,5 +74,3 @@ def mse(guesses):
         error += (i[0] - i[1])**2
     error/=len(guesses)
     return error
-
-
