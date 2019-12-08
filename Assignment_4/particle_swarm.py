@@ -53,7 +53,7 @@ class particle_swarm(PopulationManager):
         return velocity
 
     def update(self):
-        
+
         gBest_weights = self.gBest.unzip_neuron()
 
         for i in range(len(self.population)):
@@ -63,7 +63,7 @@ class particle_swarm(PopulationManager):
             pBest_weights = self.pBest[i].unzip_neuron()
             prev_velocity = self.prev_velocity[i].unzip_neuron()
 
-            velocity = self.velocity_calc(prev_velocity, weights, pBest_weights, gBest_weights) 
+            velocity = self.velocity_calc(prev_velocity, weights, pBest_weights, gBest_weights)
 
             new_weights = []
             for j in range(len(velocity)):
@@ -79,7 +79,7 @@ class particle_swarm(PopulationManager):
 
             self.population[i].rezip_neuron(new_weights)
             print(self.population[i].layers[0].next_weights[0])
-            
+
             print("pop same ", old_pop == self.population[i])
 
         # self.gBest.rezip_neuron(gBest_weights)
@@ -99,14 +99,14 @@ class particle_swarm(PopulationManager):
                 if fitness > self.pBest_fitness[i]:
                     print("pBest updated")
                     self.pBest[i] = self.population[i]
-                    self.pBest_fitness[i] = fitness 
+                    self.pBest_fitness[i] = fitness
                 #if fitness < gbest reset
                 if fitness > self.gBest_fitness:
                     print("gBest updated")
                     self.gBest = self.population[i]
                     self.gBest_fitness = fitness
 
-            self.update() 
+            self.update()
             iteration += 1
             print("iteration ", iteration, " fitness ", self.gBest_fitness)
 
@@ -126,7 +126,7 @@ if __name__ == "__main__":
     #end --------------------------------------
 
     #tesing alogorithm ------------------------
-    
+
     # print(len(data_aba.file_array[0][0][1:]))
     pso = particle_swarm(50, [(len(data_aba.file_array[0][0][1:])),29], 2, 2, 0.75, training_data, test_data)
 
