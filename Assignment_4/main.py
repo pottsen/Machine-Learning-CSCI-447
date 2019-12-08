@@ -80,13 +80,24 @@ def mse(guesses):
     return error
 
 def main():
+    '''
     data_aba = Data_Processing(["abalone",], [8], {"M":"1", "F":"2", "I":"3"})
     #either:
     data_aba.process_data("./data")
     data_aba.write_data("./processed")
     #or:
     data_aba.load_data("./processed")
+    '''
     #loads data into Data_Processing
+
+    #data_aba = Data_Processing(["abalone","car","forestfires","machine","segmentation","wine"], [8,6,12,9,0,11], {})
+    #machine is the one where we want an auto generated dictionary
+    data_aba = Data_Processing(["car"], [6], {"M":"0", "F":"1", "I":"2",     "unacc":"0","acc":"1","good":"2","vgood":"3",     "5-more":"5", "more":"6",     "v-high":"3", "high":"2", "med":"1", "low":"0"})
+
+    #either:
+    data_aba.process_data("./data")
+    data_aba.write_data("./processed")
+
 
 
     #1: demo of MLP prediction:

@@ -1,3 +1,5 @@
+import re
+
 class Data_Processing:
     def __init__(self, names, class_col, cat_to_numeric):
         self.names = names           #names is a list of file names without extentions of the data files
@@ -5,6 +7,28 @@ class Data_Processing:
         self.file_array = {}
         self.cat_to_numeric = cat_to_numeric  #a dictionary of categorical keys to be replaced with numeric values
 
+    def process_with_strings(self,location):
+        for name in range(len(self.names)):
+
+            raw_txt = ''
+            data = open(location + "/" + self.names[name] + ".csv", "r")
+            for i in data:
+                raw_txt+=i
+            data.close()
+
+            raw_txt = raw_txt[:-1]#strip off trailing \n
+            points_prime = raw_txt.split('\n')
+
+            points = []*len(points_prime)
+
+            for i in range(len(points_prime)):
+                tmp = points_prime[i].split(',')
+                first_col = tmp[0]
+                tmp[0] = tmp[self.class_col[name]]
+                tmp[self.class_col[name]] = first_col
+                points.append([i for i in tmp])
+
+            self.file_array.update({self.names[name]:points})
     def process_data(self, location):
         for name in range(len(self.names)):
 
@@ -73,3 +97,26 @@ class Data_Processing:
                 new_file_array.append(j)
         return new_file_array
 
+    def col_namespaces(self):
+        namespaces = {}
+
+        for set in self.file_array:
+            data = self.file_array[set]
+            ns = []
+            for x in range(len(data[0])):
+                ns.append([])
+            namespaces.update({set:ns})
+            for point in data:
+                for col in range(len(point)):
+                    if(point[col] not in namespaces[set][col] and not isnumber(point[col])):
+                        namespaces[set][col].append(point[col])
+
+        print(namespaces)
+
+def isnumber(data):
+    data = str(data)
+    num_re = r"-?\d*\.?\d*"
+
+    search = re.search(num_re,data)[0]
+
+    return search == data
