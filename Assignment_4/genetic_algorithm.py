@@ -32,13 +32,13 @@ class Genetic_Algorithm(PopulationManager):
         weakest1 = 10000000
         weakest2 = 10000000
         for i in range(len(self.population)):
-            if population[i].individual_fitness < weakest1:
-                weakest1 = population[i].individual_fitness
+            if self.population[i].individual_fitness < weakest1:
+                weakest1 = self.population[i].individual_fitness
                 weakest1_index = i
         for i in range(len(self.population)):
-            if population[i].individual_fitness < weakest2 and i != weakest1_index:
-                weakest2 = population[i].individual_fitness
-                weakest2_index = population[i].individual_fitness
+            if self.population[i].individual_fitness < weakest2 and i != weakest1_index:
+                weakest2 = self.population[i].individual_fitness
+                weakest2_index = i
         return weakest1_index, weakest2_index
 
 
@@ -66,15 +66,15 @@ class Genetic_Algorithm(PopulationManager):
 
         number_to_replace = int(len(self.population) * self.gen_replacement_rate)
 
-        number_of_generations = 100
+        number_of_generations = 10000
 
         for j in range(number_of_generations):
 
             self.calculate_fitness()
-            count = 0
+            results = ["generation", j, "----"]
             for k in self.population:
-                print(count, "---", k.individual_fitness)
-                count+=1
+                results.append(k.individual_fitness)
+            print(results)
 
             for i in range(math.ceil(number_to_replace/2)):
                 #select
@@ -91,8 +91,9 @@ class Genetic_Algorithm(PopulationManager):
                 child_mut2 = self.mutation(child2)
 
                 #replace weakest
-                self.population[self.find_weakest()[0]].rezip_neuron(child_mut1)
-                self.population[self.find_weakest()[2]].rezip_neuron(child_mut2)
+                weak1, weak2 = self.find_weakest()
+                self.population[weak1].rezip_neuron(child_mut1)
+                self.population[weak2].rezip_neuron(child_mut2)
                 
 
           
@@ -108,7 +109,7 @@ if __name__ == "__main__":
     data_aba.load_data("./processed")
     
     #triming it down to 10
-    data_aba.file_array['abalone'] = data_aba.file_array['abalone'][:10]
+    data_aba.file_array['abalone'] = data_aba.file_array['abalone'][:2000]
     
     #slice in to 5
     data_aba.slicer(5, "abalone")

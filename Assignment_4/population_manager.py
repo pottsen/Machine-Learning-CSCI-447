@@ -5,8 +5,8 @@ import copy
 class PopulationManager():
 
     def __init__(self, pop_size, mlp_dims):
-        self.mutation_rate = 0.1
-        self.mutation_value = 0.1
+        self.mutation_rate = 0.01
+        self.mutation_value = 0.01
         self.population = []
         for i in range(pop_size):
             self.population.append(MLP(mlp_dims))
