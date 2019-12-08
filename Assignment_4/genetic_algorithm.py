@@ -2,7 +2,7 @@ from population_manager import PopulationManager
 from data_processing import Data_Processing
 import random
 import math
-
+import copy
 
 class Genetic_Algorithm(PopulationManager):
     def __init__(self, pop_size, mlp_dims, test_data, training_data):
@@ -28,6 +28,20 @@ class Genetic_Algorithm(PopulationManager):
             i.fitness(inputs, outputs)
     
     
+    def find_weakest(self):
+        weakest1 = 10000000
+        weakest2 = 10000000
+        for i in range(len(self.population)):
+            if population[i].individual_fitness < weakest1:
+                weakest1 = population[i].individual_fitness
+                weakest1_index = i
+        for i in range(len(self.population)):
+            if population[i].individual_fitness < weakest2 and i != weakest1_index:
+                weakest2 = population[i].individual_fitness
+                weakest2_index = population[i].individual_fitness
+        return weakest1_index, weakest2_index
+
+
     #picks an indiv from the pop. with highly fit indiv more likley to be chosen
     def russian_wheel_selection(self):
         
@@ -73,12 +87,15 @@ class Genetic_Algorithm(PopulationManager):
                 child1, child2 = self.uniform_cross(self.population[individual1], self.population[individual2])
 
                 #mutation
-                child1.rezip_neuron(self.mutation(child1))
-                child2.rezip_neuron(self.mutation(child2))
+                child_mut1 = self.mutation(child1)
+                child_mut2 = self.mutation(child2)
 
-                #replace selected old gen. with new gen.
-                self.population[individual1] = child1
-                self.population[individual2] = child2
+                #replace weakest
+                self.population[self.find_weakest()[0]].rezip_neuron(child_mut1)
+                self.population[self.find_weakest()[2]].rezip_neuron(child_mut2)
+                
+
+          
 
             
 
