@@ -45,8 +45,8 @@ class PopulationManager():
     def mutation(self, mlp):
 
         gene = mlp.unzip_neuron()
-
         for i in gene:
-            coin = random.randrange(0,(int)(1/self.mutation_rate))
+            coin = random.randrange(0,int(1/self.mutation_rate))
             if(coin == 0):
                 i += i*self.mutation_value
+        return mlp.rezip_neuron(gene)
