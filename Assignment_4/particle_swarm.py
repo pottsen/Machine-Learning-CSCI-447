@@ -72,22 +72,24 @@ class particle_swarm(PopulationManager):
                 new_weights.append(nw)
 
             # print("velocity\n", velocity[:20])
-            print("New equal old ", new_weights == weights)
+            print("weights updated ", new_weights != weights)
             # print("pv len", len(self.prev_velocity))
-            self.prev_velocity[i].rezip_neuron(velocity)
-            self.pBest[i].rezip_neuron(pBest_weights)
+            # self.prev_velocity[i].rezip_neuron(velocity)
+            # self.pBest[i].rezip_neuron(pBest_weights)
 
             self.population[i].rezip_neuron(new_weights)
+            print(self.population[i].layers[0].next_weights[0])
+            
             print("pop same ", old_pop == self.population[i])
 
-        self.gBest.rezip_neuron(gBest_weights)
+        # self.gBest.rezip_neuron(gBest_weights)
         self.count +=1
 
     def run_PSO(self):
         #iteration count
         iteration = 0
         #calculate fitness
-        while iteration < 10:
+        while iteration < 100:
             # print("iteration ", iteration)
             print("gBest Fitness ", self.gBest_fitness)
             for i in range(len(self.population)):
@@ -116,8 +118,7 @@ if __name__ == "__main__":
     data_aba.load_data("./processed")
 
     #triming it down to 10
-    data_aba.file_array['abalone'] = data_aba.file_array['abalone'][:5]
-    #slice in to 5
+    data_aba.file_array['abalone'] = data_aba.file_array['abalone']    #slice in to 5
     data_aba.slicer(5, "abalone")
 
     test_data = data_aba.file_array[0]
@@ -127,7 +128,7 @@ if __name__ == "__main__":
     #tesing alogorithm ------------------------
     
     # print(len(data_aba.file_array[0][0][1:]))
-    pso = particle_swarm(1, [(len(data_aba.file_array[0][0][1:])),29], 2, 2, 0.75, training_data, test_data)
+    pso = particle_swarm(50, [(len(data_aba.file_array[0][0][1:])),29], 2, 2, 0.75, training_data, test_data)
 
     pso.run_PSO()
 

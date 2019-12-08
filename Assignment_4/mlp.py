@@ -46,9 +46,9 @@ class MLP():
     def print_weights(self):
         iter = 0
         for layer in self.layers:
-            print("---matrix "+ str(iter) +"---")
-            print(layer.next_weights)
-            iter += 1
+                print("---matrix "+ str(iter) +"---")
+                print(layer.next_weights)
+                iter += 1
 
     def predict(self, point, regression='default'):
         dat = np.transpose([point])
@@ -88,17 +88,17 @@ class MLP():
 
     #this method will take a vector representation of hidden weight matricies (neurons_as_vector) and set this MLP's weights to a zipped version of it
     def rezip_neuron(self, neurons_as_vector):
-        new_layers = []
-        for layer in self.layers:
-            weights = layer.next_weights
+        # print(neurons_as_vector[0])
+        print(self.layers[0].next_weights[0])
+        old_layers = self.layers
+        for k in range(len(self.layers)):
+            weights = self.layers[k].next_weights
             if(type(weights) != str and weights != 'end'):
                 for i in range(len(weights)):
                     for j in range(len(weights[i])):
-                        layer.next_weights[i][j] = neurons_as_vector.pop(0)
-
-            new_layers.append(layer)
-        #trying to test if layers are updated
-        print("layers updated ", new_layers != self.layers)
+                        self.layers[k].next_weights[i][j] = neurons_as_vector.pop(0)
+        print(self.layers[0].next_weights[0])
+        # print("updated layers ", old_layers[0].next_weights != self.layers[0].next_weights)
                     
 
     #inputs-> the attributes of the training data
