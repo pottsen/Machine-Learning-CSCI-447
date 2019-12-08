@@ -106,4 +106,5 @@ class MLP():
             for g in range(len(guess)):
                 diff += (outputs[i][g] - guess[g])**2
         diff /= len(inputs)
-        return 1/diff
+        self.individual_fitness = 1/diff
+        return self.individual_fitness
