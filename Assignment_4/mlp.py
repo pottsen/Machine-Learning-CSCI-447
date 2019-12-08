@@ -89,7 +89,7 @@ class MLP():
     #this method will take a vector representation of hidden weight matricies (neurons_as_vector) and set this MLP's weights to a zipped version of it
     def rezip_neuron(self, neurons_as_vector):
         # print(neurons_as_vector[0])
-        print(self.layers[0].next_weights[0])
+        # print(self.layers[0].next_weights[0])
         old_layers = self.layers
         for k in range(len(self.layers)):
             weights = self.layers[k].next_weights
@@ -97,7 +97,7 @@ class MLP():
                 for i in range(len(weights)):
                     for j in range(len(weights[i])):
                         self.layers[k].next_weights[i][j] = neurons_as_vector.pop(0)
-        print(self.layers[0].next_weights[0])
+        # print(self.layers[0].next_weights[0])
         # print("updated layers ", old_layers[0].next_weights != self.layers[0].next_weights)
                     
 
