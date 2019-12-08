@@ -1,5 +1,6 @@
 from population_manager import PopulationManager
 from data_processing import Data_Processing
+import random
 
 
 class Genetic_Algorithm(PopulationManager):
@@ -7,11 +8,63 @@ class Genetic_Algorithm(PopulationManager):
         PopulationManager.__init__(self, pop_size, mlp_dims)
         self.test_data = test_data
         self.training_data = training_data
+        self.number_of_inputs = mlp_dims[1]
+        self.number_of_outputs = mlp_dims[-1]
+
+        
+    #calculates a fitness for each indiv. in pop.
+    def calculate_fitness(self):
+        for i in self.population:
+            outputs = []
+            inputs = []
+            for j in self.training_data:
+                actual_class = j[0]
+                temp = [0] * self.number_of_outputs
+                temp[int(actual_class-1)] = 1
+                inputs.append(j[1:])
+                outputs.append(temp)
+            i.fitness(inputs, outputs)
+    
+    
+
+    def russian_wheel_selection(self):
+        #add up all the fitness
+        #randomly select a number btw 0-fitness sum
+        #select which ever individual it lands on
+        
+        #sum up the fitness
+        fitness_sum = 0
+        for i in self.population:
+            fitness_sum += i.individual_fitness
+        
+        #pick a radom float between 0 and fitness sum
+        selection = random.uniform(0, fitness_sum)
+        #when the fitness sum is bigger or equal to the random number, select individ
+        fitness_sum = 0
+        for i in self.population:
+            fitness_sum += i.individual_fitness
+            if selection <= fitness_sum:
+                return i
+        
 
 
+    def cross_over(self):
+        pass
 
+    def run_genetic_algorithm(self):
 
-
+        self.calculate_fitness()
+        individual1 = self.russian_wheel_selection()
+        individual2 = self.russian_wheel_selection()
+        while individual1.layers[0] == individual2.layers[0]:
+            individual2 = self.russian_wheel_selection()
+        
+        child = self.uniform_cross(individual1, individual2)
+        self.mutation(child)
+        
+        
+        
+    
 
 
 
@@ -33,19 +86,9 @@ if __name__ == "__main__":
     #end --------------------------------------
 
     #tesing alogorithm ------------------------
-    ga = Genetic_Algorithm(5, [(len(data_aba.file_array[0][0][1:])),30,29], test_data, training_data)
-    print(len(data_aba.file_array[0][0][1:]))
-    #ga.population[0].print_weights()
-
-    actual_classes = []
-    inputs = []
-    for i in training_data:
-        inputs.append(ga.population[0].predict(i[1:]))
-        actual_classes.append(i[0])
-    print(inputs)
-    print(len(inputs[0]))
-
-    fitness = ga.population[0].fitness(inputs, actual_classes)
-    print(fitness)
+    number_of_outputs = 29
+    number_of_inputs = (len(data_aba.file_array[0][0][1:]))
+    ga = Genetic_Algorithm(5, [number_of_inputs,30,number_of_outputs], test_data, training_data)
+    ga.run_genetic_algorithm()
     
     #end --------------------------------------
