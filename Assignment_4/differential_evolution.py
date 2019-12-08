@@ -39,7 +39,7 @@ class Differential_Evolution(PopulationManager):
 
             new_member.rezip_neuron(y)
 
-            new_member = self.uniform_cross(self.population[i],new_member)
+            new_member, throwaway = self.uniform_cross(self.population[i],new_member)
 
             classes = []
             dat = []
@@ -78,7 +78,7 @@ if __name__ == "__main__":
 
 
     de = Differential_Evolution(100,[8,15,29],1.5,training_data,test_data)
-    for i in range(1000):
+    for i in range(100):
         de.mutation()
 
     best = de.best

@@ -12,11 +12,11 @@ class particle_swarm(PopulationManager):
         self.pBest_C = pBest_coeff
         self.gBest_C = gBest_coeff
         self.pBest_fitness = [0]*pop_size
-        self.pBest = self.population
-        self.prev_velocity = self.population
-        print("pop len", len(self.population))
+        self.pBest_fitness_flag = [False]*pop_size
+        self.pBest = copy.deepcopy(self.population)
+        self.prev_velocity = copy.deepcopy(self.population)
         self.gBest_fitness = 0
-        self.gBest = self.population[0]
+        self.gBest = copy.deepcopy(self.population[0])
         self.inertia_C = inertia_coeff
         self.count = 0
 
@@ -38,11 +38,13 @@ class particle_swarm(PopulationManager):
             self.test_data_inputs.append(i[1:])
             self.test_data_outputs.append(temp)
 
+        print(self.test_data_inputs)
+        print(self.test_data_outputs)
 
         PopulationManager.__init__(self, pop_size, mlp_dims)
 
-    def update(self):
 
+    def update(self):
         for i in range(len(self.population)):
             # print(i)
             old_pop = self.population[i]
@@ -50,19 +52,17 @@ class particle_swarm(PopulationManager):
             gBest_weights = self.gBest.unzip_neuron()
             pBest_weights = self.pBest[i].unzip_neuron()
             prev_velocity = self.prev_velocity[i].unzip_neuron()
+            print("pBest updated", self.pBest_fitness_flag[i])
 
             velocity = self.velocity_calc(prev_velocity, weights, pBest_weights, gBest_weights)
-            print("velocities different ", velocity != prev_velocity)
-            print("velocity ", velocity[:10])
+            # print("velocity ", velocity[:10])
             new_weights = []
             for j in range(len(velocity)):
                 # print("i",i)
                 nw= weights[j] + velocity[j]
                 new_weights.append(nw)
 
-            # print("velocity\n", velocity[:20])
             print("weights updated ", new_weights != weights)
-            # print("pv len", len(self.prev_velocity))
             self.prev_velocity[i].rezip_neuron(velocity)
             self.pBest[i].rezip_neuron(pBest_weights)
             self.gBest.rezip_neuron(gBest_weights)
@@ -85,7 +85,7 @@ class particle_swarm(PopulationManager):
 
             if i == 0:
                 print("pBest = weights ", pBest_weights == weights)
-                print("PBC ", self.pBest_C)
+                # print("PBC ", self.pBest_C)
                 print("PBW ", pBest_weights[i])
                 print("W", weights[i])
                 print("v1 ", v1, "\n v2 ", v2, "\n v3 ", v3)
@@ -107,17 +107,94 @@ class particle_swarm(PopulationManager):
                 #if fitness < pBest reset
                 if fitness > self.pBest_fitness[i]:
                     # print("pBest updated")
-                    self.pBest[i] = self.population[i]
+                    self.pBest[i] = copy.deepcopy(self.population[i])
                     self.pBest_fitness[i] = fitness
+                    self.pBest_fitness_flag[i] = True
+                else:
+                    self.pBest_fitness_flag[i] = False
                 #if fitness < gbest reset
                 if fitness > self.gBest_fitness:
                     print("gBest updated", self.gBest_fitness)
-                    self.gBest = self.population[i]
+                    self.gBest = copy.deepcopy(self.population[i])
                     self.gBest_fitness = fitness
 
             self.update()
             iteration += 1
             print("iteration ", iteration, " fitness ", self.gBest_fitness)
+
+    def run_test(self, test_data):
+        
+
+
+    def f_score(self, guesses): #list of tuples [(actual, guess),(actual,guess)]
+        confusion = {} #confusion matrix
+
+        unique_classes = []
+        for i in guesses:
+            if i[0] not in unique_classes:
+                unique_classes.append(i)
+
+        #for each class, initialize the confusion matrix with zeros for that class
+        for class_name in unique_classes:
+            confusion.update({class_name:{'TP':0,'FP':0,'TN':0,'FN':0}})#class_name is the key for each classes confusion matrix
+            #confusion{class:{TP:0,FP:0,TN:0,FN:0}}
+
+        #for each class
+        for class_name in unique_classes:
+            #for each data point guessed in that class
+            for result in guesses: #result[0] is actual class and result[1] is our guess
+                if class_name == result[1] and class_name == result[0]: #guess is accurate with what the class actually was
+                    value = 'TP'
+                if class_name == result[1] and class_name != result[0]: #guessed that a record was part of a class and it wasn't
+                    value = 'FP'
+                if class_name != result[1] and class_name == result[0]: #guessed that a record was not part of a class and it was
+                    value = 'FN'
+                if class_name != result[1] and class_name != result[0]: #guess is accurate that the record did not belong to a class
+                    value = 'TN'
+                confusion[class_name][value] += 1 #increment that classes TP/FP/TN/FN count accordingly
+
+        #calculate our class independent accuracy
+        correct = 0
+        total = 0
+        for result in guesses:
+            if(result[0]==result[1]):
+                correct+=1
+            total+=1
+        accuracy = correct/total
+
+
+        num_of_classes = len(confusion)
+
+        count = 0
+        precision = 0
+        recall=0
+        f1=0
+        for class1, matrix in confusion.items():
+            TP = matrix['TP']
+            TN = matrix['TN']
+            FP = matrix['FP']
+            FN = matrix['FN']
+            if((TP+FP) != 0):
+                precision += TP/(TP+FP)
+                ptemp = TP/(TP+FP)
+            else:
+                ptemp = 0
+            if((TP+FN) != 0):
+                recall += TP/(TP+FN)
+                rtemp = TP/(TP+FN)
+            else:
+                rtemp = 0
+            if((ptemp+rtemp)!=0):
+                f1 += 2*ptemp*rtemp/(ptemp+rtemp)
+            count+=1
+        precision = precision/count
+        recall = recall/count
+        f1 = f1/count
+
+        #f1 = 2*precision*recall/(precision+recall)
+
+        metrics = {'F1': f1, 'Precision':precision, 'Recall':recall, 'Accuracy': accuracy}
+        return metrics
 
 if __name__ == "__main__":
 
@@ -156,7 +233,6 @@ if __name__ == "__main__":
 
 
 
-"""
     #triming it down to 10
     data_aba.file_array['abalone'] = data_aba.file_array['abalone']    #slice in to 5
     data_aba.slicer(5, "abalone")
@@ -169,12 +245,12 @@ if __name__ == "__main__":
 
     # print(len(data_aba.file_array[0][0][1:]))
     # inputs -> (self, pop_size, mlp_dims, pBest_coeff, gBest_coeff, inertia_coeff, training_data, test_data)
-    pso = particle_swarm(50, [(len(data_aba.file_array[0][0][1:])),29], 1, 3, 0.01, training_data, test_data)
+    pso = particle_swarm(100, [(len(data_aba.file_array[0][0][1:])),29], 2, 2, 0.4, training_data, test_data)
 
     pso.run_PSO()
 
 
-"""
+
 
 
     #end --------------------------------------
