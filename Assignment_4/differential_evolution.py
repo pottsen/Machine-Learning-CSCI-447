@@ -66,18 +66,18 @@ class Differential_Evolution(PopulationManager):
 
 if __name__ == "__main__":
 
-    data_aba = Data_Processing(["abalone",], [8], {"M":"1", "F":"2", "I":"3"})
+    data_aba = Data_Processing(["car",], [6], {"M":"1", "F":"2", "I":"3"})
     data_aba.load_data("./processed")
 
 
     #slice in to 5
-    data_aba.slicer(5, "abalone")
+    data_aba.slicer(5, "car")
 
     test_data = data_aba.file_array[0]
     training_data = data_aba.combine(data_aba.file_array[1:])
 
 
-    de = Differential_Evolution(100,[8,15,29],1.5,training_data,test_data)
+    de = Differential_Evolution(100,[6,8,4],1.5,training_data,test_data)
     for i in range(100):
         de.mutation()
 
