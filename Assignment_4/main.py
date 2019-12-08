@@ -90,9 +90,22 @@ def main():
     '''
     #loads data into Data_Processing
 
+    a = {"M":"0", "F":"1", "I":"2"}
+    c = {"unacc":"0","acc":"1","vgood":"3","good":"2",  "5more":"5","more":"6",  "big":"2","small":"0", "vhigh":"3", "high":"2", "med":"1", "low":"0"}
+    #f = {"jan":"0.866,0.5","feb":"0.5,0.866","mar":"0,1","apr":"-0.5,0.866","may":"-0.866,0.5","jun":"-1,0","jul":"-0.866,-0.5","aug":"-0.5,-0.866","sep":"0,-1","oct":"0.5,-0.866","nov":"0.866,0.5","dec":"1,0"}
+    #f2 = {"sun":"0.623,0.782","mon":"-0.222,0.975","tue":"-0.901,0.434","wed":"-0.901,-0.434","thu":"-0.223,-0.975","fri":"0.623,-0.782","sat":"1,0"}
+    f = {"jan":"0","feb":"1","mar":"2","apr":"3","may":"4","jun":"5","jul":"6","aug":"7","sep":"8","oct":"9","nov":"10","dec":"11","sun":"0","mon":"1","tue":"2","wed":"3","thu":"4","fri":"5","sat":"6"}
+    s = {'BRICKFACE':"0", 'SKY':"1", 'FOLIAGE':"2", 'CEMENT':"3", 'WINDOW':"4", 'PATH':"5", 'GRASS':"6"}
+    m = {}
+
+    a.update(c)
+    a.update(f)
+    a.update(s)
+    #input sizes = []
+    #output sizes = []
     #data_aba = Data_Processing(["abalone","car","forestfires","machine","segmentation","wine"], [8,6,12,9,0,11], {})
     #machine is the one where we want an auto generated dictionary
-    data_aba = Data_Processing(["car"], [6], {"M":"0", "F":"1", "I":"2",     "unacc":"0","acc":"1","good":"2","vgood":"3",     "5-more":"5", "more":"6",     "v-high":"3", "high":"2", "med":"1", "low":"0"})
+    data_aba = Data_Processing(["abalone","car","forestfires","segmentation","wine"], [8,6,12,0,11], a)
 
     #either:
     data_aba.process_data("./data")
