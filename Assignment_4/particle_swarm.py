@@ -90,7 +90,7 @@ class particle_swarm(PopulationManager):
         #iteration count
         iteration = 0
         #calculate fitness
-        while iteration < 100:
+        while iteration < 1000:
             # print("iteration ", iteration)
             print("gBest Fitness ", self.gBest_fitness)
             for i in range(len(self.population)):
@@ -133,28 +133,38 @@ if __name__ == "__main__":
 
     #Prepping data ----------------------------
     #abalone
-    data_aba = Data_Processing(["abalone",], [8], {"M":"1", "F":"2", "I":"3"})
-    data_car = Data_Processing(["car",], [6], {"vhigh":"4", "high":"3", "med":"2", "low":"1", "5more":"5", "more":"6","small":"1", "big":"3", "unacc":"1", "acc":"2", "good":"3", "vgood":"4"})
-    data_img = Data_Processing(["segmentation",], [0], {"FOLIAGE":"1","PATH":"2","BRICKFACE":"3","GRASS":"4", "SKY":"5", "WINDOW":"6", "CEMENT":"7"})
-    data_mach = Data_Processing(["machine",], [-1], {})
-    data_ff = Data_Processing(["forestfires",], [-1],{"jan":"1", "feb":"2", "mar":"3", "apr":"4", "may":"5", "jun":"6","jul":"7", "aug":"8", "sep":"9", "oct":"10", "nov":"11", "dec":"12", "sun":"1", "mon":"2","tue":"3", "wed":"4", "thu":"5", "fri":"6", "sat":"7"})
-    data_wine = Data_Processing(["wine",], [-1], {})
+    # data_aba = Data_Processing(["abalone",], [8], {"M":"1", "F":"2", "I":"3"})
+    # data_car = Data_Processing(["car",], [6], {"vhigh":"4", "high":"3", "med":"2", "low":"1", "5more":"5", "more":"6","small":"1", "big":"3", "unacc":"1", "acc":"2", "good":"3", "vgood":"4"})
+    # data_img = Data_Processing(["segmentation",], [0], {"FOLIAGE":"1","PATH":"2","BRICKFACE":"3","GRASS":"4", "SKY":"5", "WINDOW":"6", "CEMENT":"7"})
+    # data_mach = Data_Processing(["machine",], [-1], {})
+    # data_ff = Data_Processing(["forestfires",], [-1],{"jan":"1", "feb":"2", "mar":"3", "apr":"4", "may":"5", "jun":"6","jul":"7", "aug":"8", "sep":"9", "oct":"10", "nov":"11", "dec":"12", "sun":"1", "mon":"2","tue":"3", "wed":"4", "thu":"5", "fri":"6", "sat":"7"})
+    # data_wine = Data_Processing(["wine",], [-1], {})
 
-    #PROCESS DATA
-    data_aba.process_data("./data")
-    data_car.process_data("./data")
-    data_img.process_data("./data")
-    data_mach.process_data("./data")
-    data_ff.process_data("./data")
-    data_wine.process_data("./data")
+    # #PROCESS DATA
+    # data_aba.process_data("./data")
+    # data_car.process_data("./data")
+    # data_img.process_data("./data")
+    # data_mach.process_data("./data")
+    # data_ff.process_data("./data")
+    # data_wine.process_data("./data")
 
-    #WRITE DATA
-    data_aba.write_data("./processed")
-    data_car.write_data("./processed")
-    data_img.write_data("./processed")
-    data_mach.write_data("./processed")
-    data_ff.write_data("./processed")
-    data_wine.write_data("./processed")
+    # #WRITE DATA
+    # data_aba.write_data("./processed")
+    # data_car.write_data("./processed")
+    # data_img.write_data("./processed")
+    # data_mach.write_data("./processed")
+    # data_ff.write_data("./processed")
+    # data_wine.write_data("./processed")
+
+    data = Data_Processing(["abalone","car","forestfires","machine","segmentation","wine"], [8,6,12,9,0,11], {})
+    data.load_data("./processed")
+
+    data_aba = data.file_array['abalone']
+    data_car = data.file_array['car']
+    data_img = data.file_array['forestfires']
+    data_mach = data.file_array['machine']
+    data_ff = data.file_array['segmentation']
+    data_wine = data.file_array['wine']
 
     #LOAD DATA
     data_aba.load_data("./processed")
@@ -164,36 +174,24 @@ if __name__ == "__main__":
     data_ff.load_data("./processed")
     data_wine.load_data("./processed")
 
-
-
     #set test and training data
+
+
+    #end --------------------------------------
+
+    #POPULATION = 50
+    #ITERATION LIMIT = 1000
+
+    #tesing alogorithm ------------------------
+    # inputs -> (self, pop_size, mlp_dims, pBest_coeff, gBest_coeff, inertia_coeff, training_data, test_data)
+
     data_aba.file_array['abalone'] = data_aba.file_array['abalone']    #slice in to 5
     data_aba.slicer(5, "abalone")
     test_data = data_aba.file_array[0]
     training_data = data_aba.combine(data_aba.file_array[1:])
 
-    data_car.file_array['car'] = data_car.file_array['car']    #slice in to 5
-    data_car.slicer(5, "car")
-    test_data = data_car.file_array[0]
-    training_data = data_car.combine(data_car.file_array[1:])
-
-    data_img.file_array['segmentation'] = data_img.file_array['segmentation']    #slice in to 5
-    data_img.slicer(5, "segmentation")
-    test_data = data_img.file_array[0]
-    training_data = data_img.combine(data_img.file_array[1:])
-
-
-
-
-
-
-
-    #end --------------------------------------
-
-    #tesing alogorithm ------------------------
-    # inputs -> (self, pop_size, mlp_dims, pBest_coeff, gBest_coeff, inertia_coeff, training_data, test_data)
     results_file = open("./results/results_pso.txt", "a+")
-    pso = particle_swarm(100, [(len(data_aba.file_array[0][0][1:])),29], 2, 2, 0.4, training_data, test_data)
+    pso = particle_swarm(50, [(len(data_aba.file_array[0][0][1:])),29], 2, 2, 0.4, training_data, test_data)
     pso.run_PSO()
     test_results = pso.run_test()
     fscore = f_score(test_results)
@@ -202,7 +200,7 @@ if __name__ == "__main__":
     results_file.close()
 
     results_file = open("./results/results_pso.txt", "a+")
-    pso = particle_swarm(100, [(len(data_aba.file_array[0][0][1:])),30, 29], 2, 2, 0.4, training_data, test_data)
+    pso = particle_swarm(50, [(len(data_aba.file_array[0][0][1:])),30, 29], 2, 2, 0.4, training_data, test_data)
     pso.run_PSO()
     test_results = pso.run_test()
     fscore = f_score(test_results)
@@ -211,7 +209,7 @@ if __name__ == "__main__":
     results_file.close()
 
     results_file = open("./results/results_pso.txt", "a+")
-    pso = particle_swarm(100, [(len(data_aba.file_array[0][0][1:])),30, 30, 29], 2, 2, 0.4, training_data, test_data)
+    pso = particle_swarm(50, [(len(data_aba.file_array[0][0][1:])),30, 30, 29], 2, 2, 0.4, training_data, test_data)
     pso.run_PSO()
     test_results = pso.run_test()
     fscore = f_score(test_results)
@@ -222,48 +220,179 @@ if __name__ == "__main__":
     # car
     # 4 classes
     # 6 attributes
+    data_car.file_array['car'] = data_car.file_array['car']    #slice in to 5
+    data_car.slicer(5, "car")
+    test_data = data_car.file_array[0]
+    training_data = data_car.combine(data_car.file_array[1:])
+
     results_file = open("./results/results_pso.txt", "a+")
-    pso = particle_swarm(100, [(len(data_car.file_array[0][0][1:])),4], 2, 2, 0.4, training_data, test_data)
+    pso = particle_swarm(50, [(len(data_car.file_array[0][0][1:])),4], 2, 2, 0.4, training_data, test_data)
     pso.run_PSO()
     test_results = pso.run_test()
     fscore = f_score(test_results)
-    print_str= "Abalone 0 hidden layers Fscore: \n" + fscore
+    print_str= "Car 0 hidden layers Fscore: \n" + fscore
     results_file.write("\n"+print_str)
     results_file.close()
 
     results_file = open("./results/results_pso.txt", "a+")
-    pso = particle_swarm(100, [(len(data_car.file_array[0][0][1:])),10, 4], 2, 2, 0.4, training_data, test_data)
+    pso = particle_swarm(50, [(len(data_car.file_array[0][0][1:])),10, 4], 2, 2, 0.4, training_data, test_data)
     pso.run_PSO()
     test_results = pso.run_test()
     fscore = f_score(test_results)
-    print_str= "Abalone 1 hidden layers Fscore: \n" + fscore
+    print_str= "Car 1 hidden layers Fscore: \n" + fscore
     results_file.write("\n"+print_str)
     results_file.close()
 
     results_file = open("./results/results_pso.txt", "a+")
-    pso = particle_swarm(100, [(len(data_car.file_array[0][0][1:])),10, 10, 4], 2, 2, 0.4, training_data, test_data)
+    pso = particle_swarm(50, [(len(data_car.file_array[0][0][1:])),10, 10, 4], 2, 2, 0.4, training_data, test_data)
     pso.run_PSO()
     test_results = pso.run_test()
     fscore = f_score(test_results)
-    print_str= "Abalone 2 hidden layers Fscore: \n" + fscore
+    print_str= "Car 2 hidden layers Fscore: \n" + fscore
     results_file.write("\n"+print_str)
     results_file.close()
 
     # segmentation
     # 7 classes
     # 19 attributes
+    data_img.file_array['segmentation'] = data_img.file_array['segmentation']    #slice in to 5
+    data_img.slicer(5, "segmentation")
+    test_data = data_img.file_array[0]
+    training_data = data_img.combine(data_img.file_array[1:])
+
+    results_file = open("./results/results_pso.txt", "a+")
+    pso = particle_swarm(50, [(len(data_img.file_array[0][0][1:])),7], 2, 2, 0.4, training_data, test_data)
+    pso.run_PSO()
+    test_results = pso.run_test()
+    fscore = f_score(test_results)
+    print_str= "segmentation 0 hidden layers Fscore: \n" + fscore
+    results_file.write("\n"+print_str)
+    results_file.close()
+
+    results_file = open("./results/results_pso.txt", "a+")
+    pso = particle_swarm(50, [(len(data_img.file_array[0][0][1:])),14, 7], 2, 2, 0.4, training_data, test_data)
+    pso.run_PSO()
+    test_results = pso.run_test()
+    fscore = f_score(test_results)
+    print_str= "segmentation 1 hidden layers Fscore: \n" + fscore
+    results_file.write("\n"+print_str)
+    results_file.close()
+
+    results_file = open("./results/results_pso.txt", "a+")
+    pso = particle_swarm(50, [(len(data_img.file_array[0][0][1:])),14, 14, 7], 2, 2, 0.4, training_data, test_data)
+    pso.run_PSO()
+    test_results = pso.run_test()
+    fscore = f_score(test_results)
+    print_str= "segmentation 2 hidden layers Fscore: \n" + fscore
+    results_file.write("\n"+print_str)
+    results_file.close()
+
 
     # machine
     # 1 class
     # 10 attributes
+    data_mach.file_array['machine'] = data_mach.file_array['machine']    #slice in to 5
+    data_mach.slicer(5, "machine")
+    test_data = data_mach.file_array[0]
+    training_data = data_mach.combine(data_mach.file_array[1:])
+
+    results_file = open("./results/results_pso.txt", "a+")
+    pso = particle_swarm(50, [(len(data_mach.file_array[0][0][1:])),1], 2, 2, 0.4, training_data, test_data)
+    pso.run_PSO()
+    test_results = pso.run_test()
+    mse = mse(test_results)
+    print_str= "machine 0 hidden layers MSE: \n" + mse
+    results_file.write("\n"+print_str)
+    results_file.close()
+
+    results_file = open("./results/results_pso.txt", "a+")
+    pso = particle_swarm(50, [(len(data_mach.file_array[0][0][1:])),15, 1], 2, 2, 0.4, training_data, test_data)
+    pso.run_PSO()
+    test_results = pso.run_test()
+    mse = mse(test_results)
+    print_str= "machine 1 hidden layers MSE: \n" + mse
+    results_file.write("\n"+print_str)
+    results_file.close()
+
+    results_file = open("./results/results_pso.txt", "a+")
+    pso = particle_swarm(50, [(len(data_mach.file_array[0][0][1:])),15, 15, 1], 2, 2, 0.4, training_data, test_data)
+    pso.run_PSO()
+    test_results = pso.run_test()
+    mse = mse(test_results)
+    print_str= "machine 2 hidden layers MSE: \n" + mse
+    results_file.write("\n"+print_str)
+    results_file.close()
+
 
     #forestfires
     # 1 class
     # 13 attributes
+    data_ff.file_array['forestfires'] = data_ff.file_array['forestfires']    #slice in to 5
+    data_ff.slicer(5, "forestfires")
+    test_data = data_ff.file_array[0]
+    training_data = data_ff.combine(data_ff.file_array[1:])
+
+    results_file = open("./results/results_pso.txt", "a+")
+    pso = particle_swarm(50, [(len(data_ff.file_array[0][0][1:])),1], 2, 2, 0.4, training_data, test_data)
+    pso.run_PSO()
+    test_results = pso.run_test()
+    mse = mse(test_results)
+    print_str= "forestfires 0 hidden layers MSE: \n" + mse
+    results_file.write("\n"+print_str)
+    results_file.close()
+
+    results_file = open("./results/results_pso.txt", "a+")
+    pso = particle_swarm(50, [(len(data_ff.file_array[0][0][1:])),20, 1], 2, 2, 0.4, training_data, test_data)
+    pso.run_PSO()
+    test_results = pso.run_test()
+    mse = mse(test_results)
+    print_str= "forestfires 1 hidden layers MSE: \n" + mse
+    results_file.write("\n"+print_str)
+    results_file.close()
+
+    results_file = open("./results/results_pso.txt", "a+")
+    pso = particle_swarm(50, [(len(data_ff.file_array[0][0][1:])),20, 20, 1], 2, 2, 0.4, training_data, test_data)
+    pso.run_PSO()
+    test_results = pso.run_test()
+    mse = mse(test_results)
+    print_str= "forestfires 2 hidden layers MSE: \n" + mse
+    results_file.write("\n"+print_str)
+    results_file.close()
 
     #wine
     # 1 class
     # 12 attributes
+    data_wine.file_array['wine'] = data_wine.file_array['wine']    #slice in to 5
+    data_wine.slicer(5, "wine")
+    test_data = data_wine.file_array[0]
+    training_data = data_ff.combine(data_wine.file_array[1:])
+
+    results_file = open("./results/results_pso.txt", "a+")
+    pso = particle_swarm(50, [(len(data_wine.file_array[0][0][1:])),1], 2, 2, 0.4, training_data, test_data)
+    pso.run_PSO()
+    test_results = pso.run_test()
+    mse = mse(test_results)
+    print_str= "wine 0 hidden layers MSE: \n" + mse
+    results_file.write("\n"+print_str)
+    results_file.close()
+
+    results_file = open("./results/results_pso.txt", "a+")
+    pso = particle_swarm(50, [(len(data_wine.file_array[0][0][1:])),18, 1], 2, 2, 0.4, training_data, test_data)
+    pso.run_PSO()
+    test_results = pso.run_test()
+    mse = mse(test_results)
+    print_str= "wine 1 hidden layers MSE: \n" + mse
+    results_file.write("\n"+print_str)
+    results_file.close()
+
+    results_file = open("./results/results_pso.txt", "a+")
+    pso = particle_swarm(50, [(len(data_wine.file_array[0][0][1:])),18, 18, 1], 2, 2, 0.4, training_data, test_data)
+    pso.run_PSO()
+    test_results = pso.run_test()
+    mse = mse(test_results)
+    print_str= "wine 2 hidden layers MSE: \n" + mse
+    results_file.write("\n"+print_str)
+    results_file.close()
 
 
     #end --------------------------------------
