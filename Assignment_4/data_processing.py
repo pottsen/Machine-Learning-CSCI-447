@@ -39,8 +39,14 @@ class Data_Processing:
             data.close()
 
             for key in self.cat_to_numeric:
-                raw_txt = raw_txt.replace(key,self.cat_to_numeric[key])
-            raw_txt = raw_txt[:-1]#strip off trailing \n
+                raw_txt = re.sub(r"\n"+key+",","\n"+self.cat_to_numeric[key]+",",raw_txt)
+                raw_txt = re.sub(r"^"+key+",",self.cat_to_numeric[key]+",",raw_txt)
+                raw_txt = re.sub(r","+key+"\n",","+self.cat_to_numeric[key]+"\n",raw_txt)
+                raw_txt = re.sub(r","+key+"$",","+self.cat_to_numeric[key],raw_txt)
+                raw_txt = raw_txt.replace(","+key+",",","+self.cat_to_numeric[key]+",")
+                raw_txt = raw_txt.replace(","+key+",",","+self.cat_to_numeric[key]+",")
+            if(raw_txt[-1]=='\n'):
+                raw_txt = raw_txt[:-1]#strip off trailing \n
             points_prime = raw_txt.split('\n')
 
             points = []*len(points_prime)
