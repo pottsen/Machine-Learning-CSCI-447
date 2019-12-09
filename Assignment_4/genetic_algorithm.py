@@ -21,12 +21,20 @@ class Genetic_Algorithm(PopulationManager):
         for i in self.population:
             outputs = []
             inputs = []
-            for j in self.training_data:
-                actual_class = j[0]
-                temp = [0] * self.number_of_outputs
-                temp[int(actual_class-1)] = 1
-                inputs.append(j[1:])
-                outputs.append(temp)
+            #classification
+            if self.number_of_outputs > 1:
+                for j in self.training_data:
+                    actual_class = j[0]
+                    temp = [0] * self.number_of_outputs
+                    temp[int(actual_class-1)] = 1
+                    inputs.append(j[1:])
+                    outputs.append(temp)
+            #regression
+            else:
+                for j in self.training_data:
+                    actual_class = j[0]
+                    inputs.append(j[1:])
+                    outputs.append(actual_class)
             i.fitness(inputs, outputs)
     
     
@@ -150,31 +158,128 @@ def test_ga():
 
 
 if __name__ == "__main__":
-    data = Data_Processing(["abalone","car","forestfires","machine","segmentation","wine"], [8,6,12,9,0,11], {})
-    data.load_data("./processed")
+    #data = Data_Processing(["abalone","car","forestfires","machine","segmentation","wine"], [8,6,12,9,0,11], {})
+    #data.load_data("./processed")
 
-    data_aba = data.file_array['abalone']
-    data_car = data.file_array['car']
-    data_img = data.file_array['forestfires']
-    data_mach = data.file_array['machine']
-    data_ff = data.file_array['segmentation']
-    data_wine = data.file_array['wine']
+    data_aba = Data_Processing(["abalone",], [8], {})
+    data_car = Data_Processing(["car",], [6], {})
+    data_img = Data_Processing(["segmentation",], [0], {})
+    data_mach = Data_Processing(["machine",], [9], {})
+    data_ff = Data_Processing(["forestfires",], [12],{})
+    data_wine = Data_Processing(["wine",], [11], {})
 
+    #LOAD DATA
+    data_aba.load_data("./processed")
+    data_car.load_data("./processed")
+    data_img.load_data("./processed")
+    data_mach.load_data("./processed")
+    data_ff.load_data("./processed")
+    data_wine.load_data("./processed")
+
+
+
+    number_generation = 1000
+    population = 50
+
+    # -------Abalone-------
     results_file = open("./results/results_ga.txt", "a+")
     results_file.write("-------Abalone Reults-------")
     print("-------Abalone Reults-------")
     results_file.close()
-    population = 5
+    data_aba.slicer(5, "abalone")
     number_of_inputs = (len(data_aba.file_array[0][0][1:]))
     number_of_outputs = 29
-    number_generation = 1000
     dim = [number_of_inputs,30,number_of_outputs]
-    test_data
-    training_data 
+    test_data = data_aba.file_array[0]
+    training_data = data_aba.combine(data_aba.file_array[1:])
+
     ga = Genetic_Algorithm(population, dim, number_generation, test_data, training_data)
     ga.run_genetic_algorithm()
 
 
+    # -------Car-------
+    results_file = open("./results/results_ga.txt", "a+")
+    results_file.write("-------Car Reults-------")
+    print("-------Car Reults-------")
+    results_file.close()
+    data_car.slicer(5, "car")
+    number_of_inputs = (len(data_car.file_array[0][0][1:]))
+    number_of_outputs = 4
+    dim = [number_of_inputs,10,number_of_outputs]
+    test_data = data_car.file_array[0]
+    training_data = data_car.combine(data_car.file_array[1:])
+
+    ga = Genetic_Algorithm(population, dim, number_generation, test_data, training_data)
+    ga.run_genetic_algorithm()
+
+
+    # -------Forest-------
+    results_file = open("./results/results_ga.txt", "a+")
+    results_file.write("-------Forest Reults-------")
+    print("-------Forest Reults-------")
+    results_file.close()
+    data_ff.slicer(5, "forestfires")
+    number_of_inputs = (len(data_ff.file_array[0][0][1:]))
+    number_of_outputs = 1
+    dim = [number_of_inputs,20,number_of_outputs]
+    test_data = data_ff.file_array[0]
+    training_data = data_ff.combine(data_ff.file_array[1:])
+
+    ga = Genetic_Algorithm(population, dim, number_generation, test_data, training_data)
+    ga.run_genetic_algorithm()
+
+
+
+    # -------Machine-------
+    results_file = open("./results/results_ga.txt", "a+")
+    results_file.write("-------Machine Reults-------")
+    print("-------Machine Reults-------")
+    results_file.close()
+    data_img.slicer(5, "machine")
+    number_of_inputs = (len(data_img.file_array[0][0][1:]))
+    number_of_outputs = 1
+    dim = [number_of_inputs,15,number_of_outputs]
+    test_data = data_img.file_array[0]
+    training_data = data_img.combine(data_img.file_array[1:])
+
+    ga = Genetic_Algorithm(population, dim, number_generation, test_data, training_data)
+    ga.run_genetic_algorithm()
+
+
+
+
+    # -------Img/Seg-------
+    results_file = open("./results/results_ga.txt", "a+")
+    results_file.write("-------Img/Seg Reults-------")
+    print("-------Img/Seg Reults-------")
+    results_file.close()
+    data_img.slicer(5, "segmentation")
+    number_of_inputs = (len(data_img.file_array[0][0][1:]))
+    number_of_outputs = 1
+    dim = [number_of_inputs, 18, number_of_outputs]
+    test_data = data_img.file_array[0]
+    training_data = data_img.combine(data_img.file_array[1:])
+
+    ga = Genetic_Algorithm(population, dim, number_generation, test_data, training_data)
+    ga.run_genetic_algorithm()
+
+
+
+
+    # -------Wine-------
+    results_file = open("./results/results_ga.txt", "a+")
+    results_file.write("-------Wine Reults-------")
+    print("-------Wine Reults-------")
+    results_file.close()
+    data_wine.slicer(5, "wine")
+    number_of_inputs = (len(data_wine.file_array[0][0][1:]))
+    number_of_outputs = 1
+    dim = [number_of_inputs, 14, number_of_outputs]
+    test_data = data_wine.file_array[0]
+    training_data = data_wine.combine(data_wine.file_array[1:])
+
+    ga = Genetic_Algorithm(population, dim, number_generation, test_data, training_data)
+    ga.run_genetic_algorithm()
 
 
     
