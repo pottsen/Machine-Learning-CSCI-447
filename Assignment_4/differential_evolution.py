@@ -70,7 +70,7 @@ class Differential_Evolution(PopulationManager):
             if(f2>self.best_f):
                 self.best = self.population[i]
                 self.best_f = f2
-                print(self.best.print_weights())
+                #print(self.best.print_weights())
                 print("Fitness: "+str(f2))
 
     def run(self, generation_limit):
@@ -158,7 +158,7 @@ if __name__ == "__main__":
 
     #file.write(str(dict))
 
-
+    #ROR RESULTS--------------------
     for fold in range(5):
         for hidden in range(3):
             for i in range(len(sets)):
@@ -183,7 +183,7 @@ if __name__ == "__main__":
                 hls = [hidden_layer[i]]*hidden
                 mlp_dims = [input[i]] + hls + [outputs[i]]
                 de = Differential_Evolution(100,mlp_dims,1.0,training_data,test_data)
-                de.run(100)
+                de.run(1000)
                 score, guesses = de.metrics()
 
                 dict[sets[i]]["fold"+str(fold)].update({str(hidden)+"-hidden-layers":score})
