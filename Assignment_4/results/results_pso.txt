@@ -1,0 +1,9 @@
+
+forestfires 0 hidden layers MSE: 
+391.4826370602671
+forestfires 1 hidden layers MSE: 
+1498.1603630951795
+forestfires 2 hidden layers MSE: 
+191.78704169822186
+wine 0 hidden layers MSE: 
+0.5098953887272721

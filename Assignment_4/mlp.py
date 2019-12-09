@@ -106,16 +106,19 @@ class MLP():
         for i in range(len(inputs)):
             guess = self.predict(inputs[i])
             #guess -> MLP output of size of output layer
-            for g in range(len(guess)):
-                # diff += (outputs[i][g] - guess[g])**2
-                #diff += abs(outputs[i][g] - guess[g])
+            if len(guess) > 1:
+                for g in range(len(guess)):
+                    # diff += (outputs[i][g] - guess[g])**2
+                    #diff += abs(outputs[i][g] - guess[g])
 
-                #----incentive------
-                if(outputs[i][g] == 1):
-                    diff += (outputs[i][g] - guess[g])**2
-                else:
-                    diff += ((outputs[i][g] - guess[g])**2)/50
-                #----------
+                    #----incentive------
+                    if(outputs[i][g] == 1):
+                        diff += (outputs[i][g] - guess[g])**2
+                    else:
+                        diff += ((outputs[i][g] - guess[g])**2)/50
+                    #----------
+            else:
+                diff += (outputs[i] - guess[0])**2
 
         diff /= len(inputs)
         self.individual_fitness = 1/(diff + 0.001)
