@@ -70,7 +70,8 @@ class Differential_Evolution(PopulationManager):
             if(f2>self.best_f):
                 self.best = self.population[i]
                 self.best_f = f2
-                print(f2)
+                print(self.best.print_weights())
+                print("Fitness: "+str(f2))
 
     def run(self, generation_limit):
         for i in range(generation_limit):
@@ -120,11 +121,10 @@ if __name__ == "__main__":
     for i in range(len(sets)):
         dict.update({sets[i]:{"fold0":{},"fold1":{},"fold2":{},"fold3":{},"fold4":{}}})
 
-    #for hidden in range(3):
+    #FOR DEMO -----------------
     hidden = 1
     for i in range(1):
         i=4
-    #for i in range(len(sets)):
         data_aba = Data_Processing([sets[i]], [], {})
         data_aba.load_data("./processed")
 
@@ -158,7 +158,7 @@ if __name__ == "__main__":
 
     #file.write(str(dict))
 
-    '''
+
     for fold in range(5):
         for hidden in range(3):
             for i in range(len(sets)):
@@ -183,36 +183,9 @@ if __name__ == "__main__":
                 hls = [hidden_layer[i]]*hidden
                 mlp_dims = [input[i]] + hls + [outputs[i]]
                 de = Differential_Evolution(100,mlp_dims,1.0,training_data,test_data)
-                #de.run(1)
+                de.run(100)
                 score, guesses = de.metrics()
-    '''
-    '''
-    hidden = 2
-    for i in range(1):
-        i=3
-        data_aba = Data_Processing([sets[i]], [], {})
-        data_aba.load_data("./processed")
 
+                dict[sets[i]]["fold"+str(fold)].update({str(hidden)+"-hidden-layers":score})
 
-        #slice in to 5
-        data_aba.slicer(5, sets[i])
-        data = data_aba.combine(data_aba.file_array)
-        random.shuffle(data)
-        random.shuffle(data)
-        random.shuffle(data)
-
-        b1 = int(len(data)*fold/5)
-        b2 = int(len(data)*(fold+1)/5)
-        test_data = data[b1 : b2]
-        training_data = data[:b1]
-        training_data += data[b2:]
-
-        print(sets[i])
-        hls = [hidden_layer[i]]*hidden
-        mlp_dims = [input[i]] + hls + [outputs[i]]
-        de = Differential_Evolution(100,mlp_dims,1.0,training_data,test_data)
-        de.run(1000)
-        score, guesses = de.metrics()
-        print(guesses)
-        print(score)
-    '''
+        file.write(str(dict))
