@@ -203,7 +203,7 @@ if __name__ == "__main__":
     # pso10.run_PSO()
     # test_results = pso10.run_test()
     # fscore10 = f_score(test_results)
-    # print_str= "Abalone 0 hidden layers Fscore: \n" + fscore10
+    # print_str= "Abalone 0 hidden layers Fscore: \n" + "Accuracy: " + str(fscore10["Accuracy"]) + ", F1:" + str(fscore10["F1"]) + ", Precision:" + str(fscore10["Precision"]) + ", Recall:" + str(fscore10["Recall"])
     # results_file.write("\n"+print_str)
     # results_file.close()
 
@@ -212,7 +212,7 @@ if __name__ == "__main__":
     # pso11.run_PSO()
     # test_results = pso11.run_test()
     # fscore11 = f_score(test_results)
-    # print_str= "Abalone 1 hidden layers Fscore: \n" + fscore11
+    # print_str= "Abalone 1 hidden layers Fscore: \n" + "Accuracy: " + str(fscore11["Accuracy"]) + ", F1:" + str(fscore11["F1"]) + ", Precision:" + str(fscore11["Precision"]) + ", Recall:" + str(fscore11["Recall"])
     # results_file.write("\n"+print_str)
     # results_file.close()
 
@@ -221,7 +221,7 @@ if __name__ == "__main__":
     # pso12.run_PSO()
     # test_results = pso12.run_test()
     # fscore12 = f_score(test_results)
-    # print_str= "Abalone 2 hidden layers Fscore: \n" + fscore12
+    # print_str= "Abalone 2 hidden layers Fscore: \n" + "Accuracy: " + str(fscore12["Accuracy"]) + ", F1:" + str(fscore12["F1"]) + ", Precision:" + str(fscore12["Precision"]) + ", Recall:" + str(fscore12["Recall"])
     # results_file.write("\n"+print_str)
     # results_file.close()
 
@@ -238,7 +238,7 @@ if __name__ == "__main__":
     # pso20.run_PSO()
     # test_results = pso20.run_test()
     # fscore20 = f_score(test_results)
-    # print_str= "Car 0 hidden layers Fscore: \n" + fscore20
+    # print_str= "Car 0 hidden layers Fscore: \n" + "Accuracy: " + str(fscore20["Accuracy"]) + ", F1:" + str(fscore20["F1"]) + ", Precision:" + str(fscore20["Precision"]) + ", Recall:" + str(fscore20["Recall"])
     # results_file.write("\n"+print_str)
     # results_file.close()
 
@@ -247,7 +247,7 @@ if __name__ == "__main__":
     # pso21.run_PSO()
     # test_results = pso21.run_test()
     # fscore21 = f_score(test_results)
-    # print_str= "Car 1 hidden layers Fscore: \n" + fscore21
+    # print_str= "Car 1 hidden layers Fscore: \n" + "Accuracy: " + str(fscore21["Accuracy"]) + ", F1:" + str(fscore21["F1"]) + ", Precision:" + str(fscore21["Precision"]) + ", Recall:" + str(fscore21["Recall"])
     # results_file.write("\n"+print_str)
     # results_file.close()
 
@@ -256,7 +256,7 @@ if __name__ == "__main__":
     # pso22.run_PSO()
     # test_results = pso22.run_test()
     # fscore22 = f_score(test_results)
-    # print_str= "Car 2 hidden layers Fscore: \n" + fscore22
+    # print_str= "Car 2 hidden layers Fscore: \n" + "Accuracy: " + str(fscore22["Accuracy"]) + ", F1:" + str(fscore22["F1"]) + ", Precision:" + str(fscore22["Precision"]) + ", Recall:" + str(fscore22["Recall"])
     # results_file.write("\n"+print_str)
     # results_file.close()
 
@@ -273,7 +273,7 @@ if __name__ == "__main__":
     # pso30.run_PSO()
     # test_results = pso30.run_test()
     # fscore30 = f_score(test_results)
-    # print_str= "segmentation 0 hidden layers Fscore: \n" + fscore30
+    # print_str= "segmentation 0 hidden layers Fscore: \n" + "Accuracy: " + str(fscore30["Accuracy"]) + ", F1:" + str(fscore30["F1"]) + ", Precision:" + str(fscore30["Precision"]) + ", Recall:" + str(fscore30["Recall"])
     # results_file.write("\n"+print_str)
     # results_file.close()
 
@@ -282,7 +282,7 @@ if __name__ == "__main__":
     # pso31.run_PSO()
     # test_results = pso31.run_test()
     # fscore31 = f_score(test_results)
-    # print_str= "segmentation 1 hidden layers Fscore: \n" + fscore31
+    # print_str= "segmentation 1 hidden layers Fscore: \n" + "Accuracy: " + str(fscore31["Accuracy"]) + ", F1:" + str(fscore31["F1"]) + ", Precision:" + str(fscore31["Precision"]) + ", Recall:" + str(fscore31["Recall"])
     # results_file.write("\n"+print_str)
     # results_file.close()
 
@@ -291,7 +291,7 @@ if __name__ == "__main__":
     # pso32.run_PSO()
     # test_results = pso32.run_test()
     # fscore32 = f_score(test_results)
-    # print_str= "segmentation 2 hidden layers Fscore: \n" + fscore32
+    # print_str= "segmentation 2 hidden layers Fscore: \n" + "Accuracy: " + str(fscore32["Accuracy"]) + ", F1:" + str(fscore32["F1"]) + ", Precision:" + str(fscore32["Precision"]) + ", Recall:" + str(fscore32["Recall"])
     # results_file.write("\n"+print_str)
     # results_file.close()
 
@@ -375,14 +375,14 @@ if __name__ == "__main__":
     test_data = data_wine.file_array[0]
     training_data = data_ff.combine(data_wine.file_array[1:])
 
-    results_file = open("./results/results_pso.txt", "a+")
-    pso60 = particle_swarm(50, [(len(data_wine.file_array[0][0][1:])),1], 2, 2, 0.4, training_data, test_data)
-    pso60.run_PSO()
-    test_results = pso60.run_test()
-    mse60 = mse(test_results)
-    print_str= "wine 0 hidden layers MSE: \n" + str(mse60)
-    results_file.write("\n"+print_str)
-    results_file.close()
+    # results_file = open("./results/results_pso.txt", "a+")
+    # pso60 = particle_swarm(50, [(len(data_wine.file_array[0][0][1:])),1], 2, 2, 0.4, training_data, test_data)
+    # pso60.run_PSO()
+    # test_results = pso60.run_test()
+    # mse60 = mse(test_results)
+    # print_str= "wine 0 hidden layers MSE: \n" + str(mse60)
+    # results_file.write("\n"+print_str)
+    # results_file.close()
 
     results_file = open("./results/results_pso.txt", "a+")
     pso61 = particle_swarm(50, [(len(data_wine.file_array[0][0][1:])),18, 1], 2, 2, 0.4, training_data, test_data)
