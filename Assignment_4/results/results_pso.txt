@@ -9,3 +9,5 @@ wine 0 hidden layers MSE:
 0.5098953887272721
 wine 1 hidden layers MSE: 
 0.6518610886832984
+wine 2 hidden layers MSE: 
+0.7318864671512679
