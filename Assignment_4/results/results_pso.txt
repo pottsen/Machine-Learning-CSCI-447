@@ -1,6 +1,0 @@
-
-
-Car 0 hidden layers Fscore: 
-Accuracy: 0.7832369942196532, F1:0.4027518347266028, Precision:0.3944502985598876, Recall:0.4337431693989071
-wine 0 hidden layers MSE: 
-57.16085183438675

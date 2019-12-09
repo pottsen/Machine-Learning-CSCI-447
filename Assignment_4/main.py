@@ -1,3 +1,7 @@
+"""
+For initial testing of code please ignore!
+"""
+
 from data_processing import Data_Processing
 from population_manager import PopulationManager
 from mlp import MLP

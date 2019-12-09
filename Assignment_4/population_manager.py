@@ -1,3 +1,7 @@
+"""
+Parent class used to handle candidate solutions
+"""
+
 from mlp import MLP
 import random
 import copy

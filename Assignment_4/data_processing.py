@@ -1,3 +1,7 @@
+"""
+Methods used to process and prepared data for the algorithms
+"""
+
 import re
 
 class Data_Processing:
