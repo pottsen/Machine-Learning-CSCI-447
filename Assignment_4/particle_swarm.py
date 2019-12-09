@@ -1,6 +1,6 @@
 """
 Particle Swarm Algorithm
-Contains the PSO algorithm and associated code to run 5 fold validation on it.
+Contains the PSO algorithm and associated code to run it.
 
 """
 
@@ -30,6 +30,7 @@ class particle_swarm(PopulationManager):
         self.inertia_C = inertia_coeff
         self.count = 0
 
+        # prep training data
         self.training_data_outputs = []
         self.training_data_inputs = []
         for i in training_data:
@@ -41,9 +42,9 @@ class particle_swarm(PopulationManager):
                 self.training_data_outputs.append(temp)
             else:
                 self.training_data_inputs.append(i[1:])
-                # print("reached here")
                 self.training_data_outputs.append(actual_class)
 
+        # prep test data
         self.test_data_outputs = []
         self.test_data_inputs = []
         for i in test_data:
@@ -84,21 +85,11 @@ class particle_swarm(PopulationManager):
         self.count +=1
 
     def velocity_calc(self, prev_velocity, weights, pBest_weights, gBest_weights):
-        #weights = self.population[i].layers[j].next_weights
         velocity = []
         for i in range(len(prev_velocity)):
             v1 = self.inertia_C*prev_velocity[i]
-            # v1 = 0
             v2 = self.pBest_C*random.uniform(0,1) * (pBest_weights[i] - weights[i])
             v3 = self.gBest_C * random.uniform(0,1) * (gBest_weights[i] - weights[i])
-
-            # if i == 0:
-                # print("pBest = weights ", pBest_weights == weights)
-                # # print("PBC ", self.pBest_C)
-                # print("PBW ", pBest_weights[i])
-                # print("W", weights[i])
-                # print("v1 ", v1, "\n v2 ", v2, "\n v3 ", v3)
-
             v = v1 + v2 + v3
             velocity.append(v)
         return velocity
@@ -108,21 +99,17 @@ class particle_swarm(PopulationManager):
         iteration = 0
         #calculate fitness
         while iteration < 3:
-            # print("iteration ", iteration)
-            # print("gBest Fitness ", self.gBest_fitness)
             for i in range(len(self.population)):
                 fitness = self.population[i].fitness(self.training_data_inputs, self.training_data_outputs)
-                #if fitness < pBest reset
+                #if fitness > pBest reset
                 if fitness > self.pBest_fitness[i]:
-                    # print("pBest updated")
                     self.pBest[i] = copy.deepcopy(self.population[i])
                     self.pBest_fitness[i] = fitness
                     self.pBest_fitness_flag[i] = True
                 else:
                     self.pBest_fitness_flag[i] = False
-                #if fitness < gbest reset
+                #if fitness > gbest reset
                 if fitness > self.gBest_fitness:
-                    # print("gBest updated", self.gBest_fitness)
                     self.gBest = copy.deepcopy(self.population[i])
                     self.gBest_fitness = fitness
 
