@@ -1,3 +1,8 @@
+'''
+This file contains the MLP structure which are members of our algorithms populations
+This is a feed forward neural network with no learning methods as that will be handled through evolution in this implementation
+'''
+
 from layer import Layer
 import numpy as np
 
@@ -50,6 +55,7 @@ class MLP():
                 print(layer.next_weights)
                 iter += 1
 
+    #takes an input point and feeds it forward to return a vector of outputs based on its layers
     def predict(self, point, regression='default'):
         dat = np.transpose([point])
         self.layers[0].set_nodes(dat)
