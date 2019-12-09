@@ -3,6 +3,7 @@ import random
 import numpy as np
 import copy
 from data_processing import Data_Processing
+from evaluations import  f_score, mse
 
 class Differential_Evolution(PopulationManager):
 
@@ -46,15 +47,22 @@ class Differential_Evolution(PopulationManager):
             l1 = copy.deepcopy(self.training_data)
             random.shuffle(self.training_data)
 
-            for d in self.training_data[:100]:
-                c1 = [0]* self.mlp_dims[-1]
-                c1[int(d[0])] = 1
-                classes.append(c1)
-                dat.append(d[1:])
+            if(self.mlp_dims[-1]==1):
+                for d in self.training_data[:100]:
+                    c1 = [0]* self.mlp_dims[-1]
+                    classes.append(d[0])
+                    dat.append(d[1:])
+            else:
+                for d in self.training_data[:100]:
+                    c1 = [0]* self.mlp_dims[-1]
+                    c1[int(d[0])] = 1
+                    classes.append(c1)
+                    dat.append(d[1:])
+
             self.training_data = l1
 
-            f1 = self.population[i].fitness(dat,classes)
-            f2 = new_member.fitness(dat,classes)
+            f1 = self.population[i].fitness_with_f1(dat,classes)
+            f2 = new_member.fitness_with_f1(dat,classes)
 
             if(f2>f1):
                 self.population[i] = new_member
@@ -64,30 +72,61 @@ class Differential_Evolution(PopulationManager):
                 self.best_f = f2
                 print(f2)
 
+    def run(self, generation_limit):
+        for i in range(generation_limit):
+            de.mutation()
+        return self.best
+
+    def metrics(self):
+        guesses = []
+        if(self.mlp_dims[-1]==1): #regression
+            for n in range(len(self.test_data)):
+                guess = self.best.predict(self.test_data[n][1:])[0]
+                actual = self.test_data[n][0]
+                guesses.append([actual,guess])
+            score = {"MSE": mse(guesses)}
+
+
+
+        else:   #classification
+            for n in range(len(self.test_data)):
+                b = 0
+                guess = 0
+                for i in range(len(self.best.predict(self.test_data[n][1:]))):
+                    if(self.best.predict(self.test_data[n][1:])[i]>b):
+                        b = self.best.predict(self.test_data[n][1:])[i]
+                        bidx = i
+                actual = self.test_data[n][0]
+
+                guesses.append([actual,guess])
+            score = f_score(guesses)
+        #print(score)
+        #print(guesses[0])
+        return score, guesses
+
+
 if __name__ == "__main__":
 
-    data_aba = Data_Processing(["car",], [6], {"M":"1", "F":"2", "I":"3"})
-    data_aba.load_data("./processed")
+    sets = ["abalone","car","forestfires","machine","segmentation","wine"]
+    input = [8,6,12,9,19,11]
+    hidden_layer = [30,10,14,15,20,18]
+    outputs = [29,4,1,1,7,1]
+
+    for i in range(len(sets)):
+        data_aba = Data_Processing([sets[i]], [], {})
+        data_aba.load_data("./processed")
 
 
-    #slice in to 5
-    data_aba.slicer(5, "car")
+        #slice in to 5
+        data_aba.slicer(5, sets[i])
 
-    test_data = data_aba.file_array[0]
-    training_data = data_aba.combine(data_aba.file_array[1:])
+        test_data = data_aba.file_array[0]
+        training_data = data_aba.combine(data_aba.file_array[1:])
 
-
-    de = Differential_Evolution(100,[6,8,4],1.5,training_data,test_data)
-    for i in range(100):
-        de.mutation()
-
-    best = de.best
-    for n in range(20):
-        print(test_data[n])
-        b = 0
-        bidx = 0
-        for i in range(len(best.predict(test_data[n][1:]))):
-            if(best.predict(test_data[n][1:])[i]>b):
-                b = best.predict(test_data[n][1:])[i]
-                bidx = i
-        print(bidx)
+        print(sets[i])
+        mlp_dims = [input[i],hidden_layer[i],outputs[i]]
+        de = Differential_Evolution(100,mlp_dims,1.5,training_data,test_data)
+        #best = de.run(10)
+        score, guesses = de.metrics()
+        print(guesses)
+        print(score)

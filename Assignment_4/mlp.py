@@ -123,3 +123,29 @@ class MLP():
         diff /= len(inputs)
         self.individual_fitness = 1/(diff + 0.001)
         return self.individual_fitness
+
+    def fitness_with_f1(self, inputs, outputs):
+        diff = 0
+        for i in range(len(inputs)):
+            guess = self.predict(inputs[i])
+            #guess -> MLP output of size of output layer
+            if len(guess) > 1:
+                maximum = 0
+                idxmax = 0
+                for g in range(len(guess)):
+
+                    if(guess[g] >= maximum):
+                        maximum = guess[g]
+                        idxmax = g
+
+
+                if(outputs[i][idxmax]==1):
+                    pass
+                else:
+                    diff+=1
+            else:
+                diff += (outputs[i] - guess[0])**2
+
+        diff /= len(inputs)
+        self.individual_fitness = 1/(diff + 0.001)
+        return self.individual_fitness
