@@ -62,7 +62,7 @@ class Genetic_Algorithm(PopulationManager):
 
 
     #picks an indiv from the pop. with highly fit indiv more likley to be chosen
-    def russian_wheel_selection(self):
+    def roulette_wheel_selection(self):
         
         #sum up the fitness
         fitness_sum = 0
@@ -98,10 +98,10 @@ class Genetic_Algorithm(PopulationManager):
 
             for i in range(math.ceil(number_to_replace/2)):
                 #select
-                individual1 = self.russian_wheel_selection()
-                individual2 = self.russian_wheel_selection()
+                individual1 = self.roulette_wheel_selection()
+                individual2 = self.roulette_wheel_selection()
                 while individual1 == individual2:
-                    individual2 = self.russian_wheel_selection()
+                    individual2 = self.roulette_wheel_selection()
 
                 #cross-over
                 child1, child2 = self.uniform_cross(self.population[individual1], self.population[individual2])
@@ -121,11 +121,12 @@ class Genetic_Algorithm(PopulationManager):
         
         if self.number_of_outputs == 1:
             mse_error = mse(results)
-            print_str = ("MSE: " + str(mse_error)) 
+            print_str = ("MSE: " + str(mse_error) + "\n") 
 
         elif self.number_of_outputs > 1:
             fscore = f_score(results)
-            print_str = "Accuracy: " + str(fscore["Accuracy"]) + ", F1:" + str(fscore["F1"]) + ", Precision:" + str(fscore["Precision"]) + ", Recall:" + str(fscore["Recall"])
+            print_str = "Accuracy: " + str(fscore["Accuracy"]) + ", F1:" + str(fscore["F1"]) + \
+            ", Precision:" + str(fscore["Precision"]) + ", Recall:" + str(fscore["Recall"]) + "\n"
 
         
         results_file = open("./results/results_ga.txt", "a+")
@@ -134,18 +135,6 @@ class Genetic_Algorithm(PopulationManager):
 
 
 
-
-        # for i in self.test_data:
-        #     #if regression
-        #     if self.number_of_outputs == 1:
-        #         results = ("fittest: ", self.population[self.find_fittest()], "mse: ",  mse( self.population[self.find_fittest()].predict(i)))
-            
-        #     elif self.number_of_outputs > 1:
-        #         results = ("fittest: ", self.population[self.find_fittest()], "f-score: ",  f_score(self.population[self.find_fittest()].predict(i)))
-                
-        # results_file = open("./results/results_ga.txt", "a+")
-        # results_file.write(fscore)
-        # results_file.close()
       
     def run_test(self):
         classifications = []
@@ -211,67 +200,67 @@ if __name__ == "__main__":
 
 
 
-    number_generation = 1
+    number_generation = 500
     population = 50
 
+
     # -------Abalone-------
-    # results_file = open("./results/results_ga.txt", "a+")
-    # results_file.write("-------Abalone Reults-------")
-    # print("-------Abalone Reults-------")
-    # results_file.close()
-    # data_aba.slicer(5, "abalone")
-    # number_of_inputs = (len(data_aba.file_array[0][0][1:]))
-    # number_of_outputs = 29
-    # dim = [number_of_inputs,30,number_of_outputs]
-    # test_data = data_aba.file_array[0]
-    # training_data = data_aba.combine(data_aba.file_array[1:])
+    results_file = open("./results/results_ga.txt", "a+")
+    results_file.write("-------Abalone Reults-------\n")
+    print("-------Abalone Reults-------")
+    results_file.close()
+    data_aba.slicer(5, "abalone")
+    number_of_inputs = (len(data_aba.file_array[0][0][1:]))
+    number_of_outputs = 29
+    dim = [number_of_inputs,number_of_outputs]
+    test_data = data_aba.file_array[0]
+    training_data = data_aba.combine(data_aba.file_array[1:])
 
-    # ga = Genetic_Algorithm(population, dim, number_generation, test_data, training_data)
-    # ga.run_genetic_algorithm()
-
-
-    # # -------Car-------
-    # results_file = open("./results/results_ga.txt", "a+")
-    # results_file.write("-------Car Reults-------")
-    # print("-------Car Reults-------")
-    # results_file.close()
-    # data_car.slicer(5, "car")
-    # number_of_inputs = (len(data_car.file_array[0][0][1:]))
-    # number_of_outputs = 4
-    # dim = [number_of_inputs,10,number_of_outputs]
-    # test_data = data_car.file_array[0]
-    # training_data = data_car.combine(data_car.file_array[1:])
-
-    # ga = Genetic_Algorithm(population, dim, number_generation, test_data, training_data)
-    # ga.run_genetic_algorithm()
+    ga = Genetic_Algorithm(population, dim, number_generation, test_data, training_data)
+    ga.run_genetic_algorithm()
 
 
-    # # -------Forest-------
-    # results_file = open("./results/results_ga.txt", "a+")
-    # results_file.write("-------Forest Reults-------")
-    # print("-------Forest Reults-------")
-    # results_file.close()
-    # data_ff.slicer(5, "forestfires")
-    # number_of_inputs = (len(data_ff.file_array[0][0][1:]))
-    # number_of_outputs = 1
-    # dim = [number_of_inputs,20,number_of_outputs]
-    # test_data = data_ff.file_array[0]
-    # training_data = data_ff.combine(data_ff.file_array[1:])
+    # -------Car-------
+    results_file = open("./results/results_ga.txt", "a+")
+    results_file.write("-------Car Reults-------\n")
+    print("-------Car Reults-------")
+    results_file.close()
+    data_car.slicer(5, "car")
+    number_of_inputs = (len(data_car.file_array[0][0][1:]))
+    number_of_outputs = 4
+    dim = [number_of_inputs,number_of_outputs]
+    test_data = data_car.file_array[0]
+    training_data = data_car.combine(data_car.file_array[1:])
 
-    # ga = Genetic_Algorithm(population, dim, number_generation, test_data, training_data)
-    # ga.run_genetic_algorithm()
+    ga = Genetic_Algorithm(population, dim, number_generation, test_data, training_data)
+    ga.run_genetic_algorithm()
 
+
+    # -------Forest-------
+    results_file = open("./results/results_ga.txt", "a+")
+    results_file.write("-------Forest Reults-------\n")
+    print("-------Forest Reults-------")
+    results_file.close()
+    data_ff.slicer(5, "forestfires")
+    number_of_inputs = (len(data_ff.file_array[0][0][1:]))
+    number_of_outputs = 1
+    dim = [number_of_inputs,number_of_outputs]
+    test_data = data_ff.file_array[0]
+    training_data = data_ff.combine(data_ff.file_array[1:])
+
+    ga = Genetic_Algorithm(population, dim, number_generation, test_data, training_data)
+    ga.run_genetic_algorithm()
 
 
     # -------Machine-------
     results_file = open("./results/results_ga.txt", "a+")
-    results_file.write("-------Machine Reults-------")
+    results_file.write("-------Machine Reults-------\n")
     print("-------Machine Reults-------")
     results_file.close()
     data_mach.slicer(5, "machine")
     number_of_inputs = (len(data_mach.file_array[0][0][1:]))
     number_of_outputs = 1
-    dim = [number_of_inputs,15,number_of_outputs]
+    dim = [number_of_inputs,number_of_outputs]
     test_data = data_mach.file_array[0]
     training_data = data_mach.combine(data_mach.file_array[1:])
 
@@ -279,17 +268,15 @@ if __name__ == "__main__":
     ga.run_genetic_algorithm()
 
 
-
-
     # -------Img/Seg-------
     results_file = open("./results/results_ga.txt", "a+")
-    results_file.write("-------Img/Seg Reults-------")
+    results_file.write("-------Img/Seg Reults-------\n")
     print("-------Img/Seg Reults-------")
     results_file.close()
     data_img.slicer(5, "segmentation")
     number_of_inputs = (len(data_img.file_array[0][0][1:]))
-    number_of_outputs = 1
-    dim = [number_of_inputs, 18, number_of_outputs]
+    number_of_outputs = 7
+    dim = [number_of_inputs, number_of_outputs]
     test_data = data_img.file_array[0]
     training_data = data_img.combine(data_img.file_array[1:])
 
@@ -297,36 +284,18 @@ if __name__ == "__main__":
     ga.run_genetic_algorithm()
 
 
-
-
     # -------Wine-------
     results_file = open("./results/results_ga.txt", "a+")
-    results_file.write("-------Wine Reults-------")
+    results_file.write("-------Wine Reults-------\n")
     print("-------Wine Reults-------")
     results_file.close()
     data_wine.slicer(5, "wine")
     number_of_inputs = (len(data_wine.file_array[0][0][1:]))
     number_of_outputs = 1
-    dim = [number_of_inputs, 14, number_of_outputs]
+    dim = [number_of_inputs,number_of_outputs]
     test_data = data_wine.file_array[0]
     training_data = data_wine.combine(data_wine.file_array[1:])
 
     ga = Genetic_Algorithm(population, dim, number_generation, test_data, training_data)
     ga.run_genetic_algorithm()
 
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-    #end --------------------------------------

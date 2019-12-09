@@ -1,3 +1,8 @@
+'''
+This is a helper class of MLP to handle each layer seperately with its weight matrix
+
+'''
+
 import numpy as np
 import random
 
@@ -8,6 +13,7 @@ class Layer():
 
         self.nodes = np.zeros((number_of_nodes,1))
 
+        #initialize feed forward weights randomly
         if(type(next_layer_number) != str and next_layer_number!='none'):
             self.next_weights = np.zeros((next_layer_number,number_of_nodes))
 
@@ -17,6 +23,7 @@ class Layer():
         else:
             self.next_weights = next_layer_number
 
+        #initialize feed back weights randomly (not used for assignment 4)
         if(type(previous_layer_number) != str and previous_layer_number!='none'):
             self.prev_weights = np.zeros((previous_layer_number,number_of_nodes))
 
@@ -34,9 +41,11 @@ class Layer():
 
         return string
 
+    #returns number of nodes a layer has
     def get_layer_size(self):
         return self.nodes.shape[0]
 
+    #sets the layers nodes to be values in vector
     def set_nodes(self, vector):
         if(type(vector) == str):
             for row in range(len(self.nodes)):
@@ -47,6 +56,7 @@ class Layer():
         else:
             raise Exception('Shape Mismatch: given vector does not fit input layer. Size given:' + str(vector.shape[0]) + '. Required:'+ str(self.nodes.shape[0]))
 
+    #change nodes by a value (adjustment) different than set nodes because initial node values matter
     def adjust_nodes(self, adjustment):
         if(type(adjustment) == str and adjustment == 'random'):
             for row in range(len(self.nodes)):
@@ -55,12 +65,14 @@ class Layer():
         else:
             self.nodes += adjustment
 
+    #takes the values of its nodes and dot products it with its weights to send to the next layer
     def feed_forward(self):
         if(type(self.next_weights)!=str):
             return np.dot(self.next_weights , self.nodes)
         else:
             return 'end'
 
+    #takes the values of its nodes and dot products it with its weights to send to the next layer (output is normalized to be between 0-1)
     def feed_forward_sigmoid(self):
         if(type(self.next_weights)!=str):
             temp = np.dot(self.next_weights , self.nodes)
