@@ -45,7 +45,7 @@ class Layer():
         elif(self.nodes.shape == vector.shape):
             self.nodes = vector
         else:
-            raise Exception('Shape Mismatch: given vector does not fit input layer')
+            raise Exception('Shape Mismatch: given vector does not fit input layer. Size given:' + str(vector.shape[0]) + '. Required:'+ str(self.nodes.shape[0]))
 
     def adjust_nodes(self, adjustment):
         if(type(adjustment) == str and adjustment == 'random'):
