@@ -1,3 +1,7 @@
+"""
+Contains the fscore and MSE funtions for evaluation
+"""
+
 def f_score(guesses): #list of tuples [(actual, guess),(actual,guess)]
     confusion = {} #confusion matrix
 
