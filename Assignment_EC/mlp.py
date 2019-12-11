@@ -187,26 +187,29 @@ class MLP():
         diff_arr /= len(inputs)
         return diff, diff_arr
 
-    def backprop(self, test, target, learning_rate, loss="mse"):
+    def backprop(self, test, target, iterations, learning_rate, bins, loss="mse"):
 
-        for iters in range(10000):
+        for iters in range(iterations):
 
             for layer in self.layers:
                 layer.nodes_persistent*=0
 
             batch = []
             batch_targets = []
-            for rand in range(int(len(test)/4)):
+            for rand in range(int(len(test)/bins)):
                 rand = random.randrange(0,len(test))
                 batch.append(test[rand])
                 batch_targets.append(target[rand])
 
             #guess = self.predict(test[0]) * 0
-            cum_err = len(batch_targets[0])*[0]
+            try:
+                cum_err = len(batch_targets[0])*[0]
+            except:
+                cum_err = [0]
             guesses = []
             for train in range(len(batch)):
                 #guess += self.predict(batch[train], backprop = True)
-                guess = self.predict(batch[train], backprop = True)
+                guess = self.predict(batch[train], backprop = True, regression = True)
                 guesses.append(guess)
                 tot, mse_arr = mse_dir([guess], [batch_targets[train]])
                 for node in range(len(cum_err)):
@@ -273,42 +276,47 @@ def mse_dir(inputs, outputs):
     diff = 0
     diff_arr = [0]*len(inputs[0])
     for i in range(len(inputs)):
-        for j in range(len(inputs[i])):
-            diff += (inputs[i][j] - outputs[i][j])
-            diff_arr[j]+=(inputs[i][j] - outputs[i][j])
+        try:
+            for j in range(len(inputs[i])):
+                diff += (inputs[i][j] - outputs[i][j])
+                diff_arr[j]+=(inputs[i][j] - outputs[i][j])
+        except:
+            diff += (inputs[i][0] - outputs[i])
+            diff_arr[0]+=(inputs[i][0] - outputs[i])
 
     diff /= (len(inputs)*len(inputs[0]))
     for i in range(len(diff_arr)):
         diff_arr[i] /= len(inputs)
     return diff, diff_arr
 
+# training2 = [[0,0],[0,1],[1,0],[1,1]]
+# training2 = [[0,0],[0,1],[1,0],[1,1]]
+# outputs2 = [[0],[1],[1],[0]]
+#
+# mlp = MLP([2,4,2])
+# guess = mlp.predict(training2[0], backprop = True)
+# print(mlp.predict(training2[0]))
+# mlp.backprop(training2,training2,1000,0.5,4)
+#
+#
+# print(mlp.predict(training2[0]))
+# print(mlp.predict(training2[1]))
+# print(mlp.predict(training2[2]))
+# print(mlp.predict(training2[3]))
 
-if __name__ == "__main__":
-    # training = [[0,0,0],[0,1,1],[1,0,1],[1,1,0]]
-    # training2 = [[0,0,0],[0,1,1],[1,0,1],[1,1,0],[1,0,0],[0,0,1]]
-    # outputs2 = [[1,1,1],[1,0,0],[0,1,0],[0,0,1],[0,1,1],[1,1,0]]
-    #
-    # mlp = MLP([3,4,3])
-    # guess = mlp.predict(training2[0], backprop = True)
-    # print(mlp.predict(training2[0]))
-    # mlp.backprop(training2,outputs2,0.5)
-    #
-    #
-    # print(mlp.predict(training2[0]))
-    # print(mlp.predict(training2[1]))
-    # print(mlp.predict(training2[2]))
-
-    training2 = [[0,0],[0,1],[1,0],[1,1]]
-    training2 = [[0,0],[0,1],[1,0],[1,1]]
-    outputs2 = [[0],[1],[1],[0]]
-
-    mlp = MLP([2,4,1])
-    guess = mlp.predict(training2[0], backprop = True)
-    print(mlp.predict(training2[0]))
-    mlp.backprop(training2,outputs2,0.5)
-
-
-    print(mlp.predict(training2[0]))
-    print(mlp.predict(training2[1]))
-    print(mlp.predict(training2[2]))
-    print(mlp.predict(training2[3]))
+# #training2 = [[0,0,0],[0,50,0],[50,0,0],[50,50,0]]
+# training2 = [[0,0,0],[0,1,0],[1,0,0],[1,1,0]]
+# #training2 = [[7,2,4,5,8],[1,2,12,7,34],[5,1,9,10,27],[1,5,3,8,12],[5,7,9,12,33]]
+# outputs2 = [[0],[1],[1],[0]]
+#
+# mlp = MLP([3,2,3])
+# #mlp = MLP([5,4,5])
+# guess = mlp.predict(training2[0], backprop = True)
+# print(mlp.predict(training2[0]))
+# mlp.backprop(training2,training2,10000,0.5,2)
+#
+#
+# print(mlp.predict(training2[0], regression = True))
+# print(mlp.predict(training2[1], regression = True))
+# print(mlp.predict(training2[2], regression = True))
+# print(mlp.predict(training2[3], regression = True))
