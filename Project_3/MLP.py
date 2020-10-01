@@ -1,6 +1,6 @@
 import numpy as np
 
-class MLP2():
+class MLP():
     #input-> #data_as_2dList, possible_outputs, number_of_hidden_layers, number_of_hidden_nodes_in_each_layer
     def __init__(self, data, output, number_of_layers, number_of_nodes, momentum):
         # flag 

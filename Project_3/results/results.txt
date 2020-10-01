@@ -1,0 +1,16 @@
+
+Fscore for abalone fold: 0
+Network layer dimensions [13, 13]
+F-score: 0.31174089068825916
+
+Fscore for abalone fold: 0
+Network layer dimensions [13]
+F-score: 0.2892223738062756
+
+Fscore for car fold: 0
+Network layer dimensions [10, 10]
+F-score: 0.1894273127753304
+
+Fscore for car fold: 0
+Network layer dimensions [10]
+F-score: 0.04651162790697674
